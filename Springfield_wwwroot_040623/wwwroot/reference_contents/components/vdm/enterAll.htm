@@ -1,0 +1,66 @@
+<template>
+  <app>
+    <div id="content" slot="content">
+      <div class="column-1">
+        <div class="info-area">
+          <div class="msg">
+            <p>{{ 'Available Tickets' | translate }}</p>
+            <p>{{ AllTickets }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="column-2 enterAll-footer-height">
+        <div class="one-button-placeholder"></div>
+        <button class="normal" @click="confirm">{{ 'Confirm' | translate }}</button>
+        <bar content="Back"></bar>
+      </div>
+    </div>
+  </app>
+</template>
+<script>
+module.exports = {
+  name: "enterAll",
+  methods: {
+    confirm() {
+      this.$store.commit("enteringTickets/reset");
+
+      if (this.AllTickets <= 0) {
+        this.$store.dispatch("addInfo", {
+          message: "Number of tickets must be greater than 0.",
+          routertype: "router",
+          pathname: "award"
+        });
+      } else if (this.AllTickets > 1000) {
+        this.$router.push({ name: "enteringTickets" });
+      } else {
+        this.$store.dispatch("enteringTickets/RedeemTickets", {redeemTktCount: this.AllTickets, isSingleReq: true});
+      }
+    }
+  },
+  computed: {
+    RateOfRedeemProcess() {
+      return this.$store.state.enteringTickets.isDone;
+    },
+    AllTickets() {
+      return this.$store.state.AllTickets;
+    }
+  },
+  watch: {
+    RateOfRedeemProcess(newValue) {
+      if (newValue === true) this.$router.push({ name: "done" });
+    }
+  }
+};
+</script>
+<style scoped>
+@import "../../style/vdm_button.css";
+@import "../../style/vdm_infoarea.css";
+@import "../../style/vdm_message-area.css";
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  .enterAll-footer-height {
+    height: 150px;
+  }
+}
+</style>

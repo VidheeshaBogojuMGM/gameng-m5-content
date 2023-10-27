@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Victorian Pre-Commitment uncardedHelp</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/vpc.css">
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="decoration"></div>
+    <div id="app" resize="preset-2" v-cloak :class="{smallHoriz}">
+        <div class='page app-page'>
+            <div class="content-head">
+                <img id='logo' />
+            </div>
+            <div class="content-body">
+                <div class="helpcontent">
+                    <p style="color: #ffeb73; margin-bottom:0.5rem">{{"Visit a Kiosk to register online" | translate}}</p>
+                    <p>{{"Kiosks are located in every venue with gaming machines" | translate}}</p>
+                    <p style="color: #ffeb73; margin:0.5rem auto">{{"You can register at the service desk" | translate}}</p>
+                    <p>{{"Ask a staff member at the service desk for a YourPlay access card." | translate}}</p>
+                </div>
+            </div>
+            <div class="content-tail">
+                <button @click="helpcancelclicked()">{{"OK" | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/vpcDisplayData.js"></script>
+    <script src="./js/vpc.skin.js"></script>
+</body>
+
+</html>

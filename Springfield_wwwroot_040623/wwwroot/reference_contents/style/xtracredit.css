@@ -1,0 +1,532 @@
+ p.amount {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    color: rgb(255, 248, 129);
+    font-size: 22px;
+}
+.amount-bg {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-image: url(../assets/field.png);
+}
+.input-bg {
+    background-image: url(../assets/field.png);
+}
+#detailMsg {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 20px;
+    color: rgb(255, 249, 150);
+}
+
+.vertical #message-begin {
+    margin-top: 40px;
+    margin-bottom: 5px;
+}
+.vertical #xc-not-available .content-body, #msg-pane .content-body {
+    height: 65%;
+}
+.vertical .message-box{
+    width: 100%
+}
+.vertical p {
+    width: 100%
+}
+
+.horizontal .content-tail {
+    justify-content: flex-end;
+}
+.horizontal .content-tail button{
+    margin-top: 3px;
+    width: 90%;
+    font-size: 20px;
+}
+.horizontal #session-pane-active .content-body{
+    flex-direction: column;
+    align-items: center;
+    align-content: space-evenly;
+    justify-content: center;
+}
+.horizontal #select-pane .content-body{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.horizontal .v-box {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+.horizontal .xcmsg {
+    width: 100%;
+    text-align: center;
+}
+.horizontal .amount-bg {
+    width: 20%
+}
+.horizontal .msginfo {
+	height: 60%;
+    padding: 0px 45px;
+    width: 100% !important;
+}
+
+.horizontal .input, .horizontal .input-bg{
+    width: 100%;
+	text-align: center;
+}
+
+.smallH .msginfo {
+    width: 80% !important;
+}
+.smallH .input {
+    width: 50% !important;
+}
+.smallH .input-bg{
+    width: 30%;
+}
+.smallH .xcmsg {
+    width: 80%;
+    text-align: center;
+}
+.smallH .amount-bg{
+    width: 50%;
+}
+.smallH .msginfo p.amount{
+    font-size: 15px;
+}
+.smallH .msginfo p {
+    font-size: 16px;
+}
+
+.largeH .v-box {
+    flex-direction: row;
+}
+.largeH p{
+    font-size: 22px;
+}
+.largeH p.amount{
+    font-size: 30px;
+}
+
+.vertical .content-tail {
+	justify-content: center !important;
+	margin-top: 20vh;
+}
+
+
+.U2 .content-body {
+	padding-top: 20px !important;
+}
+
+.U2 .vertical #message-begin {
+	margin-top: 20px;
+}
+
+.U2 .menu button, .U2 .content-tail button {
+	font-size: 15px;
+	height: 30px;
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
+}
+
+.U2 #select-pane .content-tail{
+	margin-top: 6vh;
+}
+
+.U3 #session-pane-active .content-tail {
+	margin-top: 0;
+    height: 20%;
+    justify-content: center !important;
+}
+
+.U3 #select-pane .content-tail {
+	margin-top: 14vh;
+}
+
+.U3 #session-pane-active .content-body {
+	height: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 30px;
+}
+
+.SCREEN_XTRACREDIT.vertical #msg-pane .content-body .success-details,
+.SCREEN_XTRACREDIT.vertical #msg-pane .content-body .success-details button,
+.SCREEN_XTRACREDIT.vertical #msg-pane .content-body .line,
+.SCREEN_XTRACREDIT.vertical #xc-not-available .content-body .line
+.SCREEN_XTRACREDIT.vertical #xc-not-available .content-body .line   {
+    width: 100% !important;
+}
+
+.SCREEN_XTRACREDIT.vertical #msg-pane .content-body .success-details .line {
+    width: 100%;
+    max-width: 100%;
+    margin: 4px 0;
+}
+
+.SCREEN_XTRACREDIT.vertical #msg-pane .content-body .success-details .success-message {
+    margin-bottom: 15vh;
+}
+
+.SCREEN_XTRACREDIT.vertical .content-body.message-box .failed-details {
+    width: 100% !important;
+}
+
+.SCREEN_XTRACREDIT.vertical .action-button,
+.SCREEN_XTRACREDIT.vertical .action-button button,
+.SCREEN_XTRACREDIT.vertical .cancel-back-btn,
+.SCREEN_XTRACREDIT.vertical .cancel-back-btn button {
+    width: 100%;
+    min-width: 100%;
+    height: 45px;
+}
+
+.SCREEN_XTRACREDIT.vertical .cancel-back-btn {
+    padding-top: 15vh;
+}
+
+.SCREEN_XTRACREDIT.horizontal .action-button,
+.SCREEN_XTRACREDIT.horizontal .cancel-back-btn {
+    margin: 0;
+    margin-top: 20vh;
+    width: 100% !important;
+}
+
+.SCREEN_XTRACREDIT.horizontal .action-button .line,
+.SCREEN_XTRACREDIT.horizontal .cancel-back-btn .line {
+    width: 100% !important;
+}
+
+.SCREEN_XTRACREDIT.horizontal .action-button button,
+.SCREEN_XTRACREDIT.horizontal .cancel-back-btn button {
+    height: 45px;
+    width: 100% !important;
+}
+
+.U2 #app>* {
+	margin-bottom: 0 !important;
+}
+
+.U2.vertical.SCREEN_XTRACREDIT #session-pane-active .content-tail .btn,
+.U2.vertical.SCREEN_XTRACREDIT #session-pane-active .content-tail button {
+    height: 35px;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.U2.SCREEN_XTRACREDIT.vertical #msg-pane .content-body .success-details button {
+    height: 45px;
+}
+
+.TFT #session-pane-active .content-body>div p,
+.TFT #session-pane-active .content-body>div h1 {
+	font-size: 15px;
+}
+
+.TFT #session-pane-active .cash-color {
+	font-size: 25px !important;
+}
+
+.TFT #session-pane-active .content-tail button {
+	font-size: 15px;
+}
+
+.TFT #select-pane .content-body .align-box .button-small {
+	width: 54px;
+    height: 50px;
+	font-size: 15px;
+}
+
+.TFT #select-pane .content-tail .msginfo {
+	padding: 0px;
+}
+
+.TFT #select-pane .content-tail .msginfo p {
+	font-size: 18px;
+    border:none;
+    margin-bottom: 15px ;
+}
+
+.TFT #select-pane .content-tail {
+	justify-content: flex-start;
+}
+
+.TFT #msg-pane .content-body.message-box {
+	position: relative;
+    left: 35px;
+	padding: 0;
+}
+
+.TFT #msg-pane .content-body.message-box .failed-details,
+.TFT #msg-pane .content-body.message-box  .loading-msg {
+    width: 100% !important;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.TFT #msg-pane .content-body.message-box .failed-details {
+    margin-top: 35px;
+}
+
+.TFT.horizontal.SCREEN_XTRACREDIT #msg-pane .content-body .success-details  {
+    justify-content: center;
+}
+
+.TFT.horizontal.SCREEN_XTRACREDIT #msg-pane .content-body .success-details .success-message {
+    margin-top: 40px;
+}
+
+.TFT #msg-pane .content-body .success-details .success-back-btn button {
+    height: 45px;
+}
+
+.TFT #msg-pane .content-body.message-box  .loading-msg {
+	height: 100%;
+	padding: 0;
+	justify-content: center;
+}
+
+.TFT #msg-pane .content-body.message-box .failed-details .line,
+.TFT #msg-pane .content-body.message-box .failed-details button {
+	display: block !important;
+}
+
+.TFT #session-pane-active .content-body .info-group {
+	width: 100%;
+}
+
+.TFT #msg-pane .content-body.message-box #statusMsg,
+.TFT #msg-pane .content-body.message-box #detailMsg,
+.TFT #msg-pane .content-body.message-box .success-details p {
+	font-size: 20px;
+}
+
+.TFT #msg-pane .content-body.message-box .success-details {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.TFT #msg-pane .content-body.message-box .button-response-container {
+	margin-top: 13px;
+}
+
+.TFT #msg-pane .content-body.message-box .button-response-container .content-tail {
+	align-items: center;
+	width: 100%;
+}
+
+.SCREEN_XTRACREDIT #msg-pane #footer .navigations {
+    justify-content: space-between;
+}
+
+.TFT.SCREEN_XTRACREDIT #session-pane-active #footer{
+    display: none;
+}
+.U6 #select-pane .content-body{
+    padding-top: 60px !important;
+}
+
+.U6 #select-pane .content-tail {
+	margin-top: 10vh;
+}
+
+.U6 .msginfo .input .title {
+    font-size: 28px;
+}
+.U6 #session-pane-active .content-body {
+	padding-top: 10vh !important;
+}
+
+.U6 #session-pane-active .xcmsg {
+	width: 288px;
+}
+
+.U6 #session-pane-active .content-tail {
+    margin-top: 35vh;
+}
+
+.U6 #msg-pane .content-body.message-box #statusMsg {
+	font-size: 40px;
+}
+
+.U6 #msg-pane .content-body.message-box .line {
+	width: 390px;
+}
+
+.U3 #session-pane-active .xcmsg {
+    width: 215px;
+}
+
+.U3 #msg-pane .button-response-container,
+.U6 #msg-pane .button-response-container,
+.U6 #msg-pane .button-response-container .content-tail {
+    margin: 0;
+    width: 100% !important;
+}
+
+.U6.SCREEN_XTRACREDIT #session-pane-active .content-tail .line {
+    width: 100% !important;
+}
+
+.U6 #msg-pane .button-response-container .content-tail {
+	margin-top: 30vh;
+}
+.U3 #msg-pane .button-response-container .content-tail {
+	margin-top: 38vh;
+}
+
+.U2 #msg-pane .button-response-container .content-tail {
+	margin-top: 40vh;
+}
+
+#msg-pane .button-response-container .content-tail button {
+    width: 100%;
+    margin: 0 !important;
+    max-width: 100%;
+}
+
+.U2 #msg-pane .content-body.message-box #statusMsg,
+.U2 #msg-pane .content-body.message-box #detailMsg
+{
+	font-size: 16px;
+}
+
+.U2 #session-pane-active .xcmsg {
+	width: 140px;
+}
+
+.U2 #session-pane-active .content-body {
+	height: 50%;
+}
+
+.TFT #button-pane-succeed .cancel-selection{
+    width: 75%;
+    height: 50px;
+}
+.TFT #button-pane-succeed {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.TFT #select-pane .line{
+    width: 240px;
+}
+
+.TFT #select-pane .content-tail button{
+    height: 58px !important;
+}
+
+.TFT #select-pane .msginfo {
+    height: 48%;
+}
+
+.U4.SCREEN_XTRACREDIT.horizontal #session-pane-active .content-body .info-group {
+    min-width: 100%;
+}
+
+.U4.SCREEN_XTRACREDIT.horizontal #msg-pane .content-body {
+    width: 50%;
+}
+
+.U4.SCREEN_XTRACREDIT.horizontal #msg-pane .content-body .success-details .success-message {
+    margin: 20vh 0;
+}
+
+.U4.SCREEN_XTRACREDIT.horizontal #msg-pane .content-body .success-details button {
+    height: 45px;
+}
+
+.U4 #session-pane-active .content-body .info-group p,
+.U4.SCREEN_XTRACREDIT.horizontal #msg-pane .content-body .success-details .success-message p {
+    font-size: 17px;
+}
+
+.U4.SCREEN_XTRACREDIT.horizontal #msg-pane .content-body .button-response-container #button-pane-fail {
+    padding-top: 20px;
+}
+
+.U4.SCREEN_XTRACREDIT.horizontal #msg-pane .content-body .button-response-container #button-pane-fail .line {
+    width: 100% !important;
+    margin: 4px 0 !important;
+}
+
+.U4.SCREEN_XTRACREDIT.horizontal #msg-pane .content-body .button-response-container #button-pane-fail button{
+    width: 100% !important;
+}
+
+.U4 #msg-pane .message-box #button-pane-fail, .U4 #msg-pane .message-box #button-pane-succeed {
+    width: 100%;
+}
+
+.U4 #xc-not-available .content-body, .U4 #msg-pane .content-body {
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+}
+
+.horizontal #msg-pane .content-body {
+	width: 55% !important;
+	height: 100% !important;
+}
+
+.U6_RH .content-tail button {
+    width: 260px;
+    height: 35px;
+}
+
+.U6_RH .content-tail {
+    display: block;
+    padding-top: 25px;
+}
+
+.U6_RH #session-pane-active .content-body .info-group,
+.U3_H #session-pane-active .content-body .info-group {
+    width: 100%;
+}
+.U6_RH #session-pane-active .content-body .info-group p {
+	font-size: 23px;
+    line-height: 25px;
+}
+
+.U3_H #session-pane-active .content-body .info-group p  {
+    font-size: 20px;
+}
+
+.U3_H.SCREEN_XTRACREDIT.horizontal #msg-pane .content-body.message-box .success-details .success-message p {
+    font-size: 20px;
+}
+
+.U3_H.SCREEN_XTRACREDIT.horizontal #msg-pane .content-body.message-box .button-response-container {
+    flex-direction: row;
+}
+
+.U3_H.SCREEN_XTRACREDIT.horizontal #msg-pane .content-body.message-box .button-response-container #button-pane-fail {
+    width: 305px !important;
+}
+
+.SCREEN_XTRACREDIT.U6_RH.horizontal #msg-pane .content-body.message-box{
+    width: 35% !important;
+    height: 100% !important;
+    margin-top: 45px;
+}
+
+.TFT #session-pane-active .content-body>div p {
+    line-height: 23px;
+}
+.U3 .btn.btn-primary,
+.U3 .content-tail button,
+.U6_RH.SCREEN_XTRACREDIT button,
+.TFT #session-pane-active .content-tail button{
+    padding: 0px;
+}

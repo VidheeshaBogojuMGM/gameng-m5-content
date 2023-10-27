@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Victorian Pre-Commitment Threshold Reached</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/vpc.css">
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="decoration"></div>
+    <div id="app" resize="preset-2" v-cloak :class="{smallHoriz}">
+        <div class='page app-page'>
+            <div class="content-head">
+                <img id='logo' />
+            </div>
+            <div class="content-body">
+                <div class="msgarea largermsg">
+                    <div id="thresholdmessage">
+                        <p>{{PromptMessage | translate}}</p>
+                    </div>
+                    <div id="thresholdplayermessage">
+                        <p>{{PlayerMessage | translate}}</p>
+                    </div>
+                    <div class="progressbar">
+                        <circular-progress-bar :percent="Percentage"></circular-progress-bar>
+                    </div>
+                </div>
+                <div class="amountarea largeamount">
+                    <div id="remaining">
+                        <p class="amountHeader">{{RemainingText | translate}}</p>
+                        <p class="amount">{{RemainingAmount}}</p>
+                    </div>
+                    <div id="session">
+                        <p class="amountHeader">{{SessionText | translate}}</p>
+                        <p class="amount">{{SessionAmount}}</p>
+                    </div>
+                    <div id="total">
+                        <p class="amountHeader">{{TotalText | translate}}</p>
+                        <p class="amount">{{TotalAmount}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-tail">
+                <button id="okbtn" @click="okBtn()">{{"OK" | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/vpcDisplayData.js"></script>
+    <script src="./js/vpc.skin.js"></script>
+</body>
+
+</html>

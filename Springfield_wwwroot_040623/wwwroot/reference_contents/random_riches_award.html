@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>award</title>
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_common.css">
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_award.css">
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_award.lucky-spinner.css" id='lucky-spinner' disabled>
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_award.build-wonder.css" id='build-wonder' disabled>
+</head>
+
+<body>
+  <div id="loading" style="z-index: 100; position: fixed; top: 0; left: 0; background-color:black;color: white;"></div>
+  <div id="app" v-cloak resize="preset-2" :class="classObject.fs">
+    <div class="app-page" v-show="spinHome">
+      <div class="content-head" v-show="!supportFullScreen || !isLuckySpinner">
+        <img id='logo' />
+      </div>
+      <div class='content-body'>
+        <div class="message-box">
+          <div>{{ 'Hello' | translate }}</br>{{ playerName }}</div>
+          <div>{{ 'Please press spin wheel to play' | translate }}</div>
+        </div>
+      </div>
+      <div class="content-tail flex-end-tail">
+        <button id="wheel-btn" :style="TFTButtonStyle" @click="spinWheelBtnClick()">{{ 'SPIN WHEEL' | translate }}</button>
+      </div>
+    </div>
+
+    <div class="app-page" v-show="spinning">
+      <div class="content-head" v-show="!supportFullScreen || !isLuckySpinner">
+        <img id='logo' />
+      </div>
+      <div class='content-body fs-body'>
+        <div id="wheelcontainer" class="wheel-container" :style="wheelTransform"></div>
+      </div>
+      <div class="content-tail" v-show="!supportFullScreen || !isLuckySpinner"></div>
+    </div>
+
+    <div class="app-page" v-show="spinComplete">
+      <div class="content-head" v-show="!supportFullScreen || !isLuckySpinner">
+        <img id='logo' />
+      </div>
+      <div class='content-body'>
+        <div class="message-box">
+          <div v-show="prizesContent !==''">{{ prizesContent }}</div>
+          <div>{{ awardMessage }}</div>
+        </div>
+      </div>
+      <div class="content-tail flex-end-tail fullmode">
+        <button v-show="spinComplete" @click="close()">{{ 'BACK' | translate }}</button>
+      </div>
+    </div>
+
+    <div class="app-page" v-show="infoPage">
+      <div class="content-head">
+        <img id='logo' />
+      </div>
+      <div class='content-body'>
+        <div class="message-box">
+          <div>{{ errorMessage || awardNotification }}</div>
+        </div>
+      </div>
+      <div class="content-tail flex-end-tail">
+        <button @click="close()">{{ 'CLOSE' | translate }}</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./js/random_riches_message.definition.js"></script>
+  <script src="./js/random_riches_skin.util.js"></script>
+  <script src="./js/random_riches_award_build-wonder.js"></script>
+  <script src="./js/random_riches_award_lucky-spinner.js"></script>
+  <script src="./js/random_riches_award.skin.js"></script>
+</body>
+
+</html>

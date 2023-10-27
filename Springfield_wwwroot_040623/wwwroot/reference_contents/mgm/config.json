@@ -1,0 +1,22 @@
+{
+	"propertyInfoURL": "./propertyInfo.json",
+	"tokenConversion": {
+		"0": {
+			"0x23": 1
+		},
+		"1": {
+			"0x23": 1
+		},
+		"2": {
+			"0x23": 100,
+			"0x26": 100
+		}
+	},
+	"tvChannelURL": "./tvChannel.json",
+	"BISTRO_HOST_SERVER":"https://bistro.out-works.com",
+	"appboxServer":"https://appbox.out-works.com",
+	"OIS": {
+		"endpoint": "ws://signclient.out-works.com:9341/sign",
+		"levels": [259, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+	}
+}

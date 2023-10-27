@@ -1,0 +1,16 @@
+{
+	"data" : [
+		{	"name": "THE CHANDLER STEAKHOUSE",
+			"description" : "MGM Springfield has raised the bar for fine dining in downtown Springfield. The beauty of the historic Union Building atmosphere is complemented by a sophisticated food and drink menu. Featuring the finest in fine wines and aged cuts of meat, bringing Vegas level cuisine right to your door.",
+			"imageDetail": "images/restaurants/Chandler_"
+		},
+		{	"name": "TAP SPORTS BAR",
+			"description" : "While rooting for the home team, eat, drink and take in the ultimate sports experience. TAP Sports Bar will showcase the greatest in professional and college sporting events while serving up fan-favorite food and an extensive beer selection.",
+			"imageDetail": "images/restaurants/Tap_"
+		},
+		{	"name": "COSTA",
+			"description" : "Everyone’s Favorite Italian Classics are coming to MGM Springfield. Costa will bring you back to Grandma’s kitchen as you indulge in traditional antipasti and pizza.",
+			"imageDetail": "images/restaurants/Costa_"
+		}],
+	"imageSubMain" : "images/restaurantsSubMain"
+}

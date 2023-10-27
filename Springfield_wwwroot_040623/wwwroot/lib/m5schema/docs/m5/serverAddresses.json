@@ -1,0 +1,11 @@
+{
+    "cmd": "serverAddresses",
+    "ver": "1.0",
+    "serverAddresses": [
+        { "randomriches.igt.com": "http://server1[:port][/path]"},
+        { "randombonus.igt.com": "http://server2[:port][/path]"},
+        { "anotherbonus.igt.com": "http://server3[:port][/path]"},
+        { "somethingelse.igt.com": "UNKNOWN NAMESPACE"}
+    ]
+}
+

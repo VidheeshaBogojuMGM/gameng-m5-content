@@ -1,0 +1,78 @@
+.column-1 {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.column-2 {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+/* horizental */
+@media screen and (max-height: 400px) {
+  .column-1 {
+    justify-content: space-around;
+  }
+
+  .column-2 {
+    width: 220px;
+    justify-content: space-around;
+  }
+
+  .button-placeholder {
+    height: 68px;
+  }
+}
+
+dl {
+  margin: 0;
+}
+
+dd {
+  text-align: left;
+}
+
+.ticketinfo {
+  font-family: 'GOTHICB', sans-serif;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0);
+  margin-bottom: .2rem;
+}
+
+.big-ticket-info {
+  width: 248px;
+  height: 118px;
+  background-image: url('../assets/vdm/sse/winner_list_bg.png');
+  font-size: 1.3rem;
+  line-height: 2.4rem;
+}
+
+.small-ticket-info {
+  width: 210px;
+  height: 68px;
+  background-image: url('../assets/vdm/horizontal/4-full-button-normal.png');
+  font-size: unset;
+  line-height: 1.4rem;
+}
+
+.ticketinfo dt {
+  color: #e5ddc5;
+  float: left;
+  clear: left;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 6rem;
+}
+
+.ticketinfo dd {
+  color: #fbea7b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 6.5rem;
+}

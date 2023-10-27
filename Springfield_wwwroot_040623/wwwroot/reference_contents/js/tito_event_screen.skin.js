@@ -1,0 +1,1 @@
+const tito = window['com.igt.tito_event_screen']("#app");

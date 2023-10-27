@@ -1,0 +1,10 @@
+{
+  "cmd": "patronDataExt",
+  "ver": "1.0",
+  "patronDataExt": {
+    "sequenceId": 0,
+    "playerRank": "player rank",
+    "playerRankIndex": 1
+  }
+}
+

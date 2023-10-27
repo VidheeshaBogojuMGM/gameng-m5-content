@@ -1,0 +1,25 @@
+{
+  "cmd": "subscription",
+  "ver": "1.0",
+  "subscription": {
+    "vpcPlayerData": false,
+    "statusUpdate": true,
+    "levelUpdate": true,
+    "bonusHit": false,
+    "gameStart": false,
+    "gameEnd": false,
+    "patronData": true,
+    "disableAutoHide": true,
+    "windowState": true,
+    "mediaDisplayIndex": 0,
+    "tokenUpdate": [
+      "0xAA"
+    ],
+    "screenTrigger": [
+      "0xBB"
+    ],
+    "gameEvent": [
+      "0xCC"
+    ]
+  }
+}

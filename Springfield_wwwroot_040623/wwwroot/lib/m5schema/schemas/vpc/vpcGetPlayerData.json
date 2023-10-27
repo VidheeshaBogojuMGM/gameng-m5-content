@@ -1,0 +1,16 @@
+{
+  "id": "http://igt.com/vpcGetPlayerData/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for vpcGetPlayerData",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^vpcGetPlayerData$"
+    },
+    "ver": {
+      "type": "string"
+    }
+  },
+  "required": ["cmd"]
+}

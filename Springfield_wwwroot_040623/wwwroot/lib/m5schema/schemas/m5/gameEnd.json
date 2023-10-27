@@ -1,0 +1,27 @@
+{
+  "id": "http://igt.com/gameEnd/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for gameEnd",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^gameEnd$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "gameEnd": {
+      "type": "object",
+      "properties": {
+        "winAmount": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "winAmount"
+      ]
+    }
+  },
+  "required": ["cmd","gameEnd"]
+}

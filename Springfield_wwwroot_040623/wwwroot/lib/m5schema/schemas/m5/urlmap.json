@@ -1,0 +1,66 @@
+{
+  "id": "http://igt.com/urlMap/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for urlmap",
+  "type": "object",
+  "properties": {
+    "indexUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "baseUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "bannerUrl": {
+      "type": "string",
+      "format": "uri"
+    },	
+    "pinContentUrl": {
+      "type": "string",
+      "format": "uri"
+    },	
+    "screenIdMap": {
+      "type": "object"
+    },
+    "ciHost": {
+      "type": "string",
+      "format": "uri"
+    },
+    "loggerUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "logLevel": {
+      "type": "string",
+      "enum": ["HEARTBEAT", "DEBUG", "INFO", "WARN", "ERROR"]
+    },
+    "subscribeAllTriggers": {
+        "type": "boolean"
+    },
+    "legacyIdList": {
+        "type": "array",
+        "items": {
+            "type": "string"
+        }
+    },
+    "securityServiceEndpoint": {
+        "type": "string",
+        "format": "uri"
+    },
+    "webWorkers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    }
+  },
+  "required": [
+    "indexUrl",
+    "bannerUrl",
+    "pinContentUrl",
+    "screenIdMap",
+    "loggerUrl"
+  ]
+}

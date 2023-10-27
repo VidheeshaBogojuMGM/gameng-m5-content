@@ -1,0 +1,100 @@
+<template>
+    <div id="circularProgressBar" :data-pct="validPercent">
+        <svg id="svgCircularProgressBar" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="stroke-silver" x1="0" y1="0" x2="100%" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#868686" />
+                    <stop offset="0.18" stop-color="#838381" />
+                    <stop offset="0.35" stop-color="#e5e5e5" />
+                    <stop offset="0.56" stop-color="#d1d1d1" />
+                    <stop offset="0.77" stop-color="#686868" />
+                    <stop offset="0.99" stop-color="#fff" />
+                </linearGradient>
+                <linearGradient id="progress" x1="0" y1="0" x2="100%" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#c1ab40" />
+                    <stop offset="0.48" stop-color="#a48e28" />
+                    <stop offset="0.54" stop-color="#b09b33" />
+                    <stop offset="0.64" stop-color="#d0bd52" />
+                    <stop offset="0.77" stop-color="#ffef7e" />
+                    <stop offset="1" stop-color="#d6c050" />
+                </linearGradient>
+                <linearGradient id="center-bg" x1="0" y1="100%" x2="0" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#031636" />
+                    <stop offset="0.2" stop-color="#060e15" />
+                    <stop offset="0.67" stop-color="#3c3c3c" />
+                    <stop offset="1" stop-color="#252525" />
+                </linearGradient>
+            </defs>
+            <circle id="bg" r="96" cx="100" cy="100" fill="#1a1a1a" stroke="url(#stroke-silver)"></circle>
+
+            <circle id="bar" :r="radius" cx="100" cy="100" fill="none" stroke="url(#progress)" stroke-dasharray="540.35"
+                :stroke-dashoffset="strokeDashoffsetValue" transform="rotate(-90, 100 100)"></circle>
+            <circle id="center" r="78" cx="100" cy="100" fill="url(#center-bg)" stroke="url(#stroke-silver)"></circle>
+        </svg>
+        <p>{{'keep playing' | translate }}</p>
+    </div>
+</template>
+<script>
+    module.exports = {
+        data() {
+            return {
+                radius: 86,
+            };
+        },
+        computed: {
+            strokeDashoffsetValue() {
+                let c = Math.PI * (this.radius * 2);
+                return ((100 - this.validPercent) / 100) * c;
+            },
+
+            validPercent() {
+                if (this.percent < 0)
+                    return 0;
+                else if (this.percent > 100)
+                    return 100;
+                return this.percent;
+            }
+
+        },
+
+        props: ["percent"],
+    }
+</script>
+<style scoped>
+    #svgCircularProgressBar circle {
+        transition: stroke-dashoffset 1s linear;
+        stroke-width: 4px;
+    }
+
+    #svgCircularProgressBar #bar {
+        stroke-width: 16px;
+    }
+
+    #circularProgressBar {
+        display: block;
+        height: 200px;
+        width: 200px;
+        box-shadow: 0 0 1em black;
+        border-radius: 100%;
+        position: relative;
+        min-width: unset !important;
+    }
+
+    #circularProgressBar::after {
+        position: absolute;
+        display: block;
+        height: 160px;
+        width: 160px;
+        left: 50%;
+        top: 50%;
+        box-shadow: inset 0 0 1em black;
+        content: attr(data-pct)"%";
+        margin-top: -80px;
+        margin-left: -80px;
+        border-radius: 100%;
+        line-height: 160px;
+        font-size: 2em;
+        text-shadow: 0 0 0.5em black;
+        color: #F7E2AF;
+    }
+</style>

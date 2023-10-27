@@ -1,0 +1,11 @@
+{
+    "cmd": "getServerAddresses",
+    "ver": "1.0",
+    "getServerAddresses": [
+        "randomriches.igt.com",
+        "randombonus.igt.com",
+        "anotherbonus.igt.com",
+        "somethingelse.igt.com"
+    ]
+}
+

@@ -1,0 +1,56 @@
+.message-box-area {
+    background: rgba(0, 0, 0, 0.062);
+    width: 100%;
+    transform: scale(0.94, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:flex-start;
+    height:100%;
+}
+
+.playermessageheading {
+    width: 100%;
+    color: #ffeb73;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.playermessageinfo {
+    color: #f4e2d7;
+    font-size: 1.8rem;
+    width: 100%;
+}
+
+.horizontal .message-box-area{
+	max-height: calc(var(--component-space) * 1.4);
+}
+
+.horizontal .playermessageheading{
+	font-size: 1.3rem;
+}
+
+.horizontal .playermessageinfo{
+    font-size: 1.25rem;
+    margin-top: 1%;
+}
+
+.vertical .playermessageinfo {
+    margin-top:5%;
+    word-wrap: break-word;
+}
+
+.horizontal .content-tail {
+    justify-content: flex-end;
+}
+
+.content-tail button{
+    font-size: 1.25rem;
+}
+  
+@media screen and (orientation: portrait) {
+    #app>* {
+        margin-bottom: unset;
+    }
+}
+    

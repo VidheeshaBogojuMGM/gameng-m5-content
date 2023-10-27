@@ -1,0 +1,16 @@
+{
+  "id": "http://igt.com/subscriptionAck/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for subscriptionAck",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^subscriptionAck$"
+    },
+    "ver": {
+      "type": "string"
+    }
+  },
+  "required": ["cmd"]
+}

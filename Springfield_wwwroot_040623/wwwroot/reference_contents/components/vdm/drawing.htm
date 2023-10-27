@@ -1,0 +1,103 @@
+<template>
+  <div>
+    <app>
+      <div id="content" slot="content">
+        <div class="column-1">
+          <section class="info-area info-area-strict-width">
+            <div class="info-wrapper">
+              <span class="title">{{ drawing.PromoAwardName }}</span>
+              <div class="line invisible"></div>
+            </div>
+            <span class="value">{{ this.$root.AvailableFreeEntryNumber }}</span>
+            <span class="key">{{ 'Free Entries' | translate }}</span>
+            <div class="line"></div>
+            <span class="value">{{ this.$root.TicketsAvailable }}</span>
+            <span class="key">{{ 'Available Tickets' | translate }}</span>
+            <div class="line"></div>
+            <span class="value">{{ this.$root.TicketsUsed }}</span>
+            <span class="key">{{ 'Total Tickets Entered' | translate }}</span>
+            <div class="line invisible"></div>
+          </section>
+          <pagelist
+            :objects="formatedData"
+            @item-click="itemClick"
+            :cur-page="curPage"
+            :item-count="itemCount"
+            css-class="drawing"
+            alt-message="There is no drawing"
+          ></pagelist>
+        </div>
+        <div class="column-2 drawing-footer-height">
+          <div class="one-button-placeholder"></div>
+          <pagecontroller v-show="formatedData.length" :total-page="totalPage" @page-change="pageChange"></pagecontroller>
+          <bar content="Back" id="drawing"></bar>
+        </div>
+      </div>
+    </app>
+  </div>
+</template>
+<script>
+module.exports = {
+  name: "drawing",
+  data() {
+    return {
+      curPage: 1,
+      itemCount: 3
+    };
+  },
+  created() {
+    this.fetchDrawingFromStore();
+  },
+  methods: {
+    fetchDrawingFromStore() {
+      this.$store.getters["drawing/drawingsInPromotion"];
+    },
+    itemClick(data) {
+      this.$store.state.currentSelectDrawingId = data.key;
+      this.$router.push({ name: "award" });
+    },
+    pageChange(currentPage) {
+      this.curPage = currentPage;
+    }
+  },
+  computed: {
+    drawing() {
+      return this.$store.state.drawing.drawingAll;
+    },
+    totalPage() {
+      return Math.ceil(this.formatedData.length / this.itemCount);
+    },
+    formatedData() {
+      var arr = [];
+      var currentTime = new Date().getTime();
+      this.drawing.Drawings.forEach(element => {
+        // settle the overdue drawing
+        if (currentTime < element.DrawingDate) {
+          arr.push({
+            key: element.DrawingId,
+            value: {
+              Name: element.DrawingName,
+              TicketUsed: element.TicketsUsed,
+              Time: this.$root.$options.filters.formatDate(
+                element.DrawingDate
+              )
+            },
+            status: element.VipDrawingTicketNumber != 1
+          });
+        }
+      });
+      return arr;
+    }
+  }
+};
+</script>
+<style scoped>
+@import "../../style/vdm_infoarea.css";
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  .drawing-footer-height {
+    height: 200px;
+  }
+}
+</style>

@@ -1,0 +1,79 @@
+{
+  "id": "http://igt.com/vpcPlayerData/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for vpcPlayerData",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^vpcPlayerData$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "vpcPlayerData": {
+      "type": "object",
+      "properties": {
+        "limits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "integer"
+              },
+              "period": {
+                "type": "integer"
+              },
+              "alertThresholds": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "threshold": {
+                "type": "integer"
+              },
+              "session": {
+                "type": "integer"
+              },
+              "current": {
+                "type": "integer"
+              },
+              "hit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "type",
+              "period",
+              "alertThresholds",
+              "threshold",
+              "session",
+              "current",
+              "hit"
+            ]
+          }
+        },
+        "playerMessage": {
+          "type": "string"
+        },
+        "limitToShow": {
+          "type": "integer"
+        },
+        "lastTimeLimitSet": {
+          "type": "integer"
+        },
+        "cardId": {
+          "type": "string",
+          "maxLength": 20
+        },
+        "haveHostData": {
+          "type": "integer"
+        }
+      },
+      "required": ["limits", "playerMessage", "limitToShow", "lastTimeLimitSet", "cardId", "haveHostData"]
+    }
+  },
+  "required": ["cmd","vpcPlayerData"]
+}

@@ -1,0 +1,5 @@
+{
+  "cmd": "forceCardOutAck",
+  "ver": "1.0",
+  "forceCardOutAck": true
+}

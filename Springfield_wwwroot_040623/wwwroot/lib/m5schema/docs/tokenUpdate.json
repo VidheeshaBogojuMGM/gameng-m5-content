@@ -1,0 +1,14 @@
+{
+  "cmd": "tokenUpdate",
+  "ver": "1.0",
+  "tokenUpdate": [
+    {
+      "id": "0x11",
+      "value": "1234"
+    },
+    {
+      "id": "0x12",
+      "value": "1234"
+    }
+  ]
+}

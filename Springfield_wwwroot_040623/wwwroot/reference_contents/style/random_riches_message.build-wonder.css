@@ -1,0 +1,32 @@
+#app {
+  padding: 0 0;
+  background-image: url(../assets/random_riches/promotion-0-bg.svg);
+}
+
+button {
+  background-image: url(../assets/random_riches/promotion-0-button.png);
+  color: #4a4a4a;
+}
+
+button:active {
+  background-image: url(../assets/random_riches/button-down-0.png);
+  color: #4a4a4a;
+}
+
+.message-box {
+  border-image: url(../assets/random_riches/message-box-0.png);
+  border-image-slice: 12 fill;
+  opacity: 0.8;
+}
+
+@media screen and (orientation:portrait) {
+  #app {
+    background-size: cover;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  #app {
+    background-size: auto;
+  }
+}

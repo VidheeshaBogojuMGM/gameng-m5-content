@@ -1,0 +1,210 @@
+<template>
+  <div id="pagination-wrapper">
+    <span class="msg" v-if="objects.length == 0">{{ altMessage | translate }}</span>
+    <template v-else>
+      <section v-if="showBtn" :class="['button-list', cssClass]">
+        <span class="invisible">{{ 'Please Select' | translate }}</span>
+        <button v-for="object in CurPagePromos(curPage)" :class="[!object.status ? 'vip-button link':'nonvip-button link']" :disabled="!object.status" :key="object.key" @click="navigateToDrawing(object)">
+          <div class="ellipsis">{{ object.value.Name}}</div>
+          <div v-if="object.status">{{ 'Tickets Used' | translate }}: {{ object.value.TicketUsed}}</div>
+          <div>{{ object.value.Time}}</div>
+        </button>
+      </section>
+      <section v-else class="text-list">
+        <dl v-for="(object,index) in CurPagePromos(curPage)" :key="index" :class="['ticketinfo', cssClass]">
+          <template v-for="(value, propertyName) in object.value">
+            <dt :key="propertyName" class="key">{{propertyName | translate}}</dt>
+            <dd :key="value" class="value">{{value | translate}}</dd>
+          </template>
+        </dl>
+      </section>
+    </template>
+  </div>
+</template>
+<script>
+module.exports = {
+  name: "pageList",
+  props: {
+    objects: {
+      type: Array
+    },
+    itemCount: {
+      type: Number,
+      default: 3
+    },
+    curPage: {
+      type: Number,
+      default: 1
+    },
+    altMessage: {
+      type: String,
+      default: ""
+    },
+    showBtn: {
+      type: Boolean,
+      default: true
+    },
+    cssClass: {
+      type: String
+    }
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    navigateToDrawing(object) {
+      this.$emit("item-click", object);
+    },
+    CurPagePromos(curPage) {
+      const lowerBound = (curPage - 1) * this.itemCount;
+      const upperBound = curPage * this.itemCount;
+      return this.objects.filter(function(value, index) {
+        return index >= lowerBound && index < upperBound;
+      });
+    }
+  },
+  computed: {}
+};
+</script>
+<style >
+@import "../../../style/vdm_button.css";
+
+#pagination-wrapper {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#pagination-wrapper > .msg {
+  font-size: 1.5rem;
+}
+
+button.link {
+  font-size: 1rem;
+  text-transform: none;
+  margin: 0.2rem 0;
+}
+
+.vip-button {
+  width: 248px;
+  height: 80px;
+  background-size: 248px 80px;
+  background-image: url("../../../assets/vdm/button_disable.png");
+  word-break: break-all;
+}
+
+.nonvip-button {
+  word-break: break-all;
+  display: inline;
+}
+
+.button-list {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-list > span {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem 0;
+}
+
+.promotion > button {
+  width: 248px;
+  height: 110px;
+  background-size: 248px 110px;
+  background-image: url("../../../assets/vdm/promotion-normal.png");
+}
+
+.promotion > button:active {
+  background-image: url("../../../assets/vdm/promotion-down.png");
+}
+
+.drawing > button {
+  width: 248px;
+  height: 80px;
+  background-size: 248px 80px;
+  background-image: url("../../../assets/vdm/drawing-normal.png");
+}
+
+.drawing > button:active {
+  background-image: url("../../../assets/vdm/drawing-down.png");
+}
+
+.drawing > button:disabled {
+  color: #807777; /*#101010;*/
+  background-image: url("../../../assets/vdm/drawing-disable.png");
+}
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  #pagination-wrapper > .msg {
+    margin-top: 4rem;
+  }
+}
+
+@media screen and (max-height: 400px) {
+  #pagination-wrapper {
+    flex-flow: column wrap;
+    justify-content: center;
+  }
+
+  .button-list {
+    height: 100%;
+    justify-content: unset;
+    align-items: unset;
+  }
+
+  .text-list {
+    display: flex;
+    height: 100%;
+    align-items: flex-end;
+    width: 510px;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+  }
+
+  .promotion {
+    flex-flow: row wrap;
+    width: 480px; /* hack */
+  }
+
+  .promotion > button {
+    width: 210px;
+    height: 108px;
+    background-size: 210px 108px;
+    background-image: url("../../../assets/vdm/horizontal/4-promotion-normal.png");
+    margin: 0.1rem;
+  }
+
+  .promotion > button:active {
+    background-image: url("../../../assets/vdm/horizontal/4-promotion-down.png");
+  }
+
+  .drawing {
+    flex-flow: column nowrap;
+    width: 250px; /* hack */
+    justify-content: flex-start;
+  }
+
+  .drawing > button {
+    width: 210px;
+    height: 68px;
+    background-size: 210px 68px;
+    background-image: url("../../../assets/vdm/horizontal/4-full-button-normal.png");
+  }
+
+  .drawing > button:active {
+    background-image: url("../../../assets/vdm/horizontal/4-full-button-down.png");
+  }
+
+  .drawing > button:disabled {
+    color: #807777; /*#101010;*/
+    background-image: url("../../../assets/vdm/horizontal/4-full-button-disable.png");
+  }
+}
+</style>
+

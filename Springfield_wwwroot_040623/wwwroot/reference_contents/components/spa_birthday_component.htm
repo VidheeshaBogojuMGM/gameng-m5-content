@@ -1,0 +1,75 @@
+<template>
+  <div class="app-page"
+    :class='[this.$root.displayName, {vertical: this.$root.isVertical , horizontal: !this.$root.isVertical}]'>
+    <div class='content-head'>
+      <!-- <img id='logo' /> -->
+      <p v-if="!this.$root.isVertical"> {{ count }}</p>
+    </div>
+    <div class='content-body'>
+
+    </div>
+    <div class='content-tail'>
+      <p v-if="this.$root.isVertical"> {{ count }}</p>
+    </div>
+  </div>
+</template>
+
+<script>
+  // function getURLParameterByName(name, url) {
+//   if (!url) url = window.location.href;
+//   name = name.replace(/[\[\]]/g, "\\$&");
+//   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+//     results = regex.exec(url);
+//   if (!results) return null;
+//   if (!results[2]) return '';
+//   return decodeURIComponent(results[2].replace(/\+/g, " "));
+// }
+  var id;
+  module.exports = {
+    beforeRouteLeave(to, from, next) {
+      if(this.count > 0){
+        next(false);
+      }else{
+        next(true);
+      }
+    },
+    data() {
+      return {
+        count:this.$root.$route.params.duration
+      }
+    },
+    mounted(){
+      var self = this;
+      id = setInterval(function(){
+        self.count --;
+      }, 1000)
+    },
+    watch:{
+      count(value){
+        if(value <= 0){
+          if(id){
+            clearInterval(id);
+            delete id;
+          }
+          console.log("will navigate to session", this.$root.$r);
+          this.$emit("finish-current-screen")
+        }
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .app-page {
+    background-image: url(../assets/birthday.png);
+  }
+
+  .app-page.horizontal {
+    background-image: url(../assets/birthday_hrz.png);
+  }
+
+  p {
+    font-size: 5rem;
+  }
+
+</style>

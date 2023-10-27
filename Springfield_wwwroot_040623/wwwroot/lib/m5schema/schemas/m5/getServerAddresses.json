@@ -1,0 +1,25 @@
+{
+  "id": "http://igt.com/getServerAddresses/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for getServerAddresses",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^getServerAddresses$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "getServerAddresses": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+          "type": "string"
+      }
+    }
+  },
+  "required": ["cmd", "getServerAddresses"]
+}

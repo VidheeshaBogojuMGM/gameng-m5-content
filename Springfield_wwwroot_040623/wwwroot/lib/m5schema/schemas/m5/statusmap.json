@@ -1,0 +1,436 @@
+{
+  "id": "http://igt.com/statusMap/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for statusmap",
+  "type": "object",
+  "properties": {
+    "pointPlay": {
+      "type": "object",
+      "properties": {
+        "init": {
+          "type": "object",
+          "properties": {
+            "0": {
+              "type": "string",
+              "examples": [
+                "Point Play available."
+              ]
+            },
+            "1": {
+              "type": "string",
+              "examples": [
+                "Point Play not available: Bonusing not available on this machine."
+              ]
+            },
+            "2": {
+              "type": "string",
+              "examples": [
+                "Point Play not available: PIN Locked."
+              ]
+            },
+            "3": {
+              "type": "string",
+              "examples": [
+                "Point Play not available:  see players club."
+              ]
+            },
+            "4": {
+              "type": "string",
+              "examples": [
+                "Point Play not available: Point balance too low to convert."
+              ]
+            },
+            "5": {
+              "type": "string",
+              "examples": [
+                "Point Play not available: Conversion to Freeplay not available, see players club."
+              ]
+            },
+            "6": {
+              "type": "string",
+              "examples": [
+                "Point Play not available: Conversion to Freeplay not available on this machine."
+              ]
+            },
+            "7": {
+              "type": "string",
+              "examples": [
+                "Point Play not available: PIN validation failed."
+              ]
+            },
+            "8": {
+              "type": "string",
+              "examples": [
+                "Point Play not converted. Amount not compatible with this denomination."
+              ]
+            }
+          },
+          "required": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ]
+        },
+        "convert": {
+          "type": "object",
+          "properties": {
+            "0": {
+              "type": "string",
+              "examples": [
+                "Point Play converted."
+              ]
+            },
+            "1": {
+              "type": "string",
+              "examples": [
+                "Point Play not available: Bonusing not available on this machine."
+              ]
+            },
+            "2": {
+              "type": "string",
+              "examples": [
+                "Point Play not available: PIN Locked."
+              ]
+            }
+          },
+          "required": [
+            "0",
+            "1",
+            "2"
+          ]
+        }
+      },
+      "required": [
+        "init",
+        "convert"
+      ]
+    },
+    "xtraCredit": {
+      "type": "object",
+      "properties": {
+        "activate": {
+          "type": "object",
+          "properties": {
+            "0": {
+              "type": "string",
+              "examples": [
+                "Freeplay active."
+              ]
+            },
+            "1": {
+              "type": "string",
+              "examples": [
+                "Freeplay active; not cancelable."
+              ]
+            },
+            "2": {
+              "type": "string",
+              "examples": [
+                "Freeplay already active."
+              ]
+            },
+            "3": {
+              "type": "string",
+              "examples": [
+                "Freeplay balance is too low to activate."
+              ]
+            },
+            "4": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; not available on this device."
+              ]
+            },
+            "5": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; see players club."
+              ]
+            },
+            "6": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; duplicate card."
+              ]
+            },
+            "7": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; abandoned card."
+              ]
+            },
+            "8": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; PIN is locked."
+              ]
+            },
+            "9": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; Bonusing not available on this machine."
+              ]
+            },
+            "10": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; PIN validation failed."
+              ]
+            },
+            "11": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; Input amount is invalid."
+              ]
+            },
+            "12": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; Input amount is over limit."
+              ]
+            },
+            "13": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; Input amount is less than machine denom."
+              ]
+            },
+            "14": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; Last request still in progress."
+              ]
+            },
+            "15": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; see players club."
+              ]
+            },
+            "16": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; see players club."
+              ]
+            },
+            "17": {
+              "type": "string",
+              "examples": [
+                "Freeplay not active; see players club."
+              ]
+            }
+          },
+          "required": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17"
+          ]
+        },
+        "cancel": {
+          "type": "object",
+          "properties": {
+            "0": {
+              "type": "string",
+              "examples": [
+                "Freeplay canceled."
+              ]
+            },
+            "1": {
+              "type": "string",
+              "examples": [
+                "Freeplay not cancellable."
+              ]
+            },
+            "2": {
+              "type": "string",
+              "examples": [
+                "Cancel Freeplay after game cycle completes."
+              ]
+            }
+          },
+          "required": [
+            "0",
+            "1",
+            "2"
+          ]
+        }
+      },
+      "required": [
+        "activate",
+        "cancel"
+      ]
+    },
+    "pin": {
+      "type": "object",
+      "properties": {
+        "validate": {
+          "type": "object",
+          "properties": {
+            "0": {
+              "type": "string",
+              "examples": [
+                "waiting"
+              ]
+            },
+            "1": {
+              "type": "string",
+              "examples": [
+                "valid"
+              ]
+            },
+            "2": {
+              "type": "string",
+              "examples": [
+                "invalid PIN"
+              ]
+            },
+            "3": {
+              "type": "string",
+              "examples": [
+                "PIN locked"
+              ]
+            },
+            "4": {
+              "type": "string",
+              "examples": [
+                "no-response; try again"
+              ]
+            },
+            "5": {
+              "type": "string",
+              "examples": [
+                "PIN Cancel"
+              ]
+            }
+          },
+          "required": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
+        }
+      },
+      "required": [
+        "validate"
+      ]
+    },
+    "cashless": {
+      "type": "object",
+      "properties": {
+        "transfer": {
+          "type": "object",
+          "properties": {
+            "0": {
+              "type": "string",
+              "examples": [
+                "Transfer successful."
+              ]
+            },
+            "1": {
+              "type": "string",
+              "examples": [
+                "Transfer aborted."
+              ]
+            },
+            "2": {
+              "type": "string",
+              "examples": [
+                "Transfer failed."
+              ]
+            },
+            "3": {
+              "type": "string",
+              "examples": [
+                "Transfer started but ultimately aborted."
+              ]
+            },
+            "4": {
+              "type": "string",
+              "examples": [
+                "Transfer started but ultimately failed."
+              ]
+            },
+            "5": {
+              "$id": "/properties/cashless/properties/transfer/properties/5",
+              "type": "string",
+              "title": "The 5 Schema ",
+              "default": "",
+              "examples": [
+                "Transfer failed for an unknown reason."
+              ]
+            },
+            "6": {
+              "type": "string",
+              "examples": [
+                "Transfer operation timed out."
+              ]
+            },
+            "7": {
+              "type": "string",
+              "examples": [
+                "Transfer successful; SmartCard successfully unlocked."
+              ]
+            },
+            "8": {
+              "type": "string",
+              "examples": [
+                "Transfer successful; SmartCard unlock failed due to credits on the machine."
+              ]
+            },
+            "9": {
+              "type": "string",
+              "examples": [
+                "Transfer successful, SmartCard unlock failed due to a game in progress."
+              ]
+            }
+          },
+          "required": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        }
+      },
+      "required": [
+        "transfer"
+      ]
+    }
+  },
+  "required": [
+    "pointPlay",
+    "xtraCredit",
+    "pin",
+    "cashless"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "cmd": "bonusHit",
+  "ver": "1.0",
+  "bonusHit": {
+    "isBe2Based": false,
+    "bonusId": 0,
+    "hitNumber": 0,
+    "winAmount": 0,
+    "payTo": 0,
+    "winner": false,
+    "nonCash": false
+  }
+}

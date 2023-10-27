@@ -1,0 +1,134 @@
+button {
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(255, 255, 255, .85);
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  display: block;
+  text-transform: uppercase;
+  font-family: 'GOTHICB', sans-serif;
+}
+
+button.normal {
+  width: 248px;
+  height: 64px;
+  background-size: 248px 64px;
+  background-image: url('../assets/vdm/button_normal.png');
+}
+
+button.normal:active {
+  background-image: url('../assets/vdm/button_active.png');
+}
+
+button.normal:disabled {
+  color: #807777;
+  /*#101010;*/
+  background-image: url('../assets/vdm/sse/button_disable.png');
+}
+
+button.normal-with-frame {
+  width: 248px;
+  height: 68px;
+  background-size: 248px 68px;
+  background-image: url('../assets/vdm/button-normal.png');
+}
+
+button.normal-with-frame:active {
+  background-image: url('../assets/vdm/button-down.png');
+}
+
+button.half {
+  width: 122px;
+  height: 64px;
+  background-size: 122px 64px;
+  background-image: url('../assets/vdm/half button.png');
+  background-position-x: center;
+}
+
+button.half:active {
+  background-image: url('../assets/vdm/half button down.png');
+}
+
+button.half:disabled {
+  background-image: url('../assets/vdm/half button disable.png');
+}
+
+button.page {
+  width: 80px;
+  height: 64px;
+  background-size: 80px 64px;
+  background-image: url('../assets/vdm/third-button-normal.png');
+}
+
+button.page:disabled {
+  background-image: url('../assets/vdm/third-button-disable.png');
+}
+
+button.page:active {
+  background-image: url('../assets/vdm/third-button-down.png');
+}
+
+@media screen and (min-height: 400px) {
+  button.normal.gap {
+    margin-top: .5rem;
+  }
+}
+
+@media screen and (max-height: 400px) {
+  button.normal-with-frame {
+    width: 210px;
+    height: 68px;
+    background-size: 210px 68px;
+    background-image: url('../assets/vdm/horizontal/4-button-normal.png');
+  }
+
+  button.normal-with-frame:active {
+    background-image: url('../assets/vdm/horizontal/4-button-down.png');
+  }
+
+  button.page {
+    width: 66px;
+    height: 68px;
+    background-size: 66px 68px;
+    background-image: url('../assets/vdm/horizontal/4-third-button-normal.png');
+  }
+
+  button.page:disabled {
+    background-image: url('../assets/vdm/horizontal/4-third-button-disable.png');
+  }
+
+  button.page:active {
+    background-image: url('../assets/vdm/horizontal/4-third-button-down.png');
+  }
+
+  button.half {
+    width: 102px;
+    height: 68px;
+    background-size: 102px 68px;
+    background-image: url('../assets/vdm/horizontal/4-half-button-normal.png');
+  }
+
+  button.half:active {
+    background-image: url('../assets/vdm/horizontal/4-half-button-down.png');
+  }
+
+  button.half:disabled {
+    background-image: url('../assets/vdm/horizontal/4-half-button-disable.png');
+  }
+
+  button.normal {
+    width: 210px;
+    height: 68px;
+    background-size: 210px 68px;
+    background-image: url('../assets/vdm/horizontal/4-full-button-normal.png');
+  }
+
+  button.normal:active {
+    background-image: url('../assets/vdm/horizontal/4-full-button-down.png');
+  }
+
+  button.normal:disabled {
+    background-image: url('../assets/vdm/horizontal/4-full-button-disable.png');
+  }
+}

@@ -1,0 +1,102 @@
+<template>
+  <div class="container app-page">
+    <div class='content-head'>
+      <img id='logo' />
+    </div>
+    <div class="content-body message-box">
+      <p>{{ 'Remote Keyoff' | translate }}</p>
+      <p>{{ this.$store.state.currencySymbol }}{{ amount | money }}</p>
+      <div id="message">
+        <p>{{ primaryMessage | translate }}</p>
+        <p>{{ secondaryMessage | translate }}</p>
+        <p v-show="showConfirmButton">
+          {{ "Please press \"Confirm\" acknowledging the reportable jackpot of" | translate }}
+          {{ this.$store.state.currencySymbol }}{{ amount | money }}</p>
+      </div>
+    </div>
+    <div class='content-tail'>
+      <div></div>
+      <button v-show="showRetryButton" @click="retry()">{{ 'Retry' | translate }}</button>
+      <button v-show="showKeyOffButton" @click="keyoff()">{{ 'W2G Keyoff' | translate }}</button>
+      <button v-show="showMenuButton" @click="goLegacyMenu()">{{ 'Menu' | translate }}</button>
+      <button v-show="showConfirmButton" @click="confirm()">{{ 'Confirm' | translate }}</button>
+    </div>
+  </div>
+</template>
+
+<script>
+  const message = {
+    "waitCardin": ["Please wait for an attendant"],
+    "keyoff": ["Welcome attendant"],
+    "error": ["Unable to process", "Please click menu"],
+    "retry": ["Unable to process", "Please retry"],
+    "notAuthorized": ["Not authorized", "Please try another card"],
+    "keyoffComplete": ["Keyoff complete"],
+    // "confirm": function (self) {
+    //   return ['Congratulations!', `Please press "Confirm" acknowledging the reportable jackpot of ${self.amount}?`]
+    // },
+    "confirm": ["Congratulations!"],
+    "keyoffFail": ["Unable to keyoff"],
+    "systemPinError": ["", "Please try another card"]
+  };
+
+  module.exports = {
+    name: "attendant",
+    data() {
+      return {
+        primaryMessage: "",
+        secondaryMessage: "",
+        showRetryButton: false,
+        showMenuButton: false,
+        showKeyOffButton: false
+      };
+    },
+    computed: {
+      currentViewState() {
+        return this.$store.state.currentViewState;
+      },
+      amount() {
+        return this.$store.state.w2gInitData.handpayAmount / 100.00;
+      }
+    },
+    methods: {
+      keyoff() {
+        this.$store.dispatch("attendantKeyoff");
+      },
+      retry() {
+        this.$store.dispatch("attendantRetry");
+      },
+      confirm() {
+        this.$store.dispatch("completeW2G");
+      },
+      goLegacyMenu() {
+        IGTMediaElements.w2gAccrual.gotoLegacy();
+      }
+    },
+    watch: {
+      currentViewState: {
+        handler(n) {
+          if (message[n]) {
+            if (typeof message[n] === "function") {
+              this.primaryMessage = message[n](this)[0];
+              this.secondaryMessage = message[n](this)[1];
+            } else {
+              this.primaryMessage = message[n][0];
+              this.secondaryMessage = message[n][1];
+            }
+          } else {
+            this.primaryMessage = "";
+            this.secondaryMessage = "";
+          }
+
+          this.showRetryButton = ["retry", "notAuthorized"].includes(n);
+          this.showMenuButton = ["keyoff", "error", "retry", "notAuthorized", "keyoffFail"].includes(n);
+          this.showKeyOffButton = n === "keyoff";
+          this.showConfirmButton = n === "confirm";
+        },
+        immediate: true
+      }
+    }
+  };
+
+</script>

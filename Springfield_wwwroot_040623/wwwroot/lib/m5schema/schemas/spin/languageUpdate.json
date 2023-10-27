@@ -1,0 +1,28 @@
+{
+  "id": "http://igt.com/languageUpdate/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for languageUpdate",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^languageUpdate$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "languageUpdate": {
+      "type": "object",
+      "properties": {
+        "languageIndex": {
+          "type": "integer"
+        },
+        "languageName": {
+          "type": "string"
+        }
+      },
+      "required": ["languageIndex", "languageName"]
+    }
+  },
+  "required": ["cmd","languageUpdate"]
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="./js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="./js/slick.min.js"></script>
+	<script type="text/javascript" src="./js/socket.io.slim.js"></script>
+	<script type="text/javascript" src="./js/ad-rotator-v2.js"></script>
+	<script type="text/javascript" src="./js/appbox.player.min.js"></script>
+	<link rel="stylesheet" href="./css/appbox.player.min.css">
+	<title></title>
+	<style type="text/css">
+		html,body {
+			width:  100vw;
+			height:  100vh;
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="ad" style="position: absolute; top: 0px; width: 100%; left:0; right: 0; height: 100%; border: 0px; overflow: hidden;"></div>
+</body>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+		$.get('../config.json', function(serviceConfigs, status) {
+			if (status != "success"){
+				console.log('Failed to load promotions: ' + status);
+				return;
+			}
+
+			var searchParams = new URLSearchParams(window.location.search);
+			var appboxServer = serviceConfigs.appboxServer;
+			var machineNumber = searchParams.get('machineNumber');
+			var playlist;
+			if(searchParams.has('playlist')) {
+				playlist = searchParams.get('playlist');
+			 	AdRotatorV2.fetchAppboxAds({ 'ad': playlist }, machineNumber,  appboxServer);
+			}
+		});
+
+
+	});
+</script>
+</html>

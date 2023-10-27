@@ -1,0 +1,111 @@
+<template>
+  <app>
+    <div id="content" slot="content">
+      <div class="column-1">
+        <notificationbanner :prize-name="awardPrizeName"></notificationbanner>
+        <div class="message center">
+          <p>{{ content | translate }}</p>
+        </div>
+      </div>
+      <div class="column-2 common-footer-height">
+        <div class="button-placeholder"></div>
+        <dotloading v-show="showSpinner"></dotloading>
+        <notificationbar></notificationbar>
+      </div>
+    </div>
+  </app>
+</template>
+<script>
+module.exports = {
+  name: "commonShell",
+  data() {
+    return {
+      awardPrizeName: ""
+    };
+  },
+  props: {
+    showSpinner: {
+      type: Boolean,
+      default: false
+    },
+    content: {
+      type: String,
+      default: ""
+    },
+    autoNavigate: {
+      type: Boolean,
+      defalut: false
+    },
+    notificationCacheKey: {
+      type: String,
+      defalut: ""
+    }
+  },
+  mounted() {
+    TweenMax.from("#app", 1 , {scale: 0.1, alpha: 0.1});
+    
+    IGTMediaElements.contentCache.getStateElement(this.notificationCacheKey).then(data => {
+      const obj = JSON.parse(data);
+      this.awardPrizeName = obj.Name;
+    });
+    if (this.autoNavigate) {
+      setTimeout(() => {
+        // let backURL;
+        // // if (document.referrer.split(`/${CONTENT_FOLDER_NAME}/`).length > 0) {
+        // //   backURL = `${location.origin}/${CONTENT_FOLDER_NAME}/`;
+        // // } else {
+        //   backURL = document.referrer;
+        // // }
+        // trace(backURL);
+        // // window.location.assign(backURL);
+        // navigate(backURL);
+        navigate('SESSION_SCREEN');
+      }, 10000);
+    }
+  }
+};
+</script>
+<style scoped>
+@import "../../../style/vdm_sse.css";
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  color: #e5ddd0;
+  font-size: 1.2rem;
+  font-family: "GOTHICB";
+  background-repeat: no-repeat;
+  text-align: center;
+  align-self: center;
+}
+
+.message p {
+  margin: 0 0.5rem;
+}
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  .message {
+    width: 236px;
+    height: 164px;
+    background-image: url("../../../assets/vdm/sse/message-box-s.png");
+  }
+
+  .common-footer-height {
+    height: 160px;
+  }
+}
+
+/* horizental */
+@media screen and (max-height: 400px) {
+  .message {
+    width: 428px;
+    height: 142px;
+    background-image: url("../../../assets/vdm/sse/4-message-box2.png");
+  }
+}
+</style>

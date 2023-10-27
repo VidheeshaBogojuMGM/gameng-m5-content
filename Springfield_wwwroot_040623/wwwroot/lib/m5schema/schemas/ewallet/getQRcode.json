@@ -1,0 +1,16 @@
+{
+  "id": "http://igt.com/getqrcode/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for getQRcode",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^getQRcode$"
+    },
+    "ver": {
+      "type": "string"
+    }
+  },
+  "required": ["cmd"]
+}

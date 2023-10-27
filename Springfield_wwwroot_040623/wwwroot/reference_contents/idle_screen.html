@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>idle_screen</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/idle_screen.css">
+	<link rel="stylesheet" type="text/css" href="./mgm/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="./mgm/styles/idle.css">
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="decoration"></div>
+    <div id="app" resize="preset-2" v-cloak :class="['SCREEN_IDLE', displayName, {vertical: isVertical , horizontal: !isVertical }]">
+        <cardless-status></cardless-status>
+        <!-- add your content code here -->
+        <div class='content-head'>
+            <img id='logo' />
+                  <p v-if="appConfig.isDebug">{{displayName}}{{contentWidth}}x{{contentHeight}}</p>
+        </div>
+        <div class='content-body'>
+                <iframe id="adPlayer" :src='adPlayerSrc'></iframe>
+        </div>
+        <div class='content-tail'>
+            <!-- <div v-if="qrcode" style="width:100%">
+                <p class="qrmesasge">Scan to card-in by WeChat&trade;</p>
+                <div id="qrcode"></div>
+                <p>{{qrcode.duration}} sec</p>
+            </div>
+            <button v-else @click="getQRCode()">WeChat Cardin</button> -->
+            <!-- <div></div> -->
+            <button v-if='showCSDiagnostic' class="cardless-diagnostic" onclick="navigate('cardless_diagnostic.html')">{{'Cardless Diagnostic' | translate}}</button>
+            <button v-if="isVertical || !qrcode" id='info'>{{ 'Info' | translate }}</button>
+
+				<div v-if="isVertical" class="line"></div>
+				<div class="btn btn-dark btn-icon" onClick="window.location='./property_info_with_ads.html'">
+					<img class="icon active" src="./mgm/images/icon/icon-propinfo.png" alt="">
+					<img class="icon inactive" src="./mgm/images/icon/icon-propinfo-active.png" alt="">
+					<m5-text class="whats_happening" textid="whats_happening" lang="en-us" class="lang_en">WHAT'S HAPPENING</m5-text>
+				</div>
+				<div v-if="!isVertical" class="line"></div>
+			</div>
+
+		  <div id="footer">
+			  <div class="navigations">
+				<!-- <div class="call-attendant clickable" onClick="handleOnCall()">
+					<img class="icon " onClick="" src="./mgm/images/icon/icon-attendant.png" alt="">
+				</div> -->
+				<!-- <img class="icon clickable" onClick=""  src="./mgm/images/icon/icon-back.png" alt=""> -->
+		        <div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+                    <img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+                </div>
+            </div>
+		  </div>
+    </div>
+
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/vendor/qrcode.js"></script>
+    <script src="./js/idle_screen.skin.js"></script>
+	<script src="./mgm/js/call-attendant.js"></script>
+	<script src="./mgm/js/toggleServiceWindow.js"></script>
+</body>
+
+</html>

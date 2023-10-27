@@ -1,0 +1,3 @@
+button text: #ffffff
+normal text£º#e5ddd0
+yellow text£º#ffe178

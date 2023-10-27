@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>w2g_accrual_screen</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="stylesheet" type="text/css" href="./style/common.css">
+  <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+  <link rel="stylesheet" type="text/css" href="./style/w2g_accrual_screen.css">
+    <link rel="stylesheet" type="text/css" href="./mgm/styles/style.css">
+  <style patch>
+    @media screen and (max-aspect-ratio: 4/1) and (orientation:landscape) {
+      button {
+        font-size: 20px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="loading"></div>
+  <div id="decoration"></div>
+  <div id="app" resize="preset-2" v-cloak :class="['SCREEN_W2G', displayName, {vertical: isVertical , horizontal: !isVertical }]">
+    <message-overlay :message.sync="$store.state.systemPinMessage"></message-overlay>
+    <router-view id="router-view"></router-view>
+  </div>
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./js/w2g_accrual_screen.skin.js"></script>
+</body>
+
+</html>

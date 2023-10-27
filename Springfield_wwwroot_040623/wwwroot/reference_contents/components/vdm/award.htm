@@ -1,0 +1,161 @@
+<template>
+  <div>
+    <app>
+      <div id="content" slot="content">
+        <div class="column-1">
+          <section class="info-area info-area-strict-width">
+            <div class="info-wrapper">
+              <span class="title">{{ DrawingName }}</span>
+              <span class="sub-title">{{ DrawingDate | formatDate }}</span>
+              <div class="line invisible"></div>
+            </div>
+            <span class="value">{{ this.$store.state.AvailableFreeEntryNumber }}</span>
+            <span class="key">{{ 'Free Entries' | translate }}</span>
+            <div class="line"></div>
+            <span class="value">{{ this.$store.state.TicketsAvailable }}</span>
+            <span class="key">{{ 'Available Tickets' | translate }}</span>
+            <div class="line"></div>
+            <span class="value">{{ this.$store.state.AwardTicketsUsed }}</span>
+            <span class="key">{{ 'Total Tickets Entered' | translate }}</span>
+            <div class="line invisible"></div>
+          </section>
+          <section class="button-area button-area-items-right button-pos">
+            <div class="one-button-placeholder" v-show="!AutoRedeemServerSideEnabled"></div>
+            <button class="normal gap" @click="enterAll" :disabled="$store.getters.ableToInputTickets<=0">{{ 'Enter All' | translate }}</button>
+            <button class="normal gap" @click="enterSome" :disabled="$store.getters.ableToInputTickets<=0">{{ 'Enter Some' | translate }}</button>
+            <div class="line invisible"></div>
+            <div v-show="AutoRedeemServerSideEnabled" class="startAutoEntry">
+              <button
+                class="normal"
+                v-if="AutoRedeemSet"
+                @click="startAutoEntry(!AutoRedeemSet, TicketsToExclude)"
+              >{{ 'Stop Auto Entry' | translate }}</button>
+              <button
+                class="normal"
+                v-else
+                @click="startAutoEntry(!AutoRedeemSet, TicketsToExclude)"
+              >{{ 'Start Auto Entry' | translate }}</button>
+              <div class="line invisible"></div>
+            </div>
+          </section>
+        </div>
+        <div class="column-2 award-footer-height">
+          <div class="placeholder"></div>
+          <section id="checkIn" :class="IsCheckInNeeded">
+            <span v-if="PlayerAlreadyCheckedIn">{{ 'Already Checked In' | translate }}</span>
+            <div v-else>
+              <span>{{ TicketsCountInEscrowBucket }} {{ 'ticket(s)' | translate }}</span>
+              <button class="normal" v-if="CheckInStart" @click="checkInNow()">{{ 'Check in now' | translate }}</button>
+              <span v-else>{{ 'need(s) to be checked in at' | translate }}
+                <div>{{CheckInStartTime|formatDate}}-</div>
+                <div>{{CheckInEndTime|formatDate}}&nbsp;</div>
+              </span>
+            </div>
+          </section>
+          <bar content="Back" id="award"></bar>
+        </div>
+      </div>
+    </app>
+  </div>
+</template>
+<script>
+module.exports = {
+  name: "award",
+  created() {
+    this.fetchAward();
+  },
+  methods: {
+    fetchAward() {
+      this.$store.dispatch("award/getAward");
+    },
+    enterAll() {
+      this.$store.state.AllTickets = this.$store.state.AvailableFreeEntryNumber + this.$store.state.TicketsAvailable;
+      this.$router.push({ name: "enterAll" });
+    },
+    enterSome() {
+      this.$router.push({ name: "enterSome" });
+    },
+    startAutoEntry(autoRedeemSet, ticketsToExclude) {
+      this.$store.dispatch("award/setTicketAutoRedeem", {
+        autoRedeemSet,
+        ticketsToExclude
+      });
+    },
+    checkInNow() {
+      this.$store.dispatch("award/setPlayerDrawingCheckin");
+    }
+  },
+  computed: {
+    DrawingName() {
+      return this.$store.state.award.awardAll.DrawingName;
+    },
+    DrawingDate() {
+      return this.$store.state.award.awardAll.DrawingDate;
+    },
+    IsCheckInNeeded() {
+      return this.$store.state.award.awardAll.IsCheckInNeeded
+        ? "visible"
+        : "hidden";
+    },
+    PlayerAlreadyCheckedIn() {
+      return this.$store.state.award.awardAll.PlayerAlreadyCheckedIn;
+    },
+    TicketsCountInEscrowBucket() {
+      return this.$store.state.award.awardAll.TicketsCountInEscrowBucket;
+    },
+    CheckInStartTime() {
+      return this.$store.state.award.awardAll.CheckInStartTime;
+    },
+    CheckInEndTime() {
+      return this.$store.state.award.awardAll.CheckInEndTime;
+    },
+    CheckInStart() {
+      return (
+        Date.now() > this.$store.state.award.awardAll.CheckInStartTime &&
+        Date.now() < this.$store.state.award.awardAll.CheckInEndTime
+      );
+    },
+    AutoRedeemServerSideEnabled() {
+      return this.$store.state.drawing.drawingAll.AutoRedeemServerSideEnabled;
+    },
+    AutoRedeemSet() {
+      return this.$store.state.award.awardAll.IsAutoRedeemSet;
+    },
+    TicketsToExclude() {
+      return this.$store.state.award.awardAll.AvailableTicketNumber;
+    }
+  }
+};
+</script>
+<style scoped>
+@import "../../style/vdm_infoarea.css";
+@import "../../style/vdm_button.css";
+
+#checkIn {
+  text-align: center;
+}
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  .award-footer-height {
+    height: 170px;
+  }
+  .button-pos {
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+}
+
+/* horizental */
+@media screen and (max-height: 400px) {
+  .button-pos {
+    height: 100%;
+    width: 250px;
+    justify-content: space-around;
+  }
+
+  .placeholder {
+    height: 55px;
+  }
+}
+</style>

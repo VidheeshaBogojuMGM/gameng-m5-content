@@ -1,0 +1,16 @@
+{
+	"data" : [
+		{	"name": "REGAL CINEMAS",
+			"description" : "Featuring blockbuster movies and luxury recliner seating, Regal MGM Springfield is the ultimate entertainment destination for movie fans. This cinematic paradise features seven cutting-edge auditoriums and a full bar, inviting guests to kick back and relax with their favorite feature films.",
+			"imageDetail": "images/entertainments/Regal_"
+		},
+		{	"name": "ESSENTIALS",
+			"description" : "Carrying all of your everyday needs including resort logos and fashion apparel for men and women, logo souvenirs, sundries, snacks, alcoholic and non-alcoholic beverages. Essentials has all the little necessary items to keep your time here going smoothly.",
+			"imageDetail": "images/entertainments/Essentials_"
+		},
+		{	"name": "TOPGOLF SWING SUITE",
+			"description" : "This outlet is currently open and taking reservations for groups only. Gather your friends and discover the most advanced way to play golf year-round at MGM Springfield. Looking for your next party idea or a place to better enhance your golfing skills? Topgolf Swing Suite is a fun experience for all ages that offers a comfy lounge to hangout while you enjoy fantastic food and drinks.",
+			"imageDetail": "images/entertainments/TopGolf_"
+		}],
+	"imageSubMain" : "images/entertainmentsSubMain"
+}

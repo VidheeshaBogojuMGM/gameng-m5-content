@@ -1,0 +1,40 @@
+{
+  "id": "http://igt.com/be2BasicFunction/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for be2BasicFunction",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^be2BasicFunction$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "be2BasicFunction": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "properties": {
+          "functionCode": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          },
+          "arguments": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "integer"
+            }
+          }
+        },
+        "required": ["functionCode", "arguments"]
+      }
+    }
+  },
+  "required": ["cmd","be2BasicFunction"]
+}

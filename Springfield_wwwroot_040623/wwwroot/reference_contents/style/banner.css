@@ -1,0 +1,282 @@
+@font-face {
+	font-family: 'Gotham-Book-Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: url("./fonts/Gotham-Book-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: 'Gotham-Bold';
+	font-style: normal;
+	font-weight: bold;
+	src: url("./fonts/Gotham-Bold.otf") format("opentype");
+}
+
+@font-face {
+	font-family: 'Gotham-Italic';
+	font-style: italic;
+	font-weight: normal;
+	src: url("./fonts/Gotham-Italic.ttf") format("opentype");
+}
+
+body *{
+	font-family: 'Gotham-Book-Regular';
+}
+
+[v-cloak]{
+  visibility: hidden;
+}
+body{
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	user-select: none;
+	-moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+	-webkit-user-select: none;
+	-ms-user-select: none; /* From IE10 only */
+}
+
+p{
+	user-select: none;
+	-moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+	-webkit-user-select: none;
+	-ms-user-select: none; /* From IE10 only */
+}
+
+img{
+	user-select: none;
+	-moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+	-webkit-user-select: none;
+	-ms-user-select: none; /* From IE10 only */
+	-webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+	user-drag: none;
+}
+.pointplay-bg{
+	background: url(../assets/banner-gopp-normal.png) no-repeat center;
+    background-size: 58vh 58vh;
+}
+.xc-bg{
+	background: url(../assets/banner-goxc-normal.png) no-repeat center;
+	background-size: 58vh 58vh;
+}
+.pointplay-bg:active{
+	background: url(../assets/banner_gopp_down.png) no-repeat center;
+	background-size: 58vh 58vh;
+}
+.xc-bg:active{
+	background: url(../assets/banner_goxc_down.png) no-repeat center;
+	background-size: 58vh 58vh;
+}
+.pointplay-value, .xc-value{
+	left: 240vh;
+}
+.ranking-value, .cashless-value{
+	right: 0;
+}
+
+button{
+	display: inline-block;
+	background-color: rgba(0,0,0,0);
+	border: none;
+	outline:none;
+}
+@font-face {
+	font-family: 'GIL';
+	src: url(../assets/GIL.TTF);
+}
+
+#app{
+	background-image: url(../assets/bg_banner.png);
+	background-repeat: repeat round;
+	background-size: cover;
+	margin: 0px;
+	padding: 0px;
+	width: 100vw;
+	height: 100vh;
+	border: 1px solid gray;
+	background-color: rgba(33, 38, 43, 0.80);
+}
+
+#container{
+	display: flex;
+	height: 100%;
+}
+#container>*{
+	flex-shrink:0;
+}
+.white-text{
+	color: white; 
+	font-size: 30vh;
+	position: relative;
+	line-height: 33vh;
+	width: 140vh;
+    word-break: break-word;
+    height: 70vh;
+    display: inline-flex;
+}
+.yellow{
+	color: yellow;
+	font-size: 41vh;
+}
+.button-bar{
+	background-image: url(../assets/banner-sw-bg.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 75vh;
+}
+.button-bar:active{
+	background-image: url(../assets/banner_sw_bg_active.png);
+}
+#exit{
+	color:white; 
+	width: 130vh;
+	font-weight: bold;
+	margin-top: 8px;
+	background-size: 100% 100%;
+}
+.nv-full-screen{
+	position: relative;
+    display: flex;
+    width: 1000vh;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+}
+.nv-full-screen :nth-child(4){
+	margin-left: 30vh;
+}
+.nv-full-screen :nth-child(5){
+	margin-right: 15px;
+}
+
+#banner-logo{
+	background-image: url(../assets/banner-logo.png);
+	background-size:cover;
+	height: 65vh;
+	width: 167vh;
+	margin-top: 22vh;
+	float: left;
+}
+
+#home-btn{
+	background-image: url(../assets/banner_home.png);
+	width: 75vh;
+	float: left;
+}
+#home-btn:active{
+	background-image: url(../assets/banner_home_active.png);
+	width: 75vh;
+	float: left;
+}
+
+#toggle-service-window-btn{
+	width: 195vh;
+	margin: 19vh 10vh;
+	float: left;
+}
+
+button div{
+	color:white;
+	font-weight: 700
+}
+#sw{
+	font-size: 14vh;
+	width: 100%;
+	white-space: nowrap;
+	margin-top: -2px;
+}
+#open-close{
+	margin-top: -2px;
+	margin-bottom: 1px;
+	font-size: 22vh;
+}
+
+p{
+	color: #78ff00;
+	margin: 12vh 10vh;
+	padding-top:0;
+	font-size: 50vh;
+	font-family: 'GIL';
+	white-space: nowrap;
+	text-rendering: optimizeLegibility;
+}
+
+.scrollText{
+	display: inline-block;
+	animation: p 25s linear infinite;
+}
+@keyframes p {
+	0%   {
+		transform: translateX(0%);
+	}
+	40%{
+		transform: translateX(0%);
+	}
+	80% {
+
+		transform: translateX(-100%);
+	}
+	80.01%{
+		transform: translateX(70%);
+	}
+	100%{
+		transform: translateX(0%);
+	}
+}
+
+#display{
+	position: relative;
+	float: left;
+	display: flex;
+	flex-grow: 1;
+}
+
+#display-container{
+	position: absolute;
+	z-index: 1;
+	display: flex;
+}
+
+#display-screen{
+	background-image: url(../assets/display_screen_main.png);
+	background-repeat:repeat round;
+	background-size:cover;
+	height: 81vh;
+	margin-left:0;
+	margin-right:0;
+	padding-left:0 ;
+	padding-right:0;
+	float: left;
+	flex-grow: 1;
+}
+
+#display-screen-left, #display-screen-right{
+	background-repeat:repeat round;
+	background-size:cover;
+	width: 10vh;
+	height: 81vh;
+
+
+	padding-left:0 ;
+	padding-right:0;
+	float: left;
+
+}
+#display-screen-left{
+	background-image: url(../assets/display_screen_left_corner.png);
+	margin-right:0;
+}
+#display-screen-right{
+	background-image: url(../assets/display_screen_right_corner.png);
+	margin-left:0;
+}
+
+#bod{
+	background-image: url(../assets/banner_BOD.png);
+	width: 75vh;
+	float: right;
+}
+
+#exit:disabled{
+	opacity: 0.5;	
+}

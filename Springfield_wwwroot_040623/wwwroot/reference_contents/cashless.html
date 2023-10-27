@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>cashless</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/cashless.css">
+
+    <style patch>
+        @media screen and (max-aspect-ratio: 3/1) and (orientation:landscape) {
+
+            h1 {
+                font-size: 19px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            button {
+                font-size: 12px !important;
+            }
+        }
+
+        @media screen and (orientation:landscape) and (min-aspect-ratio: 6/1) {
+
+            .content-body {
+                align-items: center;
+            }
+
+            #home-group {
+                all: inherit;
+                justify-content: space-around;
+            }
+
+            .info-group {
+                width: 50%;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                /* justify-content: space-evenly; */
+            }
+
+            #other .align-box {
+                width: 98%;
+                align-items: flex-end;
+                min-height: 68%;
+            }
+
+            #choice-pane {
+                width: 98%;
+                display: flex;
+                all: inherit;
+                flex-direction: row;
+                flex-wrap: nowrap;
+            }
+
+            .body-first {
+                width: 28%;
+            }
+
+            .align-box {
+                width: 40% !important;
+                /* height: 100% !important; */
+                align-items: flex-end;
+                align-content: space-around;
+
+            }
+
+            #other-pane {
+                align-items: center;
+                flex-direction: column;
+                flex-wrap: wrap;
+                height: 100%;
+                all: inherit;
+            }
+
+
+            #message-panel {
+                width: 28%;
+            }
+
+            #value-show {
+                width: 28%;
+            }
+
+            p {
+                width: unset;
+                font-weight: 550;
+                font-size: 22px;
+            }
+
+            .button-small {
+                width: 15%;
+                height: 96px;
+                margin-bottom: 2px;
+                font-size: 18px
+            }
+
+            #balance-panel {
+                width: 28%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="decoration"></div>
+    <div id="app" resize="preset-2" v-cloak>
+        <message-overlay :message.sync="errorMessage"></message-overlay>
+        <div class="content-head">
+            <img id='logo' />
+        </div>
+        <div class='content-body'
+            v-if="currentScreen == 'Initiate' || currentScreen == 'ChoiceOnBalance' || currentScreen == 'Other'">
+            <div id="home-group" v-if="currentScreen == 'Initiate'">
+                <div id="balance-on-machine">
+                    <p>{{ 'BALANCE ON MACHINE' | translate }}</p>
+                    <h1 id='available-balance' class='cash-font'>{{ currencySymbol }}{{egmBalanceInDollar | money(2)}}</h1>
+                </div>
+                <div id="balance-on-card">
+                    <p>{{ 'BALANCE ON CARD' | translate }}</p>
+                    <h1 id='available-balance' class='cash-font'>{{ currencySymbol }}{{cardBalanceInDollar | money(2)}}</h1>
+                </div>
+            </div>
+
+            <div id='choice-pane' v-else-if="currentScreen == 'ChoiceOnBalance'">
+                <div class="info-group" v-if="transferDirection == 'toCard'">
+                    <div class="v-box">
+                        <p class="hrz-small">{{ 'BALANCE ON MACHINE' | translate }}</p>
+                        <h1 id='available-balance' class='cash-font'>{{ currencySymbol }}{{egmBalanceInDollar | money(2)}}</h1>
+                    </div>
+
+                    <div class="v-box">
+                        <img src="./assets/card-icon.png" class="icon">
+                        <p class="hrz-small">{{ 'CREDITS TO CARD' | translate }}</p>
+                    </div>
+                </div>
+                <div class="info-group" v-else-if="transferDirection == 'toMachine'">
+                    <div class="v-box">
+                        <p class="hrz-small">{{ 'BALANCE ON CARD' | translate }}</p>
+                        <h1 id='available-balance' class='cash-font'>{{ currencySymbol }}{{cardBalanceInDollar | money(2)}}</h1>
+                    </div>
+                    <div class="v-box">
+                        <img id='available-balance' src="./assets/machine-icon.png" class="icon">
+                        <p class="hrz-small">{{ 'CREDITS TO MACHINE' | translate }}</p>
+                    </div>
+                </div>
+                <div class="align-box flex-order">
+                    <button v-for="transferAmount in AmountGroups" class='button-medium'
+                        v-on:click="selectAmount(transferAmount*100)">{{currencySymbol}}{{transferAmount}}</button>
+
+                    <button id='transfer-other' v-if='otherValueEnabled'
+                        v-on:click="onOtherPressed">{{ 'OTHER' | translate }}</button>
+                </div>
+
+            </div>
+
+            <div id='other-pane' v-else="currentScreen == 'Other'">
+                <div class="body-first">
+                    <div v-if="transferDirection == 'toCard'">
+                        <p class="hrz-small">{{ 'BALANCE ON MACHINE' | translate }}</p>
+                        <h1 class="cash-font">{{ currencySymbol }}{{egmBalanceInDollar | money(2)}}</h1>
+                    </div>
+                    <div v-if="transferDirection == 'toMachine'">
+                        <p class="hrz-small">{{ 'BALANCE ON CARD' | translate }}</p>
+                        <h1 class="cash-font">{{ currencySymbol }}{{cardBalanceInDollar | money(2)}}</h1>
+                
+                    </div>
+                </div>
+
+                <div id='value-show'>
+                    <p class="hrz-small" v-if="transferDirection == 'toCard'">{{ 'CREDITS TO CARD' | translate }} </p>
+                    <p class="hrz-small" v-if="transferDirection == 'toMachine'">{{ 'CREDITS TO MACHINE' | translate }}
+                    </p>
+                    <p class='cash-font' id='amount'>{{ currencySymbol }}{{displayValue | money(2)}}</p>
+                </div>
+
+                <div class="align-box flex-order">
+
+                    <button id='num-1' class='button-small' @click="input(1)">1</button>
+                    <button id='num-2' class='button-small' @click="input(2)">2</button>
+                    <button id='num-3' class='button-small' @click="input(3)">3</button>
+
+                    <button id='num-4' class='button-small' @click="input(4)">4</button>
+                    <button id='num-5' class='button-small' @click="input(5)">5</button>
+                    <button id='num-6' class='button-small' @click="input(6)">6</button>
+
+                    <button id='num-7' class='button-small' @click="input(7)">7</button>
+                    <button id='num-8' class='button-small' @click="input(8)">8</button>
+                    <button id='num-9' class='button-small' @click="input(9)">9</button>
+
+                    <button id='back' class='button-small' @click="input('back')">{{
+                                    'Del' | translate }}</button>
+                    <button id='num-0' class='button-small' @click="input(0)">0</button>
+                    <button id='clear' class='button-small' :disabled="!allowInput('clear')" @click="input('clear')">{{
+                                    'Clear' | translate }}</button>
+
+                </div>
+            </div>
+        </div>
+        <div class='content-body message-box' v-else>
+            <div v-if="currentScreen=='BeforeConfirm'">
+                <p v-html="displayNotificationMessage"></p>
+                <p v-show="this.needRoundInput()" id="_roundUp">
+                    <span id="_roundUpFont">&#9888;</span>
+                    {{roundAmountMsg}}</p>
+            </div>
+            <div v-else>
+                <p v-html="displayNotificationMessage"></p>
+            </div>
+        </div>
+
+
+        <div class="content-tail" v-if="currentScreen == 'Initiate'">
+            <button class="tail-button-font" @click="onCreditsToCard">{{'CREDITS TO CARD' | translate}}</button>
+            <button class="tail-button-font" @click="onCreditsToMachine">{{'CREDITS TO MACHINE' | translate}}</button>
+            <button class="tail-button-font" @click="onBackApps">{{'BACK' | translate}}</button>
+        </div>
+
+        <div class="content-tail" v-if="currentScreen == 'Fail'">
+            <div></div>
+            <button @click="onConfirm">{{'TRY AGAIN' | translate}}</button>
+            <button @click="onToHome">{{'BACK' | translate}}</button>
+        </div>
+
+        <div class="content-tail" v-if="currentScreen == 'BeforeConfirm'">
+            <div></div>
+            <button @click="onConfirm">{{'CONFIRM' | translate}}</button>
+            <button @click="onToHome">{{'BACK' | translate}}</button>
+        </div>
+
+        <div class="content-tail" v-if="currentScreen == 'Disabled'">
+            <div></div>
+            <div></div>
+            <button @click="onBackApps">{{'BACK' | translate}}</button>
+        </div>
+
+        <div class="content-tail" v-if="currentScreen == 'Success'">
+            <div></div>
+            <div></div>
+            <button @click="onToHome">{{'BACK' | translate}}</button>
+        </div>
+
+        <div class="content-tail" v-if="currentScreen == 'Other'">
+            <div></div>
+            <button :disabled="!allowInput(-1)"
+                @click="onBeforeConfirm">{{'CONFIRM' | translate}}</button>
+            <button @click="onOtherBack">{{'BACK' | translate}}</button>
+        </div>
+
+        <div class="content-tail" v-if="currentScreen == 'ChoiceOnBalance'">
+            <div></div>
+            <div></div>
+            <button @click="onToHome">{{'BACK' | translate}}</button>
+        </div>
+
+        <div class="content-tail processing-image" v-if="currentScreen == 'Processing'">
+                <div id="pre-loader" style="background:no-repeat center/contain url(assets/loading1.gif), no-repeat center/contain url(assets/loading2.gif); height: 100%; margin: auto; "></div>
+        </div>
+    </div>
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/cashless.skin.js"></script>
+</body>
+
+</html>

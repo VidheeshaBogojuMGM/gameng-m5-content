@@ -1,0 +1,8 @@
+{			
+    "cmd": "languageUpdate",			
+    "ver": "1.0",			
+    "languageUpdate": {	
+        "languageIndex": 1,
+        "languageName": "English"
+    }			
+}			

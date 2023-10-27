@@ -1,0 +1,161 @@
+<template>
+  <app>
+    <template slot="content">
+      <div class="column-1 ticket-wrapper">
+        <section class="info-area">
+          <div class="info-wrapper">
+            <span class="title">{{ 'Entering Tickets' | translate }}</span>
+            <span class="title">{{ 'Please stand by' | translate }}</span>
+            <div class="line invisible"></div>
+          </div>
+          <div class="custom-info-area">
+            <div class="custom-info-wrapper">
+              <span class="value">{{ processingTickets }}</span>
+              <span class="key">{{ 'Processing Tickets' | translate }}</span>
+              <div class="line invisible"></div>
+            </div>
+            <div class="custom-info-wrapper">
+              <span class="value">{{ enteredTickets }}</span>
+              <span class="key">{{ 'Tickets Entered' | translate }}</span>
+              <div class="line invisible"></div>
+            </div>
+          </div>
+        </section>
+        <progressbar :percentage="currentRate"></progressbar>
+        <section class="button-area enter-ticket-footer-height ticket-button-size">
+          <nav v-show="!stop && currentRate != 100">
+            <button class="normal" @click="onStop">{{ 'Stop' | translate }}</button>
+          </nav>
+          <nav v-show="stop && currentRate !== 100">
+            <button class="half" @click="onResume">{{ 'Resume' | translate }}</button>
+            <button class="half" @click="onComplete">{{ 'Done' | translate }}</button>
+          </nav>
+        </section>
+      </div>
+    </template>
+  </app>
+</template>
+<script>
+module.exports = {
+  name: "enteringTickets",
+  mounted() {
+    this.$store.dispatch("enteringTickets/multiRedeemReqsHandler");
+  },
+  methods: {
+    onStop() {
+      this.$store.state.stopRedeem = true;
+    },
+    onResume() {
+      this.$store.state.stopRedeem = false;
+      this.$store.dispatch("enteringTickets/multiRedeemReqsHandler");
+    },
+    onComplete() {
+      this.$store.state.enteredTktNum = this.enteredTickets;
+      this.$router.push({ name: "done" });
+    }
+  },
+  computed: {
+    stop() {
+      return this.$store.state.enteringTickets.stopRedeem;
+    },
+    processingTickets() {
+      return this.$store.state.AllTickets - this.enteredTickets;
+    },
+    enteredTickets() {
+      const tktNum =
+        this.currentReqSeqNo == this.requestTimes
+          ? this.$store.state.AllTickets
+          : this.currentReqSeqNo * 1000;
+      this.$store.state.enteredTktNum = tktNum;
+      return tktNum;
+    },
+    enteringTktNum() {
+      return this.$store.getters["enteringTickets/enteringTktNum"];
+    },
+    requestTimes() {
+      return this.$store.getters["enteringTickets/redeemNeededTimes"];
+    },
+    currentReqSeqNo() {
+      return this.$store.state.enteringTickets.currentReqSeqNo;
+    },
+    currentRate() {
+      var rate = (this.currentReqSeqNo / this.requestTimes) * 100;
+      if (rate == 100) {
+        this.$router.push({ name: "redeemcomplete" });
+      } else {
+        return rate;
+      }
+    }
+  }
+};
+</script>
+
+<style scoped>
+@import "../../style/vdm_infoarea.css";
+@import "../../style/vdm_button.css";
+
+nav {
+  display: flex;
+  width: unset;
+}
+
+nav > button {
+  flex-grow: 1;
+}
+
+.custom-info-area {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.custom-info-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+
+.ticket-button-size {
+  width: 100%;
+  align-items: center;
+}
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  .ticket-wrapper {
+    justify-content: space-between;
+  }
+
+  .enter-ticket-footer-height {
+    height: 70px;
+  }
+
+  .ticket-button-size nav button {
+    margin: 0 2px;
+  }
+
+  .custom-info-area {
+    flex-flow: column nowrap;
+  }
+}
+
+/* horizental */
+@media screen and (max-height: 400px) {
+  .ticket-wrapper {
+    height: 100%;
+    justify-content: space-around;
+    flex-flow: column;
+    width: calc(var(--app-content-width) - 230px);
+  }
+
+  .custom-info-area {
+    flex-flow: row nowrap;
+  }
+
+  .ticket-button-size nav button {
+    margin: 0 1rem;
+  }
+}
+</style>

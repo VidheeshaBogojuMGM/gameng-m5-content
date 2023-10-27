@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>pinpad</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="stylesheet" type="text/css" href="./style/common.css">
+  <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+  <link rel="stylesheet" type="text/css" href="./style/vpc_pin.css">
+
+</head>
+
+<body>
+  <div id="decoration"></div>
+  <div id="app" resize="auto scale" v-cloak>
+
+    <div id="pinArea">
+      <p class="message-display">{{InteractiveMessage | translate}}</p>
+      <input id='pinEntry' type='password' v-model='Password' onfocus="this.blur()" value="" />
+      <div class="pinButton_panel flex-order">
+        <button class='button-small' :disabled='buttonDisabled' @click="pressDigit(1)" id="_btn1">1</button>
+
+        <button class='button-small' :disabled='buttonDisabled' @click="pressDigit(2)" id="_btn2">2</button>
+
+        <button class='button-small' :disabled='buttonDisabled' @click="pressDigit(3)" id="_btn3">3</button>
+
+        <button class='button-small' :disabled='buttonDisabled' @click="pressDigit(4)" id="_btn4">4</button>
+
+        <button class='button-small' :disabled='buttonDisabled' @click="pressDigit(5)" id="_btn5">5</button>
+
+        <button class='button-small' :disabled='buttonDisabled' @click="pressDigit(6)" id="_btn6">6</button>
+
+        <button class='button-small' :disabled='buttonDisabled' @click="pressDigit(7)" id="_btn7">7</button>
+
+        <button class='button-small' :disabled='buttonDisabled' @click="pressDigit(8)" id="_btn8">8</button>
+
+        <button class='button-small' :disabled='buttonDisabled' @click="pressDigit(9)" id="_btn9">9</button>
+
+        <button class='button-small' :disabled='buttonDisabled' @click="clearPinPad()" id="_btnClear">{{ 'Clear' | translate }}</button>
+
+        <button class='button-small' :disabled='buttonDisabled' @click="pressDigit(0)" id="_btn0">0</button>
+
+        <button class='button-small' :disabled='buttonDisabled' @click="backSpace()" id="_btnBack">{{'Del' | translate}}</button>
+
+        <div id="_btnCancel">{{ 'CANCEL' | translate }}</div>
+
+        <button class='button-medium' :disabled='buttonDisabled' @click="validate()" id="_btnEnter">{{ 'ENTER' | translate }}</button>
+
+      </div>
+    </div>
+  </div>
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./js/vpc_pin.skin.js"></script>
+</body>
+
+</html>

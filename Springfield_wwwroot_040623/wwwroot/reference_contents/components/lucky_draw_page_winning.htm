@@ -1,0 +1,302 @@
+<template>
+  <div class="container app-page"
+    :class='[$root.displayName, {vertical: $root.isVertical , horizontal: !$root.isVertical}]'>
+    <div class='content-head'>
+      <img id='logo' />
+    </div>
+    <div class="content-body">
+      <div class="paytable-area">
+        <div v-if="showWinInfo" class="win-info">
+          <div class="line"></div>
+          <div class="center is-vertical">
+            <span>{{ "win amount" | translate }}</span>
+            <span>{{ $store.state.winningAmount | money }}</span>
+          </div>
+          <div class="line"></div>
+        </div>
+        <div v-else-if="showWinAndNextDraw" class="win-info">
+          <div class="line"></div>
+          <div class="center is-vertical">
+            <span>{{ "win amount" | translate }}</span>
+            <span>{{ $store.state.winningAmount | money }}</span>
+            <p class="nextDrawMessage">{{ "NEXT DRAW IN" | translate}} <br>{{$store.state.nextDrawMessage}}</p>
+          </div>
+          <div class="line"></div>
+        </div>
+        <div v-else-if="showNonWinMessage" class="win-info">
+          <div class="line"></div>
+          <div class="center is-vertical">
+            <p>{{ "Thank you for playing!" | translate }}</p>
+            <p class="nextDrawMessage">{{ "NEXT DRAW IN" | translate}} <br>{{$store.state.nextDrawMessage}}</p>
+          </div>
+          <div class="line"></div>
+        </div>
+        <pay-table v-else :match-count="matchCount"></pay-table>
+      </div>
+      <div class="number-set-container">
+        <div class="number-area center is-vertical">
+          <span>{{ "The assigned numbers" | translate }}</span>
+          <div class="number-set">
+            <div v-for="(item, index) in assignedNumbers" class="number"
+              :class="match(index)?'number-matched':'number-unmatched'">
+              {{item}}
+            </div>
+          </div>
+          <div class="line line-margin"></div>
+        </div>
+
+        <div class="message center" :class="{'message-vertical':!showClaim}">
+          <p>{{ message | translate }}</p>
+        </div>
+
+        <div class="number-area center is-vertical">
+          <div class="permanent-line"></div>
+          <span>{{ "The winning numbers" | translate }}</span>
+          <div class="number-set">
+            <div class="number winning-number" v-for="(item, index) in winningNumbers">
+              {{item}}
+            </div>
+          </div>
+        </div>
+
+        <div class="message center" v-if="showClaim">
+          <attendant-button v-if='isClaimed' @attendant-card-inserted="isAttendantBtnEnabled=true"></attendant-button>
+          <button id="claimBtn" :disabled="isClaimed" @click="claimBonus()"
+            v-show="!isAttendantBtnEnabled">{{isClaimed? "CLAIMING":"CLAIM" | translate}}</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>
+
+<script>
+  module.exports = {
+    name: "lucky_draw_page_winning",
+    data() {
+      return {
+        isClaimed: false,
+        isAttendantBtnEnabled: false,
+        matchCount: 0
+      }
+    },
+    components: {
+      "PayTable": loadSkinTemplate("./components/lucky_draw_paytable.htm")
+    },
+    computed: {
+      assignedNumbers() {
+        return this.$store.state.assignedNumbers.trim().split(" ").filter(x => x);
+      },
+      winningNumbers() {
+        let numbers = this.$store.state.winningNumbers.trim().split(" ").filter(x => x);
+        
+        let self = this;
+        this.$nextTick(() => {
+
+          const timer = 2000;
+          const len = $(".winning-number").length;
+          $(".winning-number").each(function (idx, item) {
+            setTimeout(() => {
+              $(item).addClass("number-appear");
+
+              if (idx + 1 === len) {
+                setTimeout(() => {
+                  $(".number-matched").each(function (idx, item) {
+                    $(item).addClass("matched");
+                  });
+                  $(".number-unmatched").each(function (idx, item) {
+                    $(item).addClass("unmatched");
+                  });
+                  self.$root.updateGlobalState({
+                    shouldShowBannerDisplayMessage: true
+                  });
+                  self.matchCount = $(".number-matched").length;
+                }, timer);
+              }
+            }, timer * idx);
+          })
+        })
+
+        return numbers;
+      },
+      message() {
+        if (this.$store.state.drawStatus === 3) {
+          return "";
+        } else if (this.$store.state.drawStatus === 4) {
+          return "Please wait and a Staff Member will be with you shortly.";
+        } else if (this.$store.state.drawStatus === 5) {
+          return "Congratulations!";
+        } else {
+          return this.$store.state.displayMessage;
+        }
+      },
+      showWinInfo() {
+        return this.$store.state.drawStatus === 4;
+      },
+      showWinAndNextDraw() {
+        return this.$store.state.drawStatus === 5;
+      },
+      showNonWinMessage() {
+        return this.$store.state.drawStatus === 6;
+      },
+      showClaim() {
+        return this.$store.state.drawStatus === 5;
+      }
+    },
+    methods: {
+      match(index) {
+        return this.winningNumbers.includes(this.assignedNumbers[index]);
+      },
+      claimBonus() {
+        IGTMediaElements.buttonPress('BONUSBUTTON');
+        this.isClaimed = true;
+      }
+    }
+  };
+
+</script>
+
+<style scoped>
+  .winning-number {
+    opacity: 0;
+    transition: opacity 3s ease-in;
+  }
+
+  .number-appear {
+    opacity: 1;
+  }
+
+  /* win info */
+  .win-info {
+    height: 218px;
+  }
+
+  .TFT .win-info,
+  .U4 .win-info {
+    width: 248px;
+  }
+
+  .horizontal .win-info {
+    font-weight: bold;
+  }
+
+  .win-info div:nth-child(2) {
+    height: 100%;
+    width: 100%;
+  }
+
+  .win-info div span {
+    display: block;
+    color: #FFE178;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  /* numbers container */
+  .number-set-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: calc(100% - 256px);
+    flex-grow: 1;
+  }
+
+  .vertical .number-set-container {
+    align-items: flex-end;
+  }
+
+  .U6_H .number-set-container,
+  .U3_H .number-set-container,
+  .U2_H .number-set-container,
+  .U5_H .number-set-container {
+    justify-content: space-around;
+  }
+
+  .U6_H .number-set-container,
+  .U5_H .number-set-container {
+    width: calc(100% - 1.7 * 256px);
+  }
+
+  .U3_H .number-set-container,
+  .U2_H .number-set-container,
+  .U1_H .number-set-container {
+    width: calc(100% - 1.2 * 256px);
+  }
+
+  .TFT .number-area {
+    width: 70%;
+  }
+
+  .U6_RH .number-area,
+  .U3_RH .number-area {
+    width: 65%;
+  }
+
+  .TFT .message {
+    width: 30%;
+  }
+
+  .TFT .message p {
+    width: 100%;
+  }
+
+  .TFT .message button {
+    width: 120px;
+    height: 50px;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .U6_H .message,
+  .U3_H .message,
+  .U2_H .message,
+  .U1_H .message,
+  .U5_H .message {
+    order: 3;
+    width: 200px;
+  }
+
+  .U6_RH .message {
+    width: 35%;
+  }
+
+  .vertical .message p:empty {
+    padding: 3rem;
+  }
+
+  .vertical .message {
+    width: 100%;
+  }
+
+  .vertical .message button {
+    width: 248px;
+  }
+
+  .content-body>* {
+    min-width: unset;
+  }
+
+  .horizontal .message {
+    flex: 1 0 0;
+  }
+
+  .horizontal .message button {
+    width: 90%;
+  }
+
+  .nextDrawMessage {
+    background-image: url(../assets/ld-nextdraw-bg.png);
+    width: 80%;
+    margin: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .U1_RH .win-info div span,
+  .U2_RH .win-info div span,
+  .U5_RH .win-info div span {
+    margin-right: 8%;
+  }
+
+</style>

@@ -1,0 +1,313 @@
+<template>
+    <div class="container app-page" :class="{largeH, smallH}">
+		<div class="amount-selections">
+			<div class="container">
+				<button @click='amountSelected(0)' id='amount0' class="bold"> {{ amount(0) }} </button>
+				<div class="line" ></div>
+				<button @click='amountSelected(1)' id='amount1' class="bold"> {{ amount(1) }} </button>
+			</div>
+			<div class="container">
+				<button @click='amountSelected(2)' id='amount2' class="bold"> {{ amount(2) }} </button>
+				<div class="line" ></div>
+				<button @click='amountSelected(3)' id='amount3' class="bold"> {{ amount(3) }} </button>
+			</div>
+			<div class="container">
+				<button @click='amountSelected(4)' id='amount4' class="bold"> {{ amount(4) }} </button>
+				<div class="line" ></div>
+				<button @click='onOtherAmount()' class="other-amount bold"> {{'OTHER AMOUNT' | translate }}</button>
+			</div>
+    	</div>
+</template>
+<script>
+
+	function removeActiveItem() {
+		const prev = document.getElementsByClassName('active');
+		if(prev.length > 0) {
+			prev[0].classList.remove('active');
+		}
+	}
+
+	$('.cancel-selection').click(function() {
+		removeActiveItem();
+	});
+
+	console.log('dimensions: ' + window.innerWidth + 'x' + window.innerHeight);
+	const selectionAmounts = window.innerWidth < window.innerHeight ? [5, 10, 20, 50, 100] : [5, 50, 10, 100, 20];
+
+    module.exports = {
+        data() {
+            return {
+                inputValue: 0,
+            }
+        },
+        computed: {
+            largeH() {
+                return this.contentWidth / this.contentHeight > 4.5;
+            },
+            smallH() {
+                return this.contentWidth / this.contentHeight < 4.5 && this.contentWidth > this.contentHeight;
+            },
+        },
+        methods: {
+			amount(index) {
+				return '$' + selectionAmounts[index];
+			},
+            input(value) {
+                if (this.inputValue == 0 && this.inputValue.toString().indexOf('.') == -1)
+                    this.inputValue = value;
+                else {
+                    this.inputValue += value.toString();
+                    if (this.inputValue.indexOf('.') == -1 && this.inputValue.length > 8) {
+                        this.inputValue = this.inputValue.substring(0, this.inputValue.length - 1)
+                        return;
+                    }
+
+                    if (this.inputValue.indexOf('.') > 0 && this.inputValue.split('.')[1].length > 2)
+                        this.inputValue = this.inputValue.substring(0, this.inputValue.indexOf('.') + 3);
+                }
+
+                this.$emit('getdigital', this.inputValue);
+            },
+			onOtherAmount() {
+				this.$emit('other');
+				removeActiveItem();
+			},
+			amountSelected(index) {
+				removeActiveItem();
+				const selected = document.getElementById('amount' + index);
+				if (selected) {
+					selected.classList.add('active');
+				}
+				const amount = selectionAmounts[index];
+				console.log('Amount: ' + amount);
+				this.$emit('select', amount);
+			},
+        },
+    }
+</script>
+<style>
+   .horizontal .container {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	#amount-selection .content-tail button {
+		height: 40px !important;
+	}
+
+	.active {
+    	background-color: white;
+    	color: black;
+	}
+
+	.horizontal .v-box button {
+		height: 30px;
+		width: 160px;
+	}
+
+	.amount-selections {
+		text-align: center;
+		margin: 30px 0;
+	}
+
+	.amount-selections button {
+		width: 100%;
+		border-radius: 5px;
+    	font-weight: bold;
+	}
+
+	.amount-selections .container {
+		display: flex;
+		border-bottom: 1px solid #898788;
+		border-top: 1px solid #898788;
+		padding: 5px 0;
+	}
+
+	.horizontal .amount-selections {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		height: 35vh;
+	}
+
+	.horizontal .amount-selections .container .other-amount {
+		font-size: 13px;
+	}
+
+	.horizontal .v-box button {
+		width: 88px;
+		font-size: 18px;
+	}
+
+	.horizontal .button-small, .del-small{
+		width: 62px;
+    	height: 50px;
+	}
+
+	.vertical .amount-selections .container button {
+		font-size: 25px;
+	}
+
+	.vertical .amount-selections .line {
+		display: none;
+	}
+
+	.horizontal .amount-selections .line {
+		width: 100%;
+	}
+
+	.vertical .amount-selections .container .other-amount, 
+	.U2 .vertical .amount-selections .container button  {
+		font-size: 18px;
+	}
+
+	.U2 .vertical .amount-selections .container button  {
+		height: 35px;
+	}
+
+	.U2 .menu button, .U2 .content-tail button {
+		height: 30px;
+		font-size: 15px;
+	}
+
+	.U2 .amount-selections {
+		margin: 0;
+	}
+
+	.U2 .vertical .amount-selections .container .other-amount {
+		font-size: 13px;
+	}
+
+	.U2 .button-small, .U2 .del-small, .U2 .vertical .button-small {
+		width: 50px;
+		height: 35px;
+		margin: 0;
+		font-size: 13px;
+	}
+
+	.U2 .content-tail .actions .btn {
+		height: 35px;
+		width: 100%;
+    	max-width: 100%;
+	}
+
+	.U2 #back, .U2 #clear {
+		font-size: 9px;
+	}
+
+	.TFT.SCREEN_MEMBER_ACCOUNT .content-body,
+	.TFT.SCREEN_MEMBER_ACCOUNT .content-tail {
+		width: 37%;
+		padding: 0;
+		margin: 0;
+	}
+
+	.TFT.SCREEN_MEMBER_ACCOUNT .content-body .amounts.v-box {
+		padding: 0;
+	}
+
+	.TFT.SCREEN_MEMBER_ACCOUNT .content-tail .info-group .v-box,
+	.TFT.SCREEN_MEMBER_ACCOUNT .content-tail .actions {
+		padding: 5px;
+		margin: 0 !important;
+	}
+
+	.TFT.SCREEN_MEMBER_ACCOUNT .content-tail .info-group .v-box p,
+	.TFT.SCREEN_MEMBER_ACCOUNT .content-tail .actions .line,
+	.TFT.SCREEN_MEMBER_ACCOUNT .content-tail .actions button {
+		width: 100% !important;
+		max-width: 100%;
+		margin: 0;
+	}
+
+	.TFT .horizontal .v-box button {
+		width: 70px;
+		font-size: 25px !important;
+	}
+
+	.TFT.SCREEN_MEMBER_ACCOUNT .content-body .amount-selections .container button {
+		width: 75px;
+		font-size: 23px !important;
+		padding: 0;
+	}
+
+	.TFT.SCREEN_MEMBER_ACCOUNT .content-body .amount-selections .container .other-amount {
+		font-size: 16px !important;
+		width: 85px;
+	}
+
+	.TFT .horizontal .button-small, .TFT  .del-small{
+		height: 43px;
+		width: 74px;
+	}
+
+	.U6 .content-body>* {
+		width: 100%;
+	}
+
+	.U6 .button-small, .U6 .del-small {
+		width: 83px;
+		height: 40px;
+		font-size: 15px;
+		padding: 0;
+		margin: 1px;
+	}
+
+	.U6 .info-group-line {
+		height: 280px;
+	}
+
+	.horizontal .amount-selections {
+		height: 45vh;
+    	margin: 0;
+	}
+
+
+	/* U6RH */
+	@media screen and (min-width: 1070px) and (max-width: 1090px) {
+		.amount-selections {
+			display: flex;
+			justify-content: center;
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: 100%;
+		}
+
+		.v-box button {
+			height: 30px;
+    		width: 145px !important;
+			margin-right: 5px;
+		}
+
+		.v-box .other-amount, .v-box .other-amount button {
+			width: 100% !important;
+    		margin: 0;
+		}
+
+		.container {
+			justify-content: flex-start;
+		}
+
+		.other-amount {
+			display: flex;
+			justify-content: center;
+		}
+
+	}
+
+	/* u6 */
+	@media only screen and (height: 1009px) and (width: 384px) {
+		.amounts .v-box p {
+			font-size: 23px !important;
+		}
+
+		.v-box button {
+			height: 45px;
+			width: 225px;
+			font-size: 22px;
+		}
+	}
+
+
+</style>

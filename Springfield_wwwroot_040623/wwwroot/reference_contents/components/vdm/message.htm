@@ -1,0 +1,94 @@
+<template>
+  <div>
+    <app>
+      <div id="content" slot="content" v-show="showMessage">
+        <section class="info-area message-info-size">
+          <div class="msg">
+            <p>{{ decodeMessage(message) }}</p>
+          </div>
+        </section>
+        <section class="button-area button-area-items-center message-button-size">
+          <button class="normal-with-frame" @click="confirmMessage">{{ 'OK' | translate }}</button>
+        </section>
+      </div>
+    </app>
+  </div>
+</template>
+<script>
+module.exports = {
+  name: "message",
+  prop: {
+    messages: Array
+  },
+  data() {
+    return {
+      messages: [],
+      message: "",
+      counter: 1
+    };
+  },
+  computed: {
+    isFetching() {
+      return this.$store.state.isFetching;
+    },
+    showMessage() {
+      return !this.isFetching && this.$store.state.message.messagesAll.length > 0;
+    }
+  },
+  created() {
+    this.$store.state.isFetching = true;
+    if (this.$store.getters.isReadyToGetNewMessage) {
+      this.$store.dispatch("message/getMessage");
+    } else {
+      this.$watch(() => this.$store.getters.isReadyToGetNewMessage, function(newValue) {
+        if (newValue) {
+          this.$store.dispatch("message/getMessage");
+        }
+      });
+    }
+    this.$watch("isFetching", function(newValue) {
+      if (!newValue) {
+        this.messages.push(...this.$store.state.message.messagesAll);
+        if (this.messages.length > 0) {
+          this.message = this.messages[0];
+        } else if(this.$store.state.info.length == 0) {
+          this.$router.push("/promotion");
+        }
+      }
+    });
+  },
+  methods: {
+    confirmMessage() {
+      if (this.messages.length > this.counter) {
+        this.message = this.messages[this.counter];
+        this.counter += 1;
+      } else {
+        this.$router.push("/promotion");
+      }
+    },
+    decodeMessage(message) {
+      //document.querySelector('.msg > p').innerHTML = message.replace('&lt;','<').replace('&gt;','>')
+      $(".msg > p").html(message.replace('&lt;','<').replace('&gt;','>'));
+    }
+  }
+};
+</script>
+<style scoped>
+@import "../../style/vdm_button.css";
+@import "../../style/vdm_infoarea.css";
+@import "../../style/vdm_message-area.css";
+
+@media screen and (max-height: 400px) {
+  .message-info-size {
+    flex-grow: 1;
+  }
+
+  .message-button-size {
+    align-self: flex-end;
+  }
+
+  .message-button-size button {
+    margin: 0.3rem 0;
+  }
+}
+</style>

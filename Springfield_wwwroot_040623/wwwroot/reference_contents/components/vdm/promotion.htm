@@ -1,0 +1,81 @@
+<template>
+  <app>
+    <div id="content" slot="content">
+      <div class="column-1">
+        <pagelist :objects="formatedData" @item-click="itemClick" :cur-page="curPage" alt-message="There is no promotion" :item-count="itemCount" css-class="promotion"></pagelist>
+      </div>
+      <div class="column-2 promotion-footer-height">
+        <button :class="['normal-with-frame', showCheckinBtn]" @click="ticketCheckIn">{{ 'Check In All' | translate }}</button>
+        <pagecontroller v-show="formatedData.length" :total-page="totalPage" @page-change="pageChange"></pagecontroller>
+        <bar content="Help" @help-click="toggleHelp"></bar>
+      </div>
+    </div>
+  </app>
+</template>
+<script>
+module.exports = {
+  name: "promotion",
+  data() {
+    return {
+      curPage: 1,
+      itemCount: 4
+    };
+  },
+  created() {
+    this.$store.dispatch("promotions/getPromotionsAll");
+  },
+  computed: {
+    showCheckinBtn() {
+      return this.$store.getters["promotions/checkinDrawings"].length > 0 && !this.$store.state.promotions.isAlreadyCheckin
+        ? "visible"
+        : "hidden";
+    },
+    totalPage() {
+      return Math.ceil(this.formatedData.length / this.itemCount) || 1;
+    },
+    formatedData() {
+      var arr = [];
+      this.$store.state.promotions.promotionsAll.forEach(element => {
+        arr.push({
+          key: element.PromoAwardId,
+          value: {
+            Name: element.PromoAwardName,
+            TicketUsed: element.TicketsUsed
+          },
+          status: true
+        });
+      });
+      return arr;
+    }
+  },
+  methods: {
+    toggleHelp() {
+      this.$store.state.isFetching = false;
+      this.$store.dispatch("addInfo",
+        {message: "The IGT Virtual Drawing Manager (VDM) application automates the manual version of casino drawings. It allows properties to efficiently and securely issue virtual tickets to their players.",
+          title: "Help"}
+      );
+    },
+    ticketCheckIn() {
+      this.$store.dispatch("promotions/batchTicketCheckIn");
+    },
+    itemClick(data) {
+      this.$store.state.currentSelectPromoAwardId = data.key;
+      this.$router.push({ name: "drawing" });
+    },
+    pageChange(currentPage) {
+      this.curPage = currentPage;
+    }
+  }
+};
+</script>
+<style scoped>
+@import "../../style/vdm_button.css";
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  .promotion-footer-height {
+    height: 240px;
+  }
+}
+</style>

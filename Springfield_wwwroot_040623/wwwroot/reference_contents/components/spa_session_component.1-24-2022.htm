@@ -1,0 +1,763 @@
+<template>
+  <div class="container app-page"
+    :class="['SCREEN_SESSION', displayName, {vertical: isVertical , horizontal: !isVertical, smallH:smallH }]">
+    <cardless-status :ccType.sync="cardlessType"></cardless-status>
+    <div class="content-head">
+      <img id='logo' />
+      <p v-if="appConfig.isDebug">{{displayName}}</p>
+      <div>
+        <div id='player-pane' style="display:flex; justify-content:center; align-items: center;position: relative;">
+          <!-- <div class='cc-icon' :class="'cc-icon-' + cardlessType"></div> -->
+          <div id="player-name">{{PlayersPreferredName.split(' ')[0]}}</div>
+        </div>
+
+      </div>
+    </div>
+    <div class='content-body'>
+		<div class="dollars-container">
+			<div class="v-box points-slotdollars-container">
+				<p>{{ 'SLOT DOLLARS' | translate }} <span v-bind:class="{'invisible': (this.pointMultiplier <= 1)}">
+					(X{{pointMultiplier}})</span></p>
+				<div class="single-line">
+				  <h1 style="display:inline-block;" :class="{ 'with-go': PointPlay.Enabled}">
+					{{ currencySymbol }}{{PointInDollar | money(2)}}</h1>
+				  <button style="display:inline-block;" v-if="shouldShowPPGo" class="go-button" @click="navigateToPP()">
+					<span style="display:block;white-space: nowrap;transform-origin: 0 0;font-weight: bold;"
+					  :style="'transform: scale('+(language=='cn' ? '0.7': '0.9')+', 1);'">{{ 'GO' | translate }}</span>
+				  </button>
+				</div>
+			</div>
+			<div class="v-box points-session-container">
+				<div class='single-line'>
+					<p>{{'SESSION SLOT DOLLARS' | translate }}</p>
+					<h1 id='label_3'>{{ currencySymbol }} {{PlayerPointsEarnedSession | money(2)}}</h1>
+				</div>
+				<div id="compBalance" class='single-line'>
+					<p>{{ 'Comp' | translate }}</p>
+					<h1 id='label_2'>{{ currencySymbol }} {{CompBalanceMoneyToken | money(2)}}</h1>
+				</div>
+			</div>
+			<div class='v-box points-freeplay-container'>
+				<p class="free-play italic">{{ (isXCActivated ? 'FREEPLAY' : 'FREEPLAY') | translate }}</p>
+				<!-- <p>{{ (isXCActivated ? 'Active Xtra Credit' : 'Available Xtra Credit') | translate }}</p> -->
+				<div class="single-line">
+					<p v-if="!isXCActivated" class="points-available">AVAILABLE</p>
+					<p v-if="isXCActivated" class="points-active">ACTIVE</p>
+				   <h1 style="display:inline-block;" :class="{ 'with-go': XC.isEnabled}">
+					{{(isXCActivated ?  XC.FreePlayAmountCents : XC.XtraCreditInactiveAmount).toString() | money(2)}}
+				   </h1>
+				   <button style="display:inline-block;" v-if="shouldShowXCGo" class="go-button" @click="navigateToXC()"><span
+						style="display:block;white-space: nowrap;transform-origin: 0 0;font-weight: bold;"
+						:style="'transform: scale('+(language=='cn' ? '0.7': '0.9')+', 1);'">{{ 'GO' | translate }}</span></button>
+				</div>
+			</div>
+
+		</div>
+		<div class="multiplier">
+			<div id="point-multiplier" class="clickable point-multiplier">
+				<span id="pm-text">{{pointMultiplier}}X SLOT DOLLAR MULTIPLIER</span>
+			</div>
+
+			<div v-if="isVertical">
+				<!-- <div class="clickable point-multiplier">
+					<span>{{pointMultiplier}} POINT MULTIPLIER</span>
+				</div> -->
+
+				<div style="min-height: 54px; margin-top: 30px;" class="rr-bar">
+					<div v-bind:class="{'invisible': (!this.randomRichesAvailable)}" @click="handleNavigateRR"  class="clickable" style="display: flex; color: #fff; flex-direction: column; align-items: center; justify-content: center;">
+						<span class="riches">RANDOM RICHES</span>
+						<div class="random-riches">
+							<div :style='progressPercentCSS'></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<div v-if="isVertical" class="session-menu">
+			<div class="line"></div>
+			<div class="btn-2col-container" style="display: flex; flex-direction: row">
+				<div class="btn btn-dark invisible" style="width: 50%;">
+					<img class="playMyWay-image" style="height: 100%; width: 100%;" src="./mgm/images/playMyway-up-u4.png" alt="">
+				</div>
+				<div class="btn btn-dark btn-icon invisible" @click="callDrinks" style="width: 50%; padding-left:40px;">
+					<img class="icon active" style="left: 10px; transform: scale(0.6);" src="./mgm/images/icon/icon-drinks.png" alt="">
+					<img class="icon inactive" style="left: 10px; transform: scale(0.6);" src="./mgm/images/icon/icon-drinks-active.png" alt="">
+					<span style="font-size: 14px;">BEVERAGE SERVICE</span>
+				</div>
+			</div>
+			<div class="line"></div>
+			<div class="btn btn-icon" @click="navigateToPP()">
+				<img class="icon active" src="./mgm/images/icon/icon-slotdollars.png" alt="">
+				<img class="icon inactive" src="./mgm/images/icon/icon-slotdollars-active.png" alt="">
+				<m5-text textid="POINT_BALANCE" lang="en-us" class="lang_en">SLOT DOLLARS</m5-text>
+			</div>
+			<div class="line"></div>
+			<div class="btn btn-icon" @click="navigateToXC()">
+				<img class="icon active" src="./mgm/images/icon/icon-freeplay.png" alt="">
+				<img class="icon inactive" src="./mgm/images/icon/icon-freeplay-active.png" alt="">
+				<i textid="EXTRA_CREDIT" lang="en-us" class="lang_en italic"> FREEPLAY</i>
+			</div>
+			<div class="line"></div>
+			<div class="btn-2col-container" style="display: flex; flex-direction: row">
+				<div class="btn btn-dark btn-icon invisible" onClick="return; window.location='./intelOffer.html'" style="width: 50%">
+					<img class="icon active" style="left: 10px; transform: scale(0.6);" src="./mgm/images/icon/icon-offers.png" alt="">
+				 <img class="icon inactive" style="left: 10px; transform: scale(0.6);" src="./mgm/images/icon/icon-offers-active.png" alt="">
+					<span style="font-size: 14px;">AVAILABLE OFFERS</span>
+				</div>
+				<div class="btn btn-dark btn-icon" onClick="window.location='./property_info_with_ads.html'" style="width: 50%">
+					<img class="icon active" style="left: 6px; transform: scale(0.6);" src="./mgm/images/icon/icon-propinfo.png" alt="">
+				   <img class="icon inactive" style="left: 6px; transform: scale(0.6);" src="./mgm/images/icon/icon-propinfo-active.png" alt="">
+					<span style="font-size: 14px;">WHAT'S HAPPENING</span>
+				</div>
+			</div>
+		</div>
+		<button v-if="!isVertical" id="language" @click="changeLanguage()">
+			<img id="languageIcon" :src="languageImageURL" style="height:25px; width:24px">{{ 'Language' | translate }}
+		</button>
+    </div>
+    <div class="content-tail">
+      <!-- <div v-if= "!shouldShowVPCYourPlayBtn"></div> -->
+      <a v-if="shouldShowVPCYourPlayBtn" id="yourplaybtn" @click="yourPlay()">
+        <img id="yourplaybtn_img" />
+      </a>
+      <div v-if="appConfig != null && appConfig.ShowGamePlayedInSession" class="gamesplayed_img">
+        <p>{{PlayerSessionGamesPlayed}}</p>
+      </div>
+      <!-- <div class="rr" v-if="randomRichesAvailable">
+        <button @click="navigate('random_riches_summary.html')">{{ 'Random Riches' | translate }}</button>
+        <img class='progress-bar' :style="{width:progressPercent+'%'}" src="./assets/random_riches/progress_button/progress-bar.png" />
+        <span class="progress-percent">{{progressPercent}}%</span>
+      </div> -->
+      <button id='app-menu' class="bottom-line"  onclick="navigate('apps.html')">{{'MORE APPS' | translate}}</button>
+      <button v-if="isVertical" id="language" @click="changeLanguage()"><img id="languageIcon" :src="languageImageURL"
+          style="height:25px; width:24px">{{ 'Language' | translate }}</button>
+
+			 <div v-if="!isVertical" >
+	 				<div v-bind:class="{'invisible': (!this.randomRichesAvailable)}" @click="handleNavigateRR" class="clickable random-riches-container">
+	 					<span>RANDOM RICHES</span>
+	 					<div class="random-riches">
+							<div :style='progressPercentCSS'></div>
+	 					</div>
+	 				</div>
+	 			</div>
+			 <div v-if="!isVertical" class="session-menu">
+					 <div class="line"></div>
+					 <div style="display: flex; flex-direction: row;">
+						 <div class="btn btn-dark invisible">
+						 	 <img class="playMyWay-image" style="height: 100%; width: 100%;" src="./mgm/images/playMyway-up-u4.png" alt="">
+						 </div>
+						 <div class="btn btn-dark btn-icon invisible" @click="callDrinks">
+							 <img class="icon active" style="left: 18px;" src="./mgm/images/icon/icon-drinks.png" alt="">
+							 <img class="icon inactive" style="left: 18px;" src="./mgm/images/icon/icon-drinks-active.png" alt="">
+							 <span>BEVERAGE SERVICE</span>
+						 </div>
+					 </div>
+					 <div class="line"></div>
+					 <div style="display: flex; flex-direction: row;">
+						 <div class="btn btn-dark btn-icon" @click="navigateToPP()">
+						 	<img class="icon active" src="./mgm/images/icon/icon-slotdollars.png" alt="">
+						 	<img class="icon inactive" src="./mgm/images/icon/icon-slotdollars-active.png" alt="">
+							<span>SLOT DOLLARS</span>
+						 </div>
+						 <div class="btn btn-dark btn-icon" @click="navigateToXC()">
+							 <img class="icon active" src="./mgm/images/icon/icon-freeplay.png" alt="">
+							 <img class="icon inactive" src="./mgm/images/icon/icon-freeplay-active.png" alt="">
+							 <i>FREEPLAY</i>
+						 </div>
+					 </div>
+					 <div class="line"></div>
+					 <div style="display: flex; flex-direction: row;">
+						 <div class="btn btn-dark btn-icon invisible" onClick="return; window.location='./intelOffer.html'"  style="">
+							<img class="icon active" src="./mgm/images/icon/icon-offers.png" alt="">
+							<img class="icon inactive" src="./mgm/images/icon/icon-offers-active.png" alt="">
+							<span>AVAILABLE OFFERS</span>
+						 </div>
+						 <div class="btn btn-dark btn-icon" onClick="window.location='./property_info_with_ads.html'">
+							 <img class="icon active" src="./mgm/images/icon/icon-propinfo.png" alt="">
+							 <img class="icon inactive" src="./mgm/images/icon/icon-propinfo-active.png" alt="">
+							 <span>WHAT'S HAPPENING</span>
+						 </div>
+					 </div>
+					 <!-- <div class="btn btn-dark btn-icon" @click="navigateToPP()">
+						 <img class="icon active" src="./mgm/images/icon/icon-slotdollars.png" alt="">
+						 <img class="icon inactive" src="./mgm/images/icon/icon-slotdollars-active.png" alt="">
+						 <m5-text textid="POINT_BALANCE" lang="en-us" class="lang_en">SLOT DOLLARS</m5-text>
+					 </div> -->
+
+					 <!-- <div class="btn btn-dark btn-icon" >
+						 <img class="icon active" src="./mgm/images/icon/icon-freeplay.png" alt="">
+						 <img class="icon inactive" src="./mgm/images/icon/icon-freeplay-active.png" alt="">
+						 <m5-text textid="EXTRA_CREDIT" lang="en-us" class="lang_en free-play italic">FREEPLAY</m5-text>
+					 </div> -->
+					 <!-- <div class="line"></div>
+					 <div class="btn btn-dark btn-icon" onClick="window.location='./property_info_with_ads.html'">
+						 <img class="icon active" src="./mgm/images/icon/icon-propinfo.png" alt="">
+						 <img class="icon inactive" src="./mgm/images/icon/icon-propinfo-active.png" alt="">
+						 <m5-text textid="whats_happening" lang="en-us" class="lang_en"></m5-text>
+					 </div> -->
+				 </div>
+    </div>
+
+	 <div id="footer">
+		 <div class="navigations">
+			<!-- <div class="call-attendant clickable" onClick="handleOnCall()">
+				<img class="icon " onClick="" src="./mgm/images/icon/icon-attendant.png" alt="">
+			</div> -->
+			<!-- <img class="icon clickable" onClick=""  src="./mgm/images/icon/icon-back.png" alt=""> -->
+      <div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+        <img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+      </div>	
+    </div>
+
+	  </div>
+  </div>
+</template>
+
+<script>
+// import model
+  const PointPlay = window['com.igt.pointplay']();
+  const XC = window['com.igt.xtracredit']();
+  const Summary = window['com.igt.RR.summary']();
+	setTimeout(function(){
+		window.onLoad();
+	},500);
+  function mapRoot(...args) {
+    var result = {}
+    for (let key of args) {
+      result[key] = function () {
+        return key in this.$root ? this.$root[key] : "";
+      }
+    }
+    return result;
+  }
+  module.exports = {
+    beforeRouteLeave(to, from, next) {
+      if (to.name == "welcome") {
+
+      } else {
+        next();
+      }
+    },
+    data() {
+      return {
+        reverseLanguageImage: true,
+        // errorMessage: "",
+        cardlessType: null,
+      }
+    },
+    state: {
+      pointMultiplier: 1,
+    },
+    created() {
+      this.checkPointMultiplierContentCache();
+    },
+    computed: Object.assign({
+      randomRichesAvailable() {
+        console.log("randomRichesAvailable:", Summary.state.randomRichesAvailable);
+        return Summary.state.randomRichesAvailable;
+      },
+      progressPercent() {
+        //return Summary.getters.calculatedPercentage;
+        return Math.floor(Summary.getters.highestPromotionProgress * 100);
+      },
+		progressPercentCSS() {
+			return `width: ${this.progressPercent}%`
+		},
+      smallH() {
+        return this.contentWidth / this.contentHeight < 4 && !this.isVertical;
+      },
+      // themeName() {
+      //   if (this.appConfig.PlayerLevelTheme) {
+      //     return this.appConfig.PlayerLevelTheme[this.PlayerLevel];
+      //   }
+      //   return "defaultTheme";
+      // },
+      // PlayerSessionGamesPlayed() {
+      //   return this.$store.state.PlayerSessionGamesPlayed;
+      // },
+      pointMultiplier() {
+        return this.$store.state.pointMultiplier;
+      },
+      shouldShowActiveXC() {
+        return true;
+        // return parseFloat(this.FreePlayAmountCents.toString().substr(1)) > 0;
+      },
+      shouldShowXCGo() {
+        return true;
+        // if (this.appConfig && this.appConfig.hideNotAvailablePPXC && !XC.Enabled)
+        //   return false;
+        // return parseFloat(this.XtraCreditInactiveAmount.toString().substr(1)) > 0 || parseFloat(this.FreePlayAmountCents.toString().substr(1)) > 0;
+      },
+      shouldShowPPGo() {
+        return true;
+        // if (this.appConfig && this.appConfig.hideNotAvailablePPXC && !this.PointPlay.Enabled)
+        //   return false;
+        // return this.PointInDollar >= this.PointConversionMinimumDollar;
+      },
+      languageImageURL() {
+        var lan = this.reverseLanguageImage ^ this.language == "en" ? "en" : "cn";
+        return `./assets/language_icon_${lan}.png`
+      },
+      playerNameTagStyle() {
+        // we suppose the max name field could be 70 characters
+        // [StackOverflow](https://stackoverflow.com/questions/20958/list-of-standard-lengths-for-database-fields)
+        var fontSize;
+        if (this.isVertical) {
+          fontSize = (70 - this.PlayersPreferredName.length) * (34 - 15) / 59 + 15;
+        } else {
+          fontSize = (70 - this.PlayersPreferredName.length) / 59 * (20 - 12) + 12;
+        }
+
+        return `text-align: center; line-height: ${fontSize + 2}px; word-break: break-all; font-size:${fontSize}px`
+      },
+      shouldShowVPCYourPlayBtn() {
+        if (this.appConfig.isSupportVpc) {
+          return this.appConfig.isSupportVpc;
+        }
+        return false;
+      }
+    }, mapRoot("appConfig", "navigate", "PlayerLevel", "PlayersPreferredName", "PlayerLevelName", "PointPlay",
+      "currencySymbol", "language", "PointInDollar", "isXCActivated", "XC", "isEnabled", "CompBalanceMoneyToken",
+      "PlayerPointsEarnedSession", "isVertical", "displayName", "contentWidth",
+      "contentHeight", "PlayerSessionGamesPlayed", "pointMultiplier")),
+    watch: {
+      // PlayerLevel() {
+      //   this.changeTheme();
+      // },
+      displayMessage: {
+        immediate: true,
+        handler(newMessage) {
+          if (this.cardId === "0") return;
+          let match = /multiplied by (\d+)/i.exec(newMessage);
+          if (match && Number(match[1]) > 1) {
+            const multiplier = Number(match[1]).toFixed();
+            this.$store.state.pointMultiplier = multiplier;
+            IGTMediaElements.contentCache.setStateElement("pointMultiplier", multiplier);
+          }
+        }
+      },
+	  PlayersPreferredName() {
+		  //$('#player-name').attr('style', 'background: #fff');
+	  }
+    },
+    methods: {
+      // changeTheme() {
+      //   var suffix = Number(this.PlayerLevel) == 2 ? "_lv2" : "";
+      //   $("body").css({
+      //     "background-image": `url(../assets/bg${suffix}.png)`
+      //   });
+      // },
+      navigateToPP() {
+        if (this.PointInDollar < this.PointConversionMinimumDollar) {
+          this.$root.errorMessage = "Point Play balance is too low."
+          return;
+        }
+        IGTMediaElements.validatePin()
+          .then(() => {
+            navigate('pointplay.html')
+          })
+          .catch(e => {
+            this.$root.errorMessage = e;
+          })
+      },
+      navigateToXC() {
+        IGTMediaElements.validatePin()
+          .then(() => {
+            navigate('xtracredit.html');
+          })
+          .catch(e => {
+            this.$root.errorMessage = e;
+          })
+      },
+      cardout() {
+        IGTMediaElements.ewallet.forceCardOut().then(function () {
+
+        })
+      },
+		handleNavigateRR(){
+			if(!this.randomRichesAvailable) {
+				return;
+			}
+
+			navigate('random_riches_summary.html');
+		},
+		callDrinks() {
+			return;
+			console.log('call event');
+			IGTMediaElements.hostEventButtonPress(0,1,false,50);
+		},
+      changeLanguage() {
+        $("#language").prop("disabled", true)
+        setTimeout(() => {
+          $("#language").prop("disabled", false)
+        }, 1000)
+        this.$store.analytics.willTriggerBusiness("changeLanguage", {
+          'language': this.$store.state.language
+        });
+        this.$store.dispatch("changeLanguage", this.$store.state.language == "en" ? "cn" : "en");
+      },
+      checkPointMultiplierContentCache() {
+        IGTMediaElements.contentCache.getStateElement("pointMultiplier").then(res => {
+          if (res) {
+            this.$store.state.pointMultiplier = res;
+          }
+        })
+      },
+      yourPlay() {
+        this.$store.dispatch("waitForNavigateToVpcLas");
+      }
+    },
+
+    modules: {
+      PointPlay: PointPlay,
+      XC: XC,
+      Summary
+    }
+  }
+  function setupLayout() {
+    // TweenMax.staggerFrom(["#logo", "#player-pane", "#level-pane", "#session-pane", "#RandomRichesBtn", "#CashlessBtn", "#app-menu"], 0.8, { y: "+=140", alpha: 0, scale: 2, ease: Back.easeOut }, 0.07);
+  }
+
+  Patron.onStart(() => {
+    setupLayout();
+  })
+
+  Patron.press("#app-menu", function () {
+    navigate('apps.html');
+  });
+
+  Patron.watch(state => state.displayMessage, (msg) => {
+    trace("displayMessage: " + msg);
+  })
+
+
+  Patron.press("#RandomRichesBtn", function () {
+    /* TODO: */ });
+
+
+	   var pointMultiplierText;
+	   var pointMultiplierToken;
+	   var pointMultiplierSetTime;
+	   var pointMultiplierSearchText = 'Points are multiplied by ';
+	   var pointMultiplierTime = 2 * 1000 * 60; //2 mins - 120,000 - js runs in ms
+	   var pointMultiplierTimer = null;
+
+	   pointMultiplierTimer = setInterval(UpdatePointMultiplierToken, 60000);
+
+	    registerScreenMessage('0x11');
+	     IGTMediaElements.getTokens(['0x11']);
+
+	     function registerScreenMessage(value) {
+	       console.log(value);
+	       IGTMediaElements.subscribeScreenTrigger(value, function (displayMessage){
+	         console.log("displayMessage => : " + displayMessage);
+	         var indexOf = -1;
+	         var tempToken;
+
+	         if (displayMessage) {
+	           indexOf = displayMessage.indexOf(pointMultiplierSearchText);
+	           console.log("indexOf => : " + indexOf);
+	           if (indexOf !== -1){
+	             pointMultiplierText = displayMessage.trim();
+	             console.log("pointMultiplierText (displayMessage.trim()) => : " + pointMultiplierText);
+	             tempToken = pointMultiplierText.substr(indexOf + pointMultiplierSearchText.length, pointMultiplierText.length);
+	             tempToken = parseInt(tempToken);
+	             if (tempToken || tempToken === 0) {
+	               console.log('PM - final if statement');
+	               console.log("Temp token (point multiplier) => : " + tempToken);
+	               pointMultiplierToken = tempToken;
+	               IGTMediaElements.contentCache.setStateElement('pointMultiplier', pointMultiplierToken);		//- update the cached PM value
+	               pointMultiplierSetTime = new Date().getTime();
+	               UpdatePointMultiplierToken();
+	             }
+	           }
+	         }
+	       });
+	     }
+
+	 	   function UpdatePointMultiplierToken(){
+
+	 	     //x check if it's been at least two minutes since the last time pm was checked?
+	 	     var timeCalc = newTime - pointMultiplierSetTime;
+	 	     var lessThanTwo;
+	 	     var newTime = new Date().getTime();
+	 	     if ((newTime - pointMultiplierSetTime) < pointMultiplierTime) {
+	 	       lessThanTwo = true;
+
+	 	       /*console.log("newTime - pointMultiplierSetTime < pointMultiplierTime");
+	 	       console.log("newTime => : " + newTime);
+	 	       console.log("pointMultiplierSetTime => : " + pointMultiplierSetTime);
+	 	       console.log("newTime - pointMultiplierSetTime => : " +  timeCalc);
+	 	       console.log("newTime - pointMultiplierSetTime < pointMultiplierTime => : " + lessThanTwo);*/
+
+	 	       //- check if the point-multiplier element is on the screen and update
+
+
+	 	       if (document.getElementById('point-multiplier')) {
+	 	         if(pointMultiplierToken && pointMultiplierToken !== 0 && pointMultiplierToken !== '0'){
+	 					//document.getElementById('pointMultiplierText').style.visibility = "visible";
+	 					//document.getElementById('pointMultiplier').style.visibility = "visible";
+
+	 	           document.getElementById('point-multiplier').style.visibility = "visible";
+	 	           document.getElementById('pm-text').innerHTML = pointMultiplierToken + "X SLOT DOLLAR MULTIPLIER";
+	 	         }
+	 	         else {
+	 	           document.getElementById('point-multiplier').style.visibility = "hidden";
+	 	         }
+	 	       }
+	 	     } else {
+	 	       lessThanTwo = false;
+	 	       /*console.log("newTime - pointMultiplierSetTime < pointMultiplierTime");
+	 	       console.log("newTime => : " + newTime);
+	 	       console.log("pointMultiplierSetTime => : " + pointMultiplierSetTime);
+	 	       console.log("newTime - pointMultiplierSetTime => : " +  timeCalc);
+	 	       console.log("newTime - pointMultiplierSetTime < pointMultiplierTime => : " + lessThanTwo);*/
+	 	       return;
+	 	     }
+	 	   }
+
+	 	   //- Called on page load. Checks cache for PM value. Displays cached value as the default message.
+	 	   function checkCacheForPointMultiplier() {
+	 	     IGTMediaElements.contentCache.getStateElement("pointMultiplier").then(res => {
+	 	       if (res) {
+	 	         console.log('cached PM token found: ', res);
+	 	         pointMultiplierToken = res;
+	 	         document.getElementById('point-multiplier').style.visibility = "visible";
+	 	         document.getElementById('pm-text').innerHTML = pointMultiplierToken + "X SLOT DOLLAR MULTIPLIER";
+	 	       } else {
+	 	         console.log('no PM token found');
+	 	         document.getElementById('point-multiplier').style.visibility = "hidden";
+	 	       }
+	 	     })
+	 	   }
+
+	 	   checkCacheForPointMultiplier();
+
+</script>
+
+<style>
+  :root {
+    --go-button-size: 50px;
+  }
+
+</style>
+<style scoped>
+  /* .v-box{
+      align-items: center;
+    } */
+  .h-box-wrap {
+    justify-content: center;
+    /* width: fit-content; */
+    align-items: flex-end;
+  }
+
+  .content-body {
+    justify-content: space-around;
+  }
+
+  .vertical .content-body {
+    padding-top: 10px;
+  }
+
+  h1 {
+    color: white;
+    margin: 0;
+    margin-top: -5px;
+  }
+
+  p {
+    width: 100%;
+  }
+
+  .go-button {
+    background-image: url(../assets/btn-go-normal.png);
+    width: var(--go-button-size);
+    height: calc(var(--go-button-size) / 61 * 48);
+    transform: translate(0, -2px);
+    /* position: absolute; */
+    /* top: 13px; */
+    /* right: var(--margin-to-right); */
+  }
+
+  #player-pane, #player-name {
+	  background-color: transparent;
+    white-space: normal;
+    word-break: break-word;
+    overflow: hidden;
+  }
+
+.TFT .go-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .go-button:active {
+    background-image: url(../assets/btn-go-active.png);
+  }
+
+  .with-go {
+    text-align: right;
+    /* width: 60%; */
+    width: auto;
+  }
+
+  .content-body p {
+    white-space: nowrap;
+  }
+
+  .content-body>div {
+    position: relative;
+    max-width: 90%;
+    /* margin-bottom: 10px; */
+  }
+
+
+  #player-pane {
+    /* background-image: url('../assets/playername-bg.png'); */
+    height: 84px;
+    width: var(--component-space);
+    line-height: 80px;
+  }
+
+  .level2 #level-pane {
+    background-image: url('../assets/rank-bg-lv2.png');
+  }
+
+  #level-pane {
+    background-image: url('../assets/rank-bg.png');
+    width: calc(var(--component-space) - 20%);
+    margin: -4px 10%;
+    height: 24px;
+    line-height: 24px;
+    font-weight: 900;
+  }
+
+  #language {
+    background-image: url('../assets/language-bg.png');
+    /* margin-top: 60px; */
+  }
+
+  #languageIcon {
+    transform: translate(0, 5px);
+    margin-right: 10px;
+  }
+
+  #language:disabled {
+    opacity: 0.5;
+  }
+
+  :root.horizontal {
+    -margin-to-right: 50%;
+  }
+
+  .horizontal .content-body>div {
+    flex: 0 50%;
+  }
+
+
+  .U3_H .content-body>div,
+  .U6_RH .content-body>div {
+    flex: 0 21%;
+  }
+
+  .U6 #language {
+    width: 90% !important;
+  }
+
+  :root.U6 {
+    --margin-to-right: 20%;
+  }
+
+  :root.U6[lang="cn"] {
+    --margin-to-right: 23%;
+  }
+
+  .horizontal div.seperator {
+    display: none;
+  }
+
+  .horizontal #language {
+    width: 50% !important;
+  }
+
+  .horizontal #player-pane {
+    /* background-image: url('../assets/playername-bg.png'); */
+    height: 68px;
+    width: var(--component-space);
+  }
+
+
+  :root.smallH {
+    --go-button-size: 30px;
+    --margin-to-right: 15% !important;
+  }
+
+  .smallH .go-button {
+    font-size: 12px !important;
+  }
+
+  .smallH p {
+    font-size: 14px !important;
+  }
+
+  .smallH h1,
+  .smallH button {
+    font-size: 20px !important;
+  }
+
+
+  .smallH #language {
+    width: 75% !important;
+  }
+
+  /* rr progress bar */
+  .rr {
+    position: relative;
+    align-self: center;
+  }
+
+  .rr button {
+    width: 100%;
+    padding-bottom: 6px;
+    background-image: url(../assets/random_riches/progress_button/btn-rr-normal.png);
+  }
+
+  .rr button:active {
+      background-image: url(../assets/random_riches/progress_button/btn-rr-active.png);
+    }
+
+  .progress-bar {
+    position: absolute;
+    left: 0px;
+    height: 30%;
+    width: 0%;
+    bottom: 0px;
+  }
+
+  .progress-percent {
+    position: absolute;
+    font-size: 13px;
+    color: black;
+    font-style: italic;
+    font-weight: bold;
+    bottom: 0;
+    left: 83%;
+  }
+
+
+  .horizontal .rr {
+    width: 100%;
+  }
+
+  .horizontal .rr button {
+    height: 100%;
+  }
+
+  .TFT .rr button {
+    font-size: 18px !important;
+  }
+
+  /* end of rr progress bar */
+</style>

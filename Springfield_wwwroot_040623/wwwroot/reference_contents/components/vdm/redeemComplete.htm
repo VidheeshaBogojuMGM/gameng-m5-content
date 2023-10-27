@@ -1,0 +1,40 @@
+<template>
+  <app>
+    <div id="content" slot="content">
+      <div class="column-1">
+        <div class="info-area rc-info-size">
+          <div class="info-title">{{ 'Success' | translate }}</div>
+          <div class="line"></div>
+          <div class="info-message">{{ 'Total Tickets' | translate }}: {{ this.$root.AllTickets }}</div>
+          <div class="info-message">{{ 'Tickets Entered' | translate }}: {{this.$root.enteredTktNum}}</div>
+        </div>
+      </div>
+      <div class="column-2">
+        <div class="two-button-placeholder"></div>
+        <button class="normal last-button" @click="btnClick">{{ 'Exit' | translate }}</button>
+      </div>
+    </div>
+  </app>
+</template>
+<script>
+module.exports = {
+  name: "redeemComplete",
+  methods: {
+    btnClick() {
+      this.$store.state.enteredTktNum = this.$root.enteredTktNum;
+      this.$router.push({ name: "done" });
+    }
+  }
+};
+</script>
+<style scoped>
+@import "../../style/vdm_button.css";
+@import "../../style/vdm_infoarea.css";
+
+@media screen and (max-height: 400px) {
+  .rc-info-size {
+    flex-grow: 1;
+  }
+}
+</style>
+

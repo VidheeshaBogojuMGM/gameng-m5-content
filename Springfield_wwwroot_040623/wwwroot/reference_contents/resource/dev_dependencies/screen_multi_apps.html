@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>screen_with_multi_apps</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="stylesheet" type="text/css" href="./style/common.css">
+  <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+  <style>
+    .content-body {
+      height: 90%;
+    }
+
+    .content-body button {
+      width: 100%
+    }
+
+    .border-bottom {
+      border-bottom: 1px solid white;
+    }
+
+    .horizontal .content-body div {
+      border-bottom: none;
+    }
+
+    .horizontal p {
+      font-size: 15px;
+    }
+
+    .horizontal .content-head {
+      width: 0;
+    }
+
+    .horizontal .content-body {
+      height: 100%;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+    }
+
+    .horizontal .app {
+      width: 30%;
+      height: 20%;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="loading"></div>
+  <div id="decoration"></div>
+  <div id="app" resize="preset-2" v-cloak>
+
+    <div class='content-head'>
+    </div>
+    <div class='content-body'>
+      <div class="app rr border-bottom">
+        <h2>RR</h2>
+        <p v-if="randomRichesAvailable">Progress</p>
+        <p>{{rrProgressPercent}}%</p>
+      </div>
+      <div class="app vdm border-bottom">
+        <h2>VDM</h2>
+        <div v-for="p of vdmPromotions">
+          <p>Promotion: {{p.PromoAwardName}}</p>
+          <p>Drawings count: {{p.Drawings.length}}</p>
+        </div>
+      </div>
+      <div class="app io ">
+        <h2>IO</h2>
+        <p>offers: {{Offer.OfferList!=null? Offer.OfferList.length:0}}</p>
+      </div>
+    </div>
+    <div class='content-tail'>
+      <button onclick="navigate('SESSION_SCREEN')">BACK</button>
+    </div>
+  </div>
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./random_riches.model.js"></script>
+  <script src="./VDM.model.js"></script>
+  <script>
+    const offers = window['com.igt.intelOffer']();
+    offers.dispatch('PrepareOfferList', {
+      nonRedeemed: "no",
+      latestOfferForDays: 30
+    })
+
+    const Summary = window['com.igt.RR.summary']();
+    const VDM = window['com.igt.VDM']();
+    VDM.dispatch("promotions/getPromotionsAll");
+
+    const idle = window['com.igt.idle_screen']("#app", {
+      modules: {
+        Offer: offers,
+        Summary,
+        VDM
+      },
+      data() {
+        return {
+          rrProgressPercent: 0,
+          vdmPromotions: []
+        }
+      },
+      computed: {
+        randomRichesAvailable() {
+          return Summary.state.randomRichesAvailable;
+        },
+        vdmPromos() {
+          return VDM.state.promotions.promotionsAll;
+        }
+      },
+      watch: {
+        highestPromotionProgress(n) {
+          this.rrProgressPercent = Math.floor(n * 100);
+        },
+        vdmPromos(n) {
+          this.vdmPromotions = n;
+        }
+      },
+    });
+
+  </script>
+</body>
+
+</html>

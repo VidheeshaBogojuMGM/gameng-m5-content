@@ -1,0 +1,122 @@
+<template>
+  <app>
+    <div id="content" slot="content">
+      <div class="column-1">
+        <div class="info-area">
+          <div class="info-wrapper">
+            <span class="title">{{ DrawingName }}</span>
+            <span class="sub-title">{{ DrawingDate | formatDate }}</span>
+            <div class="line invisible"></div>
+          </div>
+          <div class="custom-info custom-info-pos1">
+            <span class="value">{{ AvailableFreeEntryNumber }}</span>
+            <span class="key">{{ 'Free Entries' | translate }}</span>
+            <div class="line invisible"></div>
+          </div>
+          <div class="custom-info custom-info-pos2">
+            <span class="value">{{ TicketsAvailable }}</span>
+            <span class="key">{{ 'Available Tickets' | translate }}</span>
+            <div class="line invisible"></div>
+          </div>
+        </div>
+        <pinpad v-on:listen-to-pinpad="showMsgFromChild" ref="pinpad" :disable-buttons="$store.getters.ableToInputTickets<=0" :errormsg="tipMessage"></pinpad>
+      </div>
+      <div class="column-2 enterSome-footer-height">
+        <div class="one-button-placeholder"></div>
+        <div class="button-area button-size">
+          <button class="normal" @click="enter" :disabled="$store.getters.ableToInputTickets<=0">{{ 'Enter' | translate }}</button>
+        </div>
+        <bar content="Back"></bar>
+      </div>
+    </div>
+  </app>
+</template>
+<script>
+module.exports = {
+  name: "enterSome",
+  data() {
+    return {
+      results: "",
+      tipMessage: ""
+    };
+  },
+  methods: {
+    showMsgFromChild(data) {
+      if (data.length > 7) {
+        this.tipMessage = "The input exceeds the maximum number(9999999).";
+        this.$refs.pinpad.results = this.$refs.pinpad.results.substr(
+          0,
+          data.length - 1
+        );
+      } else {
+        this.tipMessage = "";
+        this.results = data;
+      }
+    },
+    enter() {
+      if (this.results == "") {
+        this.tipMessage = "You did not input any tickt.";
+        return;
+      }
+      const ticket_num = parseInt(this.results);
+
+      if (ticket_num == 0) {
+        this.tipMessage = "Number of tickets must be greater than 0.";
+      } else if (
+        ticket_num >
+        this.AvailableFreeEntryNumber + this.TicketsAvailable
+      ) {
+        this.tipMessage =
+          "You do not have enough available tickets for the current Promotion Award.";
+      } else {
+        this.tipMessage = "";
+        this.results = "";
+        this.$refs.pinpad.results = "";
+
+        this.$store.state.AllTickets = ticket_num;
+        this.$router.push({ name: "enterAll" });
+      }
+    }
+  },
+  computed: {
+    DrawingName() {
+      return this.$store.state.award.awardAll.DrawingName;
+    },
+    DrawingDate() {
+      return this.$store.state.award.awardAll.DrawingDate;
+    },
+    AvailableFreeEntryNumber() {
+      return this.$store.state.AvailableFreeEntryNumber;
+    },
+    TicketsAvailable() {
+      return this.$store.state.TicketsAvailable;
+    }
+  }
+};
+</script>
+
+<style scoped>
+@import "../../style/vdm_infoarea.css";
+@import "../../style/vdm_button.css";
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  .enterSome-footer-height {
+    height: 150px;
+  }
+}
+
+@media screen and (max-height: 400px) {
+  .custom-info-pos1 {
+    position: absolute;
+    top: 25px;
+    right: 360px;
+  }
+
+  .custom-info-pos2 {
+    position: absolute;
+    top: 25px;
+    right: 90px;
+  }
+}
+</style>

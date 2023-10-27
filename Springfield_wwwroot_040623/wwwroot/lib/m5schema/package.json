@@ -1,0 +1,20 @@
+{
+  "name": "m5Schema",
+  "version": "5.4.0",
+  "description": "The M5 Schemas.",
+  "private": true,
+  "scripts": {
+    "test": "npm run -s test-coverage & npm run -s test-jenkins",
+    "test-coverage": "node_modules/.bin/istanbul cover -report lcov --no-default-excludes --report=text  -x '**/node_modules/**' node_modules/.bin/_mocha test/*",
+    "test-jenkins": "node_modules/.bin/_mocha --colors --reporter mocha-jenkins-reporter --reporter-options junit_report_path=testResults.xml,junit_report_name=M5Schema test/*",
+    "deploy": "mkdir -p ../bin/m5schema && cp -a docs schemas ../bin/m5schema/ && cp -a package.json ../bin/m5schema/"
+  },
+  "dependencies": {
+    "chai": "3.5.0",
+    "istanbul": "0.4.5",
+    "mocha": "3.5.3",
+    "request": "2.88.0",
+    "z-schema": "3.25.0",
+    "mocha-jenkins-reporter": "0.4.1"
+  }
+}

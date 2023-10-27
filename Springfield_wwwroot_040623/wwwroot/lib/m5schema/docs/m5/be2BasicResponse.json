@@ -1,0 +1,14 @@
+{
+  "cmd": "be2BasicResponse",
+  "ver": "1.0",
+  "be2BasicResponse": [
+    {
+      "functionCode": 0,
+      "retvals": [1,2,3,4]
+    },
+    {
+      "functionCode": 255,
+      "retvals": [5,6,7,8]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>markertrax</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="stylesheet" type="text/css" href="./style/common.css">
+  <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+  <link rel="stylesheet" type="text/css" href="./style/markertrax.css">
+</head>
+
+<body>
+<div id="app" class='app' resize="preset-2" v-cloak>
+  <!--      <div v-if="isLoading" id="loading" class="loading"></div>-->
+  <message-overlay :message.sync="errorMessage"></message-overlay>
+  <div id='mtx-loading' class="page app-page">
+    <br>
+    <div v-if="isLoading" id="loading" class="loading"></div>
+    <div class='content-head'>
+      <img id='logo' />
+    </div>
+    <div class="content-body message-box invisible-box">
+      <p class="loadMessage">{{loadingMessage | translate}}
+      <p v-if="showOpDollar" class="loadMessage load-dollar">${{DollarInput | thousandsFormatFilter }}</p>
+      </p>
+    </div>
+  </div>
+  <div id='mtx-workflow' class="page app-page">
+    <!-- Standard worfklow page. Your balances and downloads happen here -->
+    <br>
+    <div class='content-head'>
+      <img id='logo' />
+    </div>
+    <div id="balancesScreens" v-if="showBalances" class='content-body'>
+      <div class="balance-line balance-line1">
+        <p v-if="showCreditLine">{{ 'Total Credit Line' | translate }}</p>
+        <h1 v-if="showCreditLine" class='cash-color'>{{ currencySymbol }}{{
+          isPinValid ? TotalCreditLine : " ***" | thousandsFormatFilter}}</h1>
+      </div>
+      <div class="balance-line balance-line2">
+        <p v-if="showBalanceLine">{{ 'Marker Balance' | translate }}</p>
+        <h1 v-if="showBalanceLine" class='cash-color'>{{ currencySymbol }}{{
+          isPinValid ? MarkerBalance : " ***" | thousandsFormatFilter}}</h1>
+      </div>
+      <div class="balance-line balance-line3">
+        <p>{{ 'Available Credit' | translate }}</p>
+        <h1 class='cash-color'>{{ currencySymbol }}{{ isPinValid ? AvailableCredit : " ***" |
+          thousandsFormatFilter}}</h1>
+      </div>
+      <p v-if="showMTXInputPad" class="input-header">{{ 'Input an amount to transfer' | translate }}</p>
+      <div v-if="showMTXInputPad" class='display-bg-position'>
+        <p class='cash-color' id='amount'>{{ currencySymbol }}{{DollarInput | thousandsFormatFilter}}</p>
+      </div>
+      <div v-if="showMTXInputPad" class='align-box flex-order pin-box'>
+
+        <button id='num-1' class='button-small' v-on:click="input(1)">1</button>
+        <button id='num-2' class='button-small' v-on:click="input(2)">2</button>
+        <button id='num-3' class='button-small' v-on:click="input(3)">3</button>
+
+        <button id='num-4' class='button-small' v-on:click="input(4)">4</button>
+        <button id='num-5' class='button-small' v-on:click="input(5)">5</button>
+        <button id='num-6' class='button-small' v-on:click="input(6)">6</button>
+
+        <button id='num-7' class='button-small' v-on:click="input(7)">7</button>
+        <button id='num-8' class='button-small' v-on:click="input(8)">8</button>
+        <button id='num-9' class='button-small' v-on:click="input(9)">9</button>
+
+        <button id='back' class='button-small' v-on:click="input('back')">{{
+          'Del' | translate }}</button>
+        <button id='num-0' class='button-small' v-on:click="input(0)">0</button>
+        <button id='clear' class='button-small' v-on:click="input('clear')">{{
+          'Clear' | translate }}</button>
+
+      </div>
+    </div>
+    <div id="confirmScreen" v-if="showConfirm" class='content-body message-box confirm-box'>
+      <div>
+        <p>{{ 'You have selected to download' | translate }}</p>
+        <p>${{DollarInput | thousandsFormatFilter }}</p>
+        <p>{{ 'Confirm?' | translate }}</p>
+      </div>
+    </div>
+    <div class='content-tail'>
+      <div></div>
+      <button id="btn-download-marker" v-if="!showMTXInputPad && !showConfirm" onclick='displayMTXInputPad()'>{{ 'Download Marker' | translate }}</button>
+      <button id="confirmScreenYesButton" v-if="showConfirm" onclick='downloadMTXToCashless()'>{{ 'CONFIRM' | translate }}</button>
+      <button id="confirmScreenNoButton" v-if="showConfirm" onclick='displayMTXInputPad()'>{{ 'CANCEL' | translate }}</button>
+      <button id='enterValueButton' v-if="showWorkflowBackButton" :disabled='DollarInput == 0' onclick='enterMTXValueToConfirm()'>{{ 'ENTER' | translate }}</button>
+      <button id="backToWorkflowButton" v-if="showWorkflowBackButton" onclick='displayMTXWorkflow()'>{{ 'BACK' | translate }}</button>
+      <button id="exitAppBackButton" v-if="showBackButton" onclick='exitApp()'>{{ 'BACK' | translate }}</button>
+    </div>
+  </div>
+
+  <div id='operation-message' class="page app-page">
+    <!-- All Error Messaging and Result Operation Messaging handled here -->
+    <div class='content-head'>
+      <img id='logo' />
+    </div>
+
+    <div id="op-message" class='content-body message-box error-box'>
+      <div class=''>
+        <p>{{opMessage | translate}}</p>
+        <p class="op-dollar" v-if="showOpDollar">${{DollarInput | thousandsFormatFilter }}</p>
+      </div>
+    </div>
+    <div class='content-tail'>
+      <button id="enterPinOnEgmButton" v-if="showEnterButton" onclick='handlePinFromButton()'>{{ 'Enter PIN on EGM' | translate }}</button>
+      <button id="exitAppBackButton" v-if="showBackButton" onclick='exitApp()'>{{ 'BACK' | translate }}</button>
+      <button id="backToBalances" v-if="navReturnToBalances" onclick='getBalances()'>{{ 'BACK' | translate }}</button>
+      <button if="exitAppCancelButton" v-if="showCancelButton" onclick='exitApp()'>{{ 'CANCEL' | translate }}</button>
+    </div>
+  </div>
+
+</div>
+<script src="./js/polyfill.js"></script>
+<script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+<script src="./js/model/all_in_one.model.js"></script>
+<script src="./js/markertrax.skin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<template>
+  <div id="pin-pad">
+    <p v-bind:class="showErrorMsg">{{errormsg | translate}}</p>
+    <input id="pinEntry" type="text" v-model="results" name="pinEntry" onfocus="this.blur()">
+    <div class="btn-wrapper">
+      <button class="pinbtn" :disabled="disableButtons" v-for="i in buttons" :key="i.id" :class="{func: isNaN(i)}" @click="enterPin(i)">{{i | translate}}</button>
+    </div>
+  </div>
+</template>
+
+<script>
+module.exports = {
+  name: "pinpad",
+  props: ["errormsg", "disableButtons"],
+  data() {
+    return {
+      buttons: [1, 2, 3, 4, 5, 6, 7, 8, 9, "CLEAR", 0, "BACK"],
+      results: ""
+    };
+  },
+  methods: {
+    enterPin(value) {
+      if (value == "CLEAR") {
+        this.results = "";
+      } else if (value == "BACK") {
+        this.results = this.results.substr(0, this.results.length - 1);
+      } else if (parseInt(this.results) === 0) {
+        this.results = value.toString();
+      } else {
+        this.results += value.toString();
+      }
+      this.$emit("listen-to-pinpad", this.results);
+    }
+  },
+  computed: {
+    showErrorMsg() {
+      return this.errormsg == "" ? "hide" : "show";
+    }
+  }
+};
+</script>
+
+<style >
+.hide {
+  visibility: hidden;
+}
+.show {
+  visibility: visible;
+}
+
+#pin-pad {
+  flex-grow: 1;
+  width: 260px;
+  text-align: center;
+}
+.btn-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.btn-wrapper > button {
+  margin: 0.1rem 0.2rem;
+}
+#pin-pad > p {
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  height: 4rem;
+}
+button.pinbtn {
+  color: white;
+  width: 72px;
+  height: 72px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px 5px;
+  background-size: 72px 72px;
+  background-image: url("../../../assets/vdm/third-button-normal.png");
+}
+button.pinbtn:active {
+  background-image: url("../../../assets/vdm/third-button-down.png");
+}
+
+button.pinbtn:disabled {
+  background-image: url("../../../assets/vdm/third-button-disable.png");
+}
+
+#pinEntry {
+  font-size: 1.5rem;
+  text-align: center;
+  height: 70px;
+  width: 236px;
+  background-size: 236px 70px;
+  background-image: url("../../../assets/vdm/message2.png");
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(255, 255, 255, 0.85);
+  border: none;
+  outline: none;
+}
+
+@media screen and (max-height: 400px) {
+  #pin-pad {
+    width: 450px;
+    flex-grow: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+  }
+  .btn-wrapper > button:nth-child(1) {
+    order: 1;
+  }
+  .btn-wrapper > button:nth-child(2) {
+    order: 2;
+  }
+  .btn-wrapper > button:nth-child(3) {
+    order: 3;
+  }
+  .btn-wrapper > button:nth-child(4) {
+    order: 4;
+  }
+  .btn-wrapper > button:nth-child(5) {
+    order: 5;
+  }
+  .btn-wrapper > button:nth-child(6) {
+    order: 7;
+  }
+  .btn-wrapper > button:nth-child(7) {
+    order: 8;
+  }
+  .btn-wrapper > button:nth-child(8) {
+    order: 9;
+  }
+  .btn-wrapper > button:nth-child(9) {
+    order: 10;
+  }
+  .btn-wrapper > button:nth-child(10) {
+    order: 6;
+  }
+  .btn-wrapper > button:nth-child(11) {
+    order: 11;
+  }
+  .btn-wrapper > button:nth-child(12) {
+    order: 12;
+  }
+  #pin-pad {
+    text-align: left;
+  }
+  #pin-pad > p {
+    margin: 0;
+    height: 1.5rem;
+    width: calc(var(--app-content-width) - 230px);
+  }
+  button.pinbtn.func {
+  }
+  #pinEntry {
+    width: 210px;
+    height: 44px;
+    background-size: 210px 44px;
+    background-image: url("../../../assets/vdm/horizontal/4-message2.png");
+    margin-bottom: 0.2rem;
+  }
+  .btn-wrapper {
+    justify-content: unset;
+  }
+  .btn-wrapper > button {
+    margin: 0 0.1rem 0.1rem 0;
+  }
+}
+</style>

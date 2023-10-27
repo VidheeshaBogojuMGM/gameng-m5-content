@@ -1,0 +1,131 @@
+{
+  "id": "http://igt.com/ismUpdate/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for ismUpdate",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^ismUpdate$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "ismUpdate": {
+      "type": "object",
+      "properties": {
+        "triggerEnables": {
+          "type": "integer"
+        },
+        "totalPointsTrigger": {
+          "type": "integer"
+        },
+        "sessionPointsTrigger": {
+          "type": "integer"
+        },
+        "sessionCoinInTrigger": {
+          "type": "integer"
+        },
+        "sessionCoinOutTrigger": {
+          "type": "integer"
+        },
+        "sessionGamesPlayedTrigger": {
+          "type": "integer"
+        },
+        "denomTrigger": {
+          "type": "integer"
+        },
+        "paytableTrigger": {
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "type": "string"
+            },
+            "additionalId": {
+              "type": "string"
+            },
+            "paytableId": {
+              "type": "string"
+            },
+            "basePercentage": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "gameId",
+            "additionalId",
+            "paytableId",
+            "basePercentage"
+          ]
+        },
+        "sessionLossTrigger": {
+          "type": "integer"
+        },
+        "totalPointsValue": {
+          "type": "integer"
+        },
+        "sessionPointsValue": {
+          "type": "integer"
+        },
+        "sessionCoinInValue": {
+          "type": "integer"
+        },
+        "sessionCoinOutValue": {
+          "type": "integer"
+        },
+        "sessionGamesPlayedValue": {
+          "type": "integer"
+        },
+        "denomValue": {
+          "type": "integer"
+        },
+        "paytableValue": {
+          "type": "object",
+          "properties": {
+            "gameId": {
+              "type": "string"
+            },
+            "additionalId": {
+              "type": "string"
+            },
+            "paytableId": {
+              "type": "string"
+            },
+            "basePercentage": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "gameId",
+            "additionalId",
+            "paytableId",
+            "basePercentage"
+          ]
+        },
+        "sessionLossValue": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "triggerEnables",
+        "totalPointsTrigger",
+        "sessionPointsTrigger",
+        "sessionCoinInTrigger",
+        "sessionCoinOutTrigger",
+        "sessionGamesPlayedTrigger",
+        "denomTrigger",
+        "paytableTrigger",
+        "sessionLossTrigger",
+        "totalPointsValue",
+        "sessionPointsValue",
+        "sessionCoinInValue",
+        "sessionCoinOutValue",
+        "sessionGamesPlayedValue",
+        "denomValue",
+        "paytableValue",
+        "sessionLossValue"
+      ]
+    }
+  },
+  "required": ["cmd","ismUpdate"]
+}

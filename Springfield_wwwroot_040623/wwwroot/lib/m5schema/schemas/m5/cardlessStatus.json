@@ -1,0 +1,47 @@
+{
+    "id": "http://igt.com/cardlessStatus/V1.0",
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "Schema for cardlessStatus",
+    "type": "object",
+    "properties": {
+      "cmd": {
+        "type": "string",
+        "pattern": "^cardlessStatus$"
+      },
+      "ver": {
+        "type": "string"
+      },
+      "cardlessStatus": {
+        "type": "object",
+        "properties": {
+          "interface": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer"
+          },
+          "mobile": {
+            "type": "boolean"
+          },
+          "app_label": {
+            "type": "string"
+          },
+          "disconnectReason": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "interface",
+          "status"
+        ]
+      }
+    },
+    "required": [
+      "cmd",
+      "cardlessStatus"
+    ]
+  }
+  

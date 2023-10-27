@@ -1,0 +1,111 @@
+.shell-core {
+  -webkit-user-select: none;
+  position:absolute;
+  top: 1%;
+  width:100%;
+  height:100%;
+  overflow: hidden;
+  margin: 0px;
+  background-image: linear-gradient(to bottom, #0055b7 0%, #009bde 100%);
+}
+
+.shell-ContentFrame{
+  /*primary box for loading apps */
+  position: absolute;
+  top: 5%;
+  height: 101%;
+  width: 100%;
+  border: none;
+}
+
+.shell-Background{
+  position:absolute;
+  background-image: url(../images/shell-bg.png);
+  z-index: 0;
+  border-width: 0px;
+}
+
+/* TEST FRAMES FOR DESIGING CONTENT FOR CRYSTAL CORE */
+.rhBox_U1_RH{
+  width: 460px;
+  height: 92px;
+  top: 0%;
+  left: 0%;
+  position: absolute;
+  border: 10px solid rgba(0, 255, 31, 0.5);
+}
+.rhBox2_U1_RH{
+  width: 440px;
+  height: 72px;
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  border: 10px solid rgba(255, 217, 0, 0.5);
+}
+
+.rhBox_U2_RH{
+  width: 580px;
+  height: 120px;
+  top: 0%;
+  left: 0%;
+  position: absolute;
+  border: 10px solid rgba(0, 255, 31, 0.5);
+}
+.rhBox2_U2_RH{
+  width: 560px;
+  height: 100px;
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  border: 10px solid rgba(255, 217, 0, 0.5);
+}
+.rhBox_U3_RH{
+  width: 1004px;
+  height: 204px;
+  top: 0%;
+  left: 0%;
+  position: absolute;
+  border: 10px solid rgba(0, 255, 31, 0.5);
+}
+.rhBox2_U3_RH{
+  width: 984px;
+  height: 184px;
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  border: 10px solid rgba(255, 217, 0, 0.5);;
+}
+
+.rhBox_U5_RH{
+  width: 940px;
+  height: 204px;
+  top: 0%;
+  left: 0%;
+  position: absolute;
+  border: 10px solid rgba(0, 255, 31, 0.5);
+}
+.rhBox2_U5_RH{
+  width: 920px;
+  height: 184px;
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  border: 10px solid rgba(255, 217, 0, 0.5);
+}
+
+.rhBox_U6_RH{
+  width: 1060px;
+  height: 169px;
+  top: 0%;
+  left: 0%;
+  position: absolute;
+  border: 10px solid rgba(0, 255, 31, 0.5);
+}
+.rhBox2_U6_RH{
+  width: 1040px;
+  height: 149px;
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  border: 10px solid rgba(255, 217, 0, 0.5);
+}

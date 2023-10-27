@@ -1,0 +1,45 @@
+{
+  "id": "http://igt.com/hostEventButtonPress/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for hostEventButtonPress",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^hostEventButtonPress$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "hostEventButtonPress": {
+      "type": "object",
+      "properties": {
+        "hostEventId": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99
+        },
+        "subEventId": {
+          "type": "integer",
+          "minimum": -2147483648,
+          "maximum": 2147483647
+        },
+        "onlineOnly": {
+          "type": "boolean"
+        },
+        "bonusId": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      },
+      "required": [
+        "hostEventId",
+        "subEventId",
+        "onlineOnly",
+        "bonusId"
+      ]
+    }
+  },
+  "required": ["cmd","hostEventButtonPress"]
+}

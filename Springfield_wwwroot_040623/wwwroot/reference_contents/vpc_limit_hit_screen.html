@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VPC_Limit_Hit</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/vpc.css">
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="decoration"></div>
+    <div id="app" resize="preset-2" v-cloak :class="{smallHoriz}">
+        <div class='page app-page'>
+            <div class="content-head">
+                <img id='logo' />
+            </div>
+            <div class="content-body" v-if="!LimitHitContinuePlay">
+                <div class="msgarea largermsg">
+                    <div id="thresholdmessage">
+                        <p>{{PromptMessage | translate}}</p>
+                    </div>
+                    <div id="thresholdplayermessage">
+                        <p>{{PlayerMessage | translate}}</p>
+                    </div>
+                    <div class="progressbar">
+                        <circular-progress-bar :percent="LimithitData.Percentage"></circular-progress-bar>
+                    </div>
+                </div>
+                <div class="amountarea largeamount">
+                    <div id="remaining">
+                        <p class="amountHeader">{{LimithitData.RemainingText | translate}}</p>
+                        <p class="amount">{{LimithitData.RemainingAmount}}</p>
+                    </div>
+                    <div id="session">
+                        <p class="amountHeader">{{LimithitData.SessionText | translate}}</p>
+                        <p class="amount">{{LimithitData.SessionAmount}}</p>
+                    </div>
+                    <div id="total">
+                        <p class="amountHeader">{{LimithitData.TotalText | translate}}</p>
+                        <p class="amount">{{LimithitData.TotalAmount}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body continuePlay" v-if="LimitHitContinuePlay" >
+              {{'Are you sure you want to continue playing beyond your set limit?' | translate}}
+            </div>
+            <div class="content-tail">
+              <div class="las_btnarray">
+                <button class="button_half stop-btn" @click="stopBtn()">{{"STOP" | translate}}</button>
+                <button class="button_half continue-btn" @click="LimitHitContinuePlay? continuePlayingLimitHitConfirmBtn() :continuePlayingLimitHitBtn()">{{"CONTINUE" | translate}}</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/vpcDisplayData.js"></script>
+    <script src="./js/vpc_limit_hit.skin.js"></script>
+</body>
+
+</html>

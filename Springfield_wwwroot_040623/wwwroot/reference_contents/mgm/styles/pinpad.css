@@ -1,0 +1,358 @@
+button:active {
+	transform: unset;
+	border-radius: unset;
+}
+
+.button-small:active,
+.del-small:active,
+#_btnCancel:active,
+#_btnEnter:active {
+	/* border: 2px solid white; */	
+	background-color: #fff;
+	color: #000;
+	background-image: unset;
+	border-radius: 4px;
+}
+
+.button-small:disabled {
+	background-image: unset;
+}
+
+.flex-order .pin-btn-wrapper:nth-of-type(1),
+.flex-order .pin-btn-wrapper:nth-of-type(2),
+.flex-order .pin-btn-wrapper:nth-of-type(3),
+.flex-order .pin-btn-wrapper:nth-of-type(4),
+.flex-order .pin-btn-wrapper:nth-of-type(5),
+.flex-order .pin-btn-wrapper:nth-of-type(6),
+.flex-order .pin-btn-wrapper:nth-of-type(7),
+.flex-order .pin-btn-wrapper:nth-of-type(8),
+.flex-order .pin-btn-wrapper:nth-of-type(9) {
+	border-bottom: 2px solid #898788;
+}
+
+@media screen and (orientation:portrait) {
+
+	#mgm-logo {
+		width: 100%;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		margin: auto;
+	}
+	#pinArea {
+		height: 100%;
+	}
+
+	.pinButton_panel {
+		height: 500px;
+		position: absolute;
+		bottom: 50px;
+	}
+
+	.message-display {
+		top: 200px;
+		margin: auto;
+		width: 100%;
+		padding: 0px 20px;
+		font-size: 18px;
+	}
+
+	/* #pinEntry {
+		position: absolute;
+		top: 280px;
+		padding-left: unset;
+		margin: unset;
+		width: 100%;
+		left: 0px;
+		font-size: 90px;
+		padding: 0px 22px;
+	} */
+
+	.pin-password {
+		color: #555;
+		font-family: sans-serif;
+		border: none;
+		position: relative;
+	}
+	
+	.pin-password > * {
+		display: block;
+	}
+	
+	.pin-password::after {
+		content: url(../images/pin_outline_vertical.PNG);
+		display: block;
+		position: absolute;
+		white-space: pre;
+		color: white;
+		top: 240px;
+		left: unset;
+		right: 0px;
+		margin: auto;
+		width: 260px;
+		font-size: 20px;
+		padding-left: unset;
+	}
+
+	input#pinEntry {
+		position: absolute;
+		font-size: 120px;
+		z-index: 2;
+		border: none;
+		background: transparent;
+		letter-spacing: -21.5px !important;
+		font-family: Courier;
+		text-align: left;
+		margin-left: unset;
+		margin-right: unset;
+		margin-top: unset;
+		margin-bottom: unset;
+		padding: unset;
+		top: 215px;
+		right: unset;
+		left: 50%;
+		transform: translate(-50%, 50%);
+		width: 240px;
+		padding-right: 20px;
+		padding-left: 6.5px;
+	}
+
+	input#pinEntry:focus {
+		outline: none;
+	}
+
+	.pin-btn-wrapper {
+		width: 80px;
+		height: 60px;
+		padding: 6px 0px;
+	}
+
+	.button-small,
+	.del-small {
+		margin: 0px;
+		font-size: 25px;
+		font-weight: bolder;
+		width: 100%;
+		height: 100%;
+	}
+
+	#_btnBack {
+		order: 10;
+		font-size: 18px;
+	}
+
+	.flex-order :nth-child(11) {
+		order: 11;
+	}
+
+	#_btnClear {
+		order: 12;
+		font-size: 18px;
+	}
+
+	/* #_btnCancel {
+		top: 180px;
+	}
+
+	#_btnEnter {
+		top: 120px;
+	} */
+
+	.pinButton_panel {
+		align-content: flex-start;
+	}
+
+	.flex-order .pin-cancel-wrapper {
+		order: 14;
+	}
+
+	.flex-order .pin-enter-wrapper {
+		order: 13;
+	}
+
+	#_btnCancel,
+	#_btnEnter {
+		background-image: unset;
+		background-color: unset;		
+		margin: unset;
+		margin-top: unset;
+		width: 100%;
+		height: 55px;
+		
+	}
+
+	.flex-order .pin-btn-wrapper:nth-of-type(10),
+	.flex-order .pin-btn-wrapper:nth-of-type(11),
+	.flex-order .pin-btn-wrapper:nth-of-type(12) {
+		border-bottom: 2px solid #898788;
+	}
+
+	.flex-order .pin-btn-wrapper:nth-of-type(1),
+	.flex-order .pin-btn-wrapper:nth-of-type(2),
+	.flex-order .pin-btn-wrapper:nth-of-type(3) {
+		border-top: 2px solid #898788;
+	}
+
+	.pin-cancel-wrapper,
+	.pin-enter-wrapper {
+		height: 65px;
+		width: calc(100% - 20px);
+		padding: 2.5px 0px;
+		margin: auto;
+	}
+
+	.pin-enter-wrapper {
+		margin-top: 100px;
+		border-bottom: 2px solid #898788;
+		border-top: 2px solid #898788;
+	}
+}
+
+@media screen and (orientation:landscape) {
+	#mgm-logo {
+		width:210px; 
+		position:absolute; 
+		left:0;
+		top:0
+	}
+
+	.button-small {
+		width: 85px;
+		height: 80px;
+	}
+
+	.pin-btn-wrapper {
+		width: 110px;
+		height: 60px;
+		padding: 6px 0;
+	}
+
+	.button-small,
+	.del-small {
+		width: 100%;
+		height: 100%;
+		margin: 0px;
+	}
+
+
+	#_btnCancel, #_btnEnter {
+		background-image: unset;
+		width: 100%;
+		height: 100%;
+		margin: unset;
+		background-color:unset;
+	}
+
+	.message-display {
+		font-size: 18px;
+		width: 260px;
+		top: 30px;
+		position: absolute;
+		right: 0px;
+		margin: unset;
+		margin-right: 20px;
+		text-align: center;
+		color: white;
+	}
+
+	.pinButton_panel {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		width: 330px;
+		height: 100%;
+		left: 200px;
+		top: 0px;
+		position: absolute;
+		justify-content: center;
+		align-content: flex-start;
+		padding-top: 0px;
+	}
+
+	.pin-password {
+		color: #555;
+		font-family: sans-serif;
+		border: none;
+		position: relative;
+	}
+	
+	.pin-password > * {
+		display: block;
+	}
+	
+	.pin-password::after {
+		content: url(../images/pin_outline_horizontal.PNG);
+		display: block;
+		position: absolute;
+		white-space: pre;
+		color: white;
+		top: 70px;
+		left: unset;
+		right: 0px;
+		margin: unset;
+		margin-left: 0px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		margin-right: 20px;
+		width: 260px;
+		font-size: 20px;
+		padding-left: unset;
+		line-height: 50px;
+		height: 46px;
+	}
+
+	input#pinEntry {
+		position: absolute;
+		font-size: 100px;
+		z-index: 2;
+		border: none;
+		background: transparent;
+		width: 195px;
+		/* text-indent: 77.5px; */
+		letter-spacing: -5px !important;
+		font-family: Courier;
+		text-align: left;
+		margin-left: 0px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		margin-right: 20px;
+		padding-left: unset;
+		top: 75px;
+		left: unset;
+		right: 0px;
+		line-height: 50px;
+		height: 46px;
+		width: 240px;
+	}
+
+	input#pinEntry:focus {
+		outline: none;
+	}
+
+	#_btnBack,
+	#_btnClear {
+		font-size: 18px;
+	}
+
+	#_btnBack {
+		order: 10;
+	}
+
+	.flex-order :nth-child(11) {
+		order: 11;
+	}
+
+	#_btnClear {
+		order: 12
+	}
+
+
+	.TFT .pinButton_panel #_btnClear {
+		font-size: 12px;
+    }
+
+	.TFT .pinButton_panel #_btnBack {
+		font-size: 12px;
+}
+}
+

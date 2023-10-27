@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+<g>
+	<circle fill="#FCFEFD" cx="32" cy="32" r="24"/>
+	<path fill="#D1D3D4" d="M29.131,36.743c0.255,0.255,0.606,0.412,0.994,0.412c0.389,0,0.74-0.157,0.994-0.412l7.5-7.5
+		c0.256-0.254,0.412-0.605,0.412-0.994c0-0.776-0.629-1.406-1.406-1.406c-0.387,0-0.738,0.157-0.994,0.412l-6.506,6.506L26.9,30.536
+		c-0.254-0.255-0.605-0.412-0.994-0.412c-0.775,0-1.406,0.63-1.406,1.406c0,0.389,0.158,0.74,0.412,0.994L29.131,36.743z"/>
+	<path fill="#8F4399" d="M45.594,16.999H18.406c-0.775,0-1.406,0.63-1.406,1.406v27.188C17,46.369,17.631,47,18.406,47h27.188
+		C46.371,47,47,46.369,47,45.593V18.405C47,17.629,46.371,16.999,45.594,16.999z M44.188,44.187H19.813V19.812h24.375V44.187z"/>
+</g>
+</svg>

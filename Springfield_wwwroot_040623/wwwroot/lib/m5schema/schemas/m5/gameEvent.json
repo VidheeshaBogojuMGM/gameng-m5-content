@@ -1,0 +1,20 @@
+{
+  "id": "http://igt.com/gameEvent/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for gameEvent",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^gameEvent$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "gameEvent": {
+      "type": "string",
+      "pattern": "^0[xX][0-9a-fA-F]{2}$"
+    }
+  },
+  "required": ["cmd", "gameEvent"]
+}

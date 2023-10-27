@@ -1,0 +1,123 @@
+<template>
+  <app>
+    <div id="content" slot="content">
+      <div class="column-1">
+        <notificationbanner :prize-name="awardPrizeName"></notificationbanner>
+        <div class="center">
+          <img src="assets/vdm/sse/winner_list_logo.png" alt="winner list">
+        </div>
+        <spinner v-show="processing"></spinner>
+        <pagelist :objects="winners" :show-btn="false" :cur-page="curPage" alt-message="No winner" :item-count="itemCount" css-class="big-ticket-info"></pagelist>
+      </div>
+      <div class="column-2 winnerlist-footer-height">
+        <div class="button-placeholder"></div>
+        <pagecontroller v-show="winners.length > 0" :total-page="totalPage" @page-change="pageChange" :enable-timer="true"></pagecontroller>
+        <notificationbar></notificationbar>
+      </div>
+    </div>
+  </app>
+</template>
+<script>
+module.exports = {
+  name: "winnerList",
+  data() {
+    return {
+      winners: [],
+      processing: true,
+      curPage: 1,
+      awardPrizeName: ""
+    };
+  },
+  created() {
+    // // just for test
+    // import("./views/sse/mock-data.js").then(({ awardData, cfgdata2 }) => {
+    //   IGTMediaElements.contentCache
+    //     .setStateElement("sse_cfg", JSON.stringify(cfgdata2), 0)
+    //     .then(value => {});
+    //   IGTMediaElements.contentCache
+    //     .setStateElement("PrizeLinked", JSON.stringify(awardData), 0)
+    //     .then(value => {});
+    // });
+  },
+  computed: {
+    itemCount() {
+      const height = document.getElementById("app").clientHeight;
+      const width = document.getElementById("app").clientWidth;
+      if (height < width)
+        //horizontal
+        return 2;
+      return 3;
+    },
+    totalPage() {
+      return Math.ceil(this.winners.length / this.itemCount) || 1;
+    }
+  },
+  mounted() {
+    TweenMax.from("#app", 1 , {scale: 0.1, alpha: 0.1});
+    
+    const self = this;
+    IGTMediaElements.contentCache.getStateElement("sse_cfg").then(data => {
+      const cfgdata = JSON.parse(data);
+
+      IGTMediaElements.contentCache
+        .getStateElement("PrizeLinked")
+        .then(data => {
+          const obj = JSON.parse(data);
+          this.awardPrizeName = obj.Name;
+
+          obj.VerifiedTickets.forEach(element => {
+            if (element.Status != "NotPresent") {
+              const el = {};
+
+              if (cfgdata.ShowPlayerName) {
+                el["Name:"] = self.$root.$options.filters.formatWinnerName(
+                  element.PlayerName,
+                  cfgdata.WinnerNameFormat
+                );
+              }
+              el["Id:"] = element.PlayerId;
+
+              let prizeName;
+              if (element.Status == "ClaimedPrize") {
+                obj.Awards.some(item => {
+                  if (element.TicketNumber == item.ClaimedTicketId) {
+                    prizeName = item.AwardName;
+                  }
+                });
+              } else {
+                prizeName = "Not Claimed yet";
+              }
+
+              el["Prize:"] = prizeName;
+
+              self.winners.push({
+                value: el
+              });
+            }
+          });
+
+          self.processing = false;
+        });
+    });
+  },
+  methods: {
+    pageChange(currentPage) {
+      this.curPage = currentPage;
+    }
+  }
+};
+</script>
+<style scoped>
+@import "../../../style/vdm_sse.css";
+
+.center {
+  text-align: center;
+}
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  .winnerlist-footer-height {
+    height: 160px;
+  }
+}
+</style>

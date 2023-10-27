@@ -1,0 +1,39 @@
+{
+  "id": "http://igt.com/gameStart/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for gameStart",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^gameStart$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "gameStart": {
+      "type": "object",
+      "properties": {
+        "wagerCredits": {
+          "type": "integer"
+        },
+        "isMaxBet": {
+          "type": "boolean"
+        },
+        "wagerDenom": {
+          "type": "integer"
+        },
+        "wagerAmount": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "wagerCredits",
+        "isMaxBet",
+        "wagerDenom",
+        "wagerAmount"
+      ]
+    }
+  },
+  "required": ["cmd","gameStart"]
+}

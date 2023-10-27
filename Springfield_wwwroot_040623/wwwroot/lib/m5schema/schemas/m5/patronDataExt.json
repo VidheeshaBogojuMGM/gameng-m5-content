@@ -1,0 +1,39 @@
+{
+  "id": "http://igt.com/patronDataExt/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for patronDataExt",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^patronDataExt$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "patronDataExt": {
+      "type": "object",
+      "properties": {
+        "sequenceId": {
+          "type": "integer"
+        },
+        "playerRank": {
+          "type": "string"
+        },
+        "playerRankIndex": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sequenceId",
+        "playerRank",
+        "playerRankIndex"
+      ]
+    }
+  },
+  "required": [
+    "cmd",
+    "patronDataExt"
+  ]
+}
+

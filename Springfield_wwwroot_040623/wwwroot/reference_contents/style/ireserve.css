@@ -1,0 +1,372 @@
+/* #mask {
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+} */
+
+/* reset of common css from RC*/
+#app>.app-page {
+  margin-bottom: 0px;
+}
+
+#app>.app-page>.content-tail button {
+  margin-top: 0px;
+  width: 100%;
+}
+
+/* end of reset of common css from RC*/
+
+.fade-leave-active {
+  transition: all 0.8s;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter {
+  transform: scale(1.5, 1.5);
+  opacity: 0;
+}
+
+.flip-clock-wrapper ul {
+  width: 50px;
+  margin: 0 2px;
+}
+
+.flip-clock-wrapper ul li a div div.inn {
+  background-color: #EEE;
+}
+
+.slide-enter-active {
+  transition: all .4s ease;
+}
+
+.slide-leave-active {
+  transition: transform .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+/* good */
+
+h1 {
+  color: #f3dbbb;
+}
+
+p {
+  text-align: center;
+  color: #f3dbbb;
+}
+
+#app {
+  padding: 0 0;
+  background-size: cover;
+}
+
+.app-page {
+  /* justify-content: center; */
+}
+
+button.lock {
+  color: #481404;
+  text-shadow: 1px 1px #EEE;
+  background: url('../assets/ireserve/btn_enabled.png') no-repeat top left;
+  text-align: center;
+  border: none;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 32px;
+  /* margin-bottom: -15px; */
+  width: 245px;
+  height: 110px;
+}
+
+button.lock:active {
+  background: url('../assets/ireserve/lock_btn_down.png') no-repeat top left;
+  user-select: none;
+}
+
+button.lock:focus {
+  outline: 0;
+}
+
+button.lock:disabled {
+  background: url('../assets/ireserve/lock_btn_disabled.png') no-repeat top left;
+}
+
+#closeBtn {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 32px;
+  height: 120px;
+  padding-bottom: 20px;
+  color: #ddc57c;
+  text-transform: uppercase;
+  background: url('../assets/ireserve/close_btn.png') no-repeat top center;
+}
+
+#closeBtn:active {
+  background: url('../assets/ireserve/close_btn_down.png') no-repeat top center;
+}
+
+.content-body {
+  /* height: 100%; */
+  flex-grow: 1;
+}
+
+#ireserve_logo {
+  width: 100%;
+  background: url('../assets/ireserve/logo_frame.png') no-repeat,
+    url('../assets/ireserve/ireserve_logo.png') no-repeat;
+}
+
+#timerWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto 0;
+}
+
+#timerWrapper p#title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+#timerWrapper p#detail {
+  font-size: 1.5rem;
+}
+
+#timerWrapper .CountdownClock {
+  height: 5rem;
+}
+
+.list-item {
+  display: inline-block;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.25s;
+}
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  /*transform: translateY(30px);*/
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -60px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  padding: 0px;
+  border-radius: 100%;
+  border: 5px solid;
+  border-top-color: navajowhite;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+  border-left-color: navajowhite;
+  border-right-color: rgba(0, 0, 0, 0.1);
+  -webkit-animation: loading 1s ease-in-out infinite;
+  animation: loading 1s ease-in-out infinite;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+
+@media screen and (orientation:portrait) {
+
+  body {
+    background-image: url('../assets/ireserve/bg_vertical.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  #panel button.lock:first-child {
+    margin-top: -1rem;
+  }
+
+  button.lock {
+    margin-bottom: -1rem;
+  }
+
+  /* #app {
+    background-image: url('../assets/ireserve/bg_vertical.png');
+  } */
+
+  #panel {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 495px;
+    background-image: url('../assets/ireserve/bg_vertical_selection.png');
+  }
+
+  #ireserve_logo {
+    height: 13rem;
+    background-position: center 10px, center 20px;
+  }
+}
+
+#body-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#body-bg>div {
+  height: 100%;
+}
+
+@media screen and (orientation:landscape) {
+  /* #app {
+    background-image: url('../assets/ireserve/bg_horizontal.png');
+  } */
+
+  body {
+    background-image: url('../assets/ireserve/bg_horizontal.png');
+    background-size: 100% 170%;
+    background-repeat: no-repeat;
+  }
+
+  #panel {
+    display: flex;
+    justify-content: center;
+    background-image: url('../assets/ireserve/bg_horizontal_selection.png');
+    height: calc(100% - 1.6rem);
+
+    background-position: center -11px;
+    /* background-size: 70% 225px; */
+    background-size: 700px 225px;
+    background-repeat: no-repeat;
+  }
+
+  #panel>div {
+    /* width: 100%; */
+    width: 650px;
+  }
+
+  #closeBtn {
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+  }
+
+  #ireserve_logo {
+    height: 100%;
+    background-size: contain;
+    background-position: center 10px, center 15px;
+  }
+
+  #panel button.lock:first-child {
+    margin-top: 0.6rem;
+  }
+
+  button.lock {
+    margin-bottom: -1.6rem;
+  }
+
+  .confirmation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .confirmation button.lock {
+    margin: 0;
+  }
+}
+
+.fullscreen .infoWrapper {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.infoWrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.infoWrapper button.lock {
+  transform: scale(0.7);
+}
+
+.TFT button.lock {
+  /* width: 200px; */
+  /* transform: scale(0.6); */
+}
+
+.TFT #panel {
+  background-size: 70% 225px;
+}
+
+.TFT #panel>div {
+  transform: scale(.8);
+  width: 650px;
+}
+
+.TFT #closeBtn {
+  transform: scale(0.7);
+  left: -25px;
+  bottom: -20px;
+  width: 200px;
+}
+
+.fullscreen .content-body {
+  align-items: center;
+}
+
+.tailButton {
+  display: unset;
+  flex-grow: unset;
+  margin-bottom: 30px !important;
+}
+
+.TFT .tailButton,
+.U4 .tailButton,
+.U6_H .tailButton,
+.U6_RH .tailButton,
+.U3_H .tailButton {
+  display: none;
+}
+
+.headButton {
+  display: none;
+}
+
+.TFT .headButton,
+.U4 .headButton,
+.U6_H .headButton,
+.U6_RH .headButton,
+.U3_H .headButton {
+  display: unset;
+}

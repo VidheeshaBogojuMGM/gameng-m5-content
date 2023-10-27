@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>pointplay</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/pointplay.css">
+	<link rel="stylesheet" type="text/css" href="./mgm/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="./style/screen_member_account.vertical.css">
+    <style patch>
+
+    @media screen and (max-aspect-ratio: 3/1) and (orientation:landscape){
+        h1{
+            font-size: 19px;
+        }
+        p{
+            font-size: 13px;
+        }
+
+        button {
+            font-size: 15px !important;
+        }
+        .button-small{
+            height: 43%;
+        }
+    }
+
+    @media screen and (orientation:landscape) and (min-aspect-ratio: 6/1){
+        .info-group{
+            width: 65% ;
+            flex-direction:row;
+        }
+        .info-group h1{
+            font-size: 35px;
+        }
+        .info-group p{
+            font-size: 22px;
+        }
+        .info-group :nth-child(4){
+            width: 20% ;
+        }
+
+        .align-box{
+            width: 35%;
+            height: 100% !important;
+            align-content: space-between;
+        }
+
+        .info-group-line{
+            padding: 60px 0;
+            height: 100% !important;
+            flex: 1 1 0;
+        }
+
+        #other .content-body .align-box{
+            width: calc(var(--component-space)*2.5);
+        }
+
+
+        .info-group-line h1{
+            width: 20% !important;
+            font-size: 35px;
+        }
+        .info-group-line p{
+            width: 28% !important;
+            font-size: 22px;
+        }
+        .info-group-line :nth-child(4){
+            width: 20% !important;
+        }
+
+        .v-box{
+            justify-content: space-between;
+            height: 40%;
+        }
+    }
+
+    </style>
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="decoration"></div>
+	<div id="app" class='app' resize="preset-2" v-cloak :class="['SCREEN_MEMBER_ACCOUNT', displayName, {vertical: isVertical , horizontal: !isVertical }]">
+        <message-overlay :message.sync="errorMessage"></message-overlay>
+        <div id='home' class="page app-page">
+            <div class='content-head'>
+                <img id='logo' />
+            </div>
+            <div class='content-body'>
+				<div v-if="isVertical">
+					<div class="info-group">
+						<div class="v-box">
+							<p class="title veravailslotdollars">{{ 'AVAILABLE SLOT DOLLARS' | translate }}</p>
+						  <h1 class='cash-color'>{{ currencySymbol }}{{PointInDollar | thousandsFormatFilter}}</h1>
+						</div>
+						<div class='v-box'>
+						  <p class="title veramounttoconvert">{{ 'SELECT AN AMOUNT TO CONVERT' | translate }}</p>
+						  <div class='display-bg-position'>
+							  <h1 class='cash-color bold' id='amount'>{{ currencySymbol }}{{ DollarInput | money(2) }}</h1>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div class="amounts v-box">
+					<amount_selection id='amount-selection' @other='selectOtherAmount' @select='selectAmount' ></amount_selection>
+				</div>
+            </div>
+            <div class='content-tail'>
+				<div class="info-group points" v-if="!isVertical">
+					<div class="v-box">
+						<p class="title">{{ 'AVAILABLE SLOT DOLLARS' | translate }}</p>
+						<h1 class='cash-color'>{{ currencySymbol }}{{PointInDollar | thousandsFormatFilter}}</h1>
+					</div>
+					<div class='v-box'>
+						<p class="title horamounttoconvert">{{ 'SELECT AN AMOUNT TO CONVERT' | translate }}</p>
+
+						<div class='display-bg-position'>
+							<h1 class='cash-color' id='amount'>{{ currencySymbol }}{{DollarInput | money(2)}}</h1>
+						</div>
+					</div>
+				</div>
+				<div class="actions">
+					<div class="line"></div>
+					<button class="btn btn-primary" onclick='leaveTo("#confirmation")' :disabled="!showConfirmButton">{{ 'ENTER' | translate }}</button>
+					<div class="line"></div>
+					<button id='exit-pp'  @click='cancelPointPlay()' class='cancel-selection'>{{ 'CANCEL' | translate }}</button>
+					<div class="line"></div>
+				</div>
+            </div>
+			<div id="footer">
+				<div class="navigations">
+					<!-- <div class="call-attendant clickable" onClick="handleOnCall()">
+						<img class="icon " onClick="" src="./mgm/images/icon/icon-attendant.png" alt="">
+					</div> -->
+					<!-- <img class="icon clickable" onClick="window.history.back()"  src="./mgm/images/icon/icon-back.png" alt=""> -->
+					<div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+                        <img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+                    </div>
+				</div>
+			</div>
+        </div>
+
+        <div id='confirmation' class="page app-page">
+            <div class='content-head'>
+                <img id='logo' />
+            </div>
+            <div class='content-body'>
+                <div class='info-group-line'>
+					<div class="v-box">
+						<p class="title">{{ 'PLEASE CONFIRM YOUR SLOT DOLLARS CONVERSION' | translate }}</p>
+						<h1 class='cash-color'>{{ currencySymbol }}{{DollarInput | money(2)}}</h1>
+					</div>
+                </div>
+            </div>
+            <div class='content-tail'>
+				<div class="actions">
+					<div class="line"></div>
+					<button class="btn btn-primary" @click='commitConvert()'>{{ 'ACCEPT' | translate }}</button>
+					<div class="line"></div>
+					<button @click='cancelOtherAmount()' class='cancel-selection'>{{ 'CANCEL' | translate }}</button>
+					<div class="line"></div>
+				</div>
+            </div>
+			<div id="footer">
+				<div class="navigations">
+					<!-- <div class="call-attendant clickable" onClick="handleOnCall()">
+						<img class="icon " onClick="" src="./mgm/images/icon/icon-attendant.png" alt="">
+					</div> -->
+					<!-- <img class="icon clickable" onClick="window.history.back()"  src="./mgm/images/icon/icon-back.png" alt=""> -->
+					<div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+                        <img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+                    </div>
+				</div>
+
+			</div>
+        </div>
+		<div id='other' class="page app-page">
+            <div class='content-head'>
+                <img id='logo' />
+            </div>
+
+            <div class='content-body'>
+                <div class='info-group-line' v-if="isVertical">
+					<div class="v-box">
+						<p class="title veravailslotdollars">{{ 'AVAILABLE SLOT DOLLARS' | translate }}</p>
+						<h1 class='cash-color'>{{ currencySymbol }}{{PointInDollar | thousandsFormatFilter}}</h1>
+					</div>
+
+					<div class="v-box">
+						<p class="title">{{ 'ENTER AN AMOUNT' | translate }}</p>
+						<div class='display-bg-position'>
+							<h1 class='cash-color' id='amount'>{{ currencySymbol }}{{DollarInput | money(2)}}</h1>
+						</div>
+					</div>
+                </div>
+				<div class='align-box flex-order pin-numbers-container narrow'>
+					<div class="line" v-if="isVertical"> </div>
+                    <button id='num-1' class='button-small bold' v-on:click="input(1, true)">1</button>
+                    <button id='num-2' class='button-small bold' v-on:click="input(2, true)">2</button>
+                    <button id='num-3' class='button-small bold' v-on:click="input(3, true)">3</button>
+					<div class="line"> </div>
+                    <button id='num-4' class='button-small bold' v-on:click="input(4, true)">4</button>
+                    <button id='num-5' class='button-small bold' v-on:click="input(5, true)">5</button>
+                    <button id='num-6' class='button-small bold' v-on:click="input(6, true)">6</button>
+					<div class="line"> </div>
+                    <button id='num-7' class='button-small bold' v-on:click="input(7, true)">7</button>
+                    <button id='num-8' class='button-small bold' v-on:click="input(8, true)">8</button>
+                    <button id='num-9' class='button-small bold' v-on:click="input(9, true)">9</button>
+					<div class="line"> </div>
+                    <button id='back' class='button-small bold'  v-on:click="input('back')">{{
+                        'UNDO' | translate }}</button>
+                    <button id='num-0' class='button-small bold' v-on:click="input(0, true)">0</button>
+                    <button id='clear' class='button-small bold' v-on:click="input('clear')">{{
+                        'CLEAR' | translate }}
+					</button>
+					<div class="line" v-if="isVertical"> </div>
+                </div>
+                <div class='align-box flex-order pin-numbers-container wide'>
+					<div class="line" v-if="isVertical"> </div>
+                    <button id='num-1' class='button-big bold' v-on:click="input(1, true)">1</button>
+                    <button id='num-2' class='button-big bold' v-on:click="input(2, true)">2</button>
+                    <button id='num-3' class='button-big bold' v-on:click="input(3, true)">3</button>
+                    <button id='num-4' class='button-big bold' v-on:click="input(4, true)">4</button>
+                    <button id='num-5' class='button-big bold' v-on:click="input(5, true)">5</button>
+                    <button id='back' class='button-big bold'  v-on:click="input('back')">{{ 'UNDO' | translate }}</button>
+                    <div class="full-line"> </div>
+                    <button id='num-6' class='button-big bold' v-on:click="input(6, true)">6</button>
+                    <button id='num-7' class='button-big bold' v-on:click="input(7, true)">7</button>
+                    <button id='num-8' class='button-big bold' v-on:click="input(8, true)">8</button>
+                    <button id='num-9' class='button-big bold' v-on:click="input(9, true)">9</button>
+                    <button id='num-0' class='button-big bold' v-on:click="input(0, true)">0</button>
+                    <button id='clear' class='button-big bold' v-on:click="input('clear')">{{ 'CLEAR' | translate }}</button>
+                </div>
+            </div>
+            <div class='content-tail'>
+				<div class="info-group points" v-if="!isVertical">
+					<div class="v-box">
+						<p class="title">{{ 'AVAILABLE SLOT DOLLARS' | translate }}</p>
+						<h1 class='cash-color'>{{ currencySymbol }}{{PointInDollar | thousandsFormatFilter}}</h1>
+					</div>
+					<div class='v-box'>
+						<p class="title">{{ 'ENTER AN AMOUNT' | translate }}</p>
+
+						<div class='display-bg-position'>
+							<h1 class='cash-color' id='amount'>{{ currencySymbol }}{{DollarInput | money(2)}}</h1>
+						</div>
+					</div>
+				</div>
+				<div class="actions">
+					<div class="line"></div>
+					<button class="btn btn-primary" onclick='leaveTo("#confirmation")' :disabled="!showConfirmButton">{{ 'ENTER' | translate }}</button>
+					<div class="line"></div>
+					<button @click='cancelOtherAmount()' class='cancel-selection'>{{ 'CANCEL' | translate }}</button>
+					<div class="line"></div>
+				</div>
+
+            </div>
+        </div>
+
+        <div id='operation-message' class="page app-page">
+            <div class='content-head'>
+                <img id='logo' />
+            </div>
+
+            <div class='content-body message-box'>
+                <div class=''>
+                    <p>{{DisplayMessage | translate}}</p>
+                </div>
+                <div class="conversion-buttons">
+                   
+                    <div v-for="i in new Array(ConvertStatus == 'SUCCEEDED' ? 2 : 1)"></div>
+                    <!-- <button v-if="ConvertStatus == 'SUCCEEDED' " onclick='leaveTo("#home")'>{{ 'BACK' | translate }}</button> -->
+                    <button v-if="ConvertStatus == 'FAILED' " onclick='retry()'>{{ 'TRY AGAIN' | translate }}</button>
+                    <!-- <button v-if="ConvertStatus == 'FAILED' " onclick='leaveTo("#home")'>{{ 'BACK' | translate }} -->
+                    <!-- <button v-if="!Enabled" onclick='exitToApps()'>{{ 'BACK' | translate }}</button> -->
+                </div>
+            </div>
+            <div id="footer">
+                <div class="navigations">
+                    <div class="icon-back clickable" onClick="window.history.back();">
+                        <img class="icon clickable" src="./mgm/images/icon/icon-back.png" alt="">
+                    </div>
+                    <div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+                        <img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/pointplay.skin.js"></script>
+	<script src="./mgm/js/call-attendant.js"></script>
+	<script src="./mgm/js/toggleServiceWindow.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+/* old todo*/
+.landscape #pre-loader {
+  width: 100%;
+  height: 100%;
+}
+
+.landscape button {
+  margin-top: 5px;
+}
+
+.landscape .content-body>* {
+  min-width: 34%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+
+/* new */
+.message-box>p:first-child {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  flex-grow: 2;
+}
+
+.message-box>p:nth-child(2) {
+  font-size: 1.2rem;
+  margin: unset;
+  flex-grow: 2;
+}
+
+.message-box>#message {
+  font-size: 1.1rem;
+  flex-grow: 3;
+}
+
+.U4 #message p {
+  font-size: 1rem;
+}
+
+.TFT #message p {
+  font-size: 0.9rem;
+}
+
+/* override common css */
+.landscape .content-body {
+  align-items: unset;
+}
+
+.landscape .content-body>* {
+  height: unset;
+}
+
+@media screen and (orientation: landscape) {
+  .content-body>* {
+    height: unset;
+  }
+}

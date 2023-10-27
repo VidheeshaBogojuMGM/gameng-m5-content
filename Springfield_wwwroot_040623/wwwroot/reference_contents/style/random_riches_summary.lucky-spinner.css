@@ -1,0 +1,202 @@
+#app {
+  background-size: cover;
+  background-image: url(../assets/random_riches/promotion-1-bg.png);
+}
+
+button {
+  background-image: url(../assets/random_riches/promotion-1-button.png);
+  color: #ccda0b;
+  height: 60px;
+}
+
+button:active {
+  background-image: url(../assets/random_riches/button-down-1.png);
+  color: #4a4a4a;
+  transform: scale(0.9);
+  filter: drop-shadow(0px 0px 5px grey);
+}
+
+.message-box {
+  border-width: 10px;
+  border-image: url(../assets/random_riches/message-box-1.png);
+  border-image-slice: 12 fill;
+  border-color: white;
+  border-radius: 16px;
+  width: noset;
+}
+
+.list-info {
+  border-width: 12px;
+  border-image: url(../assets/random_riches/message-box-1.png);
+  border-image-slice: 12 fill;
+}
+
+.detail-info {
+  border-width: 12px;
+  border-image: url(../assets/random_riches/message-box-1.png);
+  border-image-slice: 12 fill;
+}
+
+.balance-name {
+  background: linear-gradient(to bottom, #d4afd1, #c72f80);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.sketch-img {
+  height: 210px;
+  width: 100%;
+}
+
+.balance-show {
+  width: 100%;
+  font-size: 20px;
+  border-radius: 15px;
+  color: #ccda0b;
+}
+
+.p-size-24px {
+  color: #fff47f;
+}
+
+.content-body p {
+  color: #fff47f;
+}
+
+.page-up {
+  background-image: url(../assets/random_riches/page-prev-1.svg);
+  width: 50%;
+  height: 30px;
+}
+
+.page-down {
+  background-image: url(../assets/random_riches/page-next-1.svg);
+  width: 50%;
+  height: 30px;
+}
+
+.promotion-up {
+  background-image: url(../assets/random_riches/prev-promotion-1.png);
+  background-size: 100% 72%;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 48%;
+  height: 50px;
+}
+
+.promotion-up:active {
+  background-image: url(../assets/random_riches/prev-promotion-down-1.png);
+}
+
+.promotion-down {
+  background-image: url(../assets/random_riches/next-promotion-1.png);
+  background-size: 100% 72%;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 48%;
+  height: 50px;
+}
+
+.promotion-down:active {
+  background-image: url(../assets/random_riches/next-promotion-down-1.png);
+}
+
+th,
+td {
+  color: #fff47f;
+}
+
+#spinnerProgress {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#spinnerProgress p {
+  font-size: 18px;
+  color: #fff47f;
+  padding: 5px 0px;
+}
+
+#progressBar-full {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(calc(var(--val_1_X, 15)*1%) 100%, calc(var(--val_2_X, 15)*1%) 100%, calc(var(--val_3_X, 50)*1%) calc(var(--val_3_Y, 50)*1%), calc(var(--val_4_X, 50)*1%) calc(var(--val_4_Y, 50)*1%), calc(var(--val_5_X, 50)*1%) calc(var(--val_5_Y, 50)*1%), calc(var(--val_6_X, 50)*1%) calc(var(--val_6_Y, 50)*1%), 50% 50%);
+  -webkit-clip-path: polygon(calc(var(--val_1_X, 15)*1%) 100%, calc(var(--val_2_X, 15)*1%) 100%, calc(var(--val_3_X, 50)*1%) calc(var(--val_3_Y, 50)*1%), calc(var(--val_4_X, 50)*1%) calc(var(--val_4_Y, 50)*1%), calc(var(--val_5_X, 50)*1%) calc(var(--val_5_Y, 50)*1%), calc(var(--val_6_X, 50)*1%) calc(var(--val_6_Y, 50)*1%), 50% 50%);
+}
+
+#progressBar {
+  position: absolute;
+}
+
+@media screen and (orientation:portrait) {
+  #progressBar {
+    width: 100%;
+    height: 100%;
+  }
+
+  #spinnerProgress {
+    margin-top: 90px;
+  }
+
+  #progressBar-percent {
+    margin-top: -20px;
+  }
+
+  #largeSpinner {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  #spinnerProgress {
+    margin-top: 10px;
+  }
+
+  #progressBar-full {
+    width: 56%;
+    height: 70%;
+    left: 22%;
+  }
+
+  #progressBar {
+    width: 56%;
+    height: 70%;
+    left: 22%;
+  }
+
+  #largeSpinner {
+    height: 65%;
+    margin-top: 12px;
+  }
+
+  #progressBar-percent {
+    width: 100%;
+    margin-top: -20px;
+  }
+
+  .sketch-img {
+    height: 75%;
+    width: 50%;
+    order: 3;
+    align-self: center;
+  }
+}
+
+@media screen and (orientation:landscape) and (min-aspect-ratio: 5/1) {
+  .progress-new {
+    left: 21% !important;
+  }
+
+  .sketch-img {
+    height: 100%;
+  }
+}
+
+@media screen and (orientation:landscape) and (min-aspect-ratio: 6/1) {
+  .sketch-img {
+    width: 40%;
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "http://igt.com/bonusHit/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for bonusHit",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^bonusHit$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "bonusHit": {
+      "type": "object",
+      "properties": {
+        "isBe2Based": {
+          "type": "boolean"
+        },
+        "bonusId": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hitNumber": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "winAmount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "payTo": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "winner": {
+          "type": "boolean"
+        },
+        "nonCash": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "isBe2Based",
+        "bonusId",
+        "hitNumber",
+        "winAmount",
+        "payTo",
+        "winner",
+        "nonCash"
+      ]
+    }
+  },
+  "required": ["cmd","bonusHit"]
+}

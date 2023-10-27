@@ -1,0 +1,139 @@
+<template>
+  <div class="container app-page">
+    <div class='content-head'>
+      <img id='logo' />
+    </div>
+    <div class="content-body">
+      <p>{{ 'Remote Keyoff' | translate }}</p>
+		<div class="line"></div>
+      <p>{{ this.$store.state.currencySymbol }}{{ amount | money }}</p>
+
+      <div id="message">
+		  <!-- <p>{{ primaryMessage | translate }}</p>
+        <p>{{ secondaryMessage | translate }}</p> -->
+
+		  <p v-show="!showConfirmButton">{{ primaryMessage | translate }}</p>
+        <p v-show="showConfirmButton">
+          <!-- {{ "Please press \"Confirm\" acknowledging the reportable jackpot of" | translate }} -->
+			 <span>THIS IS LEGAL NOTICE</span>
+			 <br><br><br>
+			  <span>CONFIRM YOUR SELF PAY W2G?</span>
+          <!-- {{ this.$store.state.currencySymbol }}{{ amount | money }}-->
+			 </p>
+			<p v-show="!showConfirmButton">PLEASE SELECT</p>
+      </div>
+    </div>
+
+    <div class='content-tail'>
+		 <div v-show="!showConfirmButton"  class="line"></div>
+ 		<div v-show="!showConfirmButton" class="btn btn-dark" @click="keyoff()">
+ 			<span>{{ 'SELF PAY W2G' | translate }}</span>
+ 		</div>
+		<div v-show="!showConfirmButton"  class="line"></div>
+		<div v-show="!showConfirmButton" class="btn btn-dark" @click="handpay()">
+			<span>{{ 'HANDPAY' | translate }}</span>
+		</div>
+		<div class="line"></div>
+		<div v-show="showConfirmButton" class="btn btn-light" @click="confirm()">
+			<span>{{ 'CONFIRM' | translate }}</span>
+		</div>
+      <!-- <button  @click="keyoff()">{{ 'W2G Keyoff' | translate }}</button> -->
+      <!-- <button  @click="handpay()">{{ 'Handpay' | translate }}</button> -->
+      <!-- <button v-show="showConfirmButton" @click="confirm()">{{ 'Confirm' | translate }}</button> -->
+      <!-- <button v-show="showMenuButton" @click="goLegacyMenu()">{{ 'Menu' | translate }}</button> -->
+      <!-- <button v-show="showHomeButton" @click="goHome()">{{ 'Home' | translate }}</button> -->
+    </div>
+	 <div id="footer">
+		 <div class="navigations" style="justify-content: flex-end">
+			<!-- <div class="call-attendant clickable" onClick="handleOnCall()">
+				<img class="icon " onClick="" src="./mgm/images/icon/icon-attendant.png" alt="">
+			</div>
+			<img class="icon clickable" onClick=""  src="./mgm/images/icon/icon-back.png" alt=""> -->
+			<div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+        <img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+      </div>
+    </div>
+
+	  </div>
+  </div>
+</template>
+
+<script>
+  const message = {
+    "keyoff": ["Please select"],
+    "confirm": ["Congratulations!"],
+    //"keyoffFail": ['Unable to keyoff', "Please wait for an attendant"],
+    "keyoffFail": ["Unable to keyoff"],
+    "keyoffComplete": ["Keyoff complete"]
+  };
+
+  module.exports = {
+    name: "player",
+    data() {
+      return {
+        primaryMessage: "",
+        secondaryMessage: "",
+        showHomeButton: true,
+        showMenuButton: true,
+        showKeyOffButton: true,
+        showHandPayButton: true,
+        showConfirmButton: false
+      };
+    },
+    computed: {
+      currentViewState() {
+        return this.$store.state.currentViewState;
+      },
+      amount() {
+        return this.$store.state.w2gInitData.handpayAmount / 100.00;
+      }
+    },
+    methods: {
+      keyoff() {
+        this.$store.dispatch("playerKeyoff");
+      },
+      handpay() {
+        this.$store.dispatch("cancelW2G");
+      },
+      confirm() {
+        this.$store.dispatch("completeW2G");
+      },
+      goHome() {
+        navigate("SESSION_SCREEN");
+      },
+      goLegacyMenu() {
+        IGTMediaElements.w2gAccrual.gotoLegacy();
+      }
+    },
+    watch: {
+      currentViewState: {
+        handler(n, o) {
+          if (message[n]) {
+            this.primaryMessage = message[n][0];
+            this.secondaryMessage = message[n][1];
+          } else {
+            this.primaryMessage = "";
+            this.secondaryMessage = "";
+          }
+
+          this.showKeyOffButton = n === "keyoff";
+          this.showHandPayButton = n === "keyoff";
+          this.showConfirmButton = n === "confirm";
+          if (n === "keyoffFail") {
+            setTimeout(() => {
+              this.$store.dispatch("cancelW2G");
+            }, 5000);
+          }
+          if (n === "keyoffComplete") {
+            this.showHomeButton = true;
+            setTimeout(() => {
+              navigate("SESSION_SCREEN");
+            }, 10000);
+          }
+        },
+        immediate: true
+      }
+    }
+  };
+
+</script>

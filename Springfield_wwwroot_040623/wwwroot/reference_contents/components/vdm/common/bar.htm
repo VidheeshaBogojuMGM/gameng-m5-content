@@ -1,0 +1,56 @@
+<template>
+  <nav>
+    <button class="half" @click="evt">{{ content | translate }}</button>
+    <button class="half" @click="exit">{{ 'Exit' | translate }}</button>
+  </nav>
+</template>
+<script>
+module.exports = {
+  name: "bar",
+  props: {
+    content: {
+      type: String,
+      default: "Back",
+      validator: function(value) {
+        return ["Help", "Back"].indexOf(value) !== -1;
+      }
+    },
+    id: {
+      type: String,
+      default: null
+    }
+  },
+  methods: {
+    evt(e) {
+      if (e.target.innerText.toLowerCase() == "help") {
+        this.$emit("help-click");
+      } else if (
+        e.target.innerText.toLowerCase() == "back" &&
+        this.id == "award"
+      ) {
+        this.$router.push("drawing");
+      } else if (
+        e.target.innerText.toLowerCase() == "back" &&
+        this.id == "drawing"
+      ) {
+        this.$router.push("/");
+      } else {
+        this.$router.go(-1);
+      }
+    },
+    exit() {
+      // window.location.assign(EXTERNAL_LINK);
+      navigate('apps.html');
+    }
+  }
+};
+</script>
+<style >
+@import "../../../style/vdm_button.css";
+
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+</style>

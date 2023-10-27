@@ -1,0 +1,37 @@
+{
+  "id": "http://igt.com/buttonPress/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for buttonPress",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^buttonPress$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "buttonPress": {
+      "enum": [
+        "KEYPRESS_0",
+        "KEYPRESS_1",
+        "KEYPRESS_2",
+        "KEYPRESS_3",
+        "KEYPRESS_4",
+        "KEYPRESS_5",
+        "KEYPRESS_6",
+        "KEYPRESS_7",
+        "KEYPRESS_8",
+        "KEYPRESS_9",
+	    "KEYPRESS_E",
+        "MENU",
+        "ENTER",
+        "BONUSBUTTON",
+        "OK",
+        "NO",
+        "TOUCHSCREEN"
+      ]
+    }
+  },
+  "required": ["cmd","buttonPress"]
+}

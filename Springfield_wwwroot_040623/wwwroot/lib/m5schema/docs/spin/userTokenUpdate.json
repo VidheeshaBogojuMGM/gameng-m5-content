@@ -1,0 +1,18 @@
+{
+    "cmd": "userTokenUpdate",
+    "ver": "1.0",
+    "userTokenUpdate": [
+        {
+            "id": "0x10",
+            "value": "101789"
+        },
+        {
+            "id": "0x64",
+            "value": "$100.00"
+        },
+        {
+            "id": "0xD2",
+            "value": "Test Message"
+        }
+    ]
+}

@@ -1,0 +1,121 @@
+[v-cloak]>* {
+	display: none;
+}
+
+button {
+	display: inline-block;
+}
+
+.button-small {
+	width: 31%;
+}
+
+body {
+	background: rgba(0, 0, 0, 0.90);
+}
+
+#app {
+	z-index: 998;
+	position: absolute;
+	display: inherit;
+}
+
+#pinArea {
+	text-align: center;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#pinEntry {
+	background-color: rgba(0, 0, 0, 0.0);
+	font-size: 2em;
+	text-align: center;
+	outline: medium;
+	border: none;
+	color: white;
+}
+
+.message-display {
+	font-size: 24px;
+	width: 254px;
+	top: -80px;
+	position: absolute;
+	margin: 8%;
+	width: 83%;
+	text-align: center;
+	color: white
+}
+
+@media screen and (orientation:portrait) {
+	.button-small {
+		width: 31%;
+	}
+	.button-medium {
+		width: 120px;
+	}
+	#pinArea {
+		height: 350px;
+	}
+	#pinEntry {
+		margin: 5%;
+		width: 82%;
+	}
+	.pinButton_panel{
+		display: flex;
+		flex-wrap: wrap;
+		height: inherit;
+	}
+	#_btnEnter{
+		width: 100%;
+	}
+	#_btnCancel{
+		height: 0;
+	}
+}
+
+@media screen and (orientation:landscape) {
+	.button-small {
+		width: 85px;
+		height: 80px;
+	}
+	.pinButton_panel {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		width: 680px;
+		height: 78%;
+		left: 150px;
+		top: 50px;
+		position: absolute;
+		justify-content: space-between;
+		padding-top: 5px;
+	}
+	#pinEntry {
+		position: absolute;
+		top: 16px;
+		left: 250px;
+		width: 50%;
+	}
+	#_btnBack, #_btnClear {
+		font-size: 19px;
+	}
+	#_btnCancel, #_btnEnter {
+		height: 80px;
+		width: 120px;
+		font-size: 24px;
+	}
+	#_btnClear {
+		order: 12
+	}
+	#_btnCancel {
+		order: 5;
+		margin-right: .5rem;
+	}
+	#_btnEnter {
+		order: 14;
+	}
+}

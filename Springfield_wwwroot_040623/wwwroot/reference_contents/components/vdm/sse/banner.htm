@@ -1,0 +1,64 @@
+<template>
+  <div>
+    <section class="name">{{playerName}}</section>
+    <section class="banner">{{prizeName}}</section>
+  </div>
+</template>
+<script>
+module.exports = {
+  name: "notificationbanner",
+  data() {
+    return {
+      playerName: ""
+    };
+  },
+  props: {
+    prizeName: {
+      type: String,
+      default: ""
+    }
+  },
+  mounted() {
+    var self = this;
+    const playerNameToken = "0x30";
+    IGTMediaElements.getCurrentTokenValue(playerNameToken).then(e => {
+      self.playerName = e.token.value;
+    });
+  }
+};
+</script>
+<style >
+.name {
+  font-family: "GOTHICB";
+  font-size: 1.5rem;
+  color: #e5ddd0;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+  line-height: 88px;
+  width: 256px;
+  height: 88px;
+  background-image: url("../../../assets/vdm/sse/name bg.png");
+  background-repeat: no-repeat;
+}
+
+.banner {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 1rem;
+  word-break: break-word;
+}
+
+/* horizental */
+@media screen and (max-height: 400px) {
+  .name {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0.5rem;
+    width: 214px;
+    height: 52px;
+    line-height: 52px;
+    background-image: url("../../../assets/vdm/horizontal/4-name-bg.png");
+  }
+}
+</style>

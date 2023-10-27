@@ -1,0 +1,67 @@
+<template>
+  <div class="app-page">
+    <div class='content-head'>
+      <img id='logo' />
+    </div>
+    <div class='content-body'>
+        <div class="message-container">
+          <h1>{{message}}</h1>
+        </div>
+    </div>
+    <div class='content-tail'>
+    </div>
+  </div>
+</template>
+
+<script>
+  var id;
+  module.exports = {
+    beforeRouteLeave(to, from, next) {
+      if(this.count > 0){
+        next(false);
+      }else{
+        next(true);
+      }
+    },
+    state:{
+      count:7000
+    },
+    computed: {
+      message(){
+        return "A beverage attendant is on the way"
+      }     
+    },
+    mounted(){
+      try{
+        this.callEvent();
+      }catch(ex){
+        console.log(ex)
+      }
+      
+    },
+    methods:{
+      callEvent(){
+        IGTMediaElements.hostEventButtonPress(0,1,false,50);
+      }
+    },
+    watch:{
+     
+    }
+  }
+  setInterval(function(){
+    Patron.navigate("./spa_session_screen.html")
+  }, 4000);
+</script>
+
+<style>
+.content-body{
+  position: unset;
+}
+.message-container{
+  position: absolute;
+}
+.message-container h1{
+  text-transform: uppercase;
+}
+
+</style>

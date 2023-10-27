@@ -1,0 +1,126 @@
+<template>
+  <div class="container app-page"
+    :class='[$root.displayName, {vertical: $root.isVertical , horizontal: !$root.isVertical}]'>
+    <div class='content-head'>
+      <img id='logo' />
+    </div>
+    <div class="content-body">
+      <div class="paytable-area">
+        <pay-table></pay-table>
+      </div>
+      <div class="countdown center is-vertical">
+        <span>{{ "next draw starts in" | translate }}</span>
+        <ul>
+          <li>
+            <div><span id="minutes"></span></div>{{"Min" | translate}}
+          </li>
+          <li>
+            <div><span id="seconds"></span></div>{{ 'Sec' | translate }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  module.exports = {
+    name: "lucky_draw_page_countdown",
+    components: {
+      "PayTable": loadSkinTemplate("./components/lucky_draw_paytable.htm")
+    },
+    computed: {
+      countdown() {
+        return this.$store.state.countdown
+      }
+    },
+    methods: {
+      initCountdown(time) {
+        // const second = 1000;
+        // const minute = second * 60;
+        // const hour = minute * 60;
+        // let dt = new Date();
+        // dt.setSeconds(dt.getSeconds() + time);
+        // let cdDate = dt.getTime();
+        // let interval = setInterval(function () {
+        //   let now = new Date().getTime();
+        //   let gap = cdDate - now;
+        //   if (gap < 0) {
+        //     clearInterval(interval);
+        //     console.log("done")
+        //   } else {
+        //     document.getElementById('minutes').innerText = Math.floor((gap % hour) / minute);
+        //     document.getElementById('seconds').innerText = Math.floor((gap % minute) / second);
+        //   }
+        // }, second)
+        document.getElementById('minutes').innerText = Math.floor(time / 60);
+        document.getElementById('seconds').innerText = Math.floor(time % 60);
+      }
+    },
+    watch: {
+      countdown: {
+        handler(n) {
+          if (n) {
+            this.initCountdown(n);
+          }
+        },
+        immediate: false
+      }
+    }
+  };
+
+</script>
+
+<style scoped>
+  .countdown {
+    width: calc(100% - 1.2 * 256px);
+  }
+
+  .vertical .countdown {
+    margin-top: 3rem;
+  }
+
+  .U6_H .countdown {
+    width: 75%;
+  }
+
+  .TFT .countdown,
+  .U4 .countdown {
+    width: 100%;
+  }
+
+  .countdown>span {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    color: #E5DDD0;
+    width: 70%;
+    display: inline-block;
+    padding-bottom: 1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    list-style-type: none;
+    color: #E5DDD0;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  li>div {
+    background-image: url(../assets/ld-timer-bg.png);
+    width: 98px;
+    height: 82px;
+  }
+
+  li>div>span {
+    color: #272a31;
+    line-height: 77px;
+    font-size: 3.6rem;
+  }
+
+</style>

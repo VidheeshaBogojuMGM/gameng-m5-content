@@ -1,0 +1,37 @@
+{
+  "cmd": "vpcPlayerData",
+  "ver": "1.0",
+  "vpcPlayerData": {
+    "limits": [
+      {
+        "type": 1,
+        "period": 1,
+        "alertThresholds": [
+          7000,
+          9000
+        ],
+        "threshold": 10000,
+        "session": 2000,
+        "current": 4000,
+        "hit": 0
+      },
+      {
+        "type": 1,
+        "period": 1,
+        "alertThresholds": [
+          7000,
+          9000
+        ],
+        "threshold": 10000,
+        "session": 2000,
+        "current": 4000,
+        "hit": 1
+      }
+    ],
+    "playerMessage": "It's time to go home",
+    "limitToShow": 0,
+    "lastTimeLimitSet": 1421972198,
+    "cardId": "12345678901234567890",
+    "haveHostData": 0
+  }
+}

@@ -1,0 +1,299 @@
+.vertical .title {
+	text-align: center;
+	font-size: 18px;
+	margin: 0;
+}
+
+.vertical .v-box {
+	padding-bottom: 30px;
+}
+
+
+.vertical #confirmation .v-box {
+	padding: 0;
+}
+
+.vertical .cash-color, .vertical .display-bg-position {
+	font-size: 20px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.vertical .content-tail {
+	justify-content: flex-end;
+}
+
+.vertical #home .content-tail, .vertical #confirmation .content-tail {
+	justify-content: center;
+}
+
+.vertical #confirmation .content-body {
+    height: 65%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.vertical .content-tail .white-btn {
+	background: white;
+    color: black;
+    border-radius: 5px;
+}
+
+.vertical #other .align-box.flex-order {
+	width: 100%;
+	justify-content: center;
+}
+
+.vertical #other .align-box.flex-order {
+    font-weight: bold;
+}
+
+.vertical .align-box .button-small:active, .vertical #session-pane-active .content-tail button:active {
+	background-image: none;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+	transform: unset;
+    filter: none;
+}
+
+.vertical #pinEntry, #amount, .cash-color {
+	font-size: 25px;
+	width: 100%;
+}
+.vertical #home #pinEntry, #amount, .cash-color {
+	margin: 0;
+    color: white;
+    text-align: center !important;
+    font-size: 18px;
+}
+
+.horizontal .amounts {
+	height: 100%;
+}
+
+.horizontal .content-tail .points {
+	height: 60%;
+}
+
+.horizontal .content-tail .actions {
+	height: 40%;
+}
+
+.horizontal .content-tail .points .info-group {
+	padding-top: 10px;
+}
+
+.horizontal #confirmation .title {
+	font-size: 15px;
+}
+
+.horizontal #confirmation .content-body .cash-color {
+	font-size: 20px;
+}
+
+.horizontal #confirmation .content-tail .actions {
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+	 justify-content: flex-end;
+}
+
+.U2 .vertical .v-box {
+	padding: 0;
+}
+
+.U2 .vertical .title {
+	font-size: 12px;
+}
+
+.U2 .vertical #confirmation .content-body {
+	height: 60%;
+}
+
+.U2 .vertical .content-body > div,
+.U2 #msg-pane .button-response-container .content-tail {
+	width: 100% !important;
+}
+
+.U2 #home .content-tail {
+    margin-top: 5vh;
+}
+
+.U2 #session-pane-active .content-tail,
+.U2 #confirmation .content-tail {
+    margin-top: 0;
+}
+
+
+.U2 #msg-pane .button-response-container .line {
+	width: 160px;
+}
+
+.TFT .content-tail .cash-color {
+    font-size: 20px !important;
+	height: 30px;
+	line-height: 32px;
+}
+
+.TFT #home .content-tail .line {
+	width: 183px;
+}
+
+.TFT .horizontal #confirmation .title {
+	margin: 0;
+    width: 185px;
+}
+
+.TFT .menu button, .TFT .content-tail button {
+	height: 35px;
+    margin: 0;
+}
+
+.TFT #confirmation .content-body .cash-color {
+	font-size: 23px !important;
+}
+
+.TFT.content-tail .points {
+	height: 65%;
+}
+
+.TFT #home .menu button, .TFT .content-tail button {
+    height: 35px;
+}
+
+.TFT #confirmation .menu button,
+.TFT #confirmation .content-tail button,
+.TFT #select-pane .menu button,
+.TFT #select-pane .content-tail button,
+.TFT #session-pane-active .menu button,
+.TFT #session-pane-active .content-tail button{
+    height: 35px;
+	width: 258px;
+}
+
+.TFT.horizontal #session-pane-active .content-tail {
+	margin-top: 40px;
+	justify-content: center;
+
+}
+
+.TFT #confirmation .content-tail .line {
+	width: 200px;
+}
+
+.TFT .horizontal #confirmation .content-tail .actions {
+	padding-top: 85px;
+}
+
+.U3.SCREEN_MEMBER_ACCOUNT #home .content-body .info-group,
+.U3.SCREEN_MEMBER_ACCOUNT #other .content-body .info-group-line {
+	padding: 0 10px;
+}
+
+.U3.SCREEN_MEMBER_ACCOUNT #other .content-body .info-group-line .pin-numbers-container .button-small {
+	width: 74px;
+}
+
+.U3.SCREEN_MEMBER_ACCOUNT #home .content-body .amounts .amount-selections {
+	margin: 30px 10px;
+}
+
+.U6 .vertical .title {
+	font-size: 21px;
+}
+
+.U6 .amount-selections .container {
+	height: 70px;
+}
+
+.U6 .vertical .cash-color, .U6 .vertical .display-bg-position {
+	font-size: 35px !important;
+}
+
+.U6 .vertical .amount-selections .container button {
+	font-size: 30px;
+}
+
+.U6 .vertical .amount-selections .container button {
+	height: 60px;
+}
+
+.U6 .vertical .amount-selections .container .other-amount {
+	font-size: 23px;
+}
+
+.U6.vertical.SCREEN_MEMBER_ACCOUNT .line {
+	width: 100%;
+}
+
+.U6 .vertical #confirmation .content-body {
+	height: 55%;
+}
+
+.U6.vertical.SCREEN_MEMBER_ACCOUNT #other .content-tail {
+	justify-content: flex-start;
+    padding-top: 90px;
+}
+
+.U6 .vertical .xcmsg .title {
+    font-size: 25px;
+}
+
+.U4 .menu button, .U4 .content-tail button {
+	height: 37px;
+}
+
+.TFT .content-tail .points {
+	height: 55%;
+}
+
+.TFT.SCREEN_MEMBER_ACCOUNT #footer {
+	display: none;
+}
+
+.U4 #msg-pane .menu button, .U4 #msg-pane .content-tail button {
+	width: 215px;
+}
+
+.horizontal #msg-pane .button-response-container {
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100% !important;
+}
+
+.U6_RH .horizontal #home .content-tail .points {
+    height: 100%;
+    align-items: center;
+    padding-top: 15px;
+}
+.U3_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .info-group.points,
+.U3_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .points .v-box {
+	padding: 0;
+	height: 50px;
+}
+
+.U3_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .actions {
+	margin-top: 10px;
+}
+
+.U3_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .actions button {
+	height: 40px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.U3_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .points .horamounttoconvert {
+	font-size: 16px;
+	margin: 0;
+}
+
+.U6_RH .horizontal .content-tail .points {
+	height: unset;
+}

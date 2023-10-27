@@ -1,0 +1,35 @@
+.info-area > .msg {
+  width: 236px;
+  height: 254px;
+  background-size: 236px 254px;
+  background-image: url('../assets/vdm/message-box.png');
+
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, .85);
+  overflow-wrap: break-word;
+  /* word-wrap: break-word; */
+  text-align: center;
+}
+
+.msg > p {
+  width: calc(236px - 20px);
+}
+
+
+@media screen and (max-height: 400px) {
+  .info-area > .msg {
+    width: 427px;
+    height: 219px;
+    background-size: 427px 219px;
+    background-image: url('../assets/vdm/horizontal/4-message-box.png');
+  }
+
+  .msg > p {
+    width: calc(427px - 60px);
+  }
+}

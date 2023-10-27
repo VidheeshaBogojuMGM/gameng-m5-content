@@ -1,0 +1,1 @@
+const cardExit = window['com.igt.card_exit_screen']("#app");

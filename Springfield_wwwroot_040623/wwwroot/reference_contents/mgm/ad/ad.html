@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="./js/jquery-3.4.1.min.js"></script>
+	<script src="./js/slick.min.js"></script>
+	<script src="./js/ad-rotator-v2.js"></script>
+	<title></title>
+	<style type="text/css">
+		html,body {
+			width:  100%;
+			height:  100%;
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="ad" style="height:100vh; width: 100vw; overflow: hidden;"></div>
+</body>
+
+<script type="text/javascript">
+
+	function disablePointerEvents() {
+		$('body').css('overflow', 'hidden');
+		$('body').css('pointer-events', 'none');
+		$('html').css('overflow', 'hidden');
+		$('html').css('pointer-events', 'none');
+	}
+
+	$.get('./rotatorConfigs.json', function(data, status) {
+		if (status != "success"){
+			console.log('Failed to load promotions: ' + status);
+			serviceConfigs.rotatorImages = null;
+			return;
+		}
+
+		var searchParams = new URLSearchParams(window.location.search);
+		if(searchParams.has('playlist')) {
+			var playlist = searchParams.get('playlist');
+			if(!data[playlist]) {
+				return;
+			}
+
+			var interval = 5000;
+			var autoplay = true;
+			var selectedPlaylist;
+
+			selectedPlaylist = data[playlist];
+			if (selectedPlaylist.hasOwnProperty('interval')) {
+				interval = parseInt(selectedPlaylist['interval']);
+			}
+			if (selectedPlaylist.hasOwnProperty('autoplay')) {
+				autoplay = selectedPlaylist['autoplay'];
+				if (autoplay) {
+					disablePointerEvents();
+				}
+			}
+			AdRotatorV2.renderRotatorImages('ad', selectedPlaylist["en"], interval, autoplay);
+		}
+
+	});
+	//
+</script>
+</html>

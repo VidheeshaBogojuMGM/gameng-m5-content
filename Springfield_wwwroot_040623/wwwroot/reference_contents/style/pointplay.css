@@ -1,0 +1,417 @@
+
+
+#app{
+	display: block !important;
+}
+.page{
+	display:none;
+}
+
+#transfer-other{
+	width: 100%;
+	background-image: url(../assets/btn-large.png);
+}
+
+#all:active{
+	background-image: url(../assets/btn-large-down.png);
+}
+#all:disabled{
+	background-image: url(../assets/btn-large-disabled.png);
+}
+.align-box{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.button-small.pressed {
+	background-color: white;
+	color: black;
+    border-radius: 4px;
+}
+
+@media screen and (orientation:portrait) {
+
+	.align-box{
+		width: 90%;
+		margin-top: 20px;
+	}
+	
+	.button-medium{
+		margin-bottom: 4px;
+	}
+
+	.button-medium{
+		flex: 1 48%;
+	}
+
+	button{
+		display: inline-block;
+	}
+
+	#logo{
+		margin:20px auto;
+	}
+
+	.display-bg-position{
+		background-image: url(../assets/message-bg-s.png);
+    	width: 100%;
+		height: 70px;
+		margin: 10px auto;
+	}
+	#amount{
+		line-height: 60px;
+		font-size: 26px;
+	}
+
+
+	.button-small {
+		width: 31%;
+		height: 68px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+}
+
+
+@media screen and (orientation:landscape){
+	#transfer-other{
+		height: 30%;
+	}
+
+	p{
+		font-weight: 550;
+		font-size: 16px;
+	}
+
+	#home .content-body {
+		align-items: center;
+	}
+	#home .content-body .align-box{
+		height: 100%;
+		width: 55%;
+		align-items: flex-end;
+		align-content: space-between;
+		justify-content: space-around;
+	}
+
+	.info-group-line{
+		width: 98%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+
+	.display-bg-position{
+		background-image: url(../assets/message-bg-s.png);
+		height: 40px;
+		display: flex;
+		align-items: center;
+	}
+	.display-bg-position p{
+		width: 100% !important;
+	}
+
+
+	.button-medium{
+		flex: 1 30%;
+	}
+
+	.button-small{
+		width: 15% ;
+		padding: 0;
+	}
+
+	#other .content-body .align-box{
+		width: 98%;
+		align-items: flex-end;
+		min-height: 68%;
+	}
+
+
+	h1{
+		margin: 0px;
+		font-size:30px;
+	}
+}
+
+.v-box{
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  flex: 1;
+  max-width: 350px;
+  justify-content: center;
+}
+
+/* .vertical .title.veravailslotdollars {
+	border-bottom: 2px solid #898788;
+}
+
+.vertical .content-body .info-group-line .v-box {
+	width: 100%;
+} */
+
+.SCREEN_MEMBER_ACCOUNT #operation-message .content-body p {
+	font-size: 25px;
+	margin: 0;
+    width: 100% !important;
+}
+
+.U2.SCREEN_MEMBER_ACCOUNT #operation-message .content-body p {
+	font-size: 20px;
+}
+
+.SCREEN_MEMBER_ACCOUNT.horizontal #operation-message .content-body p {
+	font-size: 23px;
+}
+
+.SCREEN_MEMBER_ACCOUNT #operation-message .content-body .conversion-buttons {
+	margin-top: 10vh;
+	margin: 0;
+    width: 100% !important;
+}
+
+.SCREEN_MEMBER_ACCOUNT #operation-message .content-body .conversion-buttons button,
+.SCREEN_MEMBER_ACCOUNT #operation-message .content-body .conversion-buttons .line {
+	width: 100%;
+	max-width: 100%;
+}
+
+.SCREEN_MEMBER_ACCOUNT #operation-message .content-body .conversion-buttons button {
+	height: 45px;
+}
+
+.SCREEN_MEMBER_ACCOUNT.horizontal #operation-message .content-body {
+	padding-top: 65px;
+}
+
+.U2 .content-body .align-box {
+    margin-top: 0;
+}
+
+
+.TFT .horizontal .content-tail {
+	width: 35%;
+}
+
+.TFT #other .content-body .align-box {
+	justify-content: center;
+}
+
+.TFT #other .content-body .align-box .horizontal .button-small, 
+.TFT #other .content-body .align-box .horizontal.del-small {
+	width: 60px;
+    height: 50px;
+}
+
+.TFT #other .content-body .pin-numbers-container button {
+    height: 47px;
+    width: 77px;
+    margin: 2px 0;
+}
+
+.U6 #home .content-body .info-group .v-box {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.TFT .button-small, .TFT .del-small{
+	height: 43px;
+}
+.U2 .display-bg-position {
+	height: 45px;
+}
+
+.U4 #confirmation .content-tail .actions {
+	margin-top: 31vh;
+}
+
+.U4 .horizontal .content-body>div p, .U4 .horizontal .content-body>div h1 {
+	font-size: 17px;
+}
+
+.U4 .cash-color {
+	font-size: 22px !important;
+}
+
+.U3.SCREEN_MEMBER_ACCOUNT.vertical #home .content-body {
+	padding-top: 45px !important;
+}
+
+.U6.SCREEN_MEMBER_ACCOUNT p.veravailslotdollars {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.U2 #other .content-body .pin-numbers-container.wide,
+.U3 #other .content-body .pin-numbers-container.wide,
+.U4 #other .content-body .pin-numbers-container.wide,
+.U6 #other .content-body .pin-numbers-container.wide,
+.TFT #other .content-body .pin-numbers-container.wide,
+.U6_RH #other .content-body .pin-numbers-container.narrow,
+.U3_H #other .content-body .pin-numbers-container.narrow,
+.U6_H #other .content-body .pin-numbers-container.narrow 
+{
+	display: none;
+}
+
+.U2 #other .content-body .pin-numbers-container.narrow,
+.U3 #other .content-body .pin-numbers-container.narrow,
+.U4 #other .content-body .pin-numbers-container.narrow,
+.U6 #other .content-body .pin-numbers-container.narrow,
+.TFT #other .content-body .pin-numbers-container.narrow,
+.U6_RH #other .content-body .pin-numbers-container.wide,
+.U3_H #other .content-body .pin-numbers-container.wide,
+.U6_H #other .content-body .pin-numbers-container.wide  {
+	display: flex;
+}
+
+.U3_H .align-box {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: unset;
+	width: 100%;
+	margin-top: 58px;
+	min-height: 0;
+	align-content: unset;
+	height: unset;
+}
+
+.U6_H .align-box {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: unset;
+	width: 100%;
+	align-content: center;
+	height: unset;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail {
+	width: 40%;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-body {
+	width: 35%;
+	justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-body .amounts .amount-selections {
+    justify-content: center;
+	height: 100%;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-body .amounts .amount-selections button {
+    width: 135px;
+    height: 55px !important;
+    font-size: 30px;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-body .amounts .amount-selections .other-amount {
+    font-size: 20px;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .points,
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .actions {
+	height: 100%;
+	width: 50%;
+	padding: 0 10px;
+	justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .points {
+	justify-self: flex-start;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .points .v-box {
+	padding: 0;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .points .v-box p {
+	font-size: 17px;
+	width: 100%;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .actions {
+	margin-top: 40px;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .actions .line {
+	width: 100%;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #home .content-tail .actions button {
+	width: 100%;
+	max-width: 100%;
+	height: 45px;
+	margin: 0;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #confirmation .content-body .info-group-line {
+	padding: 0 220px;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #confirmation .content-body .info-group-line .v-box {
+	justify-content: center;
+	height: 100%;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #confirmation .content-body .info-group-line .v-box .title {
+	font-size: 20px;
+    width: 100% !important;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #confirmation .content-tail {
+	justify-content: flex-end;
+    padding: 15px;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #confirmation .content-tail .line,
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #confirmation .content-tail button {
+	width: 350px !important;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #confirmation .content-tail button {
+	height: 55px !important;
+    margin: 0;
+    max-width: 100%;
+}
+
+.U6_H .content-tail {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center
+}
+
+.U6_H .content-tail .points {
+	height: unset;
+}
+
+.U6_RH .align-box {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: unset;
+	width: 100%;
+	margin-top: 88px;
+	align-content: unset;
+	height: unset;
+}
+.SCREEN_MEMBER_ACCOUNT #operation-message #footer {
+	display: flex;
+}
+.U6_H.SCREEN_MEMBER_ACCOUNT .content-head {
+	width: 25%;
+}
+.U6_H.SCREEN_MEMBER_ACCOUNT .content-head #logo {
+	width: 232px;
+	left: 132px;
+}

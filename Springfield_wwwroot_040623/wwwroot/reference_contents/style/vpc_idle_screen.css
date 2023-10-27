@@ -1,0 +1,61 @@
+:root {
+  box-sizing: content-box;
+}
+
+#yourplaybtn {
+  width: auto;
+  height: auto;
+}
+
+#yourplaybtn_img {
+  content: url(../assets/icon-your-play.png);
+}
+
+.content-tail {
+  justify-content: center;
+}
+
+@media screen and (orientation:portrait) {
+  #qrcode {
+    width: 128px;
+    height: 128px;
+    background-color: white;
+    margin: 30px auto;
+    user-select: none;
+  }
+
+  .content-body>* {
+    width: 100% !important;
+  }
+
+  #adPlayer {
+    width: 95% !important;
+    height: 340px;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  #qrcode {
+    width: 128px;
+    height: 128px;
+    background-color: white;
+    margin: auto;
+    user-select: none;
+  }
+
+  .content-body>* {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  .content-body {
+    padding: 0 10px;
+    justify-content: center;
+  }
+
+  #adPlayer {
+    width: 100%;
+    max-width: 640px;
+    height: 100% !important;
+  }
+}

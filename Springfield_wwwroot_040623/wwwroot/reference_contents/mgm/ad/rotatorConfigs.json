@@ -1,0 +1,18 @@
+{
+	"idle_horizontal": {
+			"en": [
+				"./adrotator/en/horiz1.png",
+				"./adrotator/en/horiz1.png",
+				"./adrotator/en/horiz1.png",
+				"./adrotator/en/horiz1.png"
+			]
+	},
+	"idle_vertical": {
+			"en": [
+				"./adrotator/en/vert1.png",
+				"./adrotator/en/vert1.png",
+				"./adrotator/en/vert1.png",
+				"./adrotator/en/vert1.png"
+			]
+	}
+}

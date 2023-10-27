@@ -1,0 +1,153 @@
+#button-div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.button-show {
+    background-image: url(../assets/btn-down.png);
+    color: yellow;
+}
+
+.attr-div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.attr-name {
+    color: #f5e478;
+    font-size:17px;
+}
+
+.attr-value {
+    color: white;
+    font-size:17px;
+}
+
+.button-size {
+    width: 47%;
+    font-size: 17px;
+}
+
+.status-div {
+    margin-bottom: 15px;
+    text-align: left;
+    width: 110%;
+}
+
+#body-page{
+    top: 20%;
+    position: absolute;
+	left:5%;
+}
+
+@media screen and (orientation: landscape) {
+    .button-size {
+        font-size: 14px;
+        width: 52%;
+        margin-bottom: 5px;
+        height: 55px;
+    }
+    #button-div {
+        justify-content: space-between;
+        width: 60%;
+        display: unset;
+        position: relative;
+        top: -15%;
+    }
+    button {
+        font-size: 15px;
+    }
+    #body-page {
+        display: flex;
+        width: 47%;
+        position: absolute;
+        top: 35px;
+        left:25%;
+    }
+    .page-style {
+        width: 70%;
+        position: relative;
+        top: -50%;
+    }
+    #history-page {
+        top: 1%;
+    }
+    .attr-name {
+        font-size: 14px;
+    }
+    .attr-value {
+        font-size: 14px;
+    }
+    .attr-div {
+        width: 125%;
+        margin-left: 10px;
+        margin-top: 20px;
+        margin-bottom: -10px;
+    }
+    .status-div {
+        width: 130%;
+        margin-bottom: 13px;
+        display: flex;
+    }
+    .attr-name {
+        width: 25%;        
+    }
+    .attr-value {
+        width: 60%;
+    }
+    .w_tail {
+        justify-content: flex-end;
+    }
+}
+
+@media screen and (max-aspect-ratio: 4/1) and (orientation:landscape) {
+    #body-page {
+        display: unset;
+        width: 60%;
+        top: -2px;
+        position: absolute;
+        margin-left: 5px;
+    }
+    .status-div {
+        width: 95%;
+        margin-bottom: 9px;
+        display: flex;
+    }
+    .page-style {
+        margin-left: 30px;
+    }
+    .attr-div {
+        margin-top: 15px;
+        font-size:11px;
+    }
+    #history-page {
+        top: -30px;
+        width: 90%;
+    }
+    #button-div {
+        display: flex;
+        top: unset;
+        margin-left: 40px;
+    }
+    .button-size {
+        height: 40px;
+        margin-right: 8px;
+        font-size:11px;
+    }
+    .btn-back {
+        margin-right: 0px;
+        height: 45px;
+        width: 70%;
+    }
+    .attr-name {
+        font-size: 11px;
+    }
+    .attr-value {
+        font-size: 11px;
+    }
+}

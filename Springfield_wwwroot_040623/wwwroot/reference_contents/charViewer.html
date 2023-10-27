@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>charViewer</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <style>
+        html {
+        height: 100%;
+        }
+        body {
+        min-height: 100%;
+        }
+        html, body {
+            height: 100%;
+        }
+        .content-head{
+            height: 3%;
+        }
+
+        #localization-table tbody tr:nth-of-type(odd){
+        background-color: rgba(255,255,255,.05);
+        }
+        #localization-table td{
+        border-color: #32383e;
+        }    
+        #localization-table{
+            width: 100% !important;
+            height: 100%;
+        }
+        #app {
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content-body{
+            width: 95%;
+            height: 95%;
+            min-width: 95%;
+            max-height: 83%;
+            min-height: 83%;
+            margin-bottom: 0 !important;
+        }
+        .content-tail{
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            height: 10%;
+        }
+        .page{
+            opacity: 0.7;
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .page > * {
+            height: 38px;
+        }
+        .prev, .next{
+            font-size: 17px;
+        }
+        .total, .current, .next, .prev{
+            width: 23%;
+        }
+        .content-tail p{
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #back{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" resize="" v-cloak>
+        <!-- add your content code here -->
+        <div class='content-head'>
+            <h2 class="title">
+                CharacterViewer
+            </h2>
+        </div>
+        <div class='content-body'>
+            <table id="localization-table" style='width: 20em; color: #fff; background-color: #212529; '>
+                <tbody>
+                  <template v-for="obj in currentPageArray">
+                  <tr>
+                    <td><p>{{Object.keys(obj)[0]}}</p></td>
+                    <td class="chinese">{{obj[Object.keys(obj)[0]]}}</td>
+                  </tr>
+                  </template>
+                </tbody>
+            </table>
+        </div>
+        <div class='content-tail'>
+            <div class="page">
+                <button class="prev" @click="prev">PREV</button>
+                <p class="total">{{currentPageIndex +1}}/</p>
+                <p class="current">{{totalPages +1}}</p>
+                <button class="next" @click="next">NEXT</button>
+                <button id="back" onclick="window.history.back()">BACK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script>
+        var app = $cm('com.igt.charViewer',"#app", {
+            state: {
+                    preferredDisplayType: "fullscreen"
+            },
+            data() {
+                return {
+                    localizationArray: [],
+                    countPerPage: 13,
+                    currentPageIndex: 0
+                }
+            },
+            computed:{
+                totalPages(){
+                    return Math.floor(this.localizationArray.length / this.countPerPage );
+                },
+                currentPageArray(){
+                    if(this.localizationArray.length == 0 ) return [];
+                    let start = this.currentPageIndex * this.countPerPage;
+                    if(this.currentPageIndex == this.totalPages){
+                        return this.localizationArray.slice(start, this.localizationArray.length);
+                    }
+                    if(this.currentPageIndex < this.totalPages){
+                        return this.localizationArray.slice(start, start + this.countPerPage);
+                    }else{
+                        return this.localizationArray;
+                    }
+                }
+            },
+            methods: {
+                getLocalizationFile(){
+                    let self = this;
+                    fetch("localization.json")
+                    .then(function (response) {
+                        console.log(response)
+                        return response.json();
+                    }).then(function(data){
+                        self.localizationArray = Object.keys(data.cn).map(function(key) {                            
+                            let obj = {};
+                            obj[key]=data.cn[key];
+                            return obj;
+                        });
+                    })
+                    .catch(function (error) {
+                        console.log("can't find localization.json file ", error)
+                    }).finally(()=>{
+                        return; 
+                    });
+                },
+                next(){
+                    if(this.currentPageIndex<this.totalPages){
+                        this.currentPageIndex++;
+                    }
+                },
+                prev(){
+                    if(this.currentPageIndex>0){
+                        this.currentPageIndex--;
+                    }
+                }
+            }
+        });
+        app.start();
+        app.vm.getLocalizationFile();
+    </script>
+</body>
+
+</html>

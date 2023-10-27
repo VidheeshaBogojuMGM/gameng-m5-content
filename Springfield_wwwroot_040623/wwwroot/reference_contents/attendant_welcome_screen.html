@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>attendant_welcome_screen</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/attendant_welcome_screen.css">
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="decoration"></div>
+    <div id="app" resize="preset-2" v-cloak class="attendant_welcome">
+        <div class='content-head'>
+            <img id='logo' />
+        </div>
+        <div id="container" class='content-body message-box' v-show="!this.isPreviewing">
+            <div>
+                <p>{{displayMessage}}</p>
+            </div>
+        </div>
+        <!-- <div>
+            <div class='navi-group'>
+                <input type="button" class="small" v-for="app in displayingApps" :value="app.replace(/_/g, ' ').replace(/screen/gi, '')"
+                    @click="preview(app)"></input>
+
+            </div>
+            <div class='navi-group paging'>
+                <input type="button" class="small" value="PREV" @click="goto('-1')"></input>
+                <input type="button" class="small" value="FIRST PAGE" @click="goto(0)"></input>
+                <input type="button" class="small" value="NEXT" @click="goto('+1')"></input>
+
+            </div>
+        </div> -->
+
+        <div class='content-tail'>
+            <!-- <div class="line"></div>
+            <button id="ireserve" @click="navigate('ireserve.html')" class="btn btn-icon">{{ 'iReserve' | translate }}</button> -->
+			<div class="line"></div>
+            <button id="attendant" class="btn btn-icon">{{ 'ATTENDANT' | translate }}</button>
+			<div class="line"></div>
+        </div>
+    </div>
+    <div id="preview" style="position: absolute; display:none; left: 0px; top:0px;">
+        <input type="button" id="exitPreviewBtn" style="border-radius: 100%; position:absolute; z-index:1000;height: 64px; width: 64px; "
+            value="BACK"></input>
+        <iframe style="position:absolute; z-index:999; top:0px; width:100vw; height: 100vh;" src="" frameborder="0"></iframe>
+    </div>
+
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/attendant_welcome_screen.skin.js"></script>
+</body>
+
+</html>

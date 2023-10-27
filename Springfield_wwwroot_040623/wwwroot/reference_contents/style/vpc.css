@@ -1,0 +1,399 @@
+.vertical #app>* {
+    margin-bottom: unset;
+}
+p {
+    color: #F4E2D7;
+}
+p.amount {
+    color: #FFEB73;
+    font-size: 22px;
+}
+.messageHeading p {
+    width: 100%;
+    color: #ffeb73;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-bottom: .6rem
+}
+.messageInfo p {
+    color: #f4e2d7;
+    margin-bottom: .5rem
+}
+#thresholdmessage p {
+    color:#ff1a1a;
+}
+.button_half {
+    background-image: url(../assets/btn-half-normal.png);
+    width: calc(var(--component-space) * 0.49)
+}
+.btnStayPressed {
+    background-image: url(../assets/btn-half-active.png) !important;
+    color:#f5e478;
+}
+.las_btnarray {
+    display: flex;
+    width: 100%;
+}
+.horizontal .las_btnarray {
+    height: unset !important;
+}
+.vertical .learnBtn {
+    width: 99%;
+}
+.vpcsquare {
+    display: flex;
+    align-items: center;
+    width: calc(var(--component-space) * 0.6);
+    height: calc(var(--component-space) * 0.6);
+    background-color: red;
+    margin: 25px auto;
+}
+.horizontal .vpcsquare {
+    height: 7rem;
+    width:  7rem;
+    margin: 15px auto;
+}
+.smallHoriz .vpcsquare {
+    height: 5rem;
+    width: 5rem;
+}
+#circularProgressBar p{
+    display: none;
+}
+.vertical .underlimit,
+.vertical .overlimit{
+    margin-top: 30px;
+    height: inherit;
+}
+.vertical .nolimit {
+    width: 100%;
+    margin-top: 30px;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.horizontal .underlimit,
+.horizontal .overlimit,
+.horizontal .nolimit {
+    width: 90%;
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.smallHoriz .underlimit,
+.smallHoriz .overlimit,
+.smallHoriz .nolimit {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.vertical .limitstyle {
+    height: 81%;
+}
+.U6 .limitstyle {
+    height: 79%;
+}
+.msgarea {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around
+}
+.horizontal .msgarea {
+    width: 45%;
+    height: inherit;
+}
+.smallHoriz .msgarea {
+    width: 100%;
+    height: 60%;
+    justify-content: center;
+}
+
+.smallHoriz .largermsg {
+    height: 70%;
+}
+
+.U3_RH .largermsg {
+    width: 50%;
+    height: inherit;
+}
+
+.vertical .amountarea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.vertical .amountarea >div {
+    margin-bottom: 5px;
+}
+.horizontal .amountarea {
+    width: 45%;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.horizontal .amountarea >div {
+    display: flex;
+}
+.smallHoriz .amountarea {
+    width: 100%;
+    height: 40%;
+}
+.smallHoriz .largeamount {
+    width: 70%;
+    height: 30%;
+}
+
+.TFT .largeamount, 
+.U4 .largeamount {
+	width: 100%
+}
+
+.smallHoriz .amountarea >div {
+    margin-left: 14%;
+}
+.U3_RH .amountarea {
+    width: 55%;
+    height: inherit;
+}
+
+.U3_RH .largeamount {
+    width: 45%;
+    height: inherit;
+}
+
+.smallHoriz .largeamount >div {
+    margin-left: unset;
+}
+
+.horizontal .amountHeader{
+    text-align:left;
+}
+
+.smallHoriz .amountHeader {
+    width:70%;
+    text-align:left;
+}
+
+.U6_RH .amountHeader {
+    width:70%;
+    text-align:left;
+}
+
+.horizontal .amount{
+    text-align:right;
+}
+.smallHoriz .amount{
+    width:30%;  
+    margin-right:2rem;
+}
+
+.U6_RH .amount{
+    width:30%;  
+    margin-right:2rem;
+}
+
+.horizontal .horzbtns{
+    position: absolute;
+    min-width: unset !important;
+    width: var(--component-space);
+    top: 0rem;
+    right: 0rem;
+}
+.horizontal .horzbtns button{
+    margin: 0px 0.5px
+}
+.horizontal .no-limit-addition-info {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.horizontal .content-tail {
+    justify-content: flex-end;
+}
+.vertical .nlarea {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.horizontal .nlarea {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.smallHoriz .nlarea {
+    width: 70%;
+    height: inherit;
+}
+
+.U4 .nlarea {
+    width: 80%;
+}
+.TFT .nlarea {
+    width: 92%;
+}
+.horizontal #session {
+    display: flex;
+}
+.horizontal #total {
+    display: flex;
+}
+.horizontal .content-body {
+    align-items: flex-start;
+    justify-content: center;
+}
+.smallHoriz p {
+    font-size: 14px;
+}
+.progressbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 45px auto;
+}
+.horizontal .progressbar {
+    transform: scale(.6);
+    height: 7.5rem;
+    margin: 0;
+}
+.smallHoriz .progressbar {
+    transform: scale(.4);
+}
+
+.U6_RH .progressbar {
+    transform: scale(.5);
+}
+
+.U3_RH .progressbar {
+	transform: scale(.5);
+}
+
+.U3_RH .nlarea {
+	width: 45%;
+}
+	
+.vertical .las-help-nolimit1-example {
+    background-image: url(../assets/learn-how-vertical.png);
+    height: 28rem;
+    width: 12rem;
+    margin: 1rem auto;
+}
+
+.horizontal .laslearnHowText {
+    width: 50%;
+}
+
+.smallHoriz .laslearnHowText {
+    width: 100%;
+}
+
+.horizontal .lashelpnolimit1 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    justify-content:center;
+}
+
+.smallHoriz .lashelpnolimit1 {
+    flex-direction: row;
+}
+
+.horizontal .las-help-nolimit1-example {
+    background-image: url(../assets/learn-how-u6rh.png);
+    width: calc(1.0 * 370px);
+    height: calc(1.0 * 184px);
+}
+
+.smallHoriz .las-help-nolimit1-example {
+    background-image: url(../assets/learn-how-tft.png);
+    width: calc(0.8 * 220px);
+    height: calc(0.8 * 137px);
+    align-self: flex-end;
+}
+
+/* .U6 .las-help-nolimit1-example {
+    width: calc(0.9 * 220px);
+    height: calc(0.9 * 137px);
+}  */
+
+.U3_RH .las-help-nolimit1-example {
+    width: calc(0.7 * 370px);
+    height: calc(0.7 * 184px);
+}
+.no-limit-addition-info p {
+    width: inherit;
+}
+.U3_RH p {
+    font-size: 16px;
+}
+.smallHoriz button{
+    font-size: 18px;
+    height: 40px;
+}
+.TFT #lastrackplayhelp .messageInfo p {
+    font-size: 13px;
+}
+.horizontal .nlarea #session :nth-child(1) {
+    text-align: left;
+}
+.horizontal .nlarea #session :nth-child(2) {
+    width: 150px;
+}
+.horizontal .nlarea #total :nth-child(1) {
+    text-align: left;
+}
+.horizontal .nlarea #total :nth-child(2) {
+    width: 150px;
+}
+
+.continuePlay{
+    font-size: 1.3rem;
+    color: #f4e2d7;
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+    align-items:center;
+}
+
+.horizontal .continuePlay{
+    font-size: 1.1rem;
+    margin-top:0;
+    align-items: center;
+    justify-content: center;
+}
+
+.vertical .continue-btn{
+    font-size: 1.25rem;
+}
+
+.vertical .stop-btn{
+    font-size: 1.25rem;
+}
+
+.horizontal .continue-btn{
+    font-size: .9rem;
+}
+
+.horizontal .stop-btn{
+    font-size: .9rem;
+}
+
+.TFT .continue-btn{
+    font-size: .7rem;
+} 
+
+.TFT .stop-btn{
+    font-size: .7rem;
+} 
+
+
+
+

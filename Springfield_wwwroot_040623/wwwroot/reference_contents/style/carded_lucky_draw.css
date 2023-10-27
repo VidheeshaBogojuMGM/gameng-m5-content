@@ -1,0 +1,74 @@
+  /* #app {
+    background-image: url("../assets/bg-defualt.png")
+  } */
+  
+  .infoarea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    z-index: 99;
+  }
+  
+  .infoarea p {
+    font-size: 1.5rem;
+    color: #F7E2AF;
+  }
+  
+  .vertical .win {
+    width: 100%;
+    transform: scale(4);
+    margin-top: 60%;
+  }
+  
+  .vertical .win_body {
+    flex-grow: 1;
+  }
+  
+  .vertical .win_tail {
+    justify-content: flex-end;
+    flex-grow: unset;
+    z-index: 99;
+  }
+  
+  .horizontal .win {
+    transform: scale(.8);
+  }
+  
+  .horizontal .win_head {
+    margin-left: 10%;
+  }
+  
+  .horizontal .win_body {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .horizontal .win_tail {
+    justify-content: flex-end;
+  }
+
+  .TFT .content-tail button {
+    font-size: 1.3rem;
+  }
+  
+  .TFT .infoarea p,
+  .U4 .infoarea p {
+    font-size: 1rem;
+  }
+
+  .TFT .win,
+  .U4 .win {
+    transform: scale(.7);
+  }
+
+  .TFT .win_head,
+  .U4 .win_head {
+    width: calc(var(--component-space)*1.5);
+    margin-left: 3%;
+  }
+
+  .TFT .infoarea :nth-child(3),
+  .U4 .infoarea :nth-child(3) {
+    font-size: 1.5rem !important;
+  }

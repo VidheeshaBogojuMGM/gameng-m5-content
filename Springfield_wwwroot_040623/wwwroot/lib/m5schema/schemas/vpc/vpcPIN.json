@@ -1,0 +1,20 @@
+{
+  "id": "http://igt.com/vpcPIN/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for vpcPIN",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^vpcPIN$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "pin": {
+      "type": "string",
+      "pattern": "^[0-9]{1,16}$"
+    }
+  },
+  "required": ["cmd","pin"]
+}

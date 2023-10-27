@@ -1,0 +1,785 @@
+:root {
+  --go-button-size: 50px;
+}
+
+/* .v-box{
+      align-items: center;
+    } */
+.h-box-wrap {
+  justify-content: center;
+  /* width: fit-content; */
+  align-items: flex-end;
+}
+
+.content-body {
+  justify-content: space-around;
+}
+
+h1 {
+  color: white;
+  margin: 0;
+  margin-top: -5px;
+}
+
+p {
+  width: 100%;
+}
+
+.go-button {
+  background-image: url(../assets/btn-go-normal.png);
+  width: var(--go-button-size);
+  height: calc(var(--go-button-size) / 61 * 48);
+  transform: translate(0, -2px);
+  margin-top: 3px;
+  font-size:bold;
+  /* position: absolute; */
+  /* top: 13px; */
+  /* right: var(--margin-to-right); */
+}
+
+.go-button:active {
+  background-image: url(../assets/btn-go-active.png);
+}
+
+.with-go {
+  text-align: right;
+  /* width: 60%; */
+  width: auto;
+}
+
+.content-body p {
+  white-space: nowrap;
+}
+
+.content-body>div {
+  position: relative;
+  max-width: 90%;
+  /* margin-bottom: 10px; */
+}
+
+
+#player-pane {
+  /* background-image: url('../assets/playername-bg.png'); */
+  height: 84px;
+  width: var(--component-space);
+  line-height: 80px;
+}
+
+.defaultTheme #level-pane {
+  background-image: url('../assets/rank-bg.png');
+}
+
+.valley #level-pane {
+  background-color:rgba(73, 78, 49, 1);
+}
+
+.butte #level-pane {
+  background-color: rgba(17, 71, 94, 1);
+}
+
+.summit #level-pane {
+  background-color:rgba(96, 95, 95, 1);
+}
+
+.ridge #level-pane {
+  background-color:	rgba(148, 66, 3, 1);
+}
+
+.vista #level-pane {
+  background-color:rgba(61, 35, 45, 1);
+}
+
+#level-name {
+  color:#e5ddd0;
+}
+
+#language {
+  background-image: url('../assets/language-bg.png');
+  /* margin-top: 60px; */
+}
+
+#languageIcon {
+  transform: translate(0, 5px);
+  margin-right: 10px;
+}
+
+#language:disabled {
+  opacity: 0.5;
+}
+
+#yourplaybtn {
+  width: auto;
+  height: auto;
+}
+
+#yourplaybtn_img {
+  content: url(../assets/icon-your-play.png);
+}
+
+.gamesplayed_img {
+  background-image: url(../assets/games-played-bg.png);
+  height: 50px;
+  width: 90%;
+  align-self: center;
+}
+
+.TFT .gamesplayed_img,
+.U4 .gamesplayed_img {
+  height: 40px;
+}
+
+.gamesplayed_img p {
+  color: white;
+  font-size: 2em;
+  width: 65%;
+  margin-left: 35%;
+}
+
+.TFT .gamesplayed_img p,
+.U4 .gamesplayed_img p {
+  font-size: 25px !important;
+}
+
+
+.vertical .multiplier .random {
+	margin-top: 50px;
+	display: flex;
+	color: #fff;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.vertical .session-menu {
+  width: 100%;
+  max-width: 100% !important;
+}
+
+.U4 .session-menu .btn {
+    height: 45px;
+}
+
+.U4 .session-menu .btn .icon {
+    top: 5px;
+    left: 20px;
+    height: 30px;
+}
+
+.TFT .gamesplayed_img p{
+  margin-top:8px;
+}
+
+.horizontal #yourplaybtn_img {
+  width: 30%;
+}
+
+.TFT #yourplaybtn_img {
+  width: 40%;;
+}
+
+.cc-icon{
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translate(0px,-50%);
+}
+/*BLE and NFC here are keywords*/
+.cc-icon-BLE{
+  background-image: url('../assets/cardless-ble-icon.png');
+
+}
+.cc-icon-NFC{
+  background-image: url('../assets/cardless-nfc-icon.png');
+}
+
+.vertical .content-body .dollars-container .v-box p {
+	font-size: 18px;
+}
+
+.vertical .content-body .dollars-container .v-box h1 {
+	padding-top: 5px;
+	font-size: 25px;
+}
+
+.vertical .multiplier .clickable span {
+	font-weight: bold;
+}
+
+.free-play {
+	font-style: italic;
+}
+
+.vertical .content-body .dollars-container .v-box {
+	padding-bottom: 25px;
+}
+
+.U4 .content-body .dollars-container, .U4 .content-body .multiplier{
+	flex: auto !important;
+}
+
+
+.U2 .content-body .dollars-container, .U2 .content-body .multiplier {
+	width: 100%;
+	max-width: 100%;
+	padding-top: 30px;
+}
+
+.U2 .vertical .content-body .dollars-container .v-box p {
+	font-size: 12px;
+}
+
+.U2 .vertical .content-body .dollars-container .v-box h1 {
+	font-size: 15px;
+}
+
+.U2 .vertical .content-body .dollars-container .v-box {
+	padding-bottom: 9px;
+}
+
+.U2 .vertical .multiplier .point-multiplier {
+	font-size: 8px;
+}
+.SCREEN_SESSION.U2 .session-menu {
+	padding-top: 40px;
+}
+
+.U2 .vertical .multiplier .clickable {
+	width: 100% !important;
+}
+.U2 .vertical .multiplier .clickable div {
+	width: 135px !important
+}
+
+.U2 .vertical .multiplier .clickable span{
+	font-size: 12px;
+}
+
+.U2 .vertical .content-body .session-menu .btn {
+	height: 40px;
+	width: 100%;
+}
+.U2 .vertical .content-body .session-menu .btn.btn-icon {
+	padding-left: 55px;
+	font-size: 13px;
+}
+
+.U2 .content-body .session-menu .btn > .icon {
+	top: calc(50% - 20px);
+    left: 5px;
+    height: 43px;
+    transform: scale(0.50);
+}
+
+.TFT .horizontal #player-pane, .TFT .horizontal #player-name {
+	width: 160px !important;
+	font-size: 16px !important;
+}
+
+.TFT .content-body {
+	display: block;
+}
+
+.TFT .SCREEN_SESSION.horizontal .v-box p {
+	font-size: 15px !important;
+}
+
+.TFT .SCREEN_SESSION.horizontal .multiplier {
+	padding-top: 10px;
+	max-width: 100%;
+}
+
+.TFT .SCREEN_SESSION.horizontal .v-box {
+	padding-right: 0;
+	box-sizing: content-box;
+}
+
+.TFT .SCREEN_SESSION.horizontal .content-tail>* {
+	height: 22%;
+}
+.TFT .SCREEN_SESSION.horizontal .content-tail .session-menu .btn {
+	height: 48px;
+	font-size: 14px;
+}
+
+.TFT .SCREEN_SESSION.horizontal .content-tail .session-menu .btn > .icon {
+	top: 3px;
+}
+
+.horizontal .multiplier .point-multiplier span {
+	font-size: 15px;
+}
+
+.horizontal .multiplier .point-multiplier {
+	margin-top: 4px;
+	flex: unset;
+	height:  40px;
+	background-color: #BAA76F;
+	color: #000;
+	border: 2px solid #fff;
+	border-radius:2px;
+	width: 100%;
+	margin: 0 auto;
+	font-weight: normal;
+	text-align: center;
+	padding: 10px 0;
+}
+
+
+@media screen and (orientation:landscape) {
+  :root {
+    -margin-to-right: 50%;
+  }
+
+  .content-body>div {
+    flex: 0 50%;
+  }
+
+  .content-tail {
+    justify-content: flex-end;
+  }
+  .content-tail >* {
+    margin-bottom: 3px;
+  }
+  .gamesplayed_img {
+    width: 100%;
+  }
+}
+
+.vertical .multiplier .point-multiplier {
+	margin-top: 10px;
+	background-color: #BAA76F;
+	color: #000;
+	border: 2px solid #fff;
+	border-radius:2px;
+	width: 100%;
+	margin: 0 auto;
+	font-size: 18px;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.vertical .multiplier .random-riches {
+	border: 3px solid #fff;
+	border-radius: 14px;
+	height: 11px;
+	padding: 4px;
+	width: 205px;
+	box-sizing: content-box;
+}
+
+.vertical .multiplier .random-riches div {
+	background-color: #BDA670;
+	height: 10px;
+	border-radius: 10px;
+	width: 100%;
+}
+
+.content-body .points-available, .content-body .points-active{
+	position: absolute;
+	left: 0;
+	top: 7px;
+	font-size: 14px !important;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.content-body .points-active{
+    color: rgb(56, 226, 108);
+}
+
+.content-body .points-available{
+	color: #f3f300;
+}
+
+.U2 .content-body .points-available, .U2 .content-body .points-active {
+	font-size: 10px !important;
+}
+
+.U2 .content-body .points-available, .U2 .content-body .points-active {
+	top: 2px;
+}
+
+.U4.SCREEN_SESSION .content-body .points-available, .U4.SCREEN_SESSION .content-body .points-active {
+	font-size: 13px !important;
+}
+
+.U3.SCREEN_SESSION .content-body .session-menu .btn-2col-container {
+	padding: 0 7px
+}
+
+.U6 .content-body .points-available, .U6 .content-body .points-active {
+	font-size: 18px !important;
+}
+
+.U6 .vertical .content-body .dollars-container .v-box h1 {
+	font-size: 28px;
+	padding-top: 10px;
+}
+
+.U6.SCREEN_SESSION .content-body .multiplier .riches {
+	font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.U6.SCREEN_SESSION .session-menu {
+	margin-top: 6vh;
+}
+
+.U6 #pinArea .message-display {
+	font-size: 30px;
+}
+
+.U6.SCREEN_SESSION .content-body .dollars-container .v-box {
+	padding-bottom: 22px;
+}
+
+.U6.SCREEN_SESSION .content-body {
+	padding-top: 50px !important;
+}
+
+.U6.SCREEN_SESSION .content-body .session-menu .line {
+	width: 100%;
+}
+
+.U6.SCREEN_SESSION .content-body .dollars-container {
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.U6 .vertical .content-body .dollars-container .v-box p {
+	font-size: 25px;
+}
+
+.U6.SCREEN_SESSION .multiplier {
+	padding-top: 30px;
+	width: 100%;
+	max-width: 100%;
+}
+
+.U6 .multiplier .point-multiplier {
+	width: 100%;
+    font-size: 23px;
+}
+
+.U6 .multiplier .random-riches {
+	width: 311px;
+	height: 15px;
+}
+
+.U6 .multiplier .random-riches div {
+	height: 15px;
+}
+
+
+.U4 .content-body .multiplier {
+	padding-top: 10px;
+}
+
+.U4 .multiplier .point-multiplier span {
+	font-size: 18px;
+}
+
+.U4 .content-body .multiplier .point-multiplier {
+	padding: 15px 0;
+	height: 55px;
+}
+
+
+.horizontal .content-tail .random-horiz {
+	margin-top: 10px;
+	display: flex;
+	color: #fff;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.U4 .horizontal .content-tail .random-horiz {
+	margin-top: 20px;
+}
+
+.U4.SCREEN_SESSION .session-menu .btn {
+	width: calc(100% - 50px);
+}
+
+.U4.SCREEN_SESSION .session-menu .line {
+	width: 250px;
+}
+
+.TFT .session-menu .btn.btn-icon{
+  padding-left: 75px;
+}
+
+.TFT .content-body .points-available, .TFT .content-body .points-active {
+    font-size: 11px !important;
+    top: 4px;
+}
+
+.TFT.SCREEN_SESSION.horizontal .content-body .points-available,
+.TFT.SCREEN_SESSION.horizontal .content-body .points-active  {
+    font-size: 12px !important;
+}
+
+.TFT .SCREEN_SESSION #footer {
+	display: none;
+}
+
+.U3_H.SCREEN_SESSION .session-menu .btn {
+	width: calc(100% - 40px);
+}
+.U3_H.SCREEN_SESSION .session-menu .btn.btn-icon {
+    padding-left: 50px;
+}
+
+.U3.SCREEN_SESSION .content-body {
+	padding-top: 40px !important;
+}
+
+.U3_H.SCREEN_SESSION .content-body .points-available,
+.U3_H.SCREEN_SESSION .content-body .points-active{
+	font-size: 15px !important;
+}
+
+.U3.SCREEN_SESSION .content-body .session-menu {
+	margin-top: 8vh;
+}
+
+.U3.SCREEN_SESSION .content-body .multiplier .riches {
+	font-size: 18px;
+    padding-bottom: 10px;
+	font-weight: normal;
+}
+
+.U3.SCREEN_SESSION .content-body .dollars-container .v-box h1 {
+    padding-top: 10px;
+    font-size: 20px;
+}
+
+.SCREEN_SESSION .points-available, .SCREEN_SESSION .points-active {
+	border-bottom: none !important;
+}
+
+.U6_RH.SCREEN_SESSION .content-head #logo {
+	position: relative;
+}
+
+
+.U6_RH.SCREEN_SESSION .content-body,
+.U6_RH.SCREEN_SESSION .content-head  {
+	width: 25% !important;
+	position: relative;
+}
+
+.U6_RH.SCREEN_SESSION .content-body {
+	justify-content: flex-start;
+}
+.U6_RH.SCREEN_SESSION .content-tail{
+	width: 50% !important;
+}
+
+.U6_RH.SCREEN_SESSION.horizontal #player-name,
+.U6_RH.SCREEN_SESSION.horizontal #player-pane {
+	width: 265px !important;
+	margin-left: 0;
+}
+.U6_RH.SCREEN_SESSION.horizontal #footer {
+	width: 265px;
+	left: 1px;
+}
+
+
+.U6_RH .horizontal #player-pane{
+	width: 243px !important;
+	margin-left: 6px;
+}
+.U6_RH .horizontal #player-name {
+	width: 235px !important;
+	margin-left: 6px;
+}
+
+.U6_RH .horizontal #footer {
+	width: 243px;
+}
+
+
+.U6_RH.SCREEN_SESSION .content-body .dollars-container  {
+	flex: unset;
+	width: 100% !important;
+}
+
+.U6_RH.SCREEN_SESSION .content-body .multiplier {
+	min-width: 50% !important;
+}
+
+.U6_RH.SCREEN_SESSION .content-body .dollars-container h1 {
+	font-size: 18px;
+}
+
+.U6_RH.SCREEN_SESSION.horizontal .v-box p {
+	font-size: 16px !important;
+}
+
+.U6_RH.SCREEN_SESSION.horizontal .v-box p.points-available {
+	font-size: 12px !important;
+}
+
+.U6_RH.SCREEN_SESSION .session-menu {
+	height: 100%;
+
+	/* to be deleted if 3 buttons are displayed*/
+	padding-left: 25px;
+}
+
+.U6_RH.SCREEN_SESSION .session-menu .line {
+	margin-right: 15px;
+
+	/* to be deleted if 3 buttons are displayed*/
+	width: 265px;
+}
+
+.U6_RH.SCREEN_SESSION .session-menu  .btn.btn-icon {
+	margin-left: 5px;
+	height: 53px;
+}
+
+.U6_RH.SCREEN_SESSION .session-menu  .btn.btn-icon .icon {
+	top: 5px;
+}
+
+.U2.SCREEN_SESSION.vertical .multiplier .rr-bar {
+	margin-top: 10px !important;
+}
+
+.SCREEN_SESSION #footer .navigations {
+	width: unset;
+}
+
+.TFT.horizontal .SCREEN_SESSION .dollars-container .v-box,
+.TFT.horizontal .SCREEN_SESSION .content-tail .session-menu .line,
+.TFT.horizontal .SCREEN_SESSION .content-tail .session-menu .btn {
+	width: 100%;
+}
+
+.horizontal .SCREEN_SESSION .content-tail .session-menu .btn.btn-icon .icon {
+    left: 5px;
+    height: 28px;
+	top: 7px;
+}
+.U3 .SCREEN_SESSION .dollars-container,
+.U3 .SCREEN_SESSION .content-body .multiplier  {
+	width: 100%;
+    padding-left: 10px;
+    max-width: 100%;
+    padding-right: 10px;
+}
+
+.U4.horizontal .SCREEN_SESSION .dollars-container .v-box,
+.U4.horizontal .SCREEN_SESSION .content-tail .session-menu .line,
+.U4.horizontal .SCREEN_SESSION .content-tail .session-menu .btn {
+	width: 100%;
+}
+.U4.horizontal .SCREEN_SESSION .v-box {
+	padding: 4px 0 0 0;
+}
+
+.TFT .SCREEN_SESSION .dollars-container,
+.U3 .SCREEN_SESSION .dollars-container,
+.U4 .content-body .dollars-container,
+.U4 .content-body .multiplier {
+	max-width: 100%;
+}
+
+
+.TFT .SCREEN_SESSION .content-tail .session-menu,
+.TFT .SCREEN_SESSION .content-tail .session-menu .btn {
+	width: 100%;
+}
+
+
+.TFT.horizontal .SCREEN_SESSION .dollars-container .v-box {
+	padding-left: 0px;
+}
+
+.TFT .SCREEN_SESSION .session-menu .btn.btn-icon {
+	padding-left: 50px;
+}
+
+.U6.SCREEN_SESSION .session-menu .btn.btn-icon {
+ 	padding-left: 135px;
+}
+
+.U6.SCREEN_SESSION .session-menu .btn.btn-icon img {
+	left: 50px;
+    width: 45px;
+    height: 45px;
+    top: 7px;
+}
+.U6_RH.SCREEN_SESSION .session-menu .btn.btn-icon {
+	padding-left: 50px;
+/* to be deleted if 3 buttons are displayed*/
+	width: calc(100% - 155px);
+	margin-left: 0;
+	font-size: 12px;
+}
+
+.U6_H.SCREEN_SESSION .content-head {
+	align-items: center;
+}
+
+.U6_H.SCREEN_SESSION .content-head > div,
+.U6_H.SCREEN_SESSION .content-head #player-pane,
+.U6_H.SCREEN_SESSION .content-head #player-name{
+	width: 456px !important;
+}
+
+.U6_H.SCREEN_SESSION .content-body>div h1 {
+	font-size: 18px;
+}
+.U6_H.SCREEN_SESSION .content-tail {
+	padding-left: 40px
+}
+.U6_H.SCREEN_SESSION .content-head {
+	width: 19%;
+}
+.U6_H.SCREEN_SESSION .content-tail {
+	width: 35%;
+	padding-right: 14px;
+}
+.U6_H.SCREEN_SESSION .random-riches-container {
+	width: 377px;
+	position: absolute;
+	left: -101px;
+	top: 119px;
+}
+.U6_H.SCREEN_SESSION .random-riches > div {
+	width: 359px !important;
+}
+.U6_H.SCREEN_SESSION .multiplier{
+	top: 42px;
+}
+
+.U6_H.SCREEN_SESSION .content-tail .line {
+	width: 100%;
+}
+.U6_H.SCREEN_SESSION .session-menu .btn {
+	width: 45%;
+	justify-content: start;
+	height: 50px;
+	padding-left: 60px;
+}
+.U6_H.SCREEN_SESSION .session-menu .btn.btn-icon .icon {
+	left: 7px !important;
+}
+.U6_H.SCREEN_SESSION .SCREEN_SESSION .dollars-container {
+	padding-right: 10px;
+}
+
+.U2.SCREEN_SESSION .btn-2col-container .btn > .icon {
+	transform: scale(0.5) !important;
+	left: -4px !important;
+}
+.U6_RH .multiplier .point-multiplier span,
+.TFT .multiplier .point-multiplier span {
+	font-size: 13px;
+}

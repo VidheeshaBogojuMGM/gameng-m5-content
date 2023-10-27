@@ -1,0 +1,167 @@
+body {
+  background-image: url(../assets/random_riches/ls-bg.jpg);
+  background-size: cover;
+}
+
+#app {
+  padding: 0 0;
+}
+
+button {
+  background-image: url(../assets/random_riches/promotion-1-button.png);
+  color: #ccda0b;
+}
+
+button:active {
+  background-image: url(../assets/random_riches/button-down-1.png);
+  color: #ccda0b;
+  transform: scale(0.9);
+  filter: drop-shadow(0px 0px 5px grey);
+}
+
+.message-box {
+  border-width: 15px;
+  border-image: url(../assets/random_riches/message-box-1.png);
+  border-image-slice: 12 fill;
+  border-color: white;
+  border-radius: 16px;
+}
+
+.message-box div {
+  color: #fff47f;
+}
+
+.fullscreen .app-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullscreen .content-body {
+  flex-grow: 3;
+  height: unset;
+  width: 100%;
+  align-items: center;
+}
+
+.fullscreen .fs-body {
+  height: 100%;
+}
+
+.fullscreen .content-tail {
+  flex-grow: 1;
+  height: unset;
+  width: 100%;
+  justify-content: center;
+  background-image: unset;
+}
+
+/* hack to override styles in common.css*/
+.fullscreen .content-tail button {
+  height: 80px;
+  width: 300px;
+}
+
+.fullscreen .message-box {
+  margin-top: unset;
+  height: 300px;
+  border-width: 1rem;
+  border-image: url(../assets/random_riches/message-box.png);
+  border-image-slice: 40 fill;
+  border-color: white;
+  border-radius: 1rem;
+}
+
+.fullscreen .message-box div:nth-child(1) {
+  font-size: 1.8rem;
+}
+
+.fullscreen .message-box div:nth-child(2) {
+  font-size: 1.4rem;
+}
+
+.sw .fs-body {
+  height: 100%;
+  justify-content: center;
+}
+
+/* spinner */
+
+.wheel-container {
+  height: 100%;
+  width: 100%;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  position: relative;
+}
+
+@media screen and (orientation:portrait) {
+  .sw .wheel-container {
+    height: 450px;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  .sw .wheel-container {
+    width: 232px;
+  }
+}
+
+.wheel-pointer-box {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+}
+
+.wheel-pointer {
+  width: 100%;
+  height: 100%;
+  background: url("../assets/random_riches/full_spinner_center.png") no-repeat center;
+  background-size: 20%;
+}
+
+.wheel-bg {
+  width: 100%;
+  height: 100%;
+  background: url("../assets/random_riches/delivery_BG.png") no-repeat center;
+  background-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#wheel-roll {
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background: url("../assets/random_riches/full_spinner.png") no-repeat center;
+  background-size: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prize-list {
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+}
+
+.prize-list p {
+  z-index: 98;
+}
+
+.fullscreen .prize-list p {
+  font-size: 1.8rem;
+}
+
+.sw .prize-list p {
+  font-size: .8rem;
+}
+
+/* end of spinner */

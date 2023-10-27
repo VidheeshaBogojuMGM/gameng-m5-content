@@ -1,0 +1,33 @@
+{
+  "name": "igt-media-elements",
+  "version": "5.4.0",
+  "main": "src/igt-media-elements.js",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "devDependencies": {
+    "babel-preset-es2015": "6.24.1",
+    "grunt": "1.0.3",
+    "grunt-babel": "6.0.0",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-jasmine": "1.2.0",
+    "grunt-contrib-uglify": "2.3.0",
+    "grunt-jsdoc": "2.3.0",
+    "grunt-karma": "2.0.0",
+    "grunt-template-jasmine-istanbul": "0.5.0",
+    "jasmine-core": "2.99.1",
+    "jquery": "3.3.1",
+    "karma": "1.7.1",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage": "1.1.2",
+    "karma-jasmine": "1.1.2",
+    "karma-junit-reporter": "1.2.0"
+  },
+  "scripts": {
+    "build": "grunt build",
+    "test": "grunt test",
+    "_comment": "The below is creating an unused empty index folder for the output to get around unknown bower linking issue",
+    "deploy": "mkdir -p ../bin/igt-media-elements/dist && cp -a dist/* ../bin/igt-media-elements/dist/ && cp -a package.json ../bin/igt-media-elements/"
+  }
+}

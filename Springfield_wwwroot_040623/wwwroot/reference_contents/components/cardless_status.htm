@@ -1,0 +1,186 @@
+<template>
+    <div v-if="$root.appConfig.shouldShowCardlessStatus" class='container app-page' :class="{vertical: $root.isVertical , horizontal: !$root.isVertical}" v-if="shouldDisplay">
+      <div class="content-head"></div>
+      <div class="content-body">
+        <p>{{ "Cardless Connection" | translate }}</p>
+        <div v-if='connectionType == "BLE" || connectionType =="NFC" ' class="icon square" :class="'icon-' + connectionType +'-' +status.trim()"></div>
+        <h2 v-else class="icon square">{{ connectionType | translate }}</h2>
+        <p class="large">{{status | translate}}</p>
+      </div>
+      <div class="content-tail">
+            <div v-if='nonOpenNFCField'>
+                <h2 class="title">{{"MOBILE" | translate}}</h2>
+                <p>{{ mobile | translate }}</p>
+            </div>
+            <div v-if='nonOpenNFCField'>
+                <h2 class="title">{{"APP TYPE" | translate}}</h2>
+                <p>{{ appType | translate }}</p>
+            </div>
+            <div v-if='status.trim() == "disconnected"'>
+                <h2 class="title">{{"REASON" | translate}}</h2>
+                <p>{{ reason | translate }}</p>
+            </div>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+    let cardless = window["com.igt.cardlessStatus"]();
+    let hideTimeout = 5;
+    window.cardless = cardless;
+    module.exports = {
+      data() {
+        return {
+            countdown: -1,
+            tid: null,
+            name: "cardlessStatusComp"
+        }
+      },
+      props:['cctype'],
+      computed: {
+        nonOpenNFCField(){
+            return this.status.trim() != "open" && this.connectionType == "NFC";
+        },
+        connectionType(){
+            return cardless.state.interfaceType;
+        },
+        status(){
+            this.$parent.$emit('CSCStatusChanged', cardless.state.connectStatus);
+            return cardless.state.connectStatus;
+        },
+        mobile(){
+            return cardless.state.mobile;
+        },
+        appType(){
+            return cardless.state.appLabel;
+        },
+        reason(){
+            return cardless.state.disconnectedReasonCode;
+        },
+        shouldDisplay() {
+          let shouldShow = this.countdown > 0
+          this.$parent.$emit('CSCDisplayChanged', {compShowing: shouldShow, status: cardless.state.connectStatus});
+          return shouldShow && cardless.state.hasUpdated;
+        }
+      },
+      watch: {
+          status: {
+              handler(n){
+                clearTimeout(this.tid);
+                this.countdown = hideTimeout;
+                this.tid = setTimeout(()=>{
+                    this.countdown = -1;
+                }, hideTimeout * 1000);
+              }, immediate: false
+          },
+          connectionType: {
+              handler(n,o){
+                  this.$emit('update:cctype', cardless.state.interfaceType);
+              }, immediate: true
+          }
+      }
+    }
+
+    if(cardless.state.isDemo){
+        window.addEventListener("click", function(e) {
+            if (e.ctrlKey){
+                console.log("demo cc status change");
+                cardless.state.connectStatus = "open "
+                setTimeout(()=>{
+                    cardless.state.connectStatus = "connected"
+                }, 800);
+                setTimeout(()=>{
+                    cardless.state.connectStatus = "disconnected"
+                }, 2200);
+                setTimeout(()=>{
+                    cardless.state.connectStatus = "closed"
+                }, 5500);
+            }
+        }, false);
+    }
+  </script>
+  
+  <style scoped>
+  
+    .container {
+      position: absolute;
+      z-index: 20;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px !important;
+      display: flex;
+      background: rgba(0, 0, 0, 0.88);
+    }
+    .icon{
+        width: 120px !important;
+        height: 120px;
+    }
+    .icon-NFC-open{
+        background-image: url(../assets/cardless-nfc-icon-open.png);
+    }
+    .icon-NFC-connected{
+        background-image: url(../assets/cardless-nfc-icon.png);
+    }
+    .icon-NFC-disconnected{
+        background-image: url(../assets/cardless-nfc-icon-disconnected.png);
+    }
+    .icon-NFC-closed{
+        background-image: url(../assets/cardless-nfc-icon-closed.png);
+    }
+
+    .icon-BLE-open{
+        background-image: url(../assets/cardless-ble-icon-open.png);
+    }
+    .icon-BLE-connected{
+        background-image: url(../assets/cardless-ble-icon.png);
+    }
+    .icon-BLE-disconnected{
+        background-image: url(../assets/cardless-ble-icon-disconnected.png);
+    }
+    .icon-BLE-closed{
+        background-image: url(../assets/cardless-ble-icon-closed.png);
+    }
+    .horizontal .icon{
+        --scale: 0.6;
+    }
+    .horizontal p{
+        height: initial !important;
+    }
+    .horizontal .large{
+        font-size: 28px;
+        text-transform: uppercase;
+    }
+    .horizontal .title{
+        font-size: 22px;
+        color: rgb(245,228,120);
+        font-weight: 100;
+    }
+    .horizontal .content-tail{
+        justify-content: center;
+    }
+    .vertical .large{
+        font-size: 28px;
+        text-transform: uppercase;
+    }
+    .vertical .title{
+        font-size: 22px;
+        color: rgb(245,228,120);
+        font-weight: 100;
+    }
+    .vertical .content-head {
+        height: 25%;  
+    }
+    .vertical .content-body {
+      height: 30%;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+    }
+    .vertical .content-tail{
+        align-items: center;
+        justify-content: flex-start;
+    }
+  </style>
+  

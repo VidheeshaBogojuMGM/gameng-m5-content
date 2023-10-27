@@ -1,0 +1,135 @@
+/* @font-face {
+  font-family: 'GIL';
+  src: url('../font/GIL.TTF');
+}
+
+@font-face {
+  font-family: 'MyriadPro';
+  src: url('../font/MyriadPro-Regular.otf');
+} */
+
+@font-face {
+  font-family: 'GOTHICB';
+  src: url('../assets/vdm/font/GOTHIC_B.TTF');
+}
+
+* {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  :root {
+    --app-width: 256px;
+    --app-height: 956px;
+    --font-size: 16px;
+  }
+}
+
+/* horizental */
+@media screen and (max-height: 400px) {
+  :root {
+    --app-width: 1024px;
+    --app-height: 224px;
+    --app-content-width: 960px;
+    --font-size: 16px;
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background-color: rgba(33, 38, 43, .8);
+  /* background-size: cover; */
+  /* font-family: "GIL"; */
+  font-family: 'GOTHICB', sans-serif;
+  font-size: var(--font-size);
+  /* color: rgb(251, 234, 123); */
+  color: #fbea7b;
+  overflow: hidden;
+}
+
+#loading {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  background-image: url('../assets/vdm/loading2.gif');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: contain;
+}
+
+#app {
+  width: var(--app-width);
+  height: var(--app-height);
+}
+
+#router-view {
+  height: 100%;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.column-1 {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.column-2 {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  .column-1 {
+    flex-flow: column;
+  }
+
+  .column-2 .last-button {
+    margin-bottom: .5rem;
+  }
+}
+
+/* horizental */
+@media screen and (max-height: 400px) {
+  .column-1 {
+    flex-flow: row;
+  }
+
+  .column-2 {
+    width: 220px;
+  }
+
+  .column-2 .last-button {
+    margin-bottom: .2rem;
+  }
+
+  .one-button-placeholder {
+    height: 68px;
+  }
+
+  .two-button-placeholder {
+    height: 150px;
+  }
+}

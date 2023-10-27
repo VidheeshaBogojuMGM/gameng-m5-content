@@ -1,0 +1,200 @@
+:root {
+  --map-size: 840px;
+}
+
+#app {
+  width: 840px;
+  height: 840px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  width: var(--map-size);
+  height: var(--map-size);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: no-repeat center/cover url(../assets/property-info-bg.png);
+}
+
+#map {
+  width: 90%;
+}
+
+#thumbnail {
+  margin-top: 10px;
+  width: 50%
+}
+
+#close-map {
+  min-height: 64px;
+  width: 200px;
+  margin: 20px;
+}
+
+
+.U2 .content-tail .btn {
+  height: 48px;
+}
+
+.U2 .content-body {
+	padding-top: 0 !important;
+}
+
+.U2 .content-tail.property-menu .btn {
+  height: 28px;
+  width: 100%;
+}
+
+.U2 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-info-prev-next {
+  margin: 0 5px;
+}
+
+.U2 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .line {
+  width: calc(100% - 10px);
+}
+
+.U2 .content-tail.property-menu .btn span {
+    font-size: 13px;
+}
+
+.U3_H .content-tail.property-menu .btn {
+  height: 32px;
+}
+
+.U6_H .content-tail.property-menu .btn {
+  height: 34px;
+}
+
+.U6 .content-body {
+	padding-top: 10px !important;
+}
+
+.TFT .content-body {
+	width: 230px !important;
+	height: 230px !important;
+}
+.TFT #adPlayer {
+	margin-top: 0 !important;
+}
+
+.SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu {
+  height: 60%;
+}
+
+.SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-content {
+  text-align: left;
+  color: #fff;
+  padding: 0 10px;
+  line-height: 28px;
+  font-size: 14px;
+  height: 53%;
+  overflow: hidden;
+}
+
+.SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-arrows {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 20%;
+}
+
+.horizontal .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-content  {
+  height: 50%;
+}
+
+.U2 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-content {
+  height: 157px;
+}
+
+.U2 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-body {
+  height: 295px;
+}
+
+.U3 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-content {
+  height: 304px;
+}
+
+.U3 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-head  {
+  height: 105px;
+}
+
+.U3 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-body  {
+  height: 565px;
+}
+
+.U6 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-content {
+  height: 285px;
+}
+
+.U6 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-body  {
+  height: 515px;
+}
+
+.U6 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu {
+  height: 44%;
+}
+
+.U3_H .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-content  {
+  height: 80%;
+}
+
+.U6_H .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-content  {
+  height: 70%;
+}
+
+.U4 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-content  {
+  height: 80%;
+}
+
+.U6_RH .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-content  {
+  height: 70%;
+}
+
+.TFT .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-content  {
+  height: 70%;
+}
+
+.horizontal .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-arrows,
+.U2 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .property-arrows  {
+  height: 25%;
+}
+
+.horizontal .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu {
+  height: 100%;
+}
+
+.U6 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-body {
+  margin-bottom: 0 !important;
+}
+
+.U6_RH .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.U6_RH .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .prev,
+.U6_RH .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .next {
+  height: 40px;
+}
+
+.U6_RH.horizontal .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu .line {
+	width: calc(100% - 12px);
+}
+
+.U2 .SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail.property-menu {
+  height: 50%;
+}
+
+.SCREEN_PROPERTY_INFO_DESCRIPTION.TFT .content-body {
+	padding: 0 10px !important;
+}
+
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U6_RH .content-body,
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U4 .content-body,
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U3_H .content-body {
+	padding: 5 10px !important;
+}

@@ -1,0 +1,24 @@
+#app {
+  padding: 0 0;
+  background-size: cover;
+  background-image: url(../assets/random_riches/promotion-1-bg.png);
+}
+
+button {
+  background-image: url(../assets/random_riches/promotion-1-button.png);
+  color: #ccda0b;
+}
+
+button:active {
+  background-image: url(../assets/random_riches/button-down-1.png);
+  color: #ccda0b;
+}
+
+.message-box {
+  border-image: url(../assets/random_riches/message-box-1.png);
+  border-image-slice: 12 fill;
+}
+
+.message-box p {
+  color: #fff47f;
+}

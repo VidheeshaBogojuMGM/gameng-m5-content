@@ -1,0 +1,138 @@
+<template>
+  <div id="msgbox" class='container app-page'
+    :class='[$root.displayName, {vertical: $root.isVertical , horizontal: !$root.isVertical}]' v-if="shouldDisplay">
+  <div v-if="$root.isVertical || !isConfirm" class="content-head"></div>
+    <div class="content-body">
+      <h2 v-for="line in lines">{{ line | translate }}</h2>
+
+    </div>
+    <div class="content-tail" style="visibility: hidden;">
+      <div v-if="actions && actions.length < 3"></div>
+      <button v-for="{ title , handler } in actions" :disabled="resolver==null" @click="onConfirm(handler, title)">{{title}}</button>
+    </div>
+  </div>
+</template>
+
+<script>
+  module.exports = {
+    data() {
+      return {
+        name: "mo",
+        actions: [],
+        confirmMessage:"",
+        resolver: null,
+      }
+    },
+    mounted(){
+      if(this.$parent.$refs[this.name] && this.$parent.$refs[this.name]!=this ){
+        console.warn(`The component ref name '${this.name}' has been occupied`);
+      }else{
+        this.$parent.$refs[this.name] = this;
+      }
+    },
+    computed: {
+      isConfirm(){
+        return this.actions.length > 0;
+      },
+      shouldDisplay() {
+        return this.displayMessage.length != 0
+      },
+
+      isWideScreen() {
+        return this.contentWidth / this.contentHeight > 5.7;
+      },
+
+      lines(){
+        return this.displayMessage.split("\n")
+      },
+
+      displayMessage(){
+        return this.confirmMessage || this.message;
+      }
+    },
+    props: {
+      message: {
+        type: String,
+        default: ""
+      }
+    },
+    methods: {
+      confirm(message, actions) {
+        this.confirmMessage = message;
+        if(!actions || actions.length == 0){
+          actions = ["Confirm"];
+        }
+        this.actions = actions.map(action=>{
+          if(typeof action == "object"){
+            return {title: action.title, handler: action.handler}
+          }else if(typeof action == "string"){
+            return {title: action, handler: null}
+          }else{
+            console.warn("unsupported actions");
+          }
+        });
+        return new Promise((resolve, reject)=>{
+          this.resolver = resolve;
+        })
+      },
+      onConfirm(handler, title) {
+        handler && handler.apply(null, [title]);
+        this.resolver(title);
+        this.resolver = null;
+        let self = this;
+        setTimeout(()=>{
+          self.confirmMessage = "";
+          self.actions = [];
+        }, 700);
+      }
+    },
+    watch: {
+      message(n, o) {
+        if (n && n.length != 0) {
+          var self = this;
+          setTimeout(() => {
+            self.$emit('update:message', "")
+            // this.message = "";
+            // self.$root.errorMessage = "";
+          }, 3000);
+        }
+      }
+    }
+  }
+</script>
+
+<style scoped>
+
+  .container {
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    outline: 1px solid red;
+    padding: 10px !important;
+    display: flex;
+    background: rgba(0, 0, 0, 0.88);
+  }
+  .horizontal .container{
+    padding: 5px;
+  }
+  h2 {
+    font-size: 20px;
+    width: 90% !important;
+    margin: 0;
+    padding: 0;
+    height: auto;
+  }
+  .U2 h2{
+    font-size: 18px;
+  }
+
+  .content-body {
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+</style>

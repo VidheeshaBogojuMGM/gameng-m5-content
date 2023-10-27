@@ -1,0 +1,7 @@
+{
+  "cmd": "gameEnd",
+  "ver": "1.0",
+  "gameEnd": {
+    "winAmount": 0
+  }
+}

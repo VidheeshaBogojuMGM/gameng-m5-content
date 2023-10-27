@@ -1,0 +1,121 @@
+<template>
+  <div class="container app-page" :class="[displayName, {vertical: isVertical , horizontal: !isVertical}]">
+    <div class='content-head'>
+      <img id='logo' />
+      <p v-if="appConfig.isDebug">{{displayName}}{{contentWidth}}x{{contentHeight}}</p>
+    </div>
+    <div class='content-body'>
+      <iframe id="adPlayer" :src='adPlayerSrc2'></iframe>
+      <h2>{{message}}</h2>
+    </div>
+    <div class='content-tail'>
+      <button @click="showFullScreen()">Show Fullscreen</button>
+      <button @click="hideFullScreen()">Hide Fullscreen</button@click="showFullScreen()">
+        <button @click="toggleFullScreen()">Toggle Fullscreen</button>
+    </div>
+  </div>
+</template>
+
+<script>
+  var ro;
+  module.exports = {
+    data() {
+      return {
+        message: "Please Press the Buttons to Test the APIs",
+        adPlayerWidth: 0,
+        adPlayerHeight: 0,
+
+      }
+    },
+    mounted() {
+      var self = this;
+      ro = new ResizeObserver(function (entries) {
+        for (let entry of entries) {
+          const cr = entry.contentRect;
+          self.adPlayerWidth = Math.round(cr.width * self.$root.matrix[0]);
+          self.adPlayerHeight = Math.round(cr.height * self.$root.matrix[0]);
+        }
+      });
+      ro.observe(document.getElementById("adPlayer"));
+    },
+    beforeDestroyed() {
+      ro.unobserve(document.getElementById("adPlayer"));
+      ro = null;
+    },
+    computed: Object.assign({
+      adPlayerSrc2() {
+        if (!this.appConfig || !this.appConfig.adServiceAddress || this.displayName == "" || this.adPlayerWidth == 0 || this.adPlayerHeight == 0 || this.floorLocation == "" || this.machineNumber == "") return "";
+
+        return `${this.appConfig.adServiceAddress}/ad-service/client/?name=IdleAds-${this.displayName}&size=${this.adPlayerWidth}x${this.adPlayerHeight}&location=${this.floorLocation}&machineNumber=${this.machineNumber}`
+      }
+    }, $cmUtil.mapRoot("appConfig", "adPlayerSrc", "displayName", "location", "machineNumber", "floorLocation", "displayName", "isVertical")),
+    methods: {
+      showFullScreen() {
+        let self = this;
+        this.message = "start calling showFullScreen"
+        IGTMediaElements.showFullScreen().then(function (state) {
+          self.message = "fullscreen: " + state;
+        })
+      },
+      hideFullScreen() {
+        let self = this;
+        this.message = "start calling hideFullScreen"
+        IGTMediaElements.hideFullScreen().then(function (state) {
+          self.message = "fullscreen: " + state;
+        })
+      },
+      toggleFullScreen() {
+        let self = this;
+        this.message = "start calling toggleFullScreen"
+        IGTMediaElements.toggleFullScreen().then(function (state) {
+          self.message = "fullscreen: " + state;
+        })
+      }
+    }
+  }
+</script>
+
+
+<style scoped>
+  .TFT button,
+  .U4 button {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .TFT h2,
+  .U4 h2 {
+    font-size: 16px;
+  }
+
+  .vertial #qrcode {
+    width: 128px;
+    height: 128px;
+    background-color: white;
+    margin: 30px auto;
+    user-select: none;
+  }
+
+  .vertial .content-body>* {
+    width: 100% !important;
+  }
+
+  .horizontal #qrcode {
+    width: 128px;
+    height: 128px;
+    background-color: white;
+    margin: auto;
+    user-select: none;
+  }
+
+  .horizontal .content-body>* {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  .horizontal .content-body {
+    padding: 0 10px;
+    justify-content: center;
+  }
+ 
+</style>

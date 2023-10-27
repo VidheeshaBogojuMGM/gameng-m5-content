@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Demo</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body{
+			overflow: hidden;
+      font-size: 48px;
+      text-align: center;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="app" resize="preset-2">
+		<button id='statusMsg' class="header" ><i>{{InteracitveMessage}}</i></button>
+	</div>
+	<script>
+		let model = $cm("com.igt.DemoForGale", "#app", {
+			state: {
+        InteracitveMessage: "FREE SLOT PLAY"
+			}
+    })
+		model.start();
+	</script>
+</body>
+</html>

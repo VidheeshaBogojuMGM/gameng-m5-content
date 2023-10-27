@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Note: This Launcher file can be used to point nexGen AIs at a single file -->
+<head>
+    <meta charset="UTF-8">
+    <title>M5 Shell Launcher</title>
+    <script src="js/shellSizing.js"></script>
+    <script>
+        /**
+         * Used by Launcher to determine Shell file to load
+         */
+        function setLauncherSource()
+        {
+            var launcherSource = window.location.href.split("launcher.html");
+            var urlString = launcherSource[0];
+            var launcherTarget = "index.html";
+
+            if (urlParams["contentWidth"] && urlParams["contentHeight"])
+            {
+                if (parseInt(urlParams["contentWidth"]) > parseInt(urlParams["contentHeight"]))
+                {
+                    launcherTarget = "indexHoriz.html";
+                }
+            }
+            urlString += launcherTarget+launcherSource[1];
+            window.location.href = urlString;
+        }
+
+    </script>
+</head>
+<body onload = "setLauncherSource();">
+
+</body>
+</html>

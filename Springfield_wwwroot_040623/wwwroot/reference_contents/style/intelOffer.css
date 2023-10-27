@@ -1,0 +1,178 @@
+
+#app>*{
+	display: flex;
+}
+
+
+.page{
+    display: none;
+}
+.gold-color{
+    color: rgb(245,228,120);
+}
+
+
+span{
+	color: white;
+    font-size: 23px;
+    text-align: center;	
+}
+
+p{
+    font-size: 18px;    
+}
+
+h2{
+    font-weight: 20;    
+}
+
+
+
+.list-btn{
+    background-image: url(../assets/offer-button-normal.png);
+    font-size: 20px;
+}
+.list-btn:active{
+    background-image: url(../assets/offer-button-down.png);
+}
+
+.redeem-status{
+    --button-width: 81%;
+    width: var(--button-width);
+    height: 24%;
+    display: inline-block;
+    position: absolute;
+    bottom: 1px;
+    left: calc(50% - var(--button-width)/2);
+}
+.redeem-status-1{
+    background-image: url(../assets/mark-redeemed.png);
+}
+.redeem-status-2{
+    background-image: url(../assets/mark-failed.png);
+}
+
+.detail-title{
+    background-image: url(../assets/offer-name-bg.png);    
+    height: 88px;
+    display: flex;
+    align-items: center;
+}
+
+.label-title{
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.mask{
+    background-color: rgba(0, 0, 0, 1);
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.msg-size{
+    font-size: 28px;
+}
+#paging-control{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#list-pane{
+    flex-direction: column;
+}
+
+/* .message-box{
+    position: absolute;
+} */
+
+@media screen and (orientation:portrait){
+    .detail-title h2{
+        font-size: 22px;
+    }
+    #logo {
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    .content-tail{
+        align-items: center;
+        width: 100%;
+    }
+    .paging-button{
+        width:35%;
+    }
+    #list-pane button{
+        margin-top: 5px;
+    }
+    .title-3{
+        font-size: 26px;    
+        margin-top: 10%;
+    }
+    .message-box{
+        height: 60%;
+        max-height: calc(var(--component-space) * 1.4);
+        width:100%;
+
+    }
+}
+
+@media screen and (orientation:landscape) {
+    #list-pane{
+        align-content: inherit;        
+    }
+    #list-pane>*{
+        height:32%;
+        width:45%;
+    }
+   
+
+    .paging-button{
+        width:38%;
+        height:100%;
+    }
+
+    .detail-title{
+        background-image: url(../assets/offer-name-bg-hrz.png);
+        width: 100%;
+        height: 80px;        
+    }
+    .detail-title h2{
+        font-size: 20px;
+    }
+    /* .offer-desc{
+        width:250px;
+    } */
+    .seperator{
+        display: none;
+    }
+    .hrz-display p{
+        margin:0;
+    }
+
+    .info{
+        width: 60%;
+        text-align: left;
+        
+        overflow: hidden;
+    }
+    .title-3{
+        font-size: 18px;
+        width: 35%;
+        text-align: right;
+    }
+    
+    span{
+        font-size: 19px;
+    }
+
+    .message-box{
+        height: 90%;
+        width:60%;
+    }
+}

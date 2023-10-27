@@ -1,0 +1,58 @@
+<template>
+  <div class="container app-page">
+    <div class="content-head win_head">
+      <img class='win' src='./assets/star-celebration.png' />
+    </div>
+    <div class="content-body win_body">
+      <div class="infoarea" v-html="cusomizedDisplayMessage">
+        <p>{{ this.$root.displayMessage }}</p>
+      </div>
+    </div>
+    <div class="content-tail win_tail">
+      <attendant-button v-if='isClaimed' @attendant-card-inserted="isAttendantBtnEnabled=true"></attendant-button>
+      <button id="claimBtn" :disabled="isClaimed" @click="claimBonus()" v-show="!isAttendantBtnEnabled">{{isClaimed?"CLAIMING":"CLAIM"
+        | translate}}</button>
+    </div>
+  </div>
+</template>
+<script>
+  module.exports = {
+    name: "celebration",
+    data() {
+      return {
+        isClaimed: false,
+        isAttendantBtnEnabled: false,
+        autoAcknowledgeTime: 10 //seconds
+      }
+    },
+    mounted() {
+      setTimeout(() => {
+        if (!this.isClaimed){
+          this.claimBonus();
+        }
+      }, this.autoAcknowledgeTime * 1000);
+    },
+    methods: {
+      claimBonus() {
+        IGTMediaElements.buttonPress('BONUSBUTTON');
+        this.isClaimed = true;
+      }
+    },
+    computed: {
+      cusomizedDisplayMessage() {
+        let amount = this.$root.$store.state.WinAmountDollars  || "" ;
+        return "<p>Congratulations!</p><p>You have just won</p><p>"+ amount  + "</p><p>In the Members</p><p>Jackpot Draw</p>";
+      }
+    }
+  };
+</script>
+
+<style scoped>
+.infoarea :nth-child(3){
+  font-size: 2.2rem;
+}
+.infoarea p:empty{
+  min-height: 1.5rem;
+}
+
+</style>

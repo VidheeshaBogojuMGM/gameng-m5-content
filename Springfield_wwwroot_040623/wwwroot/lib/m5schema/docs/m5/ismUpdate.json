@@ -1,0 +1,34 @@
+{
+	"cmd": "ismUpdate",
+	"ver": "1.0",
+	"ismUpdate": {
+		"triggerEnables": 0,
+		"totalPointsTrigger": 0,
+		"sessionPointsTrigger": 0,
+		"sessionCoinInTrigger": 0,
+		"sessionCoinOutTrigger": 0,
+		"sessionGamesPlayedTrigger": 0,
+		"denomTrigger": 100,
+		"paytableTrigger": {
+			"gameId": "AV",
+			"additionalId": "000",
+			"paytableId": "PK0101",
+			"basePercentage": "8495"
+		},
+		"sessionLossTrigger": 0,
+		"totalPointsValue": 0,
+		"sessionPointsValue": 0,
+		"sessionCoinInValue": 0,
+		"sessionCoinOutValue": 0,
+		"sessionGamesPlayedValue": 0,
+		"denomValue": 1,
+		"paytableValue": {
+			"gameId": "AV",
+			"additionalId": "000",
+			"paytableId": "PK0102",
+			"basePercentage": "8495"
+		},
+		"sessionLossValue": 0
+	}
+}
+

@@ -1,0 +1,43 @@
+<template>
+    <div id="myProgress">
+        <div id="myBar" :style="'width:'+ progress +'%;'"></div>
+    </div>
+</template>
+<script>
+module.exports = {
+  name: "progressBar",
+  data() {
+    return {
+      progress: this.percentage
+    };
+  },
+  props: {
+    percentage: {
+      type: Number,
+      default: 0
+    }
+  },
+  watch: {
+    percentage(newvalue) {
+      this.progress = newvalue;
+    }
+  }
+};
+</script>
+<style scoped>
+#myProgress {
+  width: 80%;
+  background-color: black;
+  border-radius: 40px;
+  border-width: 2px 4px;
+  /* margin-left: 10%; */
+}
+
+#myBar {
+  width: 0%;
+  height: 15px;
+  background-color: gold;
+  border-radius: 40px;
+  border-width: 2px 4px;
+}
+</style>

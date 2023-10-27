@@ -1,0 +1,1111 @@
+* {
+  -webkit-user-select: none;
+}
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0px;
+}
+iframe {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: white;
+  text-align: center;
+  font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+  font-weight: normal;
+}
+h1 {
+  font-size: 30px;
+  vertical-align: middle;
+  line-height: 30px;
+}
+h2 {
+  font-size: 25px;
+}
+h3 {
+  font-size: 20px;
+}
+.show {
+  display: inline-block;
+}
+.hidden {
+  display: none;
+}
+.invisible {
+  visibility: hidden;
+}
+div.hidden {
+  display: none;
+}
+.idle-size {
+  height: 100%;
+}
+.core-controlbar-homebutton-verticalsizing {
+  display: none;
+  width: 52px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.core-controlbar-appbutton-verticalsizing {
+  display: inline-block;
+  width: 50px;
+  margin-top: 1px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.core-controlbar-homebutton-horizontalsizing {
+  display: none;
+  width: 19vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.core-controlbar-appbutton-horizontalsizing {
+  display: inline-block;
+  width: 19vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.core-controlbar-lnavbutton-verticalsizing {
+  width: 100%;
+  height: 95%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.core-controlbar-lnavbutton-horizontalsizing {
+  width: 100%;
+  height: 95%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.core-controlbar-rnavbutton-verticalsizing {
+  width: 100%;
+  height: 95%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.core-controlbar-rnavbutton-horizontalsizing {
+  width: 100%;
+  height: 95%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* naming conventions above this line */
+.global-table-button-sizing {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 93%;
+  margin: 0 auto;
+}
+.core-appwindow-sizing {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+}
+.core-shellvert-button-sizing {
+  margin: 0 auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.core-shellvert-button-sizing h1 {
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+}
+.core-shellhoriz-button-sizing {
+  width: 93%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 auto;
+}
+.core-shellhoriz-button-sizing h1 {
+  position: relative;
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  text-align: center;
+  color: white;
+}
+/* refactored above this line */
+.core-app-vert-button-sizing {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 93%;
+  margin: 0 auto;
+}
+.core-app-vert-button-sizing h1 {
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  color: white;
+  position: relative;
+  text-align: center;
+}
+.core-app-horiz-button-sizing {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 93%;
+  margin: 0 auto;
+}
+.core-app-horiz-button-sizing h1 {
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  color: white;
+  position: relative;
+  text-align: center;
+}
+.core-app-horiz-button2-sizing {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 93%;
+  margin: 0 auto;
+}
+.core-app-horiz-button2-sizing h1 {
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  color: white;
+  position: relative;
+  text-align: center;
+}
+.pinButtonTable-vertical {
+  width: 94%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding-top: 2%;
+}
+.pinButtonTable-vertical td {
+  width: 33%;
+}
+.pinButtonTable-horizontal {
+  width: 94%;
+  margin-left: 2%;
+  margin-right: 2%;
+  position: absolute;
+  top: 25%;
+  padding-top: 2%;
+}
+.pinButtonTable-horizontal td {
+  width: 18%;
+}
+.pinpad-button-sizing-vertical {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(2, 61, 127, 0);
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 1.5em;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2.7em;
+  color: white;
+}
+.pinpad-button-sizing-horizontal {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(2, 61, 127, 0);
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 1em;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2.7em;
+  color: white;
+}
+.nav-button {
+  height: 52px;
+  width: 86px;
+  border: white;
+  border-style: solid;
+  border-radius: 15px;
+  background-color: darkblue;
+  display: inline-block;
+  vertical-align: top;
+}
+.nav-button h1 {
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  position: relative;
+  text-align: center;
+  font-size: 20px;
+}
+.separator {
+  height: 3px;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: 15px;
+  background: white;
+}
+.core-title-header {
+  padding-top: 15%;
+}
+.core-btn {
+  position: absolute;
+  width: 88%;
+  height: 5%;
+  margin-left: 5%;
+  border-radius: 20px;
+  background-color: #ff9e18;
+}
+.core-btn-Horiz {
+  position: absolute;
+  width: 25%;
+  height: 19%;
+  border-radius: 20px;
+  background-color: #ff9e18;
+}
+.core-headerBox {
+  /*primary header box for adjusting during sizing */
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 5%;
+}
+.core-logo {
+  position: absolute;
+  left: 33%;
+  width: 100%;
+  height: 65%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('images/Default/global/logo.png');
+}
+.core-topline {
+  position: absolute;
+  top: 74%;
+  left: 2%;
+  width: 96%;
+  border-bottom: #4c8fd1 solid 2px;
+}
+.core-btn:active {
+  background-color: #e48400;
+}
+.core-btn h1 {
+  color: black;
+  line-height: 6px;
+  font-weight: bold;
+}
+.core-btn-Horiz:active {
+  background-color: #e48400;
+}
+.core-btn-Horiz h1 {
+  color: black;
+  line-height: 0.1vw;
+  font-size: 3vw;
+  font-weight: bold;
+}
+.core-processanim-graphic {
+  background-image: url('images/Default/shell/ProcessingAnim.gif');
+}
+.core-rank-bronze-graphic {
+  overflow: visible;
+  background: linear-gradient(to right, rgba(218, 30, 34, 0.72), #dd1e1f);
+  border-radius: 42px;
+  border-width: 2px;
+  border-color: #4c8fd1;
+  border-style: solid;
+  box-shadow: 1px 2px black;
+}
+.core-rank-silver-graphic {
+  overflow: visible;
+  background: linear-gradient(to right, rgba(167, 169, 201, 0.72), #a7a9c9);
+  border-radius: 42px;
+  border-width: 2px;
+  border-color: #4c8fd1;
+  border-style: solid;
+  box-shadow: 1px 2px black;
+}
+.core-rank-gold-graphic {
+  overflow: visible;
+  background: linear-gradient(to right, rgba(209, 201, 20, 0.72), #efff00);
+  border-radius: 42px;
+  border-width: 2px;
+  border-color: #4c8fd1;
+  border-style: solid;
+  box-shadow: 1px 2px black;
+}
+.core-rank-platinum-graphic {
+  overflow: visible;
+  background: linear-gradient(to right, rgba(20, 37, 209, 0.72), rgba(0, 18, 255, 0.95));
+  border-radius: 42px;
+  border-width: 2px;
+  border-color: #4c8fd1;
+  border-style: solid;
+  box-shadow: 1px 2px black;
+}
+.core-rank-title {
+  position: absolute;
+  top: 5.25%;
+  left: -9%;
+  width: 100%;
+  font-style: italic;
+  font-weight: bold;
+  text-align: right;
+}
+.core-AppsGearIcon {
+  background-image: url("images/Default/global/AppsGearIcon.png");
+  position: absolute;
+  left: 43%;
+  bottom: 8%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5vh;
+  height: 5vh;
+}
+.core-AppsGearIcon:active {
+  background-image: url("images/Default/global/AppsGearIconActive.png");
+}
+.core-AppsGearIcon-Horiz {
+  background-image: url("images/Default/global/AppsGearIcon.png");
+  position: absolute;
+  left: 93%;
+  bottom: 8%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 6vw;
+  height: 6vw;
+}
+.core-AppsGearIcon-Horiz:active {
+  background-image: url("images/Default/global/AppsGearIconActive.png");
+}
+.core-backBtnIcon {
+  background-image: url("images/Default/global/backIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5vh;
+  height: 5vh;
+  margin-left: 39%;
+  margin-top: 4%;
+}
+.core-backBtn {
+  position: absolute;
+  left: 1%;
+  background-color: #0055b7;
+  bottom: 0%;
+  width: 47%;
+  height: 6%;
+  border-color: #4c8fd1;
+  border-style: solid;
+}
+.core-backBtn:active {
+  background-color: #4c8fd1;
+}
+.core-backBtn-disabled {
+  position: absolute;
+  left: 1%;
+  bottom: 0%;
+  width: 47%;
+  height: 6%;
+  border-color: #4c8fd1;
+  border-style: solid;
+  background-color: rgba(94, 94, 154, 0.67);
+}
+.core-backBtnIcon-Horiz {
+  background-image: url("images/Default/global/backIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5vw;
+  height: 5vw;
+  margin-left: 34%;
+  margin-top: 0%;
+}
+.core-backBtn-Horiz {
+  position: absolute;
+  background-color: #0055b7;
+  left: 0.1%;
+  bottom: 0.1%;
+  width: 11%;
+  height: 22%;
+  border-color: #4c8fd1;
+  border-style: solid;
+}
+.core-backBtn-Horiz:active {
+  background-color: #4c8fd1;
+}
+.core-backBtn-Horiz-disabled {
+  position: absolute;
+  left: 0.1%;
+  bottom: 0.1%;
+  width: 11%;
+  height: 22%;
+  border-color: #4c8fd1;
+  border-style: solid;
+  background-color: rgba(94, 94, 154, 0.67);
+}
+.core-homeBtnIcon {
+  background-image: url("images/Default/global/homeIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5vh;
+  height: 5vh;
+  margin-left: 30%;
+  margin-top: 6%;
+}
+.core-homeBtn {
+  position: absolute;
+  left: 50%;
+  background-color: #0055b7;
+  bottom: 0%;
+  width: 47%;
+  height: 6%;
+  border-color: #4c8fd1;
+  border-style: solid;
+}
+.core-homeBtn:active {
+  background-color: #4c8fd1;
+}
+.core-homeBtn-disabled {
+  position: absolute;
+  left: 50%;
+  bottom: 0%;
+  width: 47%;
+  height: 6%;
+  border-color: #4c8fd1;
+  border-style: solid;
+  background-color: rgba(94, 94, 154, 0.67);
+}
+.core-homeBtnIcon-Horiz {
+  background-image: url("images/Default/global/homeIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5vw;
+  height: 5vw;
+  margin-left: 27%;
+  margin-top: 1%;
+}
+.core-homeBtn-Horiz {
+  position: absolute;
+  background-color: #0055b7;
+  left: 13%;
+  bottom: 0.1%;
+  width: 11%;
+  height: 22%;
+  border-color: #4c8fd1;
+  border-style: solid;
+}
+.core-homeBtn-Horiz:active {
+  background-color: #4c8fd1;
+}
+.core-homeBtn-Horiz-disabled {
+  position: absolute;
+  left: 13%;
+  bottom: 0.1%;
+  width: 11%;
+  height: 22%;
+  border-color: #4c8fd1;
+  border-style: solid;
+  background-color: rgba(94, 94, 154, 0.67);
+}
+.core-showFullScreenBtn {
+  background-image: url("images/Default/global/ShowFullScreenIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5vh;
+  height: 5vh;
+}
+.core-showFullScreenBtn:active {
+  background-image: url("images/Default/global/ShowFullScreenIconHighlight.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5vh;
+  height: 5vh;
+}
+.core-showFullScreenBtn-Horiz {
+  background-image: url("images/Default/global/ShowFullScreenIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 6vw;
+  height: 5vw;
+}
+.core-showFullScreenBtn-Horiz:active {
+  background-image: url("images/Default/global/ShowFullScreenIconHighlight.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 6vw;
+  height: 5vw;
+}
+.core-hideFullScreenBtn {
+  background-image: url("images/Default/global/HideFullScreenIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5vh;
+  height: 5vh;
+}
+.core-hideFullScreenBtn:active {
+  background-image: url("images/Default/global/HideFullScreenIconHighlight.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5vh;
+  height: 5vh;
+}
+.core-hideFullScreenBtn-Horiz {
+  background-image: url("images/Default/global/HideFullScreenIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5vh;
+  height: 5vh;
+}
+.core-hideFullScreenBtn-Horiz:active {
+  background-image: url("images/Default/global/HideFullScreenIconHighlight.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5vh;
+  height: 5vh;
+}
+.core-2col-table-left {
+  position: absolute;
+  width: 50%;
+  height: 14%;
+  border: #4c9ad7 solid;
+  background: none;
+  border-width: 0px 2px 2px 0px;
+}
+.core-2col-table-left:active {
+  background-color: #8fc6e3;
+}
+.core-2col-table-right:active {
+  background-color: #8fc6e3;
+}
+.core-2col-table-right {
+  position: absolute;
+  left: 50%;
+  width: 50%;
+  height: 14%;
+  border: #4c9ad7 solid;
+  background: none;
+  border-width: 0px 0px 2px 0px;
+}
+.core-2col-table-row2 {
+  top: 15%;
+}
+.core-2col-table-row3 {
+  top: 30%;
+}
+.core-2col-table-row4 {
+  top: 45%;
+}
+/* Unverified to be of use in 4.0 below this line */
+.core-background-graphic {
+  background-color: #281363;
+  /* IE10 Consumer Preview */
+  background-image: -ms-linear-gradient(top, #281363 0%, #0461B6 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, #281363 0%, #0461B6 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, #281363 0%, #0461B6 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #281363), color-stop(1, #0461B6));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, #281363 0%, #0461B6 100%);
+  /* W3C Markup, IE10 Release Preview */
+  background-image: linear-gradient(to bottom, #281363 0%, #0461B6 100%);
+}
+.core-logo-graphic {
+  background-image: url("images/Default/shell/IGT.png");
+}
+.core-controlbar-homebutton-graphic {
+  background-image: url("images/Default/shell/homeicon.png");
+}
+.core-controlbar-appbutton-graphic {
+  background-image: url("images/Default/shell/appicon.png");
+}
+.core-controlbar-lnavbutton-graphic {
+  background-image: url("images/Default/shell/NavLeft.png");
+}
+.core-controlbar-rnavbutton-graphic {
+  background-image: url("images/Default/shell/NavRight.png");
+}
+.core-controlbar-homebutton-graphic:active {
+  background-image: url("images/Default/shell/homeicon_Highlight.png");
+}
+.core-controlbar-appbutton-graphic:active {
+  background-image: url("images/Default/shell/appicon_Highlight.png");
+}
+.core-controlbar-lnavbutton-graphic:active {
+  background-image: url("images/Default/shell/NavLeft_Highlight.png");
+}
+.core-controlbar-rnavbutton-graphic:active {
+  background-image: url("images/Default/shell/NavRight_Highlight.png");
+}
+.core-shellvert-button-graphic {
+  height: 48px;
+  width: 230px;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.core-shellvert-button-graphic:active {
+  height: 48px;
+  width: 230px;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(14, 31, 253, 0.95);
+}
+.core-shellhoriz-button-graphic {
+  left: 4%;
+  width: 90%;
+  margin: 1.5% auto;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.core-shellhoriz-button-graphic:active {
+  left: 4%;
+  width: 90%;
+  margin: 1.5% auto;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(14, 31, 253, 0.95);
+}
+.core-shellhoriz-button-graphic h1 {
+  position: relative;
+  text-align: center;
+  line-height: 17vh;
+  font-size: 10vh;
+  color: white;
+}
+/* Refactored above this line */
+.core-text-field-source {
+  background-image: url("images/Default/global/text-field.png");
+}
+.core-appwindow-source {
+  background-color: rgba(0, 0, 0, 0);
+}
+.core-app-horiz-button-graphic {
+  height: 6%;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 90%;
+  margin: 1.5% auto;
+}
+.core-app-horiz-button-graphic:active {
+  height: 6%;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(14, 31, 253, 0.95);
+  width: 90%;
+  margin: 1.5% auto;
+}
+.core-app-horiz-button-graphic h1 {
+  color: white;
+  position: relative;
+  text-align: center;
+  line-height: 0vh;
+  font-size: 9vh;
+}
+.core-app-vert-button-graphic {
+  height: 6%;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 90%;
+  margin: 1.5% auto;
+}
+.core-app-vert-button-graphic:active {
+  height: 6%;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(14, 31, 253, 0.95);
+  width: 90%;
+  margin: 1.5% auto;
+}
+.core-app-vert-button-graphic h1 {
+  color: white;
+  position: relative;
+  text-align: center;
+  line-height: 7.5vh;
+  font-size: 5vh;
+}
+.core-app-vert-halfbutton-graphic {
+  height: 6%;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 44%;
+  margin: 1.5% auto;
+}
+.core-app-vert-halfbutton-graphic:active {
+  height: 6%;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(14, 31, 253, 0.95);
+  width: 44%;
+  margin: 1.5% auto;
+}
+.core-app-vert-halfbutton-graphic h1 {
+  color: white;
+  position: relative;
+  text-align: center;
+  line-height: 7.5vh;
+  font-size: 5vh;
+}
+.core-app-horiz-halfbutton-graphic {
+  height: 6%;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 25%;
+  margin: 1.5% auto;
+}
+.core-app-horiz-halfbutton-graphic:active {
+  height: 6%;
+  border: white;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(14, 31, 253, 0.95);
+  width: 25%;
+  margin: 1.5% auto;
+}
+.core-app-horiz-halfbutton-graphic h1 {
+  color: white;
+  position: relative;
+  text-align: center;
+  line-height: 7.5vh;
+  font-size: 5vh;
+}
+.core-bonus-pool-lucky-coin-image {
+  background-image: url("images/Default/global/LuckyCoin.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.core-ism-vert-graphic {
+  background-image: url("images/Default/ism-app/Messagebox.png");
+}
+.core-ism-horiz-graphic {
+  background-image: url("images/Default/ism-app/MessageboxWide.png");
+}
+.pinpad-button-source:active {
+  background-image: url("images/Default/global/Default_Global_Numpad_WideButton_Highlight.png");
+}
+.test-button-source:active {
+  background-image: url("images/Default/global/Default_Global_Numpad_WideButton_Highlight.png");
+}
+@media screen and (max-width: 160px) and (min-height: 559px) and (max-height: 560px) {
+  /*160x560*/
+  .core-homeBtn,
+  .core-homeBtn-disabled {
+    left: 47%;
+  }
+  .core-backBtn,
+  .core-backBtn-disabled {
+    left: -2%;
+  }
+}
+@media screen and (max-width: 128px) and (min-height: 447px) and (max-height: 448px) {
+  /*128x448*/
+  .core-homeBtn,
+  .core-homeBtn-disabled {
+    left: 49%;
+    width: 46%;
+  }
+  .core-backBtn,
+  .core-backBtn-disabled {
+    left: 0%;
+    width: 46%;
+  }
+  .core-headerBox {
+    top: 1%;
+  }
+}
+@media screen and (min-width: 256px) and (min-height: 897px) and (max-height: 898px) {
+  /*256 x 897 */
+}
+@media screen and (min-width: 400px) and (min-height: 300px) {
+  /* FullScreen */
+  .core-logo {
+    left: 47%;
+  }
+  .core-topline {
+    width: 96%;
+  }
+  .core-homeBtnIcon {
+    margin-left: 37%;
+  }
+  .core-backBtnIcon {
+    margin-left: 40%;
+  }
+}
+@media screen and (min-width: 639px) and (max-width: 641px) and (min-height: 239px) and (max-height: 241px) {
+  /* 640x240 TFT*/
+  .core-headerBox {
+    width: 25%;
+    height: 19%;
+  }
+  .core-logo {
+    left: 25%;
+  }
+  .core-backBtnIcon-Horiz {
+    width: 8vw;
+    height: 8vw;
+    margin-left: 25%;
+    margin-top: 0%;
+  }
+  .core-homeBtnIcon-Horiz {
+    width: 8vw;
+    height: 6vw;
+    margin-left: 20%;
+    margin-top: 7%;
+  }
+  .core-btn-Horiz h1 {
+    line-height: 2.1vw;
+    font-size: 4vw;
+  }
+}
+@media screen and (min-height: 83px) and (max-height: 84px) {
+  /* 640x 84 U1_H*/
+  .core-headerBox {
+    width: 25%;
+    height: 16%;
+  }
+  .core-logo {
+    left: 36%;
+    height: 100%;
+  }
+  .core-topline {
+    top: 100%;
+  }
+  .core-backBtnIcon-Horiz {
+    width: 4vw;
+    height: 4vw;
+    margin-left: 38%;
+    margin-top: -5%;
+  }
+  .core-homeBtnIcon-Horiz {
+    width: 4vw;
+    height: 4vw;
+    margin-left: 30%;
+    margin-top: -4%;
+  }
+  .core-btn-Horiz h1 {
+    font-size: 2vw;
+  }
+}
+@media screen and (max-width: 500px) and (min-height: 111px) and (max-height: 112px) {
+  /* 480x112 U1_RH*/
+  .core-headerBox {
+    width: 25%;
+    height: 19%;
+    top: 7%;
+  }
+}
+@media screen and (min-height: 104px) and (max-height: 105px) {
+  /* 800x105 U2_H */
+  .core-headerBox {
+    width: 25%;
+    height: 25%;
+  }
+  .core-backBtnIcon-Horiz {
+    width: 4vw;
+    height: 4vw;
+    margin-left: 37%;
+    margin-top: -4%;
+  }
+  .core-homeBtnIcon-Horiz {
+    width: 4vw;
+    height: 5vw;
+    margin-left: 29%;
+    margin-top: -2%;
+  }
+  .core-btn-Horiz h1 {
+    font-size: 2vw;
+  }
+}
+@media screen and (min-height: 139px) and (max-height: 140px) {
+  /*600x140 U2_RH*/
+  .core-headerBox {
+    width: 25%;
+    height: 25%;
+    top: 9%;
+  }
+  .core-logo {
+    left: 30%;
+  }
+}
+@media screen and (min-height: 178px) and (max-height: 179px) {
+  /* 1280x179 U3_H*/
+  .core-headerBox {
+    width: 25%;
+    height: 25%;
+  }
+  .core-backBtnIcon-Horiz {
+    margin-top: -8%;
+  }
+  .core-homeBtnIcon-Horiz {
+    width: 4vw;
+    height: 5vw;
+    margin-left: 30%;
+    margin-top: -2%;
+  }
+  .core-btn-Horiz h1 {
+    font-size: 2vw;
+  }
+}
+@media screen and (min-height: 223px) and (max-height: 224px) and (min-width: 1000px) {
+  /*1024x224 U3_RH*/
+  .core-headerBox {
+    width: 25%;
+    height: 25%;
+    top: 3%;
+  }
+  .core-logo {
+    left: 30%;
+  }
+}
+@media screen and (min-height: 249px) and (max-height: 250px) {
+  /*840x250 U4*/
+  .core-headerBox {
+    width: 25%;
+    height: 20%;
+  }
+  .core-logo {
+    left: 27%;
+  }
+  .core-backBtnIcon-Horiz {
+    width: 7vw;
+    height: 7vw;
+    margin-left: 27%;
+    margin-top: -2%;
+  }
+  .core-homeBtnIcon-Horiz {
+    width: 6vw;
+    height: 6vw;
+    margin-left: 22%;
+    margin-top: 6%;
+  }
+  .core-btn-Horiz h1 {
+    font-size: 3.5vw;
+    line-height: 1vw;
+  }
+}
+@media screen and (min-height: 167px) and (max-height: 168px) {
+  /* 1280x168 U5_H*/
+  .core-headerBox {
+    width: 25%;
+    height: 25%;
+  }
+  .core-logo {
+    left: 37%;
+  }
+  .core-backBtnIcon-Horiz {
+    width: 4vw;
+    height: 4vw;
+    margin-left: 35%;
+    margin-top: -4%;
+  }
+  .core-homeBtnIcon-Horiz {
+    width: 4vw;
+    height: 4vw;
+    margin-left: 30%;
+    margin-top: -3%;
+  }
+  .core-btn-Horiz h1 {
+    font-size: 2vw;
+  }
+}
+@media screen and (min-height: 223px) and (max-height: 224px) and (max-width: 980px) {
+  /*960x224 U5_RH*/
+  .core-headerBox {
+    width: 25%;
+    height: 20%;
+    top: 7%;
+  }
+}
+@media screen and (min-width: 1081px) and (min-height: 188px) and (max-height: 189px) {
+  /* 1920x189 U6_H*/
+  .core-headerBox {
+    width: 25%;
+    height: 24%;
+  }
+  .core-logo {
+    left: 37%;
+  }
+  .core-backBtnIcon-Horiz {
+    width: 3vw;
+    height: 4vw;
+    margin-left: 35%;
+    margin-top: -8%;
+  }
+  .core-homeBtnIcon-Horiz {
+    width: 3vw;
+    height: 4vw;
+    margin-left: 34%;
+    margin-top: -2%;
+  }
+  .core-btn-Horiz h1 {
+    font-size: 2vw;
+    line-height: 0vw;
+    margin-top: 4%;
+  }
+}
+@media screen and (max-width: 1080px) and (min-height: 180px) and (max-height: 189px) {
+  /* 1080x189 U6_RH*/
+  .core-headerBox {
+    width: 25%;
+    height: 25%;
+    top: 7%;
+  }
+  .core-backBtnIcon-Horiz {
+    width: 6vw;
+    height: 6vw;
+    margin-left: 32%;
+    margin-top: -9%;
+  }
+  .core-homeBtnIcon-Horiz {
+    width: 5vw;
+    height: 5vw;
+    margin-left: 27%;
+    margin-top: -2%;
+  }
+  .core-btn-Horiz h1 {
+    font-size: 2.5vw;
+  }
+}

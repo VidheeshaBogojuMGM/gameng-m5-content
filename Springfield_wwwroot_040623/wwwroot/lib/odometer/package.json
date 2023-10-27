@@ -1,0 +1,19 @@
+{
+  "name": "odometer",
+  "description": "Custom odometer for displaying token values",
+  "devDependencies": {
+    "jasmine-core": "2.99.1",
+    "karma": "1.7.1",
+    "karma-jasmine": "1.1.2",
+    "karma-coverage": "0.2.7",
+    "karma-junit-reporter": "1.2.0",
+    "karma-chrome-launcher": "2.2.0"
+  },
+  "dependencies": {
+    "jquery": "3.3.1"
+  },
+  "scripts": {
+    "test": "karma start karma.conf.js --single-run",
+    "deploy": "mkdir -p ../bin/odometer && cp -a odometer scripts ../bin/odometer/ && cp -a package.json ../bin/odometer/"
+  }
+}

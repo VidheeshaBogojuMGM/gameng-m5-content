@@ -1,0 +1,35 @@
+<template>
+  <div class="app-page welcome_screen">
+    <cardless-status></cardless-status>
+    <div class='content-head'>
+      <img id='logo' />
+    </div>
+    <div class='content-body message-box'>
+      <div class="welcome-container">
+        <p class="welcome-label">{{ 'Welcome' | translate }}!</p>
+      </div>
+    </div>
+    <div class='content-tail'>
+
+    </div>
+  </div>
+</template>
+
+<script>
+  module.exports = {
+    beforeRouteEnter(to, from, next){
+      next(vm=>{
+        if(vm.$root.sessionIsReady2){
+          next({name: "session"})
+        }else{
+          next(true);
+        }
+      })
+    }
+  }
+</script>
+
+
+<style scoped>
+
+</style>

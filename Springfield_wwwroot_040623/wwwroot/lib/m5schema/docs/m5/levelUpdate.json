@@ -1,0 +1,13 @@
+{
+  "cmd": "levelUpdate",
+  "ver": "1.0",
+  "levelUpdate": [
+    {
+      "bonusId": 0,
+      "balance": 0,
+      "isBbPGBonus": true,
+      "BbPGBonusMeter": 0,
+      "levelName": "Lucky Coin"
+    }
+  ]
+}

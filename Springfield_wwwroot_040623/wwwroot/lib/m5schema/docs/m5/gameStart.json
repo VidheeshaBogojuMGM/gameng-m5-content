@@ -1,0 +1,10 @@
+{
+  "cmd": "gameStart",
+  "ver": "1.0",
+  "gameStart": {
+    "wagerCredits": 0,
+    "isMaxBet": false,
+    "wagerDenom": 0,
+    "wagerAmount": 0
+  }
+}

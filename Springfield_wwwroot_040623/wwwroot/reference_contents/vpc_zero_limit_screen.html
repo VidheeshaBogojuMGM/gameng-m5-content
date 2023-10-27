@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>vpc_zero_limit</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="stylesheet" type="text/css" href="./style/common.css">
+  <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+  <link rel="stylesheet" type="text/css" href="./style/vpc_zero_limit.css">
+</head>
+
+<body>
+  <div id="loading"></div>
+  <div id="decoration"></div>
+  <div id="app" resize="preset-2" v-cloak >
+    <div class='page app-page'>
+        <div class="content-head">
+        <img id='logo'/>
+        </div>
+        <div class="content-body" v-if="!continuePlay">
+          <div class="message-box-area" >
+            <div class="zerolimitMessageHeading" >
+              <!-- You've reached your weekly loss limit -->
+                {{ZerolimitHeader}}
+            </div>
+            <div class="zerolimitMessageInfo">
+              <!-- You've chosen not to spend any money and time on gaming machines by setting a zero time and zero loss limit -->
+                {{ZerolimitMessage}}
+            </div>
+            <div class="zerolimitPlayerMessage">
+                {{PlayerMessage}}
+            </div>
+          </div>  
+        </div>
+        <div class="content-body continuePlay" v-if="continuePlay">
+          {{'Are you sure you want to continue playing beyond your set limit?' | translate}}
+        </div>
+        <div class="content-tail">  
+          <div class="tailbuttons">   
+            <button class= "button_half continueBtn" @click="continuePlay? continuePlayingConfirmBtn() :continuePlayingZeroLimitBtn()"> {{ 'CONTINUE' | translate }} </button>        
+            <button class= "button_half stopBtn"  @click="stopBtn()"> {{ 'STOP' | translate }} </button>   
+          </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./js/vpcDisplayData.js"></script>
+  <script src="./js/vpc_zero_limit.skin.js"></script>
+</body>
+
+</html>

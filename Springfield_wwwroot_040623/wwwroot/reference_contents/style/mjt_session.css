@@ -1,0 +1,137 @@
+#app {
+    background-image: url("../assets/mjt-bg.png")
+  }
+.mjt_logo {
+    width: calc(var(--component-space) * .9);
+    margin: 0 auto;
+    content: url(../assets/mjt-logo.png);
+}
+p {
+    font-size: 1.8rem;
+}
+.textarea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+}
+.vertical .content-body {
+    height: 45%;
+    align-items: center;
+}
+.vertical .content-tail {
+    align-items: center;
+    justify-content: flex-start;
+}
+.horizontal .content-body {
+    align-items: center;
+    justify-content: center;
+  }
+.horizontal .content-tail {
+    justify-content: center;
+    width: 25%;
+}
+.horizontal .textarea {
+    width: 100%;
+}
+.U3_RH .content-tail {
+    width: 23%;
+}
+.U4 .content-tail {
+    width: 20%;
+}
+.U6 .content-tail {
+    justify-content: center;
+}
+.TFT p,
+.U4 p {
+    font-size: 1.2rem;
+}
+/* //////////////countdown div/////////////////// */
+.countDown {
+    height: var(--component-space);
+    width: var(--component-space);
+    position: relative;
+}
+.countDown div {
+    position: absolute;
+    color:  #e0c27e;
+}
+.vertical .countDown {
+    transform: scale(2.8);
+    margin-left: 1%;
+}
+.horizontal .countDown {
+    transform: scale(2.5);
+}
+.TFT .countDown {
+    transform: scale(3.5)
+}
+.vertical .multiple {
+    font-size: 1.4rem;
+    top: 38%;
+    left: 45%;
+}
+.vertical .timer {
+    top: 54%;
+    left: 41%;
+}
+.vertical .times {
+    top: 54%;
+    left: 45%;
+}
+.horizontal .timer {
+    font-size: .7rem;
+    top: 55%;
+    left: 42%;
+}
+.horizontal .times {
+    font-size: .7rem;
+    top: 55%;
+    left: 46%;
+}
+.horizontal .multiple {
+    font-size: 1.2rem;
+    top: 38%;
+    left: 45%;
+}
+.U6_H .multiple {
+    left: 46%;
+}
+.U6_H .timer {
+    left: 44%;
+}
+.TFT .timer {
+    font-size: .5rem;
+}
+.TFT .times {
+    font-size: .5rem;
+    left: 45%;
+}
+.TFT .multiple {
+    font-size: .8rem;
+}
+.U4 .timer {
+    font-size: .5rem;
+    top: 56%;
+    left: 43%;
+}
+.U4 .times {
+    font-size: .5rem;
+    top: 56%;
+    left: 46%;
+}
+.U4 .multiple {
+    font-size: 1rem;
+}
+.U6 .timer {
+    top: 55%;
+    left: 43%;
+}
+.U6 .times {
+    top: 55%;
+    left: 46%;
+}
+.U6 .multiple {
+    font-size: 2rem;
+}

@@ -1,0 +1,20 @@
+{
+	"data" : [
+		{	"name": "AAAASPA & FITNESS CENTER",
+			"description" : "From toning and stretching on our fitness equipment, to relaxing and rejuvenating in our state-of-the-art spa facility, the facilities at MGM Springfield will help you transform yourself inside and out. Even our second-floor roof top pool is perfect for relaxing.",
+			"imageDetail": "images/hotels/hotelImage"
+		},
+		{	"name": "SALON",
+			"description" : "From relaxation and refreshed, to a total make over, our full-service salon is ready to WOW you. You'll sure turn heads in Downtown Springfield once you walk out our doors. It's truly an artistic experience wrapped in urban luxury at The Salon.",
+			"imageDetail": "images/hotels/hotelImage"
+		},
+		{	"name": "ARCADE & BOWLING",
+			"description" : "The fun doesn’t have to stop at any age. Enjoy Western Massachusetts own arcade, bowling and lounge all in one. Whether it’s a fun or relaxing evening with friends, family or a business event; we provide exclusive and unique accommodations that allow you to experience bowling in a whole new way.",
+			"imageDetail": "images/hotels/hotelImage"
+		},
+		{	"name": "SHOPPING",
+			"description" : "Forgot something? Don’t worry we have all your essential needs or many items you don't need but really want. Visit Kringle and fill your home with rich and always authentic fragrances, Hannoush for that someone special or Indian Motorcycle to experience the perfect regional gift.",
+			"imageDetail": "images/hotels/hotelImage"
+		}],
+	"imageSubMain" : "images/hotelsSubMain"
+}

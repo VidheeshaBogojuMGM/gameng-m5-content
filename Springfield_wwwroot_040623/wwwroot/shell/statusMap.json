@@ -1,0 +1,71 @@
+{
+  "pointPlay": {
+    "init": {
+      "0": "Point Play available.",
+      "1": "Point Play not available: Bonusing not available on this machine.",
+      "2": "Point Play not available: PIN Locked.",
+      "3": "Point Play not available:  see players club.",
+      "4": "Point Play not available: Point balance too low to convert.",
+      "5": "Point Play not available: Conversion to Freeplay not available, see players club.",
+      "6": "Point Play not available: Conversion to Freeplay not available on this machine.",
+      "7": "Point Play not available: PIN validation failed.",
+      "8": "Point Play not available. Unable to convert."
+    },
+    "convert": {
+      "0": "Point Play converted.",
+      "1": "Point Play not available: Bonusing not available on this machine.",
+      "2": "Point Play not available: PIN Locked."
+    }
+  },
+  "xtraCredit": {
+    "activate": {
+      "0": "Freeplay active.",
+      "1": "Freeplay active; not cancelable.",
+      "2": "Freeplay already active.",
+      "3": "Freeplay balance is too low to activate.",
+      "4": "Freeplay not active; not available on this device.",
+      "5": "Freeplay not active; see players club.",
+      "6": "Freeplay not active; duplicate card.",
+      "7": "Freeplay not active; abandoned card.",
+      "8": "Freeplay not active; PIN is locked.",
+      "9": "Freeplay not active; Bonusing not available on this machine.",
+      "10": "Freeplay not active; PIN validation failed.",
+      "11": "Freeplay not active; Input amount is invalid",
+      "12": "Freeplay not active; Input amount is over limit.",
+      "13": "Freeplay not active; Input amount is less than machine denom.",
+      "14": "Freeplay not active; Last request still in progress.",
+      "15": "Freeplay not active; see players club.",
+      "16": "Freeplay not active; see players club.",
+      "17": "Freeplay not active; see players club."
+    },
+    "cancel": {
+      "0": "Freeplay canceled.",
+      "1": "Freeplay not cancellable.",
+      "2": "Cancel Freeplay after game cycle completes."
+    }
+  },
+  "pin": {
+    "validate": {
+      "0": "waiting",
+      "1": "valid",
+      "2": "invalid PIN",
+      "3": "PIN locked",
+      "4": "no-response; try again",
+      "5": "PIN Entry Canceled"
+    }
+  },
+  "cashless": {
+    "transfer": {
+      "0": "Transfer successful.",
+      "1": "Transfer aborted.",
+      "2": "Transfer failed.",
+      "3": "Transfer started but ultimately aborted.",
+      "4": "Transfer started but ultimately failed.",
+      "5": "Transfer failed for an unknown reason.",
+      "6": "Transfer operation timed out.",
+      "7": "Transfer successful; SmartCard successfully unlocked.",
+      "8": "Transfer successful; SmartCard unlock failed due to credits on the machine.",
+      "9": "Transfer successful, SmartCard unlock failed due to a game in progress."
+    }
+  }
+}

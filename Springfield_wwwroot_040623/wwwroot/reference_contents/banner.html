@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Banner</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/banner.css">
+	 <link rel="stylesheet" type="text/css" href="./mgm/styles/banner.css">
+  </head>
+
+  <body>
+    <div id="app" v-cloak>
+      <div id="container">
+			<!-- <div style="position: absolute; left: 4px; top: 4px; bottom: 4px; width: 200px;" onclick="window.parent.document.getElementById('WrapperFrame').contentWindow.navigate('intelOffer.html')">
+			</div> -->
+        <button id='banner-logo' class="button-bar"></button>
+        <button v-if="!isFullScreen" id='toggle-service-window-btn' class="button-bar" @dblclick="refreshServiceWindowOpenCloseState" @click="toggleServiceWindow"><div id='open-close'>{{openClose | translate}}</div><div id='sw'>{{'SERVICE WINDOW' | translate}}</div></button>
+        <div class="nv-full-screen" v-if="appConfig.NevadaRegulation && isFullScreen">
+          <button  onclick="exitFullScree()" class="button-bar" id="exit">Exit</button>
+          <span class="white-text">Last Win Amount</span>
+          <span class="yellow">{{lastGameWinDisplay}}</span>
+          <span class="white-text">Credit On Machine</span>
+          <span class="yellow">{{currencySymbol + (CreditOnMachine== null?0.00 : CreditOnMachine.toFixed(2))}}</span>
+        </div>
+        <banner-message v-if="shouldShowBannerMessage">{{displayMessage | translate | keepWhitespace}}</banner-message>
+      </div>
+    </div>
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/banner.skin.js"></script>
+    <script src="./js/attendant_cardin_patch.js"></script>
+    <script src="./js/pointMutiplier_patch.js"></script>
+	 <script src="./mgm/js/call-attendant.js"></script>
+</body>
+
+</html>

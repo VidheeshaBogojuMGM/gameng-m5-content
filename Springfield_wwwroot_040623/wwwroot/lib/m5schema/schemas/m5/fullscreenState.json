@@ -1,0 +1,19 @@
+{
+  "id": "http://igt.com/fullscreenState/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for fullscreenState",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^fullscreenState$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "fullscreenState": {
+      "type": "boolean"
+    }
+  },
+  "required": ["cmd", "fullscreenState"]
+}

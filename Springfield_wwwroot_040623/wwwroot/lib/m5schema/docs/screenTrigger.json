@@ -1,0 +1,8 @@
+{
+  "cmd": "screenTrigger",
+  "ver": "1.0",
+  "screenTrigger": {
+    "screenId": "0X00",
+    "displayMessage": "You've won"
+  }
+}

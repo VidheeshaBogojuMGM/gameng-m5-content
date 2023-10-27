@@ -1,0 +1,154 @@
+#app {
+  background-size: cover;
+  background-image: url(../assets/random_riches/promotion-0-bg.svg);
+}
+
+button {
+  background-image: url(../assets/random_riches/promotion-0-button.png);
+  color: #4a4a4a;
+}
+
+button:active {
+  background-image: url(../assets/random_riches/button-down-0.png);
+  color: #4a4a4a;
+  transform: scale(0.90);
+  filter: drop-shadow(0px 0px 5px grey);
+}
+
+th,
+td {
+  color: white;
+}
+
+.message-box {
+  border-width: 15px;
+  border-image: url(../assets/random_riches/message-box-0.png);
+  border-image-slice: 12 fill;
+  border-color: white;
+  border-radius: 16px;
+  width: noset;
+  opacity: 0.8;
+}
+
+.list-info {
+  border-width: 12px;
+  border-image: url(../assets/random_riches/message-box-0.png);
+  border-image-slice: 12 fill;
+}
+
+.detail-info {
+  border-width: 12px;
+  border-image: url(../assets/random_riches/message-box-0.png);
+  border-image-slice: 12 fill;
+  border-color: white;
+}
+
+.page-up {
+  background-image: url(../assets/random_riches/page-prev-0.svg);
+  width: 50%;
+  height: 30px;
+}
+
+.page-down {
+  background-image: url(../assets/random_riches/page-next-0.svg);
+  width: 50%;
+  height: 30px;
+}
+
+.balance-show {
+  color: white;
+  width: 100%;
+  font-size: 20px;
+  border: rgb(0, 0, 0);
+  background-color: black;
+  border-radius: 15px;
+}
+
+.balance-name {
+  color: white;
+}
+
+.promotion-up {
+  background-image: url(../assets/random_riches/prev-promotion.png);
+  background-size: 100% 72%;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 48%;
+  height: 50px;
+}
+
+.promotion-up:active {
+  background-image: url(../assets/random_riches/prev-promotion-down.png);
+}
+
+.promotion-down {
+  background-image: url(../assets/random_riches/next-promotion.png);
+  background-size: 100% 72%;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 48%;
+  height: 50px;
+}
+
+.promotion-down:active {
+  background-image: url(../assets/random_riches/next-promotion-down.png);
+}
+
+@media screen and (orientation:portrait) {
+  #promotionPage {
+    /* background: url(../assets/random_riches/tree-promotion.png) bottom no-repeat; */
+  }
+}
+
+#world {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+}
+
+#promotion_img {
+  position: absolute;
+  clip-path: polygon(0 calc(var(--height, 85)*1%), 100% calc(var(--height, 85)*1%), 100% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0 calc(var(--height, 90)*1%), 100% calc(var(--height, 90)*1%), 100% 100%, 0% 100%);
+}
+
+#arrow {
+  position: absolute;
+  display: flex;
+}
+
+#arrow_img {
+  position: absolute;
+}
+
+#arrow_span {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+#camera {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (orientation:landscape) {
+  #app {
+    background-size: auto;
+    background-image: url(../assets/random_riches/promotion-0-bg.svg);
+  }
+
+  #promotionPage {
+    /* background: url(../assets/random_riches/tree.png) bottom left no-repeat; */
+  }
+
+  .sketch-img {
+    background-image: url(../assets/random_riches/promotion-0-sketch.png);
+    height: 200px;
+    order: 2;
+  }
+}

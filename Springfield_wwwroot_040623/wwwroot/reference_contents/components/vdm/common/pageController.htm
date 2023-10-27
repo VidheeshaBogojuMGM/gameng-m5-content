@@ -1,0 +1,93 @@
+<template>
+  <section class="page-button-list">
+    <button class="page" :disabled="this.curPage<=1" @click="onClickPreBtn">&lt;</button>
+    <span>{{curPage}} of {{this.totalPage}}</span>
+    <button class="page" :disabled="this.curPage>=this.totalPage" @click="onClickNextBtn">&gt;</button>
+  </section>
+</template>
+<script>
+module.exports = {
+  name: "pageController",
+  props: {
+    totalPage: {
+      type: Number,
+      default: 1
+    },
+    enableTimer: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      curPage: 1,
+      timer: Number
+    };
+  },
+  mounted() {
+    if (this.enableTimer && this.totalPage > 1) {
+      this.launchTimer();
+    }
+  },
+  methods: {
+    launchTimer() {
+      const self = this;
+      this.timer = window.setInterval(() => {
+        if (this.curPage == this.totalPage) {
+          this.curPage = 1;
+        } else {
+          this.curPage++;
+        }
+        self.$emit("page-change", this.curPage);
+      }, 5000);
+    },
+    resetTimer() {
+      if (this.enableTimer) {
+        clearInterval(this.timer);
+        this.launchTimer();
+      }
+    },
+    onClickPreBtn() {
+      this.$emit("page-change", --this.curPage);
+      this.resetTimer();
+    },
+    onClickNextBtn() {
+      this.$emit("page-change", ++this.curPage);
+      this.resetTimer();
+    }
+  },
+  watch: {
+    totalPage(newValue) {
+      if (newValue > 1 && this.enableTimer) {
+        clearInterval(this.timer);
+        this.launchTimer();
+      }
+    }
+  }
+};
+</script>
+<style >
+@import "../../../style/vdm_button.css";
+
+.page-button-list {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-button-list > span {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  width: 5.625rem;
+  text-align: center;
+}
+
+@media screen and (max-height: 400px) {
+  .page-button-list > span {
+    width: 4.9rem;
+  }
+}
+</style>
+

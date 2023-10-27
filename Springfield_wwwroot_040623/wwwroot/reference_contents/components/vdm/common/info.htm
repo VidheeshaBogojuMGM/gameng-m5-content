@@ -1,0 +1,55 @@
+<template>
+  <app>
+    <div id="content" slot="content">
+      <spinner v-if="this.$root.isFetching"></spinner>
+      <template v-if="this.$root.info.length > 0">
+        <section class="column-1">
+          <div class="info-area info-info-size">
+            <div class="info-title">{{ this.$root.info[0].title | translate }}</div>
+            <div class="line"></div>
+            <div class="info-message">{{ this.$root.info[0].message | translate }}</div>
+          </div>
+        </section>
+        <section class="column-2">
+          <div class="two-button-placeholder"></div>
+          <button class="normal last-button" @click="btnClick">{{ 'OK' | translate }}</button>
+        </section>
+      </template>
+    </div>
+  </app>
+</template>
+<script>
+module.exports = {
+  name: "info",
+  methods: {
+    btnClick() {
+      this.route();
+      this.$store.dispatch("removeInfo");
+    },
+    route() {
+      switch (this.$root.info[0].routerType) {
+        case "router":
+          this.$router.push({ name: this.$root.info[0].pathName });
+          break;
+        case "exit":
+          // window.location.assign(EXTERNAL_LINK);
+          navigate('apps.html');
+          break;
+        default:
+          console.log("Cannot route to specific page while handling the error.");
+          break;
+      }
+    }
+  }
+};
+</script>
+<style scoped>
+@import "../../../style/vdm_button.css";
+@import "../../../style/vdm_infoarea.css";
+
+@media screen and (max-height: 400px) {
+  .info-info-size {
+    flex-grow: 1;
+  }
+}
+</style>

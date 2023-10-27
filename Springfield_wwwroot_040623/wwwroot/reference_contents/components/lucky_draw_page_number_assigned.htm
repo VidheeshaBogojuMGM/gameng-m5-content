@@ -1,0 +1,81 @@
+<template>
+  <div class="container app-page"
+    :class='[$root.displayName, {vertical: $root.isVertical , horizontal: !$root.isVertical}]'>
+    <div class='content-head'>
+      <img id='logo' />
+    </div>
+    <div class="content-body">
+      <div class="paytable-area">
+        <pay-table></pay-table>
+      </div>
+      <div class="number-area center is-vertical margin-top-1rem">
+        <span>{{ "The assigned numbers" | translate }}</span>
+        <div class="number-set">
+          <div class="number" v-for="(item, index) in numbers">
+            {{item}}
+          </div>
+        </div>
+        <div class="line line-margin"></div>
+      </div>
+      <div class="message center">
+        <p>{{ "Your chance to win is only moments away" | translate }}</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  module.exports = {
+    name: "lucky_draw_page_number_assigned",
+    components: {
+      "PayTable": loadSkinTemplate("./components/lucky_draw_paytable.htm")
+    },
+    computed: {
+      numbers() {
+        return this.$store.state.assignedNumbers.trim().split(' ');
+      }
+    }
+  };
+
+</script>
+
+<style scoped>
+  .U3_H .number-area,
+  .U6_H .number-area,
+  .U2_H .number-area,
+  .U6_RH .number-area {
+    width: 45%;
+  }
+
+  .U3_H .message,
+  .U6_H .message,
+  .U2_H .message,
+  .U6_RH .message {
+    width: 30%;
+  }
+
+  .TFT .number-area {
+    width: 65%;
+  }
+
+  .TFT .message {
+    width: 35%;
+  }
+
+  .TFT .number-set {
+    width: 70%;
+  }
+
+  .TFT .number {
+    margin: 2px;
+  }
+
+  .content-body>* {
+    min-width: unset;
+  }
+
+  .horizontal .message {
+    flex: 1 0 0;
+  }
+
+</style>

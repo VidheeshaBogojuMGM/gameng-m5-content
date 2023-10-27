@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>pinpad</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="stylesheet" type="text/css" href="./style/common.css">
+  <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+  <link rel="stylesheet" type="text/css" href="./style/pinpad.css">
+	<link rel="stylesheet" type="text/css" href="./mgm/styles/style.css">
+  <link rel="stylesheet" type="text/css" href="./mgm/styles/pinpad.css">
+</head>
+
+<body>
+  <div id="loading"></div>
+  <div id="decoration"></div>
+	  <div id="app" resize="preset-2" v-cloak :class="['SCREEN_PIN', {vertical: isVertical , horizontal: !isVertical }]">
+      <div class="content-head">
+        <div id="mgm-logo"><img id="logo"></div>
+      </div>
+      <div class="content-body"> 
+        <div v-if="isVertical" class="pins-container">
+          <p>{{InteractiveMessage | translate}}</p>
+            <!-- <input id='pinEntry' type='password' v-model='Password' onfocus="this.blur()" value="" minlength="4" maxlength="4" size="4"/> -->
+            <div class="password-container">
+              <input type="password" maxlength=1 id="pin-value-1" />
+              <input type="password" maxlength=1 id="pin-value-2"/>
+              <input type="password" maxlength=1 id="pin-value-3"/>
+              <input type="password" maxlength=1 id="pin-value-4" />
+            </div>
+        </div>
+        <div class="pin-numbers-container narrow">
+          <button class='button-small bold' :disabled='buttonDisabled' @click="pressDigit(1)" id="_btn1">1</button>
+          <button class='button-small bold' :disabled='buttonDisabled' @click="pressDigit(2)" id="_btn2">2</button>
+          <button class='button-small bold' :disabled='buttonDisabled' @click="pressDigit(3)" id="_btn3">3</button>
+          <div class="line"> </div>
+          <button class='button-small bold' :disabled='buttonDisabled' @click="pressDigit(4)" id="_btn4">4</button>
+          <button class='button-small bold' :disabled='buttonDisabled' @click="pressDigit(5)" id="_btn5">5</button>
+          <button class='button-small bold' :disabled='buttonDisabled' @click="pressDigit(6)" id="_btn6">6</button>
+          <div class="line"> </div>
+          <button class='button-small bold' :disabled='buttonDisabled' @click="pressDigit(7)" id="_btn7">7</button>
+          <button class='button-small bold' :disabled='buttonDisabled' @click="pressDigit(8)" id="_btn8">8</button>
+          <button class='button-small bold' :disabled='buttonDisabled' @click="pressDigit(9)" id="_btn9">9</button>
+          <div class="line"> </div>
+          <button class='button-small bold' :disabled='buttonDisabled' @click="backSpace()" id="_btnBack">
+            {{'UNDO' | translate}}
+          </button>
+          <button class='button-small bold' :disabled='buttonDisabled' @click="pressDigit(0)" id="_btn0">0</button>
+          <button class='button-small bold' :disabled='buttonDisabled' @click="clearPinPad()" id="_btnClear">
+            {{ 'CLEAR' | translate }}
+          </button>
+        </div>
+
+        <div class="pin-numbers-container wide">
+          <button class='button-big bold' :disabled='buttonDisabled' @click="pressDigit(1)" id="_btn1">1</button>
+          <button class='button-big bold' :disabled='buttonDisabled' @click="pressDigit(2)" id="_btn2">2</button>
+          <button class='button-big bold' :disabled='buttonDisabled' @click="pressDigit(3)" id="_btn3">3</button>
+          <button class='button-big bold' :disabled='buttonDisabled' @click="pressDigit(4)" id="_btn4">4</button>
+          <button class='button-big bold' :disabled='buttonDisabled' @click="pressDigit(5)" id="_btn5">5</button>
+          <button class='button-big bold' :disabled='buttonDisabled' @click="backSpace()" id="_btnBack">
+            {{'UNDO' | translate}}
+          </button>
+          <div class="full-line"> </div>
+          <button class='button-big bold' :disabled='buttonDisabled' @click="pressDigit(6)" id="_btn6">6</button>
+          <button class='button-big bold' :disabled='buttonDisabled' @click="pressDigit(7)" id="_btn7">7</button>
+          <button class='button-big bold' :disabled='buttonDisabled' @click="pressDigit(8)" id="_btn8">8</button>
+          <button class='button-big bold' :disabled='buttonDisabled' @click="pressDigit(9)" id="_btn9">9</button>
+          <button class='button-big bold' :disabled='buttonDisabled' @click="pressDigit(0)" id="_btn0">0</button>
+          <button class='button-big bold' :disabled='buttonDisabled' @click="clearPinPad()" id="_btnClear">
+            {{ 'CLEAR' | translate }}
+          </button>
+        </div>
+
+        </div>
+        <div class="content-tail">
+          <div v-if="!isVertical" class="horiz-pin-value-container">
+            <p>{{InteractiveMessage | translate}}</p>
+              <!-- <input id='pinEntry' type='password' v-model='Password' onfocus="this.blur()" value="" minlength="4" maxlength="4" size="4"/> -->
+              <div class="password-container">
+                <input type="password" maxlength=1 id="pin-value-1" />
+                <input type="password" maxlength=1 id="pin-value-2"/>
+                <input type="password" maxlength=1 id="pin-value-3"/>
+                <input type="password" maxlength=1 id="pin-value-4" />
+              </div>
+          </div>
+          <div class="pin-button-actions">
+            <div class="pin-enter-wrapper">
+              <button class='button-medium' :disabled='showEnterButton' @click="validate()" id="_btnEnter">
+                {{ 'ENTER' | translate }}
+              </button>
+            </div>
+            <div class="pin-cancel-wrapper">
+              <button class='button-medium' @click="cancelPin()" id="_btnCancel">
+              <!-- <button class='button-medium' :disabled='!isCancelable' @click="cancelPin()" id="_btnCancel"> -->
+                {{ 'CANCEL' | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="footer">
+          <div class="navigations">
+             <!-- <div class="call-attendant clickable" onClick="handleOnCall()">
+                 <img class="icon " onClick="" src="./mgm/images/icon/icon-attendant.png" alt="">
+             </div> -->
+             <!-- <img class="icon clickable"  @click="windowsBack()"  src="./mgm/images/icon/icon-back.png" alt=""> -->
+              <div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+                <img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+              </div>
+            </div>
+       </div>
+        </div>
+      </div>
+  </div>
+  <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./js/pinpad.skin.js"></script>
+  <script src="./mgm/js/toggleServiceWindow.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>iReserve</title>
+  <link rel="stylesheet" type="text/css" href="./style/ireserve_timeTo.css">
+  <link rel="stylesheet" type="text/css" href="./style/common.css">
+  <link rel="stylesheet" type="text/css" href="./style/ireserve.css">
+</head>
+
+<body>
+  <div id="loading" style="z-index: 100; position: fixed; top: 0; left: 0; background-color:black;color: white;">
+  </div>
+  <div id="app" v-cloak resize="preset-2" :class="[fullscreenClass]">
+    <div class="app-page" v-show="page.options">
+      <div class="content-head">
+        <div id="ireserve_logo"></div>
+        <button @click="exitApp" id="closeBtn" class="headButton">{{ 'Exit' | translate }}</button>
+      </div>
+      <div class='content-body'>
+        <div id="body-bg">
+          <div v-if="!page.confirmation">
+            <p>{{ 'Please select the reservation duration' | translate }}</p>
+            <div id="panel">
+              <transition-group name="list" tag="div">
+                <button v-for='(option,index) in options' v-bind:data-index="index" v-bind:key="option.Description"
+                  @click="selectOption(option)" :disabled="option.Count <= 0"
+                  class="lock list-item">{{option.Description}}</button>
+              </transition-group>
+            </div>
+          </div>
+          <div v-else>
+            <p>{{ 'Please confirm your selection' | translate }}</p>
+            <div id="panel">
+              <div class="confirmation">
+                <button @click="confirm" class="lock list-item">{{ 'Confirm' | translate }}</button>
+                <button @click="cancel" class="lock list-item">{{ 'Cancel' | translate }}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-tail tailButton">
+        <button @click="exitApp" id="closeBtn">{{ 'Exit' | translate }}</button>
+      </div>
+    </div>
+
+    <pinpad v-show="page.pin" @verified='onPinValid' @exit="onPinExit"></pinpad>
+
+    <div class="app-page" v-show="page.gameReserved">
+      <div class='content-body'>
+        <div id="timerWrapper">
+          <p id="title">{{ 'Game is Reserved' | translate }}</p>
+          <div v-show="shouldShowCountDown" class="CountdownClock"></div>
+          <p id="detail" v-html="lockMessage"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page" v-show="page.info">
+      <div class="content-head" v-show="!isLocked">
+        <div id="ireserve_logo"></div>
+        <button @click="exitApp" id="closeBtn" class="headButton">{{ 'Exit' | translate }}</button>
+      </div>
+      <div class='content-body' :class='isLocked?"fullscreen":""'>
+        <div class="infoWrapper">
+          <h1 id="title">{{info.title}}</h1>
+          <p id="detail">{{info.message}}</p>
+        </div>
+      </div>
+      <div class="content-tail tailButton" v-show="!isLocked">
+        <button @click="exitApp" id="closeBtn">{{ 'Exit' | translate }}</button>
+      </div>
+    </div>
+
+    <div class="app-page" v-show="page.infoWithBack">
+      <div class="content-head">
+        <div id="ireserve_logo"></div>
+        <button @click="exitApp" id="closeBtn" class="headButton">{{ 'Exit' | translate }}</button>
+      </div>
+      <div class='content-body'>
+        <div class="infoWrapper">
+          <h1 id="title">{{ 'Attention' | translate }}</h1>
+          <p id="detail">{{ 'Please cash out to reserve the game' | translate }}</p>
+          <button @click="backToOptions" class="lock">{{ 'BACK' | translate }}</button>
+        </div>
+      </div>
+      <div class="content-tail tailButton">
+        <button @click="exitApp" id="closeBtn">{{ 'Exit' | translate }}</button>
+      </div>
+    </div>
+
+    <div class="app-page" v-show="page.loading">
+      <div class="content-head">
+        <div id="ireserve_logo"></div>
+      </div>
+      <div>
+        <div class="loading"></div>
+      </div>
+    </div>
+
+    <div class="app-page" v-show="page.loadingWithoutHeader">
+      <div class="loading"></div>
+    </div>
+  </div>
+
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./js/ireserve.skin.js"></script>
+  <script src="./js/vendor/jquery.time-to.js"></script>
+</body>
+
+</html>

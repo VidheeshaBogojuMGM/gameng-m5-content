@@ -1,0 +1,115 @@
+{
+  "RCVersion": "2.2.0",
+	"apps": [
+		{
+			"title": "Intelligent Offer",
+			"url": "./intelOffer.html"
+    },
+		{
+			"title": "Cashless",
+			"url": "./cashless.html"
+    },
+		{
+			"title": "VDM",
+			"url": "./vdm.html"
+    },
+		{
+			"title": "iReserve",
+			"url": "./ireserve.html"
+    },
+    {
+      "title": "MarkerTrax",
+      "url": "./markertrax.html"
+    }
+	],
+	"ads": {
+	"IDLE_U2": { "size": "150x435" },
+    "IDLE_U3": { "size": "246x733" },
+    "IDLE_U6": { "size": "364x761" },
+    "IDLE_U3H": { "size": "632x169" },
+    "IDLE_U6H": { "size": "1147x179" },
+    "IDLE_U6RH": { "size": "532x179" },
+    "IDLE_U4": { "size": "300x240" },
+    "IDLE_TFT": { "size": "230x230" },
+
+    "IDLE_PROPERTY_MAIN_U2": { "size": "150x260" },
+    "IDLE_PROPERTY_MAIN_U3": { "size": "246x440" },
+    "IDLE_PROPERTY_MAIN_U6": { "size": "364x500" },
+    "IDLE_PROPERTY_MAIN_U3H": { "size": "300x169" },
+    "IDLE_PROPERTY_MAIN_U6H": { "size": "758x179" },
+    "IDLE_PROPERTY_MAIN_U6RH": { "size": "260x179" },
+    "IDLE_PROPERTY_MAIN_U4": { "size": "300x240" },
+    "IDLE_PROPERTY_MAIN_TFT": { "size": "230x230" }
+
+	},
+  "currencySymbol": "$",
+  "isDebug": false,
+  "warning": false,
+  "hideNotAvailablePPXC": false,
+  "NevadaRegulation": false,
+  "ShowGamePlayedInSession": false,
+  "adServiceAddress": "http://10.91.17.73",
+  "markerTraxOptions": {
+    "alwaysShowMarkerTraxButton": true,
+    "onlyAllowCardlessMarkerTrax": false,
+    "timeoutInCardlessMilliseconds": 40000,
+    "showMarkerBalance": true,
+    "showTotalCreditLine": true,
+    "redirectTimeOutMilliseconds": 8000,
+    "markertraxURL": "https://mtuacore-igt-sandbox.markertrax.io/IGT",
+    "propertyId": 118399936
+  },
+  "PlayerLevelTheme": {
+    "1":"summit",
+    "2":"vista",
+    "3":"butte",
+    "4":"ridge",
+    "5":"valley"
+  },
+  "mapEgmDenomToMinCentsBalance": {
+    "default": 500,
+    "200": 400,
+    "1000": 2000,
+    "2000": 2000,
+    "2500": 2500,
+    "5000": 5000,
+    "10000": 10000
+  },
+  "pointPlayMapEgmDenomButtons": {
+    "default": [500, 1000, 2000, 5000, 10000],
+    "200": [1000, 2000, 3000, 5000, 10000],
+    "1000": [2000, 3000, 5000, 7000, 10000],
+    "2000": [2000, 4000, 6000, 8000, 10000],
+    "2500": [2500, 5000, 7500, 10000, 12500],
+    "5000": [5000, 10000, 15000, 20000, 25000],
+    "10000": [10000, 20000, 30000, 40000, 50000]
+  },
+  "cashlessMapEgmDenomButtons": {
+    "default": [500, 1000, 2000, 5000, 10000],
+    "200": [1000, 2000, 3000, 5000, 10000],
+    "1000": [2000, 3000, 5000, 7000, 10000],
+    "2000": [2000, 4000, 6000, 8000, 10000],
+    "2500": [2500, 5000, 7500, 10000, 12500],
+    "5000": [5000, 10000, 15000, 20000, 25000],
+    "10000": [10000, 20000, 30000, 40000, 50000]
+  },
+  "shouldShowCardlessStatus": false,
+  "cacheAppConfig": true,
+  "isSupportVpc": false,
+	"com.igt.randomriches": {
+		"themeList": ["build-wonder", "lucky-spinner"],
+		"themePromotionMap": [{
+				"promotionName": "promo 1",
+				"theme": "lucky-spinner"
+			},
+			{
+				"promotionName": "promo 2",
+				"theme": "build-wonder"
+			},
+			{
+				"promotionName": "promo 3",
+				"theme": "lucky-spinner"
+			}
+		]
+	}
+}

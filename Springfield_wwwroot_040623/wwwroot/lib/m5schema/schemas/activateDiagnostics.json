@@ -1,0 +1,30 @@
+{
+  "id": "http://igt.com/activateDiagnostics/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for activateDiagnostics",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^activateDiagnostics$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "activateDiagnostics": {
+      "type": "object",
+      "properties": {
+        "pin": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pin"
+      ]
+    }
+  },
+  "required": [
+    "cmd",
+    "activateDiagnostics"
+  ]
+}

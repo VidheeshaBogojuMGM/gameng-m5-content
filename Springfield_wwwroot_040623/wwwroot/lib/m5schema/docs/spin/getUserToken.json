@@ -1,0 +1,9 @@
+{
+    "cmd": "getUserToken",
+    "ver": "1.0",
+    "getUserToken": [
+        "0x10",
+        "0x64",
+        "0xD2"
+    ]
+}

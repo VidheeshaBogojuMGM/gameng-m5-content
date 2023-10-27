@@ -1,0 +1,70 @@
+<template>
+  <div class="container app-page">
+    <div class='content-head'>
+      <img id='logo' />
+    </div>
+    <div class="content-body message-box">
+      <p>{{ 'Remote Keyoff' | translate }}</p>
+      <p>{{ this.$store.state.currencySymbol }}{{ amount | money }}</p>
+      <div id="message">
+        <p>{{ primaryMessage | translate }}</p>
+        <p>{{ secondaryMessage | translate }}</p>
+      </div>
+    </div>
+    <div class='content-tail'>
+      <div></div>
+      <button v-show="showRetryButton" @click="retry()">{{ 'Retry' | translate }}</button>
+      <button v-show="showMenuButton" @click="goLegacyMenu()">{{ 'Menu' | translate }}</button>
+    </div>
+  </div>
+</template>
+
+<script>
+  const message = {
+    "waitCardin": ["Insert another witness card"],
+    //"error": ['Please try another card'],
+    "retry": ["Unable to process", "Please retry"]
+  };
+
+  module.exports = {
+    name: "witness",
+    data() {
+      return {
+        primaryMessage: "",
+        secondaryMessage: "",
+        showRetryButton: false,
+        showMenuButton: false
+      };
+    },
+    computed: {
+      currentViewState() {
+        return this.$store.state.currentViewState;
+      },
+      amount() {
+        return this.$store.state.w2gInitData.handpayAmount / 100.00;
+      }
+    },
+    methods: {
+      retry() {
+        this.$store.dispatch("witnessRetry");
+      },
+      goLegacyMenu() {
+        IGTMediaElements.w2gAccrual.gotoLegacy();
+      }
+    },
+    watch: {
+      currentViewState: {
+        handler(n) {
+          if (message[n]) {
+            this.primaryMessage = message[n][0];
+            this.secondaryMessage = message[n][1];
+          }
+          this.showRetryButton = n === "retry";
+          this.showMenuButton = n === "retry";
+        },
+        immediate: true
+      }
+    }
+  };
+
+</script>

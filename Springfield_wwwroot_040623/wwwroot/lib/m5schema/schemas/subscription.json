@@ -1,0 +1,83 @@
+{
+  "id": "http://igt.com/subscription/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for subscription",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^subscription$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "subscription": {
+      "type": "object",
+      "properties": {
+        "vpcPlayerData": {
+          "type": "boolean"
+        },
+        "statusUpdate": {
+          "type": "boolean"
+        },
+        "levelUpdate": {
+          "type": "boolean"
+        },
+        "bonusHit": {
+          "type": "boolean"
+        },
+        "gameStart": {
+          "type": "boolean"
+        },
+        "gameEnd": {
+          "type": "boolean"
+        },
+        "patronData": {
+          "type": "boolean"
+        },
+        "disableAutoHide": {
+          "type": "boolean"
+        },
+        "windowState": {
+          "type": "boolean"
+        },
+        "mediaDisplayIndex":{
+          "type": "integer",
+          "minimum": 0
+        },
+        "tokenUpdate": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^0[xX][0-9a-fA-F]{2}$"
+          }
+        },
+        "screenTrigger": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^0[xX][0-9a-fA-F]{2}$"
+          }
+        },
+        "gameEvent": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^0[xX][0-9a-fA-F]{2}$"
+          }
+        },
+        "languageUpdate": {
+          "type": "boolean"
+        },
+        "userTokenUpdate": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^0[xX][0-9a-fA-F]{2}$"
+          }
+        }
+      }
+    }
+  },
+  "required": ["cmd","subscription"]
+}

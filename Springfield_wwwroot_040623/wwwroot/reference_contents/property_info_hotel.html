@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Info</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="stylesheet" type="text/css" href="./style/common.css">
+  <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+  <link rel="stylesheet" type="text/css" href="./style/property_info.css">
+  <link rel="stylesheet" type="text/css" href="./mgm/styles/style.css">
+</head>
+
+<body>
+  <div id="loading"></div>
+  <!-- f
+    <div id="decoration"></div> -->
+  <div id="app" resize="preset-2" v-cloak :class="['SCREEN_PROPERTY_INFO_WITH_ADS', 'SCREEN_PROPERTY_INFO_SUB', displayName, {vertical: isVertical , horizontal: !isVertical }]">
+	  <div class='content-head'>
+			<img id='logo' />
+					<p v-if="appConfig.isDebug">{{displayName}}{{contentWidth}}x{{contentHeight}}</p>
+	  </div>
+	  <div class='content-body'>
+			<img id="adPlayer" :src='imageAdSrc' alt="">
+	  </div>
+	  <div id="property-menu" class='content-tail property-menu'></div>
+
+	<div id="footer">
+		<div class="navigations">
+		<!-- <div class="call-attendant clickable" onClick="handleOnCall()">
+			<img class="icon " onClick="" src="./mgm/images/icon/icon-attendant.png" alt="">
+		</div> -->
+			<div class="icon-back clickable" onClick="window.history.back();">
+				<img class="icon clickable" src="./mgm/images/icon/icon-back.png" alt="">
+			</div>
+			<div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+				<img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+			</div>
+		</div>
+	</div>
+
+  </div>
+
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./js/property_info_with_ads.skin.js"></script>
+  <script src="./mgm/js/call-attendant.js"></script>
+  <script src="./mgm/js/toggleServiceWindow.js"></script>
+  <script type="text/javascript">
+   var currentScroll = 0;
+  	function scrollUp() {
+	  if(!$('.scrollable')[0]) {
+		  return;
+	  }
+	  var maxHeight = $('.scrollable')[0].scrollHeight;
+	  if(currentScroll <= maxHeight) {
+		  currentScroll += $('.scrollable').height();
+		  $('.scrollable')[0].scrollTop = currentScroll;
+	  }
+  }
+  function scrollDown() {
+	  if(!$('.scrollable')[0]) {
+		  return;
+	  }
+	  var maxHeight = $('.scrollable')[0].scrollHeight;
+	  if(currentScroll > 0) {
+		  currentScroll -= $('.scrollable').height();
+		  $('.scrollable')[0].scrollTop = currentScroll;
+	  }
+  }
+  </script>
+</body>
+
+</html>

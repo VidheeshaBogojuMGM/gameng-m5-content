@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wrapper Shell</title>
+    <script src="js/shellSizing.js"></script>
+    <script src="js/sizeTable.js"></script>
+    <script src="js/bannerSizeTable.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            position:absolute;
+            overflow:hidden;
+            background-color:black;
+        }
+
+        iframe{
+            display: inline-block;
+        }
+        .testButton{
+            position:absolute;
+            top:260px;
+
+        }
+        .testButton2{
+            position:absolute;
+            top:300px;
+        }
+        .testButton h1{
+            color:black;
+            font-size:25px;
+        }
+        .testButton2 h1{
+            color:white;
+            font-size:25px;
+        }
+
+        .error-overlay{
+            z-index: 1;
+            display: none;
+            color: white;
+            text-align: center;
+            position: absolute;
+            background-image: linear-gradient(to bottom, #0055b7 0%, #009bde 100%);
+            font-size: 2vw;
+            width: 100%;
+            top: 0%;
+            overflow: hidden;
+        }
+
+        .error-overlay-text {
+            top: 25%;
+            position: relative;
+        }
+    </style>
+
+</head>
+
+<link rel="stylesheet" href="styles/indexHoriz.css"/>
+<link rel="stylesheet" href="styles/banner.css"/>
+
+<body>
+<iframe id="ShellBackgroundFrame" class="shell-Background"
+        onload="this.width = coreWidth; this.height = coreHeight; this.style.top = yPosition;
+        this.style.left=xPosition;" src="shellBackgroundHoriz.html">
+</iframe>
+
+<iframe id="PinContentFrame" frameborder="0" style="z-index: 999; position: absolute; display: none;"
+        onload="this.width = coreWidth; this.height = coreHeight;this.style.top = yPosition;
+        this.style.left=xPosition;">
+</iframe>
+
+<iframe id="WrapperFrame" frameborder="0" style="z-index: 1; position:absolute;"
+        onload="this.width = coreWidth; this.height = coreHeight;this.style.top = yPosition;
+        this.style.left=xPosition;">
+</iframe>
+<!--The following is a overlay for the Wrapper frame if an error occurs during its load-->
+<div id="WrapperFrameOverLay" class="error-overlay">
+    <div class="error-overlay-text">Nothing to display here</div>
+</div>
+
+<iframe id="BannerFrame" class="bannerFrameStyle" style="z-index:1;" frameborder = "0"
+        onload="this.width = displayWidth;this.height=bannerHeight; this.style[bannerPosition] = '0px';">
+</iframe>
+
+
+
+
+<div id="ContentGuides" style="position:absolute; z-index:1000; display:none;">
+    <!-- these boxes are used for RH test buttons to show borders. Feel free to turn them on to test -->
+<div id="RH_borderbox" class="rhBox"></div> <!-- Green border should reflect the bottom -->
+<div id="RH_borderbox2" class="rhBox2"></div> <!-- Use yellow border for top frame on RH sizes for design -->
+</div>
+<div id= "btn1" class="testButton"
+     style="left:1%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(640,84, true);">
+    <H1 align="center">640x84(U1_H)</H1>
+</div>
+<div id= "btn2" class="testButton"
+     style="left:15%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(480,112, true);
+     document.getElementById('RH_borderbox').className = 'rhBox_U1_RH';
+     document.getElementById('RH_borderbox2').className = 'rhBox2_U1_RH';">
+    <H1 align="center">480x112(U1_RH)</H1>
+</div>
+<div id= "btn3" class="testButton"
+     style="left:31%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(800,105, true);">
+    <H1 align="center">800x105(U2_H)</H1>
+</div>
+<div id= "btn4" class="testButton"
+     style="left:46%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(600,140, true);
+     document.getElementById('RH_borderbox').className = 'rhBox_U2_RH';
+     document.getElementById('RH_borderbox2').className = 'rhBox2_U2_RH';">
+    <H1 align="center">600x140(U2_RH)</H1>
+</div>
+<div id= "btn5" class="testButton"
+     style="left:62%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(1280,179, true);">
+    <H1 align="center">1280x179(U3_H)</H1>
+</div>
+<div id= "btn6" class="testButton"
+     style="left:78%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(1024,224, true);
+     document.getElementById('RH_borderbox').className = 'rhBox_U3_RH';
+     document.getElementById('RH_borderbox2').className ='rhBox2_U3_RH';">
+    <H1 align="center">1024x224(U3_RH)</H1>
+</div>
+<div id= "btn7" class="testButton2"
+     style="left:1%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(840,250, true);">
+    <H1 align="center">840x250(U4)</H1>
+</div>
+<div id= "btn8" class="testButton2"
+     style="left:15%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(1280,168, true);">
+    <H1 align="center">1280x168(U5_H)</H1>
+</div>
+<div id= "btn9" class="testButton2"
+     style="left:31%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(960,224, true);
+     document.getElementById('RH_borderbox').className = 'rhBox_U5_RH';
+     document.getElementById('RH_borderbox2').className = 'rhBox2_U5_RH';">
+    <H1 align="center">960x224(U5_RH)</H1>
+</div>
+<div id= "btn10" class="testButton2"
+     style="left:48%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(1920,189, true);">
+    <H1 align="center">1920x189(U6_H)</H1>
+</div>
+<div id= "btn11" class="testButton2"
+     style="left:64%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(1080,189, true);
+     document.getElementById('RH_borderbox').className = 'rhBox_U6_RH';
+     document.getElementById('RH_borderbox2').className = 'rhBox2_U6_RH';">
+    <H1 align="center">1080x189(U6_RH)</H1>
+</div>
+<div id= "btn12" class="testButton2"
+     style="left:81%;"
+     src="../lib/core-css/images/PixelBorderRemoval.png"
+     onclick="setWindowSize(640,240, true);">
+    <H1 align="center">640x240(TFT)</H1>
+</div>
+
+<script src="/lib/shell-core-logic/dist/ShellCoreLogic.bundle.js"></script>
+<script>
+    if (!bannerActive) {
+        document.getElementById("BannerFrame").style.visibility = "hidden";
+    }
+    let HomeURL = "";
+    window.onload = function () {
+        new ShellCoreLogic.default(window.location.href, "urlMapHorizontal.json", "statusMap.json", "M5Config.json", "ngxSubscriptionConfig.json");
+    };
+    setDisplaySize(); buildTestButtonList();
+</script>
+<script src="./js/errorHandler.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "cmd": "activateDiagnostics",
+  "ver": "1.0",
+  "activateDiagnostics": {
+    "pin": "1234"
+  }
+}

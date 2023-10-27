@@ -1,0 +1,45 @@
+{
+  "overrideSessionScreenTrigger": true,
+  "ignoreOverrideSessionTriggerList" : ["0x32", "0x31"],
+  "overrideSessionScreenMessage" : " ",
+  "hidePPAndXCOnFailures" : false,
+  "cashlessEnabled": false,
+  "playerRanking": {
+    "enabled": false,
+    "mode": "ABS"
+  },
+  "minimumPointPlayBalanceInCents": 500,
+  "mapEgmDenomToMinCentsBalance": {
+    "200": 600,
+    "1000": 1000,
+    "2000": 2000,
+    "2500": 2500,
+    "5000": 5000,
+    "10000": 10000
+  },
+  "duplicateSessionScreenTimeInSecs" : 2,
+  "delayPatronCache" : 2,
+  "delayInitialCashlessRetry" : 2,
+  "unreachableHeartbeatInterval" : 60000,
+  "enableAdvNgxSubscriptionPerScreen" : false,
+  "be2MessageProcessor": {
+    "timeout": 2500,
+    "interval": 50,
+    "metricInterval": 3600000,
+    "dropQueueOnTimeout": false
+  },
+  "forceOpenServiceWindow" : {
+    "enabled" : true,
+    "screenTriggerList" : ["0x4B", "0x40"]
+  },
+  "enableWrapperFrameErrorOverlay": true,
+  "diagnosticTargets":["w2g"],
+  "hideFullscreenOnScreenTriggers": true,
+  "w2g": {
+    "jackpotLimitsCheck" : true
+  },
+  "cardless" : {
+    "clearStateTimeInSecs" : 60,
+    "checkCardlessCacheTimeInSecs" : 30
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "http://igt.com/forceCardOut/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for forceCardOut",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^forceCardOut$"
+    },
+    "ver": {
+      "type": "string"
+    }
+  },
+  "required": ["cmd"]
+}

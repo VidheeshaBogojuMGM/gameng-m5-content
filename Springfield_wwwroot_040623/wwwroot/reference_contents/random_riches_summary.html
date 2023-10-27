@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>summary</title>
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_common.css">
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_summary.css">
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_summary.lucky-spinner.css" id='lucky-spinner' disabled>
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_summary.build-wonder.css" id='build-wonder' disabled>
+  <link rel="stylesheet" type="text/css" href="./mgm/styles/style.css">
+</head>
+
+<body>
+  <!-- <div id="loading" style="z-index: 100; position: fixed; top: 0; left: 0; background-color:black;color: white;"></div> -->
+  <div id="app" v-cloak resize="preset-2" :class="['SCREEN_RANDOM_RICHES', displayName, {vertical: isVertical , horizontal: !isVertical }]">
+    <div id="promotionPage" class="app-page" v-show="pageStatus.promotion">
+
+      <!-- <div id="world" v-show="currentTheme == 'build-wonder'">
+        <img id="promotion_img" src="assets/random_riches/wonders01.png" alt="">
+        <div id="arrow">
+          <img id="arrow_img" src="assets/random_riches/percent.png" alt="">
+          <span id="arrow_span">{{ calculatedPercentage }}</span>
+        </div>
+        <div id="camera"></div>
+      </div> -->
+
+      <div id="spinnerProgress" v-show="isLuckySpinnerTheme">
+        <img src="assets/random_riches/pro2-progressBar.png" id="progressBar">
+        <img src="assets/random_riches/pro2-progressBar-full.png" id="progressBar-full">
+        <img src="assets/random_riches/large-spinner.png" id="largeSpinner">
+        <div id="progressBar-percent">
+          <p>{{ calculatedPercentage }} %</p>
+          <p>{{ 'PLAY TO SPIN THE LUCKY SPINNER' | translate }}</p>
+        </div>
+      </div>
+
+      <div class="content-head">
+			<img id='logo' />
+        <!-- <div class="promotion-switch" v-if="promotions.length > 1">
+          <div @click="toPrePromotion()" class="promotion-up"></div>
+          <div @click="toNextPromotion()" class="promotion-down"></div>
+        </div> -->
+		  <p class="p-size-24px">{{ promotionName }}</p>
+      </div>
+
+		<div class="detail-balance">
+			<div class="">
+				<div class="balance-name">{{ 'NEXT BONUS AT' | translate }}</div>
+				<div class="line"></div>
+				<div class="balance-show">{{ nextBonusAt }}</div>
+			</div>
+			<div class="">
+				<div class="balance-name">{{ 'ACTIVE POINTS' }}</div>
+				<div class="line"></div>
+				<div class="balance-show">{{ activePointTotal }}</div>
+			</div>
+			<!-- <div class="balance-name">{{ 'POINTS TO GO' | translate }}</div>
+			<div class="balance-show">{{ pointsToGo }}</div> -->
+		 </div>
+
+		 <div class="thermometer-container" style="height: 220px; width: 220px; color: #fff; position: relative;">
+			 <div class="random-riches">
+				 <div :style='"width:"+ calculatedPercentage +"%"'></div>
+			 </div>
+			 <!-- display this on horizontal -->
+			 <div v-if="!isVertical" class="thermometer-levels">
+				 <span style="text-align: center;">&nbsp;▲&nbsp;<br>0</span>
+   			 <span style="text-align: center;">&nbsp;▲&nbsp;<br>50</span>
+   			 <span style="text-align: center;">&nbsp;▲&nbsp;<br>100</span>
+   			 <span class="currentPercentage" style="position: absolute; top: 0; height: 24px; left: 0; text-align: center; width: 100%;">{{ calculatedPercentage }}%</span>
+			 </div>
+			 <!-- display this on vertical -->
+			 <div v-if="isVertical">
+				 <span style="text-align: left; position: absolute; top: 8px; height: 24px; right: calc(50% - 68px)">◀ 100 </span>
+   			 <span style="text-align: left; position: absolute; top: calc(50% - 12px); height: 24px; right: calc(50% - 58px)">◀  50</span>
+   			 <span style="text-align: left; position: absolute; bottom: -12px; height: 24px; right: calc(50% - 54px)">◀ 0</span>
+   			 <span class="currentPercentage" style="position: absolute; bottom: -50px; height: 24px; left: 0; text-align: center; width: 100%;">{{ calculatedPercentage }}%</span>
+			 </div>
+		 </div>
+
+      <!-- <div class="content-body" @click="bet()">
+        <div class="detail-info" v-if="pageStatus.detail">
+          <img v-if="currentTheme == 'build-wonder'" class="sketch-img" src="assets/random_riches/promotion-0-sketch.png" alt="">
+          <img v-if="isLuckySpinnerTheme" class="sketch-img" src="assets/random_riches/large-spinner.png" alt="">
+          <div class="detail-balance">
+            <div class="balance-name">{{ 'NEXT BONUS AT' | translate }}</div>
+            <div class="balance-show">{{ nextBonusAt }}</div>
+            <div class="balance-name">{{ 'ACTIVE POINT TOTAL' | translate }}</div>
+            <div class="balance-show">{{ activePointTotal }}</div>
+            <div class="balance-name">{{ 'POINTS TO GO' | translate }}</div>
+            <div class="balance-show">{{ pointsToGo }}</div>
+          </div>
+        </div>
+
+        <div class="list-info" v-show="pageStatus.list">
+          <table>
+            <tr>
+              <th>{{ 'No.' | translate }}</th>
+              <th>{{ 'Tier' | translate }}</th>
+              <th>{{ 'Status' | translate }}</th>
+            </tr>
+            <tr v-for="(i,j) in tierList" :key="i">
+              <td>{{ j + tierListStartNum}}</td>
+              <td>{{ i }}</td>
+              <td>{{ tierStatus(j + tierListStartNum) | translate }}</td>
+            </tr>
+            <tr v-for="i in emptyTd" class="empty-row">
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+          <div class="page-switch">
+            <div class="page-up" @click="toPreTiersPage()" :disabled="isTierFirstPage"></div>
+            <div class="page-down" @click="toNextTiersPage()" :disabled="isTierLastPage"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-tail">
+        <template v-if="!shouldShowDetailOrList">
+          <button @click="showDetail()">{{ 'DETAIL' | translate }}</button>
+          <button @click="showList()">{{ 'LIST' | translate }}</button>
+          <button @click="backHome()">{{ 'CLOSE' | translate }}</button>
+        </template>
+        <template v-if="shouldShowDetailOrList">
+          <div></div>
+          <div></div>
+          <button @click="showPromotionHome()">{{ 'BACK' | translate }}</button>
+        </template>
+      </div>
+    </div>
+
+    <div id="infoPage" class="app-page" v-show="shouldShowInfo">
+      <div class="content-head" v-if="pageStatus.info.error">
+        <img id='logo' />
+      </div>
+      <div class="content-head" v-if="pageStatus.info.message">
+        <div class="promotion-switch" v-if="promotions.length > 1">
+          <div @click="toPrePromotion()" class="promotion-up"></div>
+          <div @click="toNextPromotion()" class="promotion-down"></div>
+        </div>
+        <p class='p-size-24px'>{{ promotionName }}</p>
+      </div>
+      <div class="content-body message-box">
+        <p>{{ infoMessage }}</p>
+      </div>
+      <div class="content-tail flex-end-tail">
+        <button @click="backHome()">{{ 'CLOSE' | translate }}</button>
+      </div>
+    </div> -->
+
+	 <div id="footer">
+		 <div class="navigations">
+			<!-- <div  class="call-attendant clickable" onClick="handleOnCall()">
+				<img class="icon " onClick="" src="./mgm/images/icon/icon-attendant.png" alt="">
+			</div> -->
+        <div class="icon-back clickable" onClick="window.history.back();">
+				  <img class="icon clickable" src="./mgm/images/icon/icon-back.png" alt="">
+			  </div>
+        <div style="visibility: invisible; width: 40px;"></div>
+			  <div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+				  <img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+			  </div>
+  	  </div>
+
+	  </div>
+  </div>
+  <script src="./js/vendor/TweenMax.min.js"></script>
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./js/random_riches_message.definition.js"></script>
+  <script src="./js/random_riches_skin.util.js"></script>
+  <script src="./js/random_riches_summary_build-wonder.js"></script>
+  <script src="./js/random_riches_summary_lucky-spinner.js"></script>
+  <script src="./js/random_riches_summary.skin.js"></script>
+</body>
+
+</html>

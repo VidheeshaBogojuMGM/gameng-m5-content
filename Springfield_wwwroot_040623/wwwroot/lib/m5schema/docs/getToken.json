@@ -1,0 +1,8 @@
+{
+  "cmd": "getToken",
+  "ver": "1.0",
+  "getToken": [
+    "0x00",
+    "0XFF"
+  ]
+}

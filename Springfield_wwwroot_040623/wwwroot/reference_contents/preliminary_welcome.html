@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>preliminary_welcome</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/preliminary_welcome.css">
+</head>
+
+<body>
+    <div id="decoration"></div>
+    <div id="app" resize="preset-2" v-cloak>
+        <cardless-status></cardless-status>
+        <div class='content-head'>
+            <img id='logo' />
+        </div>
+        <div class='content-body'>
+            <div id="loadingContainer">
+                <div>
+                    <img id='loading-inner' src='assets/loading1.gif' />
+                    <img id='loading-outter' src='assets/loading2.gif' />
+
+                </div>
+            </div>
+        </div>
+        <div class='content-tail'>
+
+        </div>
+    </div>
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/preliminary_welcome.skin.js"></script>
+</body>
+
+</html>

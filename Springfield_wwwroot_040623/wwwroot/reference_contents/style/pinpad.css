@@ -1,0 +1,485 @@
+[v-cloak]>* {
+	display: none;
+}
+
+button {
+	display: inline-block;
+}
+
+.wrong {
+	animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+.button-small {
+	width: 31%;
+}
+
+@keyframes shake {
+	10%, 90% {
+		transform: translate3d(-2px, 0, 0);
+		;
+	}
+	20%, 80% {
+		transform: translate3d(2px, 0, 0);
+	}
+	30%, 50%, 70% {
+		transform: translate3d(-4px, 0, 0);
+	}
+	40%, 60% {
+		transform: translate3d(4px, 0, 0);
+	}
+}
+
+body {
+	background: rgba(0, 0, 0, 0.90);
+}
+
+#app {
+	z-index: 99;
+	position: absolute;
+	display: inherit;
+}
+
+#pinArea {
+	text-align: center;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#pinEntry {
+	background-color: rgba(0, 0, 0, 0.0);
+	font-size: 2em;
+	text-align: center;
+	outline: medium;
+	border: none;
+	color: white;
+}
+
+.message-display {
+	font-size: 24px;
+	width: 254px;
+	top: -80px;
+	position: absolute;
+	margin: 8%;
+	width: 83%;
+	text-align: center;
+	color: white
+}
+
+@media screen and (orientation:portrait) {
+	.button-small {
+		width: 31%;
+	}
+	.button-medium {
+		width: 120px;
+	}
+	#pinArea {
+		height: 350px;
+	}
+	#pinEntry {
+		margin: 5%;
+		width: 82%;
+	}
+	.pinButton_panel{
+		display: flex;
+		flex-wrap: wrap;
+		height: inherit;
+	}
+}
+
+@media screen and (orientation:landscape) {
+	.button-small {
+		width: 85px;
+		height: 80px;
+	}
+	.pinButton_panel {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		width: 680px;
+		height: 78%;
+		left: 150px;
+		top: 50px;
+		position: absolute;
+		justify-content: space-between;
+		padding-top: 5px;
+	}
+	#pinEntry {
+		position: absolute;
+		top: 16px;
+		left: 250px;
+		width: 50%;
+	}
+	#_btnBack, #_btnClear {
+		font-size: 19px;
+	}
+	#_btnCancel, #_btnEnter {
+		height: 80px;
+		width: 120px;
+		font-size: 24px;
+	}
+	#_btnClear {
+		order: 12
+	}
+	#_btnCancel {
+		order: 14
+	}
+	#_btnEnter {
+		order: 5;
+	}
+}
+
+.U6_RH input#pinEntry {
+	top: 55px;
+}
+.TFT #pinArea .pin-password input#pinEntry {
+	top: 55px !important;
+}
+
+.TFT .SCREEN_PIN #footer {
+	display: none;
+}
+
+.TFT .horizontal.SCREEN_PIN .content-head #logo {
+	width: 175px;
+}
+
+.horizontal.SCREEN_PIN .content-head #logo {
+    width: 232px;
+}
+
+.U6_H.SCREEN_PIN .content-head #logo {
+	position: fixed !important;
+	width: 232px !important;
+	top: -8px;
+	left: 132px;
+	max-width: unset;
+}
+
+.horizontal.SCREEN_PIN .content-body {
+	width: 40%;
+}
+
+.horizontal.SCREEN_PIN .content-tail {
+	width: 34%;
+	padding: 10px;
+}
+
+.SCREEN_PIN .pin-numbers-container {
+	display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.SCREEN_PIN .pin-numbers-container .button-small {
+	width: 75px;
+    height: 48px;
+    margin: 2px;
+}
+
+.SCREEN_PIN .pin-numbers-container #_btnBack {
+	order: unset;
+}
+
+.SCREEN_PIN .pin-numbers-container .line {
+	width: 230px;
+    margin: 4px 0;
+}
+
+.SCREEN_PIN .pin-numbers-container .full-line {
+	width: 100%;
+    margin: 4px;
+	height: 2px;
+	background-color: #898788;
+}
+
+.SCREEN_PIN .password-container {
+	display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.SCREEN_PIN .pins-container {
+	height: auto;
+}
+
+.SCREEN_PIN .password-container input {
+	border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background: transparent;
+	border: 2px solid white;
+}
+
+.SCREEN_PIN .password-container input.filled {
+	background: white;
+}
+
+.SCREEN_PIN .pin-button-actions {
+	padding: 20px;
+}
+
+.SCREEN_PIN .pin-enter-wrapper #_btnEnter,
+.SCREEN_PIN .pin-cancel-wrapper #_btnCancel {
+	width: 100%;
+    margin: 0;
+    max-width: 100%;
+    height: 100%;
+}
+
+.U4.horizontal .SCREEN_PIN .button-small, .U4.horizontal .SCREEN_PIN .del-small, 
+.TFT.horizontal .SCREEN_PIN .button-small, .TFT.horizontal .SCREEN_PIN .del-small {
+	width: calc(33% - 4px);
+}
+
+.U3_H.horizontal .SCREEN_PIN .button-big, .U3_H.horizontal .SCREEN_PIN .del-big,
+.U6_RH.horizontal .SCREEN_PIN .button-big, .U6_RH.horizontal .SCREEN_PIN .del-big {
+	width: 97.66px;
+	height: 48px;
+    margin: 2px;
+}
+
+.U6_RH.horizontal .SCREEN_PIN .button-big, .U6_RH.horizontal .SCREEN_PIN .del-big {
+	width: 90.66px;
+}
+
+.U6_H.horizontal .SCREEN_PIN .button-big, .U6_H.horizontal .SCREEN_PIN .del-big {
+	width: 98.66px;
+	height: 48px;
+    margin: 2px;
+}
+
+.SCREEN_PIN .content-tail .pin-enter-wrapper,
+.SCREEN_PIN .content-tail .pin-cancel-wrapper {
+	width: calc(100% - 20px);
+	margin: 0 auto;
+    border-top: 2px solid #898788;
+	border-bottom: none;
+}
+
+.SCREEN_PIN .content-tail .pin-cancel-wrapper {
+	border-bottom: 2px solid #898788;
+}
+
+.U3 .SCREEN_PIN .password-container input,
+.U6 .SCREEN_PIN .password-container input {
+	width: 30px;
+    height: 30px;
+}
+
+.U4.horizontal .SCREEN_PIN .pin-numbers-container .line {
+	width: 295px;
+}
+
+.U4.horizontal .SCREEN_PIN .pin-button-actions .line {
+    width: 300px;
+}
+
+.U4.horizontal .SCREEN_PIN .button-small, .U4.horizontal .SCREEN_PIN .del-small {
+	height: 50px;
+	width: calc(33% - 4px);
+	font-size: 20px;
+}
+
+.horizontal .SCREEN_PIN .content-tail .pin-enter-wrapper,
+.horizontal .SCREEN_PIN .content-tail .pin-cancel-wrapper {
+	height: 45px;
+}
+
+.TFT.horizontal .SCREEN_PIN .pin-button-actions {
+	padding: 0;
+}
+
+.TFT.horizontal .SCREEN_PIN .pin-button-actions .line {
+    width: 180px;
+	margin: 4px auto;
+}
+
+.U4.horizontal .SCREEN_PIN .button-small, .U4.horizontal .SCREEN_PIN .del-small,
+.TFT.horizontal .SCREEN_PIN .button-small, .TFT.horizontal .SCREEN_PIN .del-small {
+	height: 44px;
+}
+
+
+.U6_RH.horizontal .SCREEN_PIN .horiz-pin-value-container p {
+	font-size: 18px;
+}
+
+.U6_RH.horizontal .SCREEN_PIN .pin-button-actions {
+	order: 1;
+}
+
+.U6_RH.horizontal .SCREEN_PIN .pin-numbers-container .button-small {
+	width: 105px;
+    height: 35px;
+}
+
+.U6_RH.horizontal .SCREEN_PIN .pin-numbers-container .line {
+	width: 330px;
+	height: 2px;
+}
+
+.vertical .SCREEN_PIN .pin-numbers-container {
+	width: calc(100% - 9px);
+	height: 285px;
+	border-top: 2px solid #898788;
+	border-bottom: 2px solid #898788;
+}
+
+.vertical .SCREEN_PIN .content-head,.vertical .SCREEN_PIN .content-tail {
+	height: 15%;
+}
+
+
+.vertical .SCREEN_PIN .content-body {
+	height: 60%;
+	padding-top: 50px !important;
+}
+
+.vertical .SCREEN_PIN .content-body .line {
+	width: 100%;
+}
+
+
+
+.vertical .SCREEN_PIN .content-tail .pin-enter-wrapper button,
+.vertical .SCREEN_PIN .content-tail .pin-cancel-wrapper button {
+    max-width: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.vertical .SCREEN_PIN .pin-numbers-container .button-small {
+	height: 60px;
+    margin: 2px 0;
+    width: 82px;
+}
+
+.SCREEN_PIN .pin-numbers-container .button-small.pressed {
+	background-color: #fff;
+    color: #000;
+}
+
+.vertical .SCREEN_PIN .pin-button-actions {
+	padding: 0;
+}
+
+.U3.vertical .SCREEN_PIN .content-head,.U3.vertical .SCREEN_PIN .content-tail {
+	height: 12%;
+}
+
+
+.U6.vertical .SCREEN_PIN .pin-button-actions {
+	padding: 5px;
+}
+
+.U6 .SCREEN_PIN .pin-enter-wrapper #_btnEnter, 
+.U6.SCREEN_PIN .pin-cancel-wrapper #_btnCancel {
+	width: calc(100% - 2px);
+}
+
+.U2.vertical .SCREEN_PIN .content-head {
+	margin-bottom: 0 !important;
+}
+
+.U2.vertical .SCREEN_PIN .pins-container p {
+	font-size: 13px;
+}
+
+.U2.vertical .SCREEN_PIN .password-container {
+	padding: 10px
+}
+
+.U2.vertical .SCREEN_PIN .pin-numbers-container .button-small {
+    height: 45px;
+    margin: 0px;
+    width: 50px;
+    font-size: 20px;
+    padding: 0;
+}
+
+.U2.vertical .SCREEN_PIN .content-body {
+    padding-top: 10px !important;
+	margin-bottom: 0 !important;
+}
+
+.U2.vertical .SCREEN_PIN .pin-numbers-container {
+	height: 230px;
+}
+.U2.vertical .SCREEN_PIN .content-tail .pin-enter-wrapper,
+.U2.vertical .SCREEN_PIN .content-tail .pin-cancel-wrapper {
+    height: 45px;
+}
+
+.U2.vertical .SCREEN_PIN .pin-numbers-container #_btnBack,
+.U2.vertical .SCREEN_PIN .pin-numbers-container #_btnClear  {
+	font-size: 12px;
+}
+
+.U6.vertical .SCREEN_PIN .pin-numbers-container .button-small {
+    width: 125px;
+}
+
+#_btnEnter:disabled{
+	border: none !important;
+	background-color: #000 !important;
+	opacity: .5;
+}
+
+.U2 .pin-numbers-container.wide,
+.U3 .pin-numbers-container.wide,
+.U4 .pin-numbers-container.wide,
+.U6 .pin-numbers-container.wide,
+.TFT .pin-numbers-container.wide,
+.U6_RH .pin-numbers-container.narrow,
+.U3_H .pin-numbers-container.narrow,
+.U6_H .pin-numbers-container.narrow 
+{
+	display: none;
+}
+
+.U2 .pin-numbers-container.narrow,
+.U3 .pin-numbers-container.narrow,
+.U4 .pin-numbers-container.narrow,
+.U6 .pin-numbers-container.narrow,
+.TFT .pin-numbers-container.narrow,
+.U6_RH .pin-numbers-container.wide,
+.U3_H .pin-numbers-container.wide,
+.U6_H .pin-numbers-container.wide  {
+	display: flex;
+}
+
+.U6_H .SCREEN_PIN .password-container,
+.U3_H .SCREEN_PIN .password-container,
+.U6_RH .SCREEN_PIN .password-container {
+    justify-content: center;
+    padding: 12px;
+}
+
+.U6_H .SCREEN_PIN .password-container input,
+.U3_H .SCREEN_PIN .password-container input,
+.U6_RH .SCREEN_PIN .password-container input  {
+    width: 18px;
+    height: 18px;
+	margin: 0 8px;
+}
+
+.U6_H .SCREEN_PIN .pin-button-actions {
+	padding: 12px 20px;
+}
+
+.U6_RH .SCREEN_PIN .pin-button-actions {
+	padding: 12px 0;
+}
+
+.U3_H .SCREEN_PIN .pin-button-actions {
+	padding: 10px 0px;
+}
+.U3_H.vertical .SCREEN_PIN .content-tail .pin-enter-wrapper,
+.U3_H.vertical .SCREEN_PIN .content-tail .pin-cancel-wrapper {
+	width: 100%;
+}

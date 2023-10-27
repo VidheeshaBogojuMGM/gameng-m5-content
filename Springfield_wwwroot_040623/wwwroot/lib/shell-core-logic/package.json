@@ -1,0 +1,45 @@
+{
+  "name": "shell-core-logic",
+  "version": "5.4.0",
+  "description": "M5 Shell",
+  "private": true,
+  "devDependencies": {
+    "ajv": "6.7.0",
+    "babel-core": "6.26.3",
+    "babel-loader": "7.1.5",
+    "babel-plugin-istanbul": "5.0.1",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-es2015": "6.24.1",
+    "istanbul-instrumenter-loader": "3.0.1",
+    "jasmine-core": "3.4.0",
+    "karma": "2.0.0",
+    "karma-babel-preprocessor": "7.0.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage-istanbul-reporter": "2.1.0",
+    "karma-jasmine": "2.0.0",
+    "karma-junit-reporter": "1.2.0",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-webpack": "3.0.5",
+    "source-map-loader": "0.2.4",
+    "webpack": "4.20.2",
+    "webpack-cli": "3.2.1"
+  },
+  "scripts": {
+    "prepare": "webpack --mode=production --optimize-minimize --display-error-details",
+    "build": "webpack --optimize-minimize --display-error-details",
+    "dev": "webpack --watch --mode=development",
+    "test": "node ./node_modules/karma/bin/karma start karma.conf.js --single-run",
+    "deploy": "mkdir -p ../bin/shell-core-logic/dist && cp -a dist/* ../bin/shell-core-logic/dist/ && cp -a package.json ../bin/shell-core-logic/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://systems.stash.igt.com/scm/mmrh5/shell-core-logic.git"
+  },
+  "dependencies": {
+    "igt-nexgen-codes": "../codes",
+    "loglevel": "1.6.1",
+    "m5Schema": "../m5schema",
+    "vue": "^3.0.5",
+    "z-schema": "3.25.0"
+  }
+}

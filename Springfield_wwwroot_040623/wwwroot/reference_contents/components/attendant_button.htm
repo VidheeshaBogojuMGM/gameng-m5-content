@@ -1,0 +1,117 @@
+<template>
+  <button v-show="showButton" @click="goLegacyMenu()" :disabled="disableButton">
+    <slot>{{ 'ATTENDANT' | translate }}</slot>
+  </button>
+</template>
+
+<script>
+  function retry(promise, n, delay) {
+    var isCanceled = false;
+    return (function innerRetry(promise, n, delay) {
+      var p = new Promise(function (resolve, reject) {
+        promise().then(resolve)
+          .catch(function (error) {
+            if (isCanceled) return reject({ isCanceled: true });
+            if (n <= 1) {
+              reject(error);
+              return;
+            }
+            if (delay && delay > 0) {
+              setTimeout(() => {
+                if (isCanceled) {
+                  reject({ isCanceled: true });
+                } else {
+                  resolve(innerRetry(promise, n - 1, delay))
+
+                }
+              }, delay)
+            } else {
+              resolve(retry(promise, n - 1))
+            }
+          })
+
+      });
+      p.cancel = function () {
+        isCanceled = true;
+      }
+      return p;
+    })(promise, n, delay);
+  }
+  module.exports = {
+    data() {
+      return {
+        isAttendantCardInserted: false,
+        disableButton: false
+      };
+    },
+
+    computed: {
+      attendantCardId() {
+        return this.$store.state.cardId;
+      },
+      showButton() {
+        return this.isAttendantCardInserted;
+      },
+      analytics() {
+        return this.$root.analytics || {
+          willTriggerBusiness: function () {
+            return function () { }
+          }
+        }
+      }
+    },
+    methods: {
+      goLegacyMenu() {
+        this.disableButton = true;
+        IGTMediaElements.buttonPress('OK');
+      }
+    },
+    watch: {
+      attendantCardId: {
+        immediate: true,
+        handler: function (n, o) {
+        let self = this;
+        trace("new CardID: ", n, "| old CardID: ", o);
+        if (n != '0') {
+          var trackerIsAtten = this.analytics.willTriggerBusiness("isAttendantCardInsertedStart");
+          var checkAttendant = retry(
+            function () {
+              return new Promise((resolve, reject) => {
+                IGTMediaElements.attendant.isAttendantCardInserted().then(function (enabledResponse) {
+                  trackerIsAtten("isAttendantCardInsertedEnd", enabledResponse);
+                  trace("Response", JSON.stringify(enabledResponse))
+                  if (enabledResponse.attendantInserted === true) {
+                    resolve(true);
+                  } else {
+                    reject(false);
+                  }
+
+                });
+              })
+            }, Infinity, 1500);
+
+          checkAttendant.then(function (inserted) {
+            function notifyInsert(){
+
+              self.isAttendantCardInserted = inserted;
+              console.log(`inserted: ${inserted}`);
+              self.$emit("attendant-card-inserted")
+            }
+            if(IGTMediaElements.isMock){
+              setTimeout(notifyInsert, 3000);
+            }else{
+              notifyInsert();
+            }
+          })
+            .catch(error => {
+              console.log(`retry 3 times, not a attendant: ${error}!`)
+              trace(`retry 3 times, not a attendant: ${error}!`)
+            });
+        } else {
+          self.isAttendantCardInserted = false;
+        }
+      }
+      }
+    }
+  }
+</script>

@@ -1,0 +1,22 @@
+{
+  "cmd": "statusUpdate",
+  "ver": "1.0",
+  "statusUpdate": {
+    "meterDenom": 0,
+    "tokenDenom": 0,
+    "gameId": "AV",
+    "gameOtherId": "123",
+    "paytableId": "AVV999",
+    "displayLimits": {
+      "coinInRunaway": 0,
+      "coinOutRunaway": 0,
+      "jackpot": 0,
+      "bonus": 0,
+      "xtraCredit": 0,
+      "points": 0,
+      "comp": 0,
+      "witness": 0,
+      "pouchPay": 0
+    }
+  }
+}

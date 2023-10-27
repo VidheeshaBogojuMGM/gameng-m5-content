@@ -1,0 +1,2840 @@
+@font-face {
+	font-family: 'Gotham-Book-Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: url("./fonts/Gotham-Book-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: 'Gotham-Bold';
+	font-style: normal;
+	font-weight: bold;
+	src: url("./fonts/Gotham-Bold.otf") format("opentype");
+}
+
+@font-face {
+	font-family: 'Gotham-Italic';
+	font-style: italic;
+	font-weight: normal;
+	src: url("./fonts/Gotham-Italic.ttf") format("opentype");
+}
+
+body {
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-image: unset;
+	background-color: #000;
+	font-family: 'Gotham-Book-Regular';
+}
+body * {
+	font-family: 'Gotham-Book-Regular';
+	font-weight: 200;
+}
+#app,
+body {
+	transform: unset !important;
+	height: 100vh !important;
+	width: 100vw !important;
+	padding: 0 !important;
+}
+p {
+	color: white;
+}
+
+h1 {
+	font-family: 'Gotham-Bold';
+}
+#app {
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-image: unset;
+	background-color: #000;
+}
+
+#app.SCREEN_PROPERTY_INFO_WITH_ADS.horizontal {
+	flex-direction: row;
+}
+.vertical .player-pane {
+	display:flex;
+	justify-content:center;
+	align-items: center;
+	position: relative;
+	max-width: 240px;
+	margin: 0 auto;
+}
+#logo {
+	content: url(../logo.png);
+	max-width: 220px;
+	margin: 0 auto;
+}
+
+.italic {
+	font-family: 'Gotham-Italic';
+}
+
+.bold {
+	font-family: 'Gotham-Bold';
+}
+
+.SCREEN_IDLE #info {
+	display: none;
+}
+.SCREEN_IDLE.vertical .content-head,
+.SCREEN_IDLE.vertical .content-body {
+	margin-bottom: 0 !important;
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important
+}
+
+.content-body {
+	flex-grow: unset;
+}
+
+.SCREEN_IDLE.vertical #adPlayer {
+	margin: 0 auto;
+	position: relative;
+	background-color: #747275;
+	border: none;
+}
+.SCREEN_IDLE.horizontal #adPlayer {
+	max-width: unset;
+	margin: 6px auto;
+	position: relative;
+	background-color: #747275;
+	border: none;
+}
+
+.SCREEN_PROPERTY_INFO_WITH_ADS.vertical #adPlayer {
+	margin: 0 auto;
+	position: relative;
+	background-color: #747275;
+	border: none;
+}
+.SCREEN_PROPERTY_INFO_WITH_ADS.horizontal #adPlayer {
+	margin: 6px auto;
+	position: relative;
+	background-color: #747275;
+	border: none;
+}
+.SCREEN_IDLE .content-tail {
+	padding-top: 10px;
+}
+.SCREEN_PROPERTY_INFO_WITH_ADS .content-body {
+	margin-bottom: 0 !important;
+}
+
+.SCREEN_SESSION .go-button,
+.SCREEN_SESSION #compBalance,
+.SCREEN_SESSION #language,
+.SCREEN_SESSION #app-menu {
+	display: none !important;
+}
+
+.amount-bg {
+	background-image: unset;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.message-box p,
+.v-box p {
+	color: #fff;
+}
+
+.message-box #statusMsg {
+	font-size: 25px;
+}
+.cash-color {
+	padding: 0 !important;
+	border-bottom: unset !important;
+	font-size: 26px !important;
+	font-weight: bold !important;
+	background: black;
+}
+
+.SCREEN_SESSION.horizontal .v-box {
+	padding-left: 14px;
+	padding-right: 14px;
+}
+.SCREEN_SESSION.horizontal .v-box p{
+	font-size: 18px !important
+}
+.SCREEN_SESSION.horizontal .content-body {
+	padding-top: 10px;
+}
+.SCREEN_MEMBER_ACCOUNT.horizontal .content-tail {
+	padding-top: 17px;
+}
+.SCREEN_W2G.vertical .content-tail {
+	position: absolute;
+	bottom: 60px;
+	left: 0;
+	right: 0;
+}
+.SCREEN_W2G.vertical .content-body {
+	position: absolute;
+	top: 24%;
+}
+.SCREEN_W2G.vertical .content-body #message {
+	margin-top: 120px;
+}
+
+.SCREEN_W2G.horizontal .content-tail {
+	flex-direction: column;
+	justify-content: flex-end;
+}
+.SCREEN_W2G.horizontal .content-body {
+	flex-direction: column;
+	justify-content: flex-start;
+	margin-top: 40px;
+	align-items: center !important;
+}
+
+.SCREEN_W2G.horizontal .content-body #message {
+	margin-top: 40px;
+}
+.SCREEN_W2G.horizontal .content-body #message > * {
+	width: 210px;
+	text-align: center;
+}
+.SCREEN_W2G.horizontal .content-body .line{
+	width: 210px;
+}
+
+
+.horizontal .v-box button {
+	height: 44px !important;
+}
+.horizontal .amount-selections .container {
+	border: unset;
+}
+.single-line {
+	position: relative;
+}
+
+.horizontal #logo {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	margin: 0;
+}
+.btn {
+	border-radius: 4px;
+ 	border: none;
+	height: 55px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	font-size: 16px;
+	width: calc(100% - 20px);
+	margin: 0 auto;
+	position: relative;
+	max-width: 365px;
+	color: white;
+	text-transform: uppercase;
+}
+
+.btn.btn-dark,
+.btn.btn-light:active {
+	background-color: #000;
+	color: #fff;
+}
+.btn.btn-light,
+.btn.btn-dark:active {
+	background-color: #fff;
+	color: #000;
+}
+.btn.btn-icon {
+	padding-left: 80px;
+	justify-content: flex-start;
+	text-align: left;
+}
+.btn > .icon {
+	position: absolute;
+	top: 10px;
+	left: 12px;
+}
+.btn:active {
+	background-color: white;
+	color: #000 !important;
+	border-radius: 5px;
+	/* transform: scale(0.9); */
+}
+button:disabled {
+	pointer-events: none;
+}
+
+.btn > .active { display: none; }
+.btn:active > .active { display: block; }
+.btn > .inactive { display: block; }
+.btn:active > .inactive { display: none; }
+.line {
+	background-color: #898788;
+	height: 2px;
+	width: 100%;
+	margin: 4px auto;
+}
+
+.horizontal .line {
+	height: 2px;
+}
+
+.U3.vertical .line,
+.SCREEN_SESSION.U3 .content-body .session-menu .btn {
+	width: calc(100% - 15px);
+}
+
+.vertical #footer {
+	position: absolute;
+	background-color: #BDA66F;
+	bottom: 0;
+	left: calc(50% - 120px);
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	height: 55px;
+	width: 240px;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: flex-end;
+	padding-left: 14px;
+	padding-right: 14px;
+	box-sizing: border-box;
+	margin-bottom: 0 !important;
+}
+
+#footer .navigations {
+	width: 100%;
+	height: 100%;
+    display: flex;
+    justify-content: flex-end;
+	align-items: center;
+}
+
+.horizontal #footer {
+	position: absolute;
+	background-color: #BDA66F;
+	bottom: 2px;
+	left: 6px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	height: 55px;
+	width: 210px;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: flex-end;
+	padding-left: 14px;
+	padding-right: 14px;
+	box-sizing: border-box;
+	margin-bottom: 0 !important;
+}
+.clickable:active {
+	transform: scale(0.98);
+}
+#player-pane,
+#player-name {
+	background-image: none;
+	color: #fff;
+	background-color: transparent;
+	height: 50px !important;
+	width: 240px !important;
+	margin: 0 auto;
+	display: block !important;
+	line-height: 50px !important;
+	text-transform: uppercase;
+	font-size: 22px !important;
+}
+
+#player-name {
+	border: 2px solid #898788;
+}
+
+/*
+#player-name::after {
+	content: '';
+    border: 1px solid #fff;
+    width: 233px;
+    height: 42.5px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+} */
+
+.horizontal #player-pane,
+.horizontal #player-name {
+	/* background-image: unset !important; */
+		width: 210px !important;
+}
+.SCREEN_SESSION .v-box p  {
+	text-align: left;
+}
+.v-box p {
+	border-bottom: 2px solid #898788;
+}
+
+.v-box > div,
+.v-box > h1 {
+	width: 100%;
+	display: inline;
+	text-align: right;
+}
+
+.v-box .title {
+	color: white;
+}
+
+#pinEntry,
+#amount,
+.cash-color {
+	letter-spacing: initial !important;
+}
+.horizontal .v-box {
+	padding-bottom: 4px;
+}
+
+.U4.SCREEN_MEMBER_ACCOUNT p.title{
+	font-size: 14px;
+}
+
+.U4.SCREEN_PROPERTY_INFO_WITH_ADS .property-menu .line {
+	width: 280px;
+}
+.U4.SCREEN_MEMBER_ACCOUNT .line {
+	width: 254px;
+}
+
+.U4 .pin-password::after {
+	top: 74.5px;
+	right: -2px;
+}
+
+.U3.SCREEN_MEMBER_ACCOUNT .content-body > div,
+.U3.SCREEN_MEMBER_ACCOUNT .content-body .v-box {
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+.U3.SCREEN_MEMBER_ACCOUNT p.title{
+	width: 100%;
+	padding-left: 24px;
+	padding-right: 24px;
+}
+.U4.SCREEN_MEMBER_ACCOUNT #other .content-body > div {
+	width: 100%;
+	align-self: center;
+}
+
+.U4.SCREEN_MEMBER_ACCOUNT #other .content-body .line {
+    width: 100%;
+}
+
+.SCREEN_MEMBER_ACCOUNT.TFT.horizontal .content-body {
+	align-self: center;
+}
+
+.U4 .horizontal .button-small, .U4 .del-small {
+	height: 45px;
+    font-size: 15px;
+}
+
+.U3 #other #back,
+.U3 #other #clear {
+	font-size: 15px;
+}
+
+.U4.SCREEN_MEMBER_ACCOUNT #other .content-body .button-small {
+    font-weight: bold;
+	font-size: 24px;
+	height: 42px;
+	width: calc(33% - 8px);
+}
+
+.icon.home { background-image: url(../images/icon_home.png); }
+.icon.back { background-image: url(../images/icon_back.png); }
+.icon.xtracredit { background-image: url(../images/icon_xtracredit.png); }
+.icon.attendant { background-image: url(../images/icon_attendant.png); }
+.icon.gift { background-image: url(../images/icon_gift.png); }
+.icon.promotions { background-image: url(../images/icon_promotions.png); }
+.icon.gifts { background-image: url(../images/icon_promotions.png); }
+.icon.services { background-image: url(../images/icon_services.png); }
+.icon.xtracredit { background-image: url(../images/icon_xtracredit.png); }
+
+.icon.promotions,.icon.gift {
+	width: 40px;
+    height: 40px;
+}
+
+.menu button,
+.content-tail button{
+	width: 100%;
+	height: 50px;
+	margin-bottom: 5px;
+	background-image: url('../images/btn_01.png');
+	background-color: transparent;
+	font-size: 18px;
+	max-width: 94%;
+	display: flex;
+    justify-content: center;
+	align-items: center;
+}
+
+.success {
+	color: rgb(56, 226, 108) !important;
+}
+
+.title-welcome {
+		color: #000;
+}
+
+.content-tail {
+	justify-content: flex-start;
+}
+
+.vertical .menu {
+	width: 240px;
+	margin: 0 auto;
+}
+
+
+.horizontal .content-body {
+	width: 34%;
+}
+.horizontal .content-tail {
+	width: 40%;
+}
+.horizontal .content-head {
+	width: 26%;
+}
+
+.U4.horizontal .content-body {
+	width: 37%;
+	padding: 10px;
+}
+.U4.horizontal .content-tail {
+	width: 37%;
+}
+.U4.horizontal .content-head {
+	width: 26%;
+}
+.horizontal .content-head { order: 1; }
+.horizontal .content-body { order: 2; }
+.horizontal .content-tail { order: 3; }
+
+
+.horizontal .menu {
+	width: 200px;
+	margin: 0 auto;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.horizontal #app {
+	display: flex;
+}
+
+
+.horizontal .message-box {
+	position: absolute;
+	left: calc(50% - 80px);
+}
+.vertical .message-box {
+	position: absolute;
+	top: calc(50% - 200px);
+}
+
+.player-pane {
+  /* height: 84px;
+  line-height: 80px; */
+  position: relative;
+}
+
+.v-box {
+	width: 100% !important;
+	max-width: unset !important;
+	margin: 0 auto !important;
+	display: flex;
+    align-items: center;
+	 padding-bottom: 18px;
+	 flex: unset !important;
+}
+.border {
+	background-image: url(../images/border.png);
+	border: none;
+	outline: none;
+	font-size: 14px;
+	line-height: 50px;
+	height: 46px;
+	width: 240px;
+}
+.border h1 {
+	color: #000 !important;
+}
+.border-point-play {
+	background-image: url(../images/border-pointbalance.png);
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.border-xtra-credit {
+	background-image: url(../images/border-xtracredit.png);
+}
+.vertical .menu.align-bottom {
+	position: absolute;
+	bottom: 60px;
+	left: calc(50% - 120px);
+}
+#btnReserve {
+	background-image: url(../images/btn-reserve.png);
+	background-color: transparent;
+    border-radius: unset;
+	 width: 86%;
+	 margin: 80px auto 0;
+	 color: #000;
+}
+
+.button-small,.del-small {
+	background-image: url(../images/keypad.png);
+	width: 77px;
+	height: 70px;
+	margin: 4px;
+}
+.del-small {
+	background-image: url(../images/delete_icon.png);
+}
+.one-three,.four-six,.seven-nine,.zero-del {
+	display: flex;
+}
+.pinButton_panel {
+	align-items: center;
+	justify-content: center;
+}
+#_btnCancel,
+#_btnEnter {
+	background-image: url('../images/btn_01.png');
+	width: 200px;
+	margin: 4px auto;
+	margin-top: 20px;
+    height: 44px;
+	 background-color: transparent;
+}
+#pinEntry,
+#amount,
+.cash-color {
+	background-image: url(../images/border.png);
+	border: none;
+	outline: none;
+	font-size: 35px;
+	line-height: 50px;
+	height: 46px;
+	width: 240px;
+	margin: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    letter-spacing: 20px;
+	padding-left: 20px;
+}
+
+.display-bg-position {
+	background-image: unset;
+}
+
+.horizontal .footer-buttons {
+	width: 150px;
+	height: 150px;
+	flex-wrap: wrap;
+	left: 4px;
+	bottom: 4px;
+}
+.horizontal .footer-buttons > .btn-icon {
+    width: 77px;
+    height: 66px;
+	margin: 2px;
+ }
+
+ .horizontal #btnReserve,
+ .horizontal .title-welcome,
+ .horizontal .player-name {
+	 margin: 0 auto;
+ }
+
+ .horizontal .content-body>div p,
+ .horizontal .content-body>div h1 {
+	 font-size: 12px;
+ }
+ .horizontal .content-body>div h1 {
+	 line-height: 38px;
+ }
+ .horizontal .content-body .border {
+	 width: 160px;
+    height: 32px;
+	 line-height: 0 !important;
+ }
+.horizontal .content-body {
+	align-items: flex-start;
+}
+
+.message-box {
+	border: none;
+	background: transparent;
+	border: none;
+    padding-top: 45px;
+    width: 50% !important;
+    background: transparent;
+}
+
+.horizontal .message-box {
+	padding-top: 0;
+}
+
+.vertical .message-box {
+	width: 100% !important;
+}
+
+.message-box .welcome-label {
+	font-size: 30px !important;
+}
+
+
+@media screen and (min-width: 630px) and (max-width: 650px) {
+	.button-small {
+		width: 50px;
+		height: 50px;
+	}
+	.pinButton_panel #_btn1 { order: 1; }
+	.pinButton_panel #_btn2 { order: 2; }
+	.pinButton_panel #_btn3 { order: 3; }
+	.pinButton_panel #_btn4 { order: 4; }
+	.pinButton_panel #_btn5 { order: 5; }
+	.pinButton_panel #_btn6 { order: 6; }
+	.pinButton_panel #_btnEnter { order: 7; }
+
+	.pinButton_panel #_btn7 { order: 8; }
+	.pinButton_panel #_btn8 { order: 8; }
+	.pinButton_panel #_btn9 { order: 10; }
+	.pinButton_panel #_btn0 { order: 11; }
+	.pinButton_panel #_btnClear { order: 12; }
+	.pinButton_panel #_btnBack { order: 13; }
+	.pinButton_panel #_btnCancel { order: 14; }
+	.pinButton_panel {
+		left: 90px !important;
+		width: 550px;
+		height: 140px;
+		top: unset;
+	}
+	.message-display {
+		left: unset;
+		right: 0;
+		width: 70%;
+		font-size: 18px;
+	}
+	#pinEntry {
+		top: 60px !important;
+		left: 300px !important;
+	}
+}
+/*u6rh*/
+@media screen and (min-width: 1070px) and (max-width: 1090px) {
+	#app.horizontal {
+		background-image: url(../images/bg-u6rh.png);
+	}
+	.content-tail {
+		flex-direction: row;
+	}
+	.content-tail > div {
+		display: flex;
+		flex-direction: column;
+	}
+	#logo {
+		margin-top: 0;
+		max-width: 170px;
+	}
+	.menu button {
+		max-width: 180px;
+		margin: 5px !important;
+		font-size: 16px;
+	}
+	.horizontal .menu {
+		flex-direction: row;
+		width: 400px;
+		flex-wrap: wrap;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.horizontal .content-head,
+	.horizontal .content-tail {
+		width: 45% !important;
+	}
+	.horizontal .content-head {
+		width: 30% !important;
+	}
+	.horizontal .content-body {
+		width: 35% !important;
+	}
+	.horizontal .content-head {
+		justify-content: flex-start;
+		padding-top: 10px;
+	}
+	.horizontal .footer-buttons {
+		width: 400px;
+		height: 100px;
+	}
+	.horizontal .footer-buttons > .btn-icon {
+		margin: 4px;
+	}
+
+	.one-six, .seven-clear {
+		display: flex;
+	}
+	.horizontal .footer-buttons {
+		width: 100%;
+	}
+
+	.horizontal .footer-buttons > .btn-icon {
+		margin: 3px;
+	}
+
+	.horizontal .footer-buttons > .btn-icon {
+		width: 60px;
+		height: 60px;
+	}
+}
+
+.button-small, .del-small {
+	background-color: transparent;
+}
+.border .amount {
+	color: #000 !important;
+}
+
+.amount-selections button {
+	background-image: url(../images/btn_01.png);
+}
+@media screen and (orientation: portrait) {
+	.content-body {
+		padding-top: 20px !important;
+		padding-bottom: 0 !important;
+	}
+}
+@media screen and (orientation: landscape) {
+	.menu button,
+	.content-tail button{
+		height: 30px;
+	}
+}
+
+
+.U6_RH.horizontal .SCREEN_PIN .content-head {
+	width: 23% !important;
+}
+
+.U3_H.horizontal .content-body {
+	width: 50%;
+	padding: 10px;
+}
+
+.U6_RH.horizontal .horizontal.SCREEN_PIN .content-tail {
+	width: 23% !important;
+	padding: 10px;
+}
+
+.U6_RH.horizontal .horizontal.SCREEN_PIN .content-tail {
+	display: flex;
+    flex-direction: column;
+}
+.SCREEN_SESSION.U3_H .content-tail {
+	padding: 4px 10px;
+}
+
+.U3_H.horizontal .content-body {
+	justify-content: flex-start;
+	flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.U6_RH.horizontal .SCREEN_PIN .content-body {
+	width: 54% !important;
+	padding: 0 40px;
+	justify-content: center
+}
+
+.U6_RH.horizontal .SCREEN_PIN .content-body {
+	padding: 0;
+	padding-left: 15px;
+	align-items: center;
+}
+
+.U3_H.horizontal #footer {
+	width: 314px;
+}
+
+.U3_H.horizontal .message-box .welcome-label {
+	position: absolute;
+    left: -230px;
+    top: 25px;
+}
+
+.SCREEN_SESSION.U3_H.horizontal .content-body > *{
+	flex: 1 1;
+}
+
+.SCREEN_SESSION.U3_H.horizontal .content-body .dollars-container {
+	display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+	width: 50%;
+}
+
+.SCREEN_SESSION.U3_H.horizontal .points-slotdollars-container,
+.SCREEN_SESSION.U3_H.horizontal .points-session-container {
+	padding-top: 20px;
+}
+
+.SCREEN_SESSION.U3_H.horizontal .points-freeplay-container {
+	position: absolute;
+	top: 34%;
+	right: -320px;
+}
+
+.SCREEN_SESSION.U3_H.horizontal .v-box:nth-of-type(3) {
+    margin-top: 10px !important;
+}
+
+.SCREEN_SESSION.U3_H.horizontal .content-body>div h1 {
+	line-height: 23px;
+    margin-top: 1px;
+	font-size: 16px;
+}
+
+.SCREEN_SESSION.U3_H.horizontal #player-pane {
+    margin-top: 10px;
+	width: 315px !important;
+	left: 2px;
+}
+
+.SCREEN_SESSION.U3_H.horizontal #player-pane #player-name{
+    width: 315px !important;
+}
+
+
+.SCREEN_SESSION.U3_H.horizontal .content-body .multiplier {
+    width: 307.60px;
+    min-width: 100px !important;
+    position: absolute;
+    left: 650px;
+    top: 128px;
+}
+
+.SCREEN_SESSION.U3_H.horizontal .content-tail .clickable {
+	position: absolute;
+    left: 668px;
+    width: 275px;
+    top: 8px;
+}
+
+.SCREEN_SESSION.U3_H.horizontal .content-tail .clickable > div:first-of-type {
+	width: 270px !important;
+    margin-top: 5px;
+}
+.SCREEN_SESSION.U6_RH .content-tail .clickable > div:first-of-type {
+	width: 230px !important;
+}
+.SCREEN_SESSION.U6_RH .content-body .multiplier {
+	position: absolute;
+	width: 230px !important;
+   right: -235px;
+	top: 130px;
+}
+.SCREEN_SESSION.U6_RH .content-tail .random-riches-container {
+	margin-top: 12px;
+}
+
+.SCREEN_SESSION.U3_H.horizontal .content-tail .session-menu {
+    height: 100%;
+    width: 100%;
+}
+
+.SCREEN_SESSION.U3_H.horizontal .content-tail .session-menu div.btn {
+	height: 45px;
+	font-size: 14px;
+}
+
+.SCREEN_SESSION.U3_H.horizontal .content-tail .session-menu div.btn > .icon {
+    top: unset;
+}
+
+.SCREEN_PROPERTY_INFO_WITH_ADS.U3_H.horizontal #adPlayer {
+	margin: auto 0;
+}
+
+.U3_H.horizontal .SCREEN_PIN .message-display {
+    top: 10px
+}
+
+.U3_H.horizontal .SCREEN_PIN .flex-order :nth-child(13),
+.U3_H.horizontal .SCREEN_PIN .flex-order :nth-child(14) {
+    height: 50px;
+    padding: 2px;
+	right: -340px;
+}
+
+.U3_H.horizontal .SCREEN_PIN .flex-order :nth-child(13) {
+	top: 125px;
+}
+.U3_H.horizontal .SCREEN_PIN .flex-order :nth-child(14) {
+	top: 75px;
+}
+
+.U3_H.horizontal .SCREEN_PIN input#pinEntry {
+	top: 35px;
+}
+
+.U3_H.horizontal .SCREEN_PIN .pinButton_panel {
+	width: 700px;
+	align-content: center;
+    margin-left: 40px;
+}
+
+.U6_H.horizontal .SCREEN_PIN .button-big, .U6_H.horizontal .SCREEN_PIN .del-big,
+.U3_H.horizontal .SCREEN_PIN .button-big, .U3_H.horizontal .SCREEN_PIN .del-big,
+.U6_RH.horizontal .SCREEN_PIN .button-big, .U6_RH.horizontal .SCREEN_PIN .del-big {
+    background-image: unset;
+    border-radius: 4px;
+}
+
+.U3_H.horizontal .SCREEN_PIN .pin-btn-wrapper {
+    padding: 6px 2.5px;
+}
+
+.U3_H.horizontal .SCREEN_PIN .flex-order .pin-btn-wrapper:nth-of-type(6),
+.U3_H.horizontal .SCREEN_PIN .flex-order .pin-btn-wrapper:nth-of-type(7),
+.U3_H.horizontal .SCREEN_PIN .flex-order .pin-btn-wrapper:nth-of-type(8),
+.U3_H.horizontal .SCREEN_PIN .flex-order .pin-btn-wrapper:nth-of-type(9) {
+	border-bottom:none;
+}
+
+.U3_H.horizontal .SCREEN_PIN .flex-order .pin-btn-wrapper:nth-of-type(10)
+{
+	border-bottom: 2px solid #898788;
+}
+
+.U3_H.horizontal .SCREEN_PIN .flex-order .pin-btn-wrapper:nth-of-type(6) {
+	order: 7;
+}
+.U3_H.horizontal .SCREEN_PIN .flex-order .pin-btn-wrapper:nth-of-type(7) {
+	order: 8;
+}
+.U3_H.horizontal .SCREEN_PIN .flex-order .pin-btn-wrapper:nth-of-type(8) {
+	order: 9;
+}
+.U3_H.horizontal .SCREEN_PIN .flex-order .pin-btn-wrapper:nth-of-type(9) {
+	order: 10;
+}
+.U3_H.horizontal .SCREEN_PIN .flex-order .pin-btn-wrapper:nth-of-type(10) {
+	order: 6;
+}
+
+
+.horizontal.U3_H .SCREEN_XTRACREDIT .content-tail {
+    justify-content: flex-end;
+}
+
+
+
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order .button-small:nth-of-type(6),
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order .button-small:nth-of-type(7),
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order .button-small:nth-of-type(8),
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order .button-small:nth-of-type(9) {
+	border-bottom:none;
+}
+
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order .button-small:nth-of-type(10)
+{
+	border-bottom: 2px solid #898788;
+}
+
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order .button-small:nth-of-type(6) {
+	order: 7;
+}
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order .button-small:nth-of-type(7) {
+	order: 8;
+}
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order .button-small:nth-of-type(8) {
+	order: 9;
+}
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order .button-small:nth-of-type(9) {
+	order: 10;
+}
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order .button-small:nth-of-type(10) {
+	order: 6;
+}
+
+.U3_H.horizontal .SCREEN_XTRACREDIT .button-small,
+.U3_H.horizontal .SCREEN_XTRACREDIT .del-small {
+    background-color: #fff;
+    color: #000;
+    background-image: unset;
+    border-radius: 4px;
+	width: 75px;
+	margin: 8px 4px;
+}
+
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order {
+	margin: auto;
+}
+
+.U3_H.horizontal .SCREEN_XTRACREDIT .flex-order::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    height: 2px;
+    background: #f2f2f2;
+    width: 500px;
+	left: 85px;
+    top: calc(50% - 2px);
+}
+
+.U3_H.horizontal .SCREEN_XTRACREDIT .msginfo {
+    padding: 0px 10px;
+	height: 80px;
+}
+
+
+.horizontal.U3_H .SCREEN_XTRACREDIT .content-body {
+	justify-content: center;
+}
+
+.horizontal.U3_H .SCREEN_XTRACREDIT #msg-pane .content-body {
+	position: absolute;
+    left: 400px;
+    top: 0;
+}
+
+.horizontal.U3_H .SCREEN_XTRACREDIT #msg-pane .content-body .button-response-container .content-tail {
+	width: 305px;
+}
+
+.horizontal.U3_H .SCREEN_MEMBER_ACCOUNT .content-tail .info-group.points .v-box:nth-of-type(1) {
+	position: absolute;
+    left: 622px;
+    width: 335px !important;
+}
+
+.horizontal.U3_H .SCREEN_MEMBER_ACCOUNT .content-tail .info-group.points .v-box:nth-of-type(2) {
+	position: absolute;
+    right: -8px;
+    width: 335px !important;
+}
+
+.horizontal.U6_RH .SCREEN_MEMBER_ACCOUNT #other .content-tail .info-group.points .v-box:nth-of-type(1) {
+	position: absolute;
+    left: 430px;
+    width: 350px !important;
+}
+
+.horizontal.U6_RH .SCREEN_MEMBER_ACCOUNT #other .content-tail .info-group.points .v-box:nth-of-type(2) {
+	position: absolute;
+    right: 0px;
+    width: 320px !important;
+}
+
+.horizontal.U3_H .SCREEN_MEMBER_ACCOUNT .content-tail .info-group.points .v-box p {
+    font-size: 16px;
+}
+
+
+.horizontal.U3_H .SCREEN_MEMBER_ACCOUNT .content-body .amount-selections {
+	padding-left: 15px;
+    margin-top: 0px;
+}
+
+.U3_H.horizontal .SCREEN_MEMBER_ACCOUNT #home .content-body .amounts,
+.U3_H.horizontal .SCREEN_MEMBER_ACCOUNT #home .content-body .amount-selections  {
+	height: 100%;
+}
+
+.U3_H.horizontal .SCREEN_MEMBER_ACCOUNT #home .content-body .amount-selections button {
+	font-size: 25px;
+}
+
+.U3_H.horizontal .SCREEN_MEMBER_ACCOUNT #home .content-body .amount-selections button.other-amount {
+	font-size: 17px !important;
+    text-align: center;
+    width: 90px;
+}
+
+
+.U3_H.horizontal .SCREEN_MEMBER_ACCOUNT .content-body .amount-selections .container button {
+    /* background-color: #fff;
+    color: #000; */
+    background-image: unset;
+    border-radius: 4px;
+	width: 75px;
+	margin: 4px;
+}
+
+
+
+.U6_H.horizontal .SCREEN_PIN .content-body {
+	padding: 0 70px;
+	justify-content: center;
+	align-items: center;
+}
+
+.U6.vertical #footer {
+	width: 365px;
+	left: calc(50% - 184px);
+}
+.U6.vertical .SCREEN_IDLE.vertical #adPlayer {
+	max-width: unset;
+}
+.U6.vertical .line {
+	width: calc(100% - 20px);
+}
+.U6.SCREEN_SESSION.vertical .btn {
+	width: 100%;
+	max-width: 100%;
+	font-size: 22px;
+}
+.U6.SCREEN_SESSION.vertical #player-pane,
+.U6.SCREEN_SESSION.vertical #player-name{
+	width: unset !important;
+	font-size: 25px !important;
+	height: 55px !important;
+	margin-top: 0;
+}
+
+.U6.SCREEN_SESSION.vertical #player-pane {
+	margin-top: 20px;
+
+}
+.U6 #logo {
+	content: url(../images/u6_mgm_rewards_logo.png);
+	max-width: 260px;
+	transform: scale(0.9);
+}
+
+.U6 .pinButton_panel {
+	width: 256px;
+	transform: scale(1.4) translateX(20%) translateY(-2%);
+}
+.U6 .pin-btn-wrapper > div{
+	font-size: 22px;
+}
+.U6 .pin-btn-wrapper > #_btnBack,
+.U6 #_btnCancel,
+.U6 #_btnEnter {
+	font-size: 16px !important;
+}
+
+.U6 #pinEntry {
+	width: 100%;
+    padding-left: 79px;
+    padding-right: 0px;
+	/* text-align: center; */
+}
+
+.U6 .pin-password::after {
+	left: 0px;
+}
+
+.U6.SCREEN_MEMBER_ACCOUNT .content-body {
+	margin-top: 80px;
+
+}
+.U6.SCREEN_MEMBER_ACCOUNT #other .content-body > .align-box {
+	width: 256px;
+	transform: scale(1.4);
+}
+
+.U6 .menu button, .U6 .content-tail button {
+    font-size: 22px;
+	max-width: 100%;
+}
+
+.U2 .content-head #logo {
+    width: 160px;
+}
+
+.U2 .message-box .welcome-label {
+	position: absolute;
+    left: -10px;
+    top: 25px;
+	font-size: 25px;
+}
+
+.U2 .line {
+	height: 2px;
+    width: 100%;
+}
+
+.U2 .SCREEN_PROPERTY_INFO_WITH_ADS #property-menu .menu-options {
+	padding: 0 5px;
+}
+
+.U2 .v-box p {
+	border-bottom: 2px solid #898788;
+}
+.U2 .vertical #footer {
+	height: 35px;
+    width: 151px;
+	display: flex;
+	left: unset;
+}
+
+.U2 .content-body, .U2 .content-tail, .U2 .content-head {
+	width: calc(100% - 10px);
+}
+
+.U2 .content-tail .btn.btn-icon {
+	padding-left: 50px;
+}
+
+.U2 .SCREEN_IDLE .content-tail {
+	padding: 10px 5px;
+}
+
+.U2 .content-tail .btn > .icon {
+	left: 5px;
+	top: 7px;
+}
+
+.U2 .content-tail .whats_happening {
+	font-size: 13px;
+}
+
+
+.U2 #player-pane, .U2 #player-name {
+	width: 150px !important;
+	font-size: 13px !important;
+	height: 30px !important;
+    line-height: 25px !important;
+}
+
+.U3 #player-pane, .U3 #player-name { 
+	line-height: 45px !important;
+}
+
+.U2 .v-box .cash-color {
+	font-size: 20px !important;
+}
+
+
+.TFT .horizontal #footer {
+	height: 40px;
+}
+
+.TFT.horizontal .content-body {
+	padding: 10px;
+}
+.TFT.horizontal .content-tail {
+	padding: 10px;
+}
+
+.TFT.horizontal #msgbox .content-body {
+	flex-direction: column;
+    display: flex;
+    height: 100%;
+	width: 100%;
+}
+
+.TFT.horizontal #msgbox .content-head,
+.TFT.horizontal #msgbox .content-tail{
+	width: 0;
+}
+
+.TFT .message-box .welcome-container {
+	height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.U6_RH.horizontal .welcome_screen .content-body.message-box {
+	left: calc(50% - 130px);
+}
+.horizontal .random-riches-container {
+	display: flex;
+	color: #fff;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.horizontal .random-riches {
+	border: 3px solid #fff;
+	border-radius: 14px;
+	height: 11px;
+	padding: 4px;
+	box-sizing: content-box;
+}
+
+.horizontal .random-riches-container > span {
+	margin-bottom: 4px;
+}
+
+.U4 .horizontal .random-riches {
+	width: calc(100% - 32px);
+}
+
+.TFT .horizontal .random-riches {
+	width: calc(100% - 48px);
+}
+
+.TFT .random-riches {
+	width: 200px;
+}
+
+.horizontal .random-riches > div {
+	background-color: #BDA670;
+	height: 10px;
+	border-radius: 10px;
+}
+
+#app.SCREEN_RANDOM_RICHES{
+	visibility: visible !important;
+}
+.SCREEN_RANDOM_RICHES #logo{
+	width: 100%;
+}
+
+.SCREEN_RANDOM_RICHES .detail-balance {
+	color: #fff;
+}
+
+
+
+
+.SCREEN_RANDOM_RICHES .random-riches {
+	border: 3px solid #fff;
+	border-radius: 14px;
+	height: 11px;
+	padding: 4px;
+	width: 220px;
+	box-sizing: content-box;
+}
+.SCREEN_RANDOM_RICHES.vertical .random-riches {
+	transform: rotate(270deg) translateX(-50%);
+}
+
+.SCREEN_RANDOM_RICHES .random-riches {
+	width: 200px;
+}
+.SCREEN_RANDOM_RICHES .random-riches > div {
+	background-color: #BDA670;
+	height: 10px;
+	border-radius: 10px;
+}
+
+.SCREEN_RANDOM_RICHES .line {
+	width: 98% !important;
+}
+
+.SCREEN_RANDOM_RICHES.TFT .detail-balance,
+.SCREEN_RANDOM_RICHES.U4 .detail-balance,
+.SCREEN_RANDOM_RICHES.U3_H .detail-balance {
+	left: 26%;
+	width: calc(100% - 26%) !important;
+	position: absolute;
+	top: 40px;
+	display: flex;
+	flex-direction: row;
+}
+.SCREEN_RANDOM_RICHES.TFT .detail-balance > div,
+.SCREEN_RANDOM_RICHES.U4 .detail-balance > div,
+.SCREEN_RANDOM_RICHES.U3_H .detail-balance > div {
+	flex: 1;
+}
+
+.SCREEN_RANDOM_RICHES.vertical .detail-balance {
+	margin-top: 80px;
+	margin-bottom: 80px;
+}
+
+.SCREEN_RANDOM_RICHES.horizontal .content-head {
+	order: 0;
+	width: 26% !important;
+}
+
+.SCREEN_RANDOM_RICHES.horizontal .thermometer-container {
+	margin-left: 4%;
+	margin-right: 4%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.SCREEN_RANDOM_RICHES.U4 .thermometer-container,
+.SCREEN_RANDOM_RICHES.TFT .thermometer-container,
+.SCREEN_RANDOM_RICHES.U3_H .thermometer-container {
+	width: calc(100% - 26% - 8%) !important;
+}
+
+.SCREEN_RANDOM_RICHES.U6_RH .thermometer-container {
+	width: 34% !important; /* 100% - 26% -36% - 8% */
+}
+.SCREEN_RANDOM_RICHES.U6_RH .detail-balance {
+	width: 32%;
+}
+.SCREEN_RANDOM_RICHES.horizontal .thermometer-levels {
+	width: 98%;
+	padding-top: 80px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: row;
+}
+
+.SCREEN_RANDOM_RICHES.horizontal .content-head > p {
+	position: fixed;
+}
+.SCREEN_RANDOM_RICHES.TFT .content-head > p,
+.SCREEN_RANDOM_RICHES.U4 .content-head > p,
+.SCREEN_RANDOM_RICHES.U3_H .content-head > p {
+	left: 26%;
+	width: calc(100% - 26%);
+	top: 8px;
+}
+
+.SCREEN_RANDOM_RICHES.U6_RH .content-head > p {
+	top: 8px;
+	width: 34%;
+    right: 0;
+}
+.SCREEN_RANDOM_RICHES.TFT .thermometer-container,
+.SCREEN_RANDOM_RICHES.U4 .thermometer-container,
+.SCREEN_RANDOM_RICHES.U3_H .thermometer-container {
+	margin-top: 60px;
+	height: calc(100vh - 60px) !important;
+}
+.SCREEN_RANDOM_RICHES.U6_RH .detail-balance {
+	padding-top:60px;
+}
+
+.SCREEN_RANDOM_RICHES.U3_H .thermometer-container {
+	width: 508px;
+	padding-left: 300px;
+}
+.SCREEN_RANDOM_RICHES.U3_H .thermometer-levels {
+	padding-left: 300px;
+}
+.SCREEN_RANDOM_RICHES.U3_H .detail-balance {
+	width: 44% !important;
+	left: unset !important;
+	right: 4px !important;
+}
+
+.SCREEN_RANDOM_RICHES.U3_H .content-head > p {
+	width: 320px !important;
+   top: 40px;
+}
+
+.SCREEN_RANDOM_RICHES.U3_H .currentPercentage {
+	top: 60px !important;
+	left: -450px !important;
+}
+
+.SCREEN_RANDOM_RICHES.vertical .detail-balance {
+	width: 98%;
+}
+
+.SCREEN_RANDOM_RICHES.U2 .p-size-24px {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.SCREEN_RANDOM_RICHES.U6 .detail-balance {
+	zoom: 1.1;
+}
+.SCREEN_RANDOM_RICHES.U6 .p-size-24px {
+	margin-top: 40px;
+}
+
+.SCREEN_RANDOM_RICHES.horizontal .random-riches {
+	width: 90% !important;
+}
+
+.U6_H .pin-password::after,
+.U6_RH .pin-password::after {
+	top: 74.5px;
+	right: -2px;
+}
+
+.U6_RH.horizontal #msgbox .content-body {
+	width: 100% !important;
+	height: 100%;
+}
+
+.U6_H.SCREEN_SESSION.horizontal .content-body {
+	justify-content: flex-start;
+}
+
+.U6_H.SCREEN_SESSION.horizontal .points-slotdollars-container,
+.U6_H.SCREEN_SESSION.horizontal .points-session-container {
+	padding-top: 20px;
+}
+
+.U6_H.SCREEN_SESSION.horizontal .points-freeplay-container {
+	position: absolute;
+    top: 45%;
+	right: -467px;
+    width: 460px !important;
+}
+
+.U6_H.SCREEN_SESSION.horizontal .vbox {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.U6_H.SCREEN_SESSION.horizontal .content-tail .clickable {
+	position: absolute;
+    left: 62px;
+    width: 316px;
+    top: 8px;
+}
+
+.U6_H.SCREEN_SESSION .content-body .multiplier {
+	position: absolute;
+    width: 480px !important;
+    left: 466px;
+    top: 130px;
+}
+
+.U6_H.SCREEN_SESSION .content-body .multiplier .point-multiplier {
+	width: 432px !important;
+}
+
+.SCREEN_RANDOM_RICHES.U6_H  .thermometer-container {
+	height: 200px !important;
+}
+.SCREEN_RANDOM_RICHES.U6_H #logo {
+	left: 0;
+}
+
+.SCREEN_RANDOM_RICHES.U3 .thermometer-container,
+.SCREEN_RANDOM_RICHES.U6 .thermometer-container {
+	height: 420px !important;
+}
+.SCREEN_RANDOM_RICHES.U3 .random-riches,
+.SCREEN_RANDOM_RICHES.U6 .random-riches {
+	width: 400px;
+transform: rotate(270deg) translateX(-50%) translateY(-105px);
+}
+.SCREEN_RANDOM_RICHES.U2 .detail-balance{
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.U6_RH.SCREEN_MEMBER_ACCOUNT .content-head {
+	width: 23% !important;
+}
+
+.U6_RH.SCREEN_MEMBER_ACCOUNT .content-body {
+	width: 27% !important;
+}
+.U6_RH .SCREEN_MEMBER_ACCOUNT .amount-selections .container button {
+	width: 75px !important;
+	margin-right: 15px;
+	font-size: 25px;
+}
+
+.U6_RH .SCREEN_MEMBER_ACCOUNT .amount-selections .container .other-amount {
+	font-size: 14px !important;
+}
+.U6_RH.SCREEN_MEMBER_ACCOUNT .content-tail {
+	width: 50% !important;
+}
+
+.U6_RH.SCREEN_MEMBER_ACCOUNT #other .content-body {
+	width: 50% !important;
+}
+
+.U6_RH.SCREEN_MEMBER_ACCOUNT #other  .content-tail {
+	width: 27% !important;
+}
+
+.U6_RH.SCREEN_MEMBER_ACCOUNT .content-tail .actions {
+	height: 75%;
+	padding-top: 15px;
+}
+.U6_RH.SCREEN_MEMBER_ACCOUNT .amounts{
+	height:75%;
+}
+.U6_RH #footer
+{
+	width: 243px;
+}
+
+.U6_RH.SCREEN_MEMBER_ACCOUNT .button-small{
+	width: 87px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.U6_RH.SCREEN_MEMBER_ACCOUNT #back,
+.U6_RH.SCREEN_MEMBER_ACCOUNT #clear {
+	font-size: 15px;
+}
+
+.U6_RH.SCREEN_MEMBER_ACCOUNT .content-body .align-box .line {
+	width: 272px;
+}
+
+.U6_RH.SCREEN_MEMBER_ACCOUNT #other .content-body .align-box .line,
+.TFT.SCREEN_MEMBER_ACCOUNT #home .content-body .line {
+    height: 2px;
+}
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .content-head {
+	width: 23% !important;
+}
+
+
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail,
+.U6_RH.SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail {
+	width: 30% !important;
+}
+
+
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu {
+	flex-direction: column;
+	margin-top: 15px;
+}
+
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS #property-menu.content-tail.property-menu {
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 0;
+}
+
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS #property-menu.content-tail.property-menu .nav-container .btn {
+    height: 38px;
+}
+
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu .line {
+	margin: 7px auto;
+}
+
+
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .prev,
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .next {
+    width: 50% !important;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+
+.U6_RH.SCREEN_PIN .pin-btn-wrapper {
+	height: 45px;
+}
+
+.U3.SCREEN_MEMBER_ACCOUNT p.availslotdollars {
+	padding-left: 52px;
+	padding-right: 46px;
+}
+
+.U2.SCREEN_MEMBER_ACCOUNT p.veravailslotdollars,
+.U6.SCREEN_MEMBER_ACCOUNT p.veravailslotdollars {
+	padding-left: 17px;
+	padding-right: 17px;
+}
+
+.U2.SCREEN_MEMBER_ACCOUNT p.title {
+	width: 100%;
+}
+
+.U6.SCREEN_MEMBER_ACCOUNT p.veramounttoconvert {
+	padding-left: 35px;
+	padding-right: 35px;
+}
+
+.TFT.SCREEN_MEMBER_ACCOUNT p.horamounttoconvert {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.SCREEN_INTEL_OFFER .offer-stat > span{
+	display: block;
+}
+.SCREEN_INTEL_OFFER #list-pane .list-btn {
+	background-image: unset;
+}
+
+.SCREEN_INTEL_OFFER.vertical #list-pane > * {
+	width: 94% !important;
+}
+
+.SCREEN_INTEL_OFFER.vertical .content-tail {
+	justify-content: flex-end;
+}
+
+.SCREEN_INTEL_OFFER .list-btn:hover {
+	background-color: #fff;
+	color: #000;
+	border-radius: 8px;
+}
+.SCREEN_INTEL_OFFER .list-btn {
+	border-bottom: 2px solid #898788;
+}
+
+.SCREEN_INTEL_OFFER .detail-title {
+	background-image: unset;
+}
+.SCREEN_INTEL_OFFER .list-btn > div {
+	position: absolute;
+	top: calc(50% - 13px);
+	left: 30px;
+}
+
+.SCREEN_INTEL_OFFER.horizontal .offer-stat {
+	position: fixed;
+	left: 4px;
+	bottom: 40px;
+	width: 200px !important;
+}
+
+.SCREEN_INTEL_OFFER.horizontal .offer-stat > span {
+	width: 200px !important;
+	display: block;
+	margin: 0 !important;
+}
+
+.SCREEN_INTEL_OFFER.horizontal .content-tail {
+	justify-content: flex-end !important;
+}
+
+.SCREEN_INTEL_OFFER #list-pane {
+	justify-content: flex-start !important;
+}
+.SCREEN_INTEL_OFFER.horizontal .list-btn {
+	width: 280px !important;
+	max-height: 55px;
+}
+.U3.SCREEN_MEMBER_ACCOUNT.vertical .veravailslotdollars {
+	padding: 0 30px;
+}
+
+.U3.SCREEN_MEMBER_ACCOUNT.vertical .veramounttoconvert {
+	padding: 0 20px;
+}
+
+.U3.SCREEN_MEMBER_ACCOUNT.vertical .v-box .cash-color,
+.U3.SCREEN_MEMBER_ACCOUNT.vertical .v-box .cash-color {
+	font-size: 30px !important;
+}
+
+.U3.SCREEN_MEMBER_ACCOUNT.vertical .amounts .amount-selections .container button {
+    font-size: 30px;
+}
+
+.U3.SCREEN_MEMBER_ACCOUNT.vertical .amounts .other-amount {
+    font-size: 20px !important;
+}
+
+
+.TFT .horizontal #footer {
+	width: 153px !important;
+}
+
+.horizontal #footer .navigations {
+	height: calc(100% - 4px);
+}
+
+.horizontal #footer {
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+#footer .navigations .call-attendant.active {
+	background-color: #C2C2C2;
+	border: 2px solid #000;
+}
+
+#footer .navigations .call-attendant > img {
+	height: 100%;
+}
+#footer .navigations > img {
+	max-height: 45px;
+	max-width: 45px;
+}
+.U2 #footer .navigations img {
+	max-width: 30px;
+	max-height: 30px;
+}
+.TFT #footer .navigations > img {
+	max-width: 35px;
+	max-height: 35px;
+}
+
+.U2 #footer .navigations img, 
+#footer .navigations .call-attendant,
+#footer .navigations > img {
+	padding: 6px;
+	border-radius: 6px;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+.TFT.SCREEN_IDLE .content-body {
+	width: 230px !important;
+}
+
+.TFT.SCREEN_IDLE .content-tail,
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail {
+	width: 37%;
+}
+.TFT .whats_happening {
+	font-size: 15px;
+}
+
+.horizontal #player-pane,
+.horizontal #player-name {
+	height: 40px !important;
+	line-height: 35px !important;
+}
+
+.SCREEN_PROPERTY_INFO_WITH_ADS.U6_RH.horizontal #adPlayer,
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U6_RH.horizontal #adPlayer {
+	margin: auto 0;
+}
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .content-body,
+.U6_RH.SCREEN_PROPERTY_INFO_DESCRIPTION .content-body  {
+	height: 179px !important;
+	padding-left: 15px;
+	width: 26%!important;
+	/* width: 260px !important; */
+}
+
+.U6_RH.SCREEN_PROPERTY_INFO_DESCRIPTION .content-head {
+	width: 23% !important;
+}
+
+.SCREEN_PROPERTY_INFO_WITH_ADS.U6_RH .property-menu {
+	flex-wrap: wrap;
+	/* width: 600px !important; */
+	position: relative;
+}
+
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu .btn {
+	height: 46px;
+	margin: 0;
+}
+
+
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu .btn,
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu .line {
+	margin: 2px 0;
+	width: calc(100% - 12px);
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu .btn {
+	height: 38px;
+}
+
+
+.U3_H.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu .property-info-prev-next {
+	position: absolute;
+	bottom: 4px;
+	right: 10px;
+}
+/* .U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu .property-info-prev-next {
+	position: absolute;
+	bottom: 24px;
+	right: 8px;
+} */
+/* .horizontal.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu .property-info-prev-next {
+	border-top: 2px solid #898788;
+} */
+.U4.SCREEN_PROPERTY_INFO_WITH_ADS.horizontal .content-body {
+	padding: 0 10px;
+}
+
+.U4.SCREEN_PROPERTY_INFO_WITH_ADS.horizontal #property-menu.content-tail.property-menu .menu-options {
+	padding-top: 5px;
+}
+
+.U4.SCREEN_PROPERTY_INFO_WITH_ADS.horizontal #property-menu.content-tail.property-menu .menu-options .btn {
+	width: 100%;
+	height: 53px;
+}
+
+.U4.SCREEN_PROPERTY_INFO_WITH_ADS.horizontal #property-menu.content-tail.property-menu .nav-container .btn {
+	height: 55px;
+}
+
+.U4.SCREEN_PROPERTY_INFO_WITH_ADS .property-info-prev-next {
+	width: 280px;
+	height: 50px !important;
+	position: relative !important;
+	margin: 0 auto;
+}
+.U4.SCREEN_PROPERTY_INFO_WITH_ADS .property-info-prev-next .btn,
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS .property-menu .prev,
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS .property-menu .next {
+	width: 50% !important;
+}
+
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS.horizontal .content-body {
+	padding: 0;
+}
+
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS.horizontal .content-tail {
+	padding: 5px 0;
+}
+
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS .property-info-prev-next {
+	width: 213px;
+	height: 50px !important;
+	position: relative !important;
+	margin: 0 auto;
+}
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS .line {
+	width: 213px;
+}
+
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS .property-menu {
+	padding: 5px 0;
+}
+
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS .property-menu .btn {
+	height: 50px;
+}
+.U3_H.SCREEN_PROPERTY_INFO_WITH_ADS .property-info-prev-next {
+	width: 294px;
+}
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .property-info-prev-next {
+	width: calc(100% - 12px);
+    flex-direction: row;
+}
+
+.property-info-prev-next {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.property-info-prev-next .btn {
+	width: 44.5%;
+}
+
+.SCREEN_MEMBER_ACCOUNT.TFT .content-body {
+	width: 40%;
+}
+
+/* .btn.btn-primary {
+	background-color: #fff;
+	color: #000;
+} */
+
+.btn.btn-primary {
+	background-color: transparent;
+	color: #fff;
+}
+
+.TFT.SCREEN_MEMBER_ACCOUNT .actions .line,
+.TFT.SCREEN_XTRACREDIT .line {
+	width: 100% !important;
+	margin: 4px auto !important;
+}
+.TFT.SCREEN_MEMBER_ACCOUNT .actions button,
+.TFT.SCREEN_XTRACREDIT button {
+	width: 100% !important;
+	max-width: 100%;
+	margin: 0;
+}
+
+.TFT.SCREEN_MEMBER_ACCOUNT #operation-message .actions button {
+	height: 45px;
+}
+
+.TFT #footer .navigations .service-window-btn {
+	display: none;
+}
+
+.U4.SCREEN_MEMBER_ACCOUNT .actions .line,
+.U4.SCREEN_XTRACREDIT .line {
+	width: 100%;
+	margin: 4px auto !important;
+}
+.U4.SCREEN_MEMBER_ACCOUNT .actions button,
+.U4.SCREEN_XTRACREDIT button {
+	width: 100%;
+	margin: 0 auto !important;
+}
+
+
+.U3_H.SCREEN_XTRACREDIT .line {
+	width: 284px !important;
+	margin: 4px auto !important;
+}
+
+.U3_H.SCREEN_MEMBER_ACCOUNT #home .content-tail .line {
+	width: 100%!important;
+}
+
+.U3_H.SCREEN_XTRACREDIT #session-pane-active .content-tail .line {
+    width: 100% !important;
+}
+
+.U3_H.SCREEN_XTRACREDIT button {
+	width: 284px !important;
+	margin: 0 auto !important;
+	height: 40px !important;
+}
+
+.U3_H.SCREEN_XTRACREDIT #session-pane-active .content-tail button {
+	width: 100% !important;
+	max-width: 100%;
+	margin: 0 !important;
+}
+
+
+/* select screen and other screen */
+.U6_RH.SCREEN_MEMBER_ACCOUNT #home .actions .line,
+.U6_RH.SCREEN_MEMBER_ACCOUNT #other .actions .line,
+.U6_RH.SCREEN_XTRACREDIT #home .line,
+.U6_RH.SCREEN_XTRACREDIT #other .line {
+	width: 240px !important;
+	margin: 4px auto !important;
+}
+.U6_RH.SCREEN_MEMBER_ACCOUNT #home .actions button,
+.U6_RH.SCREEN_XTRACREDIT #home button,
+.U6_RH.SCREEN_MEMBER_ACCOUNT #other .actions button,
+.U6_RH.SCREEN_XTRACREDIT #other button {
+	width: 254px !important;
+	margin: 0 auto !important;
+	height: 50px !important;
+}
+/* confirmation screen */
+.U6_RH.SCREEN_MEMBER_ACCOUNT #confirmation .actions .line,
+.U6_RH.SCREEN_XTRACREDIT .line {
+	width: 250px !important;
+	margin: 4px auto !important;
+}
+.U6_RH.SCREEN_MEMBER_ACCOUNT #confirmation .actions button,
+.U6_RH.SCREEN_XTRACREDIT button {
+	width: 264px !important;
+	margin: 0 auto !important;
+	height: 50px !important;
+}
+
+.U6.vertical.SCREEN_XTRACREDIT #footer {
+	bottom: 30px;
+}
+
+.call-attendant > img{
+	max-width: 45px;
+	max-height: 45px;
+}
+
+.U2 .call-attendant > img,
+.TFT .call-attendant > img {
+	max-width: 20px;
+	max-height: 20px;
+}
+
+.U6_RH .info-group.points {
+	width: 246px;
+}
+.U6_RH .info-group.points  .v-box .title {
+	font-size: 14px;
+}
+
+.U6_RH.SCREEN_MEMBER_ACCOUNT #other .content-tail,
+.U6_RH.SCREEN_MEMBER_ACCOUNT #home .content-tail,
+.U6_RH.SCREEN_MEMBER_ACCOUNT #confirmation .content-tail {
+	justify-content: flex-end;
+    padding-right: 20px;
+}
+.U6_RH.SCREEN_MEMBER_ACCOUNT .content-tail .actions {
+	height: 100%;
+	padding-top: 55px;
+}
+/* button:disabled {
+	background-color: #f2f2f2 !important;
+	color: #c2c2c2 !important;
+} */
+
+button:disabled {
+	background-color: transparent;
+	color: #c2c2c2 !important;
+}
+
+.U4.SCREEN_SESSION .content-tail {
+	justify-content: flex-end;
+}
+
+.SCREEN_XTRACREDIT.U6_RH #session-pane-active .content-tail {
+	width: 25% !important;
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+}
+#msgbox {
+	position: fixed;
+}
+#msgbox,
+#msgbox .content-body {
+	height: 100vh;
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+
+}
+#msgbox .content-body h2{
+	width: 100% !important;
+	text-align: center;
+	font-size: 30px;
+}
+#app.SCREEN_PROPERTY_INFO_DESCRIPTION.horizontal {
+	flex-direction: row;
+}
+.SCREEN_RANDOM_RICHES.vertical.U6 .detail-balance {
+	width: 100vw;
+}
+.SCREEN_RANDOM_RICHES.U3 .random-riches,
+.SCREEN_RANDOM_RICHES.U6 .random-riches {
+    margin-left: 6px;
+}
+.SCREEN_PROPERTY_INFO_DESCRIPTION #adPlayer {
+	background-color: #747275;
+	border: none;
+}
+
+.SCREEN_IDLE.U2 #adPlayer { zoom: 0.9; }
+.SCREEN_IDLE.U2 #adPlayer { width: 150px !important; height: 435px !important; }
+.SCREEN_IDLE.U3 #adPlayer { width: 246px !important; height: 733px !important; }
+.SCREEN_IDLE.U6 #adPlayer { width: 364px !important; height: 761px !important; }
+.SCREEN_IDLE.U3_H #adPlayer { width: 632px !important; height: 169px !important; }
+.SCREEN_IDLE.U6_H #adPlayer { width: 1147px !important; height: 179px !important; }
+.SCREEN_IDLE.U6_RH #adPlayer { width: 532px !important; height: 179px !important; }
+.SCREEN_IDLE.U4 #adPlayer { width: 300px !important; height: 240px !important; }
+.SCREEN_IDLE.TFT #adPlayer { width: 230px !important; height: 230px !important; }
+
+.SCREEN_PROPERTY_INFO_WITH_ADS.U2 #adPlayer { width: 150px !important; height: 260px !important; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.U3 #adPlayer { width: 246px !important; height: 440px !important; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.U6 #adPlayer { width: 364px !important; height: 500px !important; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.U3_H #adPlayer { width: 300px !important; height: 169px !important; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.U6_H #adPlayer { width: 758px !important; height: 179px !important; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.U6_RH #adPlayer { width: 260px !important; height: 179px !important; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.U4 #adPlayer { width: 300px !important; height: 240px !important; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.TFT #adPlayer { width: 230px !important; height: 230px !important; }
+
+
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U2 #adPlayer { width: 150px !important; height: 260px !important; }
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U3 #adPlayer { width: 246px !important; height: 440px !important; }
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U6 #adPlayer { width: 364px !important; height: 470px !important; }
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U3_H #adPlayer { width: 300px !important; height: 169px !important; }
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U6_H #adPlayer { width: 758px !important; height: 170px !important; }
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U6_RH #adPlayer { width: 260px !important; height: 179px !important; }
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U4 #adPlayer { width: 300px !important; height: 240px !important; }
+.SCREEN_PROPERTY_INFO_DESCRIPTION.TFT #adPlayer { width: 230px !important; height: 230px !important; }
+
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U2 .content-head,
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U2 .content-body,
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U3 .content-head,
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U3 .content-body,
+.SCREEN_PROPERTY_INFO_WITH_ADS.U2 .content-head,
+.SCREEN_PROPERTY_INFO_WITH_ADS.U2 .content-body,
+.SCREEN_PROPERTY_INFO_WITH_ADS.U3 .content-head,
+.SCREEN_PROPERTY_INFO_WITH_ADS.U3 .content-body {
+	margin-bottom: 0 !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+.SCREEN_IDLE.U6 #logo,
+.SCREEN_PROPERTY_INFO_WITH_ADS.U6 #logo,
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U6 #logo {
+	transform: unset;
+}
+.SCREEN_IDLE.U6 #logo {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.SCREEN_PROPERTY_INFO_WITH_ADS.U6 #logo,
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U6 #logo {
+	margin-bottom: -10px;
+	margin-top: 10px;
+}
+
+.scrollable::-webkit-scrollbar {
+  display: none;
+}
+.scrollable {
+	display: block;
+	overflow: scroll;
+}
+
+
+
+
+
+.SCREEN_PROPERTY_INFO_WITH_ADS.U2 .scrollable { max-height: 160px; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.U3 .scrollable { max-height: 310px; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.U6 .scrollable { max-height: 270px; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.U2 .property-info-prev-next,
+.SCREEN_PROPERTY_INFO_WITH_ADS.U3 .property-info-prev-next,
+.SCREEN_PROPERTY_INFO_WITH_ADS.U6 .property-info-prev-next {
+	position: fixed;
+	left: 4px;
+	right: 4px;
+	z-index: 99;
+}
+.SCREEN_PROPERTY_INFO_WITH_ADS.U3 .property-info-prev-next { bottom: 60px; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.U2 .property-info-prev-next { bottom: 38px; }
+.SCREEN_PROPERTY_INFO_WITH_ADS.U6 .property-info-prev-next { bottom: 60px; }
+
+
+
+
+
+.SCREEN_PROPERTY_INFO_DESCRIPTION .property-info-prev-next span {
+	font-size: 26px;
+}
+
+.SCREEN_MEMBER_ACCOUNT.U4 .amount-selections button {
+	width: 90px;
+}
+.SCREEN_MEMBER_ACCOUNT.U4 .amounts {
+	padding-left: 10px;
+}
+.SCREEN_MEMBER_ACCOUNT.U4 .amount-selections .container {
+	padding: 5px 0;
+}
+.SCREEN_MEMBER_ACCOUNT.U4 .amount-selections button {
+    width: 90px;
+    height: 45px !important;
+    font-size: 20px;
+}
+.SCREEN_MEMBER_ACCOUNT.U4 .info-group.points .cash-color {
+	line-height: 35px !important;
+	height: 30px !important;
+}
+
+.U3_H.horizontal .SCREEN_PIN .pin-numbers-container .wide .line,
+.U6_RH.horizontal .SCREEN_PIN .pin-numbers-container .wide .line  {
+	width: 100%;
+}
+
+.U3_H.horizontal .SCREEN_PIN .button-small,
+.U6_RH.horizontal .SCREEN_PIN .button-small {
+	width: 20%;
+}
+
+.SCREEN_SESSION.TFT.horizontal .content-body,
+.SCREEN_SESSION.TFT.horizontal .content-tail {
+	width: 37%;
+}
+
+.U4.SCREEN_SESSION .session-menu .btn.btn-icon,
+.TFT.SCREEN_SESSION .session-menu .btn.btn-icon {
+	padding-left: 50px;
+	justify-content: flex-start;
+	text-align: left;
+}
+
+.U4.horizontal .content-tail {
+	padding: 0 10px;
+	justify-content: flex-end;
+}
+
+.TFT.horizontal .content-tail .session-menu {
+	zoom: 0.8;
+	margin-top: 10px;
+}
+
+.SCREEN_SESSION.U2 .content-body {
+	padding-top: 0 !important;
+}
+.SCREEN_SESSION.U2 .multiplier,
+.SCREEN_SESSION.U2 .dollars-container,
+.SCREEN_SESSION.U2 .content-head {
+	zoom: 0.8;
+}
+
+.SCREEN_SESSION.U2 .session-menu {
+	zoom: 0.9;
+}
+
+.SCREEN_SESSION.U3 .rr-bar {
+	margin-top: 40px !important;
+}
+
+.SCREEN_SESSION.U6 .rr-bar {
+	margin-top: 40px !important;
+}
+.SCREEN_SESSION.U6 .session-menu,
+.SCREEN_SESSION.U6 .dollars-container {
+	zoom: 0.9;
+}
+.U6.SCREEN_SESSION .session-menu .btn {
+	height: 65px;
+}
+
+.U6.SCREEN_SESSION .playMyWay-image {
+	width: unset;
+}
+
+#other .full-line {
+	width: calc(100% - 18px);
+    margin: 4px 2px;
+	height: 2px;
+	background-color: #898788;
+}
+
+.U6_H.horizontal .content-body {
+	width: 40%;
+}
+
+.U6_H.horizontal .content-tail {
+	width: 35%;
+}
+
+.U6_RH #other .content-body .align-box,
+.U6_H #other .content-body .align-box,
+.U3_H #other .content-body .align-box {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: unset;
+	width: 100%;
+}
+
+.U3_H.horizontal #other .button-big, .U3_H.horizontal #other .del-big {
+	width: 98.66px;
+	height: 38px;
+	margin: 2px;
+}
+
+.U6_H.horizontal #other .button-big, .U6_H.horizontal #other .del-big {
+	width: 110.66px;
+    height: 65px;
+	margin: 2px;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #other .content-tail .points,
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #other .content-tail .actions {
+	height: 100%;
+	width: 50%;
+	flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #other .content-tail .actions button,
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #other .content-tail .actions .line {
+	width: 100%;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #other .content-tail .actions button {
+	height: 45px;
+    max-width: 100%;
+	margin: 0;
+}
+
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #other .content-tail .points .v-box .title {
+    font-size: 20px;
+}
+
+.U6_H.horizontal #footer {
+	width: 456px;
+	left: 12px;
+}
+
+
+.U6_RH.horizontal #other .button-big, .U6_RH.horizontal #other .del-big {
+	width: 85.66px;
+	height: 38px;
+	margin: 2px;
+}
+
+.U6_RH.horizontal #other .content-body .align-box {
+	min-height: unset;
+}
+
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS .property-info-prev-next,
+.U4.SCREEN_PROPERTY_INFO_WITH_ADS .property-info-prev-next,
+.U6_RH.SCREEN_PROPERTY_INFO_WITH_ADS .property-info-prev-next,
+.U3_H.SCREEN_PROPERTY_INFO_WITH_ADS .property-info-prev-next {
+	position: fixed !important;
+	right: 10px;
+	width: 226px !important;
+	bottom: 10px;
+}
+
+.U6_H.horizontal .SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu  {
+	padding: 5px;
+}
+
+.U6_H.horizontal .SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu .btn,
+.U6_H.horizontal .SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu .line {
+	width: 100%;
+	max-width: 100%;
+}
+
+.U6_H.horizontal .SCREEN_PROPERTY_INFO_WITH_ADS .content-tail.property-menu .btn {
+	width: 100%;
+    height: 34px;
+}
+
+.SCREEN_PROPERTY_INFO_WITH_ADS.horizontal .property-menu {
+	align-self: flex-start;
+}
+.U4.SCREEN_PROPERTY_INFO_WITH_ADS.horizontal .property-info-prev-next {
+	width: 290px !important;
+}
+
+.U6_H.SCREEN_XTRACREDIT .content-tail {
+	justify-content: flex-end;
+	padding: 10px;
+}
+.U6_H.SCREEN_XTRACREDIT .content-body>div p {
+	font-size: 22px;
+}
+.U6_H.SCREEN_XTRACREDIT .content-tail button {
+	width: 100% !important;
+	height: 45px !important;
+    margin: 4px auto;
+    max-width: 100%;
+}
+.U6_H.SCREEN_XTRACREDIT .content-tail .line {
+	width: 100% !important;
+	margin: 4px auto;
+}
+
+.SCREEN_PROPERTY_INFO_WITH_ADS #footer .navigations,
+.SCREEN_PROPERTY_INFO_DESCRIPTION #footer .navigations,
+.SCREEN_RANDOM_RICHES #footer .navigations,
+.SCREEN_MEMBER_ACCOUNT #operation-message #footer .navigations {
+	justify-content: space-between;
+}
+
+.SCREEN_PROPERTY_INFO_WITH_ADS.U3_H .content-body,
+.SCREEN_PROPERTY_INFO_DESCRIPTION.U3_H .content-body {
+	width: 26% !important;
+}
+.U3_H.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail,
+.U3_H.SCREEN_PROPERTY_INFO_DESCRIPTION .content-body  {
+	width: 30% !important;
+}
+.U3_H.SCREEN_PROPERTY_INFO_WITH_ADS .line {
+	width: 100%;
+}
+
+.SCREEN_PROPERTY_INFO_WITH_ADS .menu-container {
+	margin: 0 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	align-content: stretch;
+	max-height: unset;
+}
+
+.SCREEN_PROPERTY_INFO_WITH_ADS .property-menu {
+	margin: 0 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	align-content: stretch;
+	max-height: unset;
+}
+
+.SCREEN_PROPERTY_INFO_WITH_ADS .menu-options {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+.SCREEN_PROPERTY_INFO_WITH_ADS .nav-container {
+	margin: 0 8px;
+	display: flex;
+	flex-direction: row;
+}
+
+.U2 .SCREEN_PROPERTY_INFO_WITH_ADS .nav-container {
+	margin-bottom: 45px;
+}
+
+.U6 .SCREEN_PROPERTY_INFO_WITH_ADS .nav-container,
+.U3 .SCREEN_PROPERTY_INFO_WITH_ADS .nav-container {
+	margin-bottom: 64px;
+}
+.SCREEN_MEMBER_ACCOUNT.U4 #home .content-tail,
+.SCREEN_MEMBER_ACCOUNT.U4 #other .content-tail {
+	padding: 10px 10px 0 10px;
+}
+
+
+.SCREEN_MEMBER_ACCOUNT.U3_H .cash-color {
+	line-height: 40px;
+}
+.SCREEN_MEMBER_ACCOUNT.U3_H #other .content-body {
+	z-index: 999;
+	transform: translateX(-30px);
+}
+.SCREEN_MEMBER_ACCOUNT.U3_H #other .display-bg-position #amount {
+	height: 30px;
+	line-height: 30px;
+}
+.SCREEN_MEMBER_ACCOUNT.U3_H #other .points {
+	height: 42%;
+}
+
+.U6 .SCREEN_IDLE .content-tail .btn {
+	height: 70px;
+}
+
+.U6 .SCREEN_IDLE .content-tail .btn > .icon {
+    top: 17px;
+}
+
+.U6_H.SCREEN_IDLE .content-body  {
+	width: 1179px;
+}
+.U6_H.horizontal .SCREEN_IDLE .content-tail {
+	width: 26%;
+}
+
+.U6_H.SCREEN_RANDOM_RICHES .detail-balance {
+	width: 25%;
+	padding-left: 70px;
+}
+.U6_H.SCREEN_RANDOM_RICHES .thermometer-container {
+	width: 900px !important;
+}
+.U6_H.SCREEN_RANDOM_RICHES .thermometer-levels {
+	padding-left: 18px;
+	padding-right: 18px;
+}
+
+.U2.SCREEN_SESSION .btn-2col-container .btn-icon {
+	padding-left: 32px !important;
+}
+.U2.SCREEN_SESSION .btn-2col-container .btn-icon span{
+	font-size: 8px !important;
+}
+
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS .content-body,
+.TFT.SCREEN_PROPERTY_INFO_DESCRIPTION .content-body  {
+	width: 40% !important;
+}
+
+.TFT.SCREEN_PROPERTY_INFO_WITH_ADS .content-tail,
+.TFT.SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail  {
+	width: 34% !important;
+}
+/*
+body {
+	background-image: url(../images/test4.png);
+	background-size: 100% 100%;
+}
+body #app{
+	opacity: 0.5;
+} */
+
+
+.U3_H.SCREEN_MEMBER_ACCOUNT #other .content-tail button {
+	height: 35px !important;
+	max-width: 100% !important;
+}
+
+.U6_RH.SCREEN_SESSION .dollars-container {
+	height: 100%;
+	position: relative;
+}
+.U6_RH.SCREEN_SESSION .points-freeplay-container {
+	position: absolute;
+    top: 36%;
+    right: -290px;
+    width: 265px !important;
+    padding: 0;
+}
+.U6_RH.SCREEN_SESSION .points-slotdollars-container,
+.U6_RH.SCREEN_SESSION .points-session-container {
+	padding: 0;
+	padding-top: 20px;
+	width: 265px !important;
+}
+
+.U6.SCREEN_SESSION .btn-2col-container .btn-icon {
+	padding-left: 60px !important;
+}
+.U6.SCREEN_SESSION .btn-2col-container span {
+	font-size: 20px !important;
+}
+.U6.SCREEN_SESSION .btn-2col-container .icon {
+	transform: unset !important;
+}
+.U3.SCREEN_SESSION .btn-2col-container .btn-icon {
+	padding-left: 35px !important;
+}
+.U3.SCREEN_SESSION .btn-2col-container .icon {
+	left: 2px !important;
+}
+.U3.SCREEN_SESSION .btn-2col-container span{
+	font-size: 13px !important;
+}
+.U6_RH #logo {
+	position: fixed !important;
+	left: 20px;
+	height: 80px;
+	width: 230px;
+	max-width: unset;
+}
+
+.U6_RH #player-pane  {
+	margin-top: 70px;
+}
+
+.U6_H #logo {
+    position: fixed !important;
+    width: 232px;
+    top: -8px;
+    left: 132px;
+    max-width: unset;
+}
+
+.U6_H.SCREEN_SESSION #logo {
+	position: fixed !important;
+    width: 232px;
+    top: -8px;
+    left: 132px;
+    max-width: unset;
+}
+
+.U6_H.SCREEN_SESSION #footer {
+	width: 456px;
+	left: 12px;
+}
+
+.U6_H.SCREEN_SESSION .content-head {
+	padding: 0 8px;
+	width: 25%;
+}
+
+.U6_H.SCREEN_SESSION .content-body {
+	padding: 0 10px;
+	width: 25%;
+	position: relative;
+}
+.U6_H.SCREEN_SESSION .dollars-container {
+	width: 100%;
+	min-width: unset !important;
+	max-width: unset !important;
+	flex: unset !important;
+	position: relative;
+}
+
+.U6_H.SCREEN_SESSION .multiplier {
+	position: absolute;
+	top: 0;
+	right: 300px;
+}
+.U6_H.SCREEN_SESSION .content-tail {
+	padding-left: 25%;
+   	width: 50%;
+	position: relative;
+}
+
+.U6_H.SCREEN_SESSION .multiplier {
+	position: absolute;
+	top: 50px;
+	right: 300px;
+	width: 480px !important;
+	min-width: unset !important;
+	max-width: unset !important;
+	right: -280px;
+}
+
+
+.U2 #footer .navigations .icon-back,
+.U2 #footer .navigations .icon-close {
+	display: flex;
+	width: 33.33%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
+.U2.SCREEN_SESSION #footer .navigations,
+.U2 .SCREEN_IDLE #footer .navigations {
+	width: 100%;
+}
+
+.U2 .vertical #footer {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.U6_H.SCREEN_IDLE.horizontal #footer,
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal #footer,
+.U6_H.SCREEN_XTRACREDIT.horizontal #footer,
+.U6_H.SCREEN_PROPERTY_INFO_WITH_ADS.horizontal #footer,
+.U6_H.SCREEN_PROPERTY_INFO_DESCRIPTION.horizontal #footer {
+	width: 456px;
+	left: 12px;
+}
+
+.U6_H.SCREEN_IDLE .content-tail,
+.U6_H.SCREEN_MEMBER_ACCOUNT.horizontal .content-tail,
+.U6_H.SCREEN_XTRACREDIT.horizontal .content-tail,
+.U6_H.SCREEN_PROPERTY_INFO_DESCRIPTION .content-tail {
+	padding-right: 10px;
+}
+
+.U6_H.SCREEN_IDLE .content-head,
+.U6_H.horizontal .welcome_screen .content-head,
+.U6_H.SCREEN_XTRACREDIT .content-head,
+.U6_H.SCREEN_PROPERTY_INFO_WITH_ADS .content-head,
+.U6_H.SCREEN_PROPERTY_INFO_DESCRIPTION .content-head {
+	width: 25%;
+}
+
+.U6_H.SCREEN_IDLE .content-head #logo,
+.U6_H.horizontal .welcome_screen .content-head #logo,
+.U6_H.SCREEN_XTRACREDIT .content-head #logo,
+.U6_H.SCREEN_PROPERTY_INFO_WITH_ADS .content-head #logo,
+.U6_H.SCREEN_PROPERTY_INFO_DESCRIPTION .content-head #logo {
+	width: 232px;
+	left: 132px;
+}
+
+.U6_H.SCREEN_IDLE .content-body {
+	width: 50%;
+}
+.U6_H.SCREEN_MEMBER_ACCOUNT .content-tail .points .v-box {
+	height: unset;
+}
+.U3_H.horizontal .content-head,
+.U3_H.horizontal .content-tail {
+	width: 25%;
+	padding: 10px;
+}
+.U3_H.horizontal .SCREEN_PIN .content-body {
+	width: 50% !important;
+	padding: 0 15px;
+	justify-content: center;
+}
+.U3_H .content-body .info-group-line {
+	padding: 0;
+}
+.U3_H .content-body .info-group-line .v-box  {
+	height: unset;
+}
+.U6_H.SCREEN_XTRACREDIT .content-tail,
+.U6_RH.SCREEN_XTRACREDIT .content-head {
+	width: 25% !important;
+}
+
+.U6_H.SCREEN_XTRACREDIT .content-body,
+.U6_RH.SCREEN_XTRACREDIT .content-body {
+	width: 50% !important;
+}

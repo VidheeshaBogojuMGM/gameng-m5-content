@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Lucky Coin Winner</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="stylesheet" type="text/css" href="./style/common.css">
+  <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+  <link rel="stylesheet" type="text/css" href="./style/bonus.css">
+</head>
+
+<body>
+  <div id="loading"></div>
+  <div id="decoration"></div>
+  <div id="app" resize="preset-2" v-cloak :class="{smallHoriz, fullscreen: isFullScreen}">
+    <video v-show="isFullScreen">
+      <source src="./assets/fullscreen-animation-main.mp4" type="video/mp4">
+    </video>
+    <div class='page app-page'>
+      <div class="content-head">
+        <img class='win' src='./assets/star-main.png' />
+      </div>
+      <div class="content-body">
+        <div class="infoarea" v-html="cusomizedDisplayMessage"> 
+          
+        </div>
+      </div>
+      <div class="content-tail">
+        <attendant-button v-if='isClaimed' @attendant-card-inserted="onAttendant()"></attendant-button>
+        <button id="claimBtn" :disabled="isClaimed" @click="claimBonus()"
+          v-show="!isAttendantBtnEnabled">{{isClaimed?"CLAIMING":"CLAIM" | translate}}</button>
+      </div>
+    </div>
+  </div>
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./js/bonus_mainwin.skin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>message</title>
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_common.css">
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_message.css">
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_message.lucky-spinner.css" id='lucky-spinner' disabled>
+  <link rel="stylesheet" type="text/css" href="./style/random_riches_message.build-wonder.css" id='build-wonder' disabled>
+</head>
+
+<body>
+  <div id="loading" style="z-index: 100; position: fixed; top: 0; left: 0; background-color:black;color: white;"></div>
+  <div id="app" v-cloak resize="preset-2">
+    <div class="content-head">
+      <img id='logo' />
+    </div>
+    <div class="content-body message-box">
+      <p>{{ message }}</p>
+    </div>
+    <div class="content-tail flex-end-tail">
+      <button @click="back">{{ 'BACK' | translate }}</button>
+    </div>
+  </div>
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./js/random_riches_message.definition.js"></script>
+  <script src="./js/random_riches_skin.util.js"></script>
+  <script src="./js/random_riches_message.skin.js"></script>
+</body>
+
+</html>

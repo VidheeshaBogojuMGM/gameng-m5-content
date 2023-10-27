@@ -1,0 +1,207 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.is-vertical {
+  flex-direction: column;
+}
+
+.margin-top-1rem {
+  margin-top: 1rem;
+}
+
+.vertical #logo {
+  margin: 1rem auto;
+}
+
+.U4 #logo,
+.TFT #logo {
+  position: absolute;
+  left: 0.5rem;
+}
+
+.TFT #logo {
+  top: 1rem;
+}
+
+.U4 #logo {
+  top: 0.5rem;
+}
+
+.horizontal .content-body {
+  flex-direction: row;
+  justify-content: unset;
+}
+
+.horizontal .content-body>div {
+  height: 100%;
+}
+
+.vertical .content-body {
+  flex-direction: column;
+  height: 100%;
+  justify-content: unset;
+}
+
+.vertical .content-body>div {
+  width: 100%;
+}
+
+/* paytable */
+.vertical .paytable-container {
+  height: 218px;
+}
+
+.horizontal .paytable-container {
+  height: 100%;
+}
+
+.horizontal .paytable-area {
+  align-self: flex-start;
+}
+
+.U4 .paytable-area,
+.TFT .paytable-area {
+  position: absolute;
+  top: 0;
+}
+
+.TFT .paytable-area {
+  left: -1rem;
+}
+
+.U4 .paytable-area {
+  left: -0.4rem;
+}
+
+.U4 .paytable-area {
+  transform: translateY(35px) translateX(-25px) scale(0.7);
+}
+
+.TFT .paytable-area {
+  transform: translateY(35px) translateX(-33px) scale(0.6);
+}
+
+/* number set */
+.number-set {
+  margin: 0 auto;
+}
+
+.vertical .number-set {
+  width: 80%;
+}
+
+.number-set .number {
+  display: inline-block;
+  background-image: url('../assets/ld-number-bg.png');
+  width: 54px;
+  height: 56px;
+  color: #E5DDD0;
+  margin: auto;
+  font-size: 1.5rem;
+  line-height: 56px;
+}
+
+.vertical .number-set .number {
+  margin: 2px;
+}
+
+.horizontal .number-set .number {
+  margin: 0 2px;
+}
+
+.number-set .matched {
+  color: #FFE178;
+}
+
+.number-set .unmatched {
+  color: white;
+  opacity: 0.4;
+}
+
+/* number area and message */
+.vertical .number-area {
+  width: 100%;
+}
+
+.number-area span {
+  display: block;
+  color: #E5DDD0;
+  font-size: 1.2rem;
+}
+
+.vertical .number-area span {
+  padding-bottom: 0.5rem;
+}
+
+.horizontal .number-area span {
+  padding-bottom: 0.2rem;
+}
+
+.U4 .message {
+  width: 200px;
+  align-self: flex-end;
+}
+
+.TFT .message p {
+  font-size: 1rem;
+}
+
+.TFT .number-area {
+  margin-top: -2rem;
+}
+
+.U4 .number-area {
+  width: 340px;
+}
+
+.message-vertical {
+  position: relative;
+}
+
+.U4 .message-vertical>p {
+  position: absolute;
+  left: 1rem;
+  top: -2rem;
+}
+
+.U6_RH .message-vertical>p,
+.TFT .message-vertical>p,
+.U1_RH .message-vertical>p,
+.U2_RH .message-vertical>p,
+.U3_RH .message-vertical>p,
+.U5_RH .message-vertical>p {
+  position: relative;
+  left: 0.5rem;
+  top: 3rem;
+}
+
+.message p {
+  word-break: break-word;
+}
+
+/* line */
+.permanent-line,
+.line {
+  background-image: url('../assets/line.png');
+  height: 6px;
+  width: 100%;
+}
+
+.line-margin {
+  margin-top: 1rem;
+}
+
+.horizontal .line {
+  display: none;
+}
+
+.U1_H .permanent-line,
+.U2_H .permanent-line,
+.U3_H .permanent-line,
+.U5_H .permanent-line,
+.U6_H .permanent-line {
+  display: none;
+}

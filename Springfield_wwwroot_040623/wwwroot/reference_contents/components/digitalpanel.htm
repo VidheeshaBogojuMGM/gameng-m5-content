@@ -1,0 +1,196 @@
+<template>
+    <div class="container app-page" :class="{largeH, smallH}">
+        <div class="content-body">
+            <div class='align-box flex-order'>
+				<div class="line first-line"></div>
+				<button id='num-1' class='button-small bold' v-on:click="input(1)">1</button>
+				<button id='num-2' class='button-small bold' v-on:click="input(2)">2</button>
+				<button id='num-3' class='button-small bold' v-on:click="input(3)">3</button>
+				<div class="line"></div>
+				<button id='num-4' class='button-small bold' v-on:click="input(4)">4</button>
+				<button id='num-5' class='button-small bold' v-on:click="input(5)">5</button>
+				<button id='num-6' class='button-small bold' v-on:click="input(6)">6</button>
+				<div class="line"></div>
+				<button id='num-7' class='button-small bold' v-on:click="input(7)">7</button>
+				<button id='num-8' class='button-small bold' v-on:click="input(8)">8</button>
+				<button id='num-9' class='button-small bold' v-on:click="input(9)">9</button>
+				<div class="line"></div>
+				<button id='back' class='button-small bold'  v-on:click="input('back')">{{
+					'UNDO' | translate }}</button>
+				<button id='num-0' class='button-small bold' v-on:click="input(0)">0</button>
+				<button id='clear' class='button-small bold' v-on:click="input('clear')">{{
+					'CLEAR' | translate }}
+				</button>
+				<div class="line last-line"></div>
+			</div>
+            <div v-show=false class="content-tail">
+                <div></div>
+                <button @click='enter()'>{{ 'Enter' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    module.exports = {
+        data() {
+            return {
+                inputValue: 0,
+            }
+        },
+        computed: {
+            largeH() {
+                return this.contentWidth / this.contentHeight > 4.5;
+            },
+            smallH() {
+                return this.contentWidth / this.contentHeight < 4.5 && this.contentWidth > this.contentHeight;
+            },
+        },
+        methods: {
+            input(value) {
+                if (value == 'clear') {
+                    this.inputValue = 0;
+                    this.$emit('getdigital', this.inputValue);
+
+                    return;
+                }
+                if (value == 'back') {
+                    var inputDigital = this.inputValue.toString();
+
+                    if ((inputDigital.indexOf('.') == inputDigital.length - 2) && this.inputValue < 1)
+                        this.inputValue = 0;
+                    else if (inputDigital.indexOf('.') == inputDigital.length - 1)
+                        this.inputValue = inputDigital.substr(0, (inputDigital.length - 2));
+                    else
+                        this.inputValue = inputDigital.substr(0, (inputDigital.length - 1));
+
+                    this.$emit('getdigital', this.inputValue);
+
+                    return;
+                }
+
+                if (value == '.') {
+                    if (this.inputValue.toString().indexOf('.') > -1)
+                        return;
+
+                    if (this.inputValue.toString().length == 0)
+                        this.inputValue = '0.';
+                    else
+                        this.inputValue += value.toString();
+
+                    this.$emit('getdigital', this.inputValue);
+
+                    return;
+                }
+
+                if (this.inputValue == 0 && this.inputValue.toString().indexOf('.') == -1)
+                    this.inputValue = value;
+                else {
+                    this.inputValue += value.toString();
+                    if (this.inputValue.indexOf('.') == -1 && this.inputValue.length > 8) {
+                        this.inputValue = this.inputValue.substring(0, this.inputValue.length - 1)
+                        return;
+                    }
+
+                    if (this.inputValue.indexOf('.') > 0 && this.inputValue.split('.')[1].length > 2)
+                        this.inputValue = this.inputValue.substring(0, this.inputValue.indexOf('.') + 3);
+                }
+
+                this.$emit('getdigital', this.inputValue);
+            },
+            enter() {
+                this.$emit('enter');
+            }
+        },
+    }
+</script>
+<style>
+    .vertical .button-small {
+        width: 31%;
+        height: 68px;
+        font-size: 18px;
+        margin: 2px
+    }
+
+    .vertical .enlarge {
+        width: 48%;
+    }
+
+    .vertical .align-box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    .horizontal .align-box {
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(var(--component-space)*2.5);
+        height: 100% !important;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .horizontal .button-small {
+		width: 65px;
+    	height: 50px;
+    }
+
+	.horizontal .first-line, .horizontal .last-line {
+		display: none;
+	}
+
+    .horizontal .point {
+        width: calc(var(--component-space)*0.62);
+    }
+
+    /* .horizontal .flex-order :nth-child(13) {
+        order: 5
+    } */
+
+    .smallH .align-box {
+        width: calc(var(--component-space)*1.5)
+    }
+
+    .smallH .button-small {
+        height: 40px;
+        width: calc(var(--component-space)*0.3);
+        margin: 1px;
+    }
+
+    .smallH .twice {
+        width: calc(var(--component-space)*0.62);
+    }
+
+    .smallH .point {
+        width: calc(var(--component-space)*0.62);
+    }
+
+    .smallH .flex-order :nth-child(12) {
+        order: 12;
+    }
+
+    .smallH .flex-order :nth-child(13) {
+        order: 13;
+    }
+
+	.U2 .vertical .button-small { 
+		width: 44px;
+    	height: 40px;
+		font-size: 15px;
+	}
+
+	.U2 .vertical #back, .U2 .vertical #clear {
+		font-size: 9px;
+	}
+
+	.U6 .vertical .button-small {
+		font-size: 23px;
+	}
+
+	.U4 .line {
+		width: calc(100% - 60px);
+	}
+	
+</style>

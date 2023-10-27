@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Banner</title>
+    </head>
+    <script src="../lib/igt-media-elements/dist/igt-media-elements.js"></script>
+    <script src="js/bannerController.js"></script>
+    <script src="js/attendant_cardin_patch.js"></script>
+    <link rel="stylesheet" href="../lib/core-css/core.css"/>
+    <link rel="stylesheet" href="styles/banner.css"/>
+    <body id="bannerBody" onload="initBanner();" class="bannerBackground">
+        <div class ="bannerLogo"></div>
+        <div id="bannerText" class="bannerMessage">
+              <h1>
+                  <div id="textToScroll"></div>
+              </h1>
+        </div>
+       <div id="ServiceWindowButton" class="core-btn bannerButtonOn" onclick="toggleServiceWindow();">
+           <h1 id="ServiceButtonText">
+               Close Service Window
+           </h1>
+       </div>
+       <div id="EventButtonMask" class="bannerBackground eventButtonMask">
+         <div id="HostEventButton" class="core-btn eventButtonOn"
+              onclick="toggleHostEvent(0,0,false,34,'Thank you! Your Drink has been ordered.', 'HostEventButton');">
+             <img id="HostImageOn" src="./images/drinklogo.png" class="drinkLogoSizing">
+             <img id="HostImageOff" src="./images/drinklogoOff.png" class="drinkLogoSizing" style="visibility:hidden;">
+         </div>
+       </div>
+    </body>
+    <script>
+        var TokenUpdateBanner = function(tokenUpdate)
+        {
+           if (tokenUpdate.length > 0) {
+               document.getElementById('textToScroll').style.display = 'block';
+               document.getElementById('textToScroll').innerHTML = tokenUpdate;
+           }
+        };
+        IGTMediaElements.subscribeToken('0xFE', TokenUpdateBanner);
+        IGTMediaElements.subscribeToken('0xFF', TokenUpdateBanner);
+    </script>
+</html>

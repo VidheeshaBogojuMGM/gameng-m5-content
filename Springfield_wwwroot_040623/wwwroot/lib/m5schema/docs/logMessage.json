@@ -1,0 +1,9 @@
+{
+  "cmd": "logMessage",
+  "ver": "1.0",
+  "logMessage": {
+    "message": "A log message",
+    "severity": "debug",
+    "source": "ngxcomm"
+  }
+}

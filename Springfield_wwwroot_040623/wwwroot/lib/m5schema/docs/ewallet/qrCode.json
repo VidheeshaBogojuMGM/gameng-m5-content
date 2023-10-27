@@ -1,0 +1,8 @@
+{
+  "cmd": "qrCode",
+  "ver": "1.0",
+  "qrCode": {
+    "qrCode": "https://igt.com/eWallet?n=3132333435363738&u=00492394&s=wss://server.com",
+    "duration": 30
+  }
+}

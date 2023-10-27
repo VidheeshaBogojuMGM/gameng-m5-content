@@ -1,0 +1,190 @@
+:root {
+  box-sizing: content-box;
+}
+.cardless-diagnostic{
+  font-size: 20px;
+}
+/*
+.vertical .btn  {
+	width: calc(100% - 20px) !important;
+} */
+
+
+@media screen and (orientation:portrait) {
+  #qrcode {
+    width: 128px;
+    height: 128px;
+    background-color: white;
+    margin: 30px auto;
+    user-select: none;
+  }
+
+  .content-body>* {
+    width: 100% !important;
+  }
+
+}
+
+@media screen and (orientation:landscape) {
+  #qrcode {
+    width: 128px;
+    height: 128px;
+    background-color: white;
+    margin: auto;
+    user-select: none;
+  }
+
+  .content-body>* {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  .content-body {
+    padding: 0 10px;
+    justify-content: center;
+  }
+
+}
+
+.TFT .horizontal #footer {
+	height: 40px;
+}
+
+.U6 .btn {
+	font-size: 21px;
+}
+
+.TFT .SCREEN_IDLE .content-body{
+  padding-right: 0;
+}
+
+.TFT .SCREEN_IDLE .btn{
+	margin: 0 5px;
+  width: calc(100% - 13px);
+}
+
+.TFT .SCREEN_IDLE .line {
+  width: 225px;
+}
+
+.TFT .SCREEN_IDLE .btn > .icon {
+  left: 10px;
+}
+
+.TFT .SCREEN_IDLE .btn-icon {
+  padding-left: 55px;
+}
+
+.TFT .content-body {
+	padding: 0;
+}
+
+.TFT .SCREEN_IDLE #footer {
+  display: none;
+}
+
+.TFT .btn {
+	height: 42px;
+}
+.TFT .btn > .icon {
+	top: 0;
+}
+
+.TFT .line {
+	width: 236px;
+}
+.U4 .line {
+	width: 280px;
+}
+
+.U4 .content-tail .btn {
+    font-size: 17px;
+}
+
+.U4 .content-tail .btn.btn-icon {
+	padding-left: 75px;
+}
+
+.U4.SCREEN_IDLE.horizontal .content-body {
+  padding: 0 10px;
+}
+
+.U4.SCREEN_IDLE.horizontal .content-tail {
+  justify-content: flex-start;
+  padding: 7px 10px;
+}
+
+
+.U4.SCREEN_IDLE.horizontal .content-tail .btn.btn-icon{
+  width: 280px;
+}
+
+.U2 .content-tail .btn {
+	width: 100%;
+  height: 48px;
+}
+
+.U3_H .content-tail .line {
+    width: 270px;
+}
+
+.U6_RH .SCREEN_IDLE .content-head {
+  width: 23% !important;
+}
+
+.U6_RH .SCREEN_IDLE .content-body {
+  width: 50% !important;
+  padding: 0 5px;
+}
+
+.U6_RH  .SCREEN_IDLE .content-tail {
+  flex-direction: column;
+  width: 26% !important;
+}
+
+.U6_RH .content-tail > div {
+  flex: none;
+  flex-direction: unset;
+}
+
+
+
+.TFT .content-body {
+	width: 230PX !important;
+	height: 230px !important;
+}
+
+.TFT.SCREEN_IDLE.horizontal .content-body,
+.TFT.SCREEN_IDLE.horizontal .content-tail {
+  padding: 0;
+}
+
+.TFT.SCREEN_IDLE.horizontal .content-tail {
+  padding-top: 10px;
+}
+
+
+.SCREEN_IDLE.horizontal.U6_RH .content-body {
+	width: 532px !important;
+	height: 179px !important;
+	padding: 0;
+	margin: 0 6px;
+}
+
+.SCREEN_IDLE.horizontal.U6_RH .line {
+	width: 260px
+}
+
+.SCREEN_IDLE #footer .navigations {
+  width: unset;
+}
+
+.U6_H.horizontal .SCREEN_IDLE .content-tail {
+  padding: 10px;
+}
+
+.U6_H.horizontal .SCREEN_IDLE .content-tail .btn,
+.U6_H.horizontal .SCREEN_IDLE .content-tail .line {
+  width: 100%;
+  max-width: 100%;
+}

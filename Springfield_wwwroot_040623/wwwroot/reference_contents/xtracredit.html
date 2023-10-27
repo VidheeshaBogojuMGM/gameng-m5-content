@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>xtracredit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/xtracredit.css">
+	<link rel="stylesheet" type="text/css" href="./mgm/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="./style/screen_member_account.vertical.css">
+    <style patch>
+        .TFT .msginfo p {
+            font-size: 9px;
+        }
+
+        .U4 .msginfo p {
+            font-size: 15px;
+			margin: 0;
+			width: 100%;
+        }
+
+        .TFT .amount-bg,
+        .U4 .amount-bg {
+            width: 80% !important;
+        }
+
+        .U6_RH .xcmsg {
+            width: 35%;
+        }
+
+        .U6_RH .amount-bg {
+            width: 30%
+        }
+
+        .U6_RH .input {
+            width: 55% !important;
+        }
+
+        .U6_RH .input-bg {
+            width: 45%;
+        }
+
+        .U6_H .xcmsg {
+            width: 16%;
+        }
+
+        .U6_H .input {
+            width: 25% !important;
+        }
+
+        .U6_H .input-bg {
+            width: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="decoration"></div>
+	 <div id="app" resize="preset-2" v-cloak :class="['SCREEN_XTRACREDIT', displayName, {vertical: isVertical , horizontal: !isVertical }]">
+        <message-overlay :message.sync="errorMessage"></message-overlay>
+        <div id='session-pane-active' class='page app-page' v-show="page.sessionpane && isEnabled">
+            <div class="content-head">
+                <img id='logo' />
+            </div>
+            <div class="content-body">
+				<div class="info-group">
+					<p class="title">{{ 'YOU HAVE' | translate }}</p>
+					<p class="title bold"> {{XtraCreditInactiveAmount ? XtraCreditInactiveAmount : 0 | money(2)}}</p>
+					<p class="title italic">{{ 'FREEPLAY' | translate }}</p>
+					<p class="title">{{ 'TO ACTIVATE' | translate }}</p>
+				</div>
+            </div>
+            <div class="content-tail">
+				<div class="line" v-show="isXCActivated"></div>
+                <button id='clearBtn' @click='clearXC()' v-show="isXCActivated">{{ 'CANCEL FREEPLAY' | translate }}</button>
+				<div class="line" v-show="showTransferAll"></div>
+                <button class="btn btn-primary" v-show="showTransferAll" @click="transferAll()">{{ 'ACCEPT' | translate }}</button>
+				<div class="line"></div>
+                <button @click="window.history.back()">{{ 'CANCEL' | translate }}</button>
+				<div class="line"></div>
+            </div>
+			<div id="footer">
+				<div class="navigations">
+					<!-- <div class="call-attendant clickable" onClick="handleOnCall()">
+					    <img class="icon " onClick="" src="./mgm/images/icon/icon-attendant.png" alt="">
+					</div> -->
+					<!-- <img class="icon clickable" onClick="window.history.back()"  src="./mgm/images/icon/icon-back.png" alt=""> -->
+                    <div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+                        <img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+                    </div>
+				</div>
+
+			</div>
+        </div>
+        <div id="select-pane" class="page app-page" v-show="page.selectpane">
+            <div class="content-head">
+                <img id='logo' />
+            </div>
+            <div class="content-body">
+                <div class="v-box msginfo" v-if="isVertical">
+                    <div class="input">
+                        <p class="title">{{ 'Please input the value' | translate }}</p>
+                    </div>
+                    <div class="input-bg">
+                        <p class="cash-color">{{ currencySymbol }}{{xcToActive | money(2)}}</p>
+                    </div>
+                </div>
+                <digitalpanel id="digital-pane" :key="pid" @enter="onEnter" @getdigital='getDigitalFromPanel'></digitalpanel>
+            </div>
+            <div class="content-tail">
+				<div class="v-box msginfo" v-if="!isVertical">
+                    <div class="input">
+                        <p class="title">{{ 'Please input the value' | translate }}</p>
+                    </div>
+                    <div class="line"></div>
+                    <div class="input-bg">
+                        <p class="cash-color">{{ currencySymbol }}{{xcToActive | money(2)}}</p>
+                    </div>
+                </div>
+                <div>
+					<div class="line"></div>
+					<button @click='confirm()'>{{ 'CONFIRM' | translate }}</button>
+					<div class="line"></div>
+				</div>
+            </div>
+			<div id="footer">
+				<div class="navigations">
+					<div class="call-attendant clickable" onClick="handleOnCall()">
+					<img class="icon " onClick="" src="./mgm/images/icon/icon-attendant.png" alt="">
+					</div>
+					<!-- <img class="icon clickable" onClick="window.history.back()"  src="./mgm/images/icon/icon-back.png" alt=""> -->
+					<div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+					    <img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+				    </div>				
+                </div>
+			</div>
+        </div>
+        <div id="xc-not-available" class='page app-page' v-show="!isEnabled">
+            <div class="content-head">
+                <img id='logo' />
+            </div>
+            <div class="content-body message-box">
+                <p>{{'Freeplay is not available!' | translate}}</p>
+                <div class="action-button">
+                    <div class="line"></div>
+                    <button @click='backToApps()'>{{ 'BACK' | translate }}</button>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <div id='msg-pane' class='page app-page' v-show="page.msgpane">
+            <div class="content-head">
+                <img id='logo' />
+            </div>
+            <div class="content-body message-box">
+				<div v-show="isLoading" class="loading-msg">
+                    <div style="color: white; margin-bottom: 15px;">
+                        <span id="statusMsg" v-for="(value, index) in statusMsg.split(' ')">
+                            <i v-if="value.toUpperCase() === 'FREEPLAY' || value === 'Xtra Credit'">{{value.toUpperCase()}}</i>
+                            <span v-if="value.toUpperCase() !== 'FREEPLAY'">{{value}}</span>
+                        </span>
+                    </div>
+                    <div style="letter-spacing: 0.5px;">
+                        <span id="detailMsg" v-show="showDetailMsg" v-for="(value, index) in detailMsg.split(' ')">
+                            <i v-if="value.toUpperCase() === 'FREEPLAY' || value === 'Xtra Credit'">{{value.toUpperCase()}}</i>
+                            <span v-if="value.toUpperCase() !== 'FREEPLAY'">{{value}}</span>
+                        </span>
+                    </div>
+				</div>
+
+				<div v-show="!showButtonSucceed && !isLoading" class="failed-details">
+                    <div style="color: white; margin-bottom: 15px;">
+                        <span id="statusMsg" v-for="(value, index) in statusMsg.split(' ')">
+                            <i v-if="value.toUpperCase() === 'FREEPLAY' || value === 'Xtra Credit'">{{value.toUpperCase()}}</i>
+                            <span v-if="value.toUpperCase() !== 'FREEPLAY'">{{value}}</span>
+                        </span>
+                    </div>
+                    <div style="letter-spacing: 0.5px;">
+                        <span id="detailMsg" v-show="showDetailMsg" v-for="(value, index) in detailMsg.split(' ')">
+                            <i v-if="value.toUpperCase() === 'FREEPLAY' || value === 'Xtra Credit'">{{value.toUpperCase()}}</i>
+                            <span v-if="value.toUpperCase() !== 'FREEPLAY'">{{value}}</span>
+                        </span>
+                    </div>
+                    
+                    <!-- <div class="cancel-back-btn">
+                        <div class="line"></div>
+                        <button onClick="window.history.back()">{{ 'BACK' | translate }}</button>
+                        <div class="line"></div>
+                    </div> -->
+				</div>
+				<div v-show="showButtonSucceed" class="success-details">
+                    <div class="success-message">
+                        <p class="bold"> {{XtraCreditInactiveAmount ? XtraCreditInactiveAmount : 0 | money(2)}} </p>
+                        <p class="title italic">{{ 'FREEPLAY' | translate }}</p>
+                        <p class="bold success">ACTIVATED</p>
+                    </div>
+                    <!-- <div class="success-back-btn">
+                        <div class="line"></div>
+                        <button onClick="window.history.back()">{{ 'BACK' | translate }}</button>
+                        <div class="line"></div>
+                    </div> -->
+				</div>
+				<div class="button-response-container">
+					<div id='button-pane-fail' class="content-tail" v-show="showButtonFailed">
+						<div class="line"></div>
+						<button id='retryBtn' @click="retry()">{{ 'TRY AGAIN' | translate }}</button>
+						<div class="line"></div>
+						<!-- <button onClick="window.history.back()">{{ 'BACK' | translate }}</button> -->
+						<!-- <div class="line"></div> -->
+					</div>
+				</div>
+            </div>
+            <div id="footer">
+                <div class="navigations">
+                   <!-- <div class="call-attendant clickable" onClick="handleOnCall()">
+                       <img class="icon " onClick="" src="./mgm/images/icon/icon-attendant.png" alt="">
+                   </div> -->
+                    <div class="icon-back clickable" onClick="window.history.back();">
+					    <img class="icon clickable" src="./mgm/images/icon/icon-back.png" alt="">
+				    </div>
+				    <div class="icon-close clickable service-window-btn" onClick="toggleServiceWindow()">
+					    <img class="icon" src="./mgm/images/icon/icon-close.png"  alt="">
+				    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/xtracredit.skin.js"></script>
+	<script src="./mgm/js/call-attendant.js"></script>
+	<script src="./mgm/js/toggleServiceWindow.js"></script>
+</body>
+
+</html>

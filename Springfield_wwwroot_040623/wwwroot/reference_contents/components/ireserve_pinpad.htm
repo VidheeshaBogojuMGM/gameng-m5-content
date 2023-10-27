@@ -1,0 +1,200 @@
+<template>
+  <div id="PinPad">
+    <p style="font-size: 32px; width: 360px; top: -100px; position:absolute; text-align: center">{{errormsg}}</p>
+    <input id='pinEntry' type='password' v-model='password' name='pinEntry' onfocus="this.blur()" />
+    <button class="pinbtn" v-for="i in buttons" :class="{func: isNaN(i)}" @click="input(i)">{{i}}</button>
+    <button class="enter" @click="cancel()">{{ 'CANCEL' | translate }}</button>
+    <button class="enter" @click="verify()">{{ 'ENTER' | translate }}</button>
+  </div>
+</template>
+
+<script>
+module.exports = {
+  name: "PinPad",
+  data() {
+    return {
+      buttons: [1, 2, 3, 4, 5, 6, 7, 8, 9, "CLEAR", 0, "BACK"],
+      password: "",
+      errormsg: "",
+      pinstatus: {
+        "invalid PIN": "Invalid PIN. Please try again.",
+        "PIN locked": "PIN is locked. Please see staff for assistance.",
+        "not entered": "ENTER YOUR PIN",
+        "no-response": "System is busy, try again later."
+      }
+    };
+  },
+  mounted: function() {
+    $("#PinPad").on("webkitAnimationEnd", function() {
+      $(this).removeClass("wrong");
+    });
+
+    this.$store.watch(
+      state => {
+        return state.showPin;
+      },
+      val => {
+        if (!val) this.password = "";
+        this.errormsg = "";
+      },
+      {
+        deep: true
+      }
+    );
+  },
+  detroy: function() {
+    $("#PinPad").off("webkitAnimationEnd");
+  },
+  methods: {
+    input(value) {
+      if (value == "CLEAR") {
+        this.password = "";
+      } else if (value == "BACK") {
+        this.password = this.password.substr(0, this.password.length - 1);
+      } else {
+        this.password += value;
+      }
+      this.errormsg = "";
+    },
+    verify() {
+      var self = this;
+      if (this.password.length == 0) {
+        self.errormsg = "Please enter your PIN to continue.";
+        $("#PinPad").addClass("wrong");
+        return;
+      }
+      IGTMediaElements.validatePin(this.password)
+        .then(function(status) {
+          self.reset();
+          self.$store.state.showPin = false;
+          self.$emit("verified");
+        })
+        .catch(function(status) {
+          if (self.pinstatus.hasOwnProperty(status))
+            self.errormsg = self.pinstatus[status];
+          else self.errormsg = "Unknown error, try again later.";
+          $("#PinPad").addClass("wrong");
+        });
+    },
+    reset() {
+      this.errormsg = "";
+      this.password = "";
+    },
+    cancel() {
+      this.$store.state.showPin = false;
+      this.$emit("exit");
+      this.reset();
+    }
+  }
+};
+</script>
+
+<style>
+.wrong {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-49%, -50%, 0) scale(0.8);
+  }
+  20%,
+  80% {
+    transform: translate3d(-51%, -50%, 0) scale(0.8);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-48%, -50%, 0) scale(0.8);
+  }
+  40%,
+  60% {
+    transform: translate3d(-52%, -50%, 0) scale(0.8);
+  }
+}
+
+#PinPad {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  width: 360px;
+  height: 630px;
+  background-image: url("../assets/ireserve/PinPadBg.png");
+  border: 3px solid #481404;
+  border-radius: 15px;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button.pinbtn {
+  color: #481404;
+  /* font-size: 1.7em; */
+  text-align: center;
+  width: 72px;
+  height: 72px;
+  margin: 10px 20px;
+  padding: 0;
+  background-image: url("../assets/ireserve/PinButton.png");
+  /* background-image: url("./assets/btn_enabled.png"); */
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px 5px;
+  /* background: #ededed; */
+  border: 1px solid #481404;
+  font-size: 1.4rem;
+  border-radius: 50%;
+  background-size: 130%;
+}
+
+button.pinbtn.func {
+  position: relative;
+  /* top: -4px; */
+  font-size: 18px;
+  color: white;
+  text-shadow: 1px 1px #222;
+  background-image: url("../assets/ireserve/PinButtonFunc.png");
+}
+
+button.enter {
+  border: none;
+  background-size: 110%;
+  background-image: url("../assets/ireserve/PinButton.png");
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 20px 13px;
+  width: 134px;
+  height: 72px;
+  border-radius: 8px;
+  color: #996515;
+}
+
+button.enter:active {
+  box-shadow: rgba(61, 179, 231, 0.7) 0 0 3px 3px;
+}
+
+#pinEntry {
+  background: rgba(255, 255, 255, 0.5);
+  color: white;
+  margin: 5%;
+  width: 82%;
+  font-size: 3em;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #481404;
+}
+
+.pinbtn:active {
+  box-shadow: rgba(61, 179, 231, 0.7) 0 0 3px 3px;
+}
+
+.U6_RH #PinPad,
+.U6_H #PinPad,
+.U3_H #PinPad,
+.U4 #PinPad,
+.TFT #PinPad {
+  transform: scale(0.35) translate(-500px, -900px);
+}
+</style>

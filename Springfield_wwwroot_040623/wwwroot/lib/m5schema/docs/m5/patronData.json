@@ -1,0 +1,42 @@
+{
+  "cmd": "patronData",
+  "ver": "1.0",
+  "patronData": {
+    "xcAwardBalance": 0,
+    "rpPointBalance": 0,
+    "rpEarnedDay": 0,
+    "ppTotalWon": 0,
+    "ptpSPUsed": 0,
+    "ptpBalance": 0,
+    "awardEnable": {
+      "ptpEnable": false,
+      "rpEnable": false,
+      "ppEnable": false,
+      "xcEnable": false,
+      "srpEnable": false,
+      "hidePoints": false
+    },
+    "BE2_AwardEnable": {
+      "ptpEnable": false,
+      "rpEnable": false,
+      "ppEnable": false,
+      "xcEnable": false,
+      "xcViaAFT": false,
+      "srpEnable": false
+    },
+    "generalPTData": {
+      "countUp": false,
+      "vipLightOn": false,
+      "zeroUnused": false,
+      "PINLocked": false,
+      "dupCard": false,
+      "banned": false,
+      "comboChange": false
+    },
+    "srpPointBalance": 0,
+    "srpLevel": 0,
+    "xpcAward": 0,
+    "ranking": 0,
+    "languageId": 1
+  }
+}

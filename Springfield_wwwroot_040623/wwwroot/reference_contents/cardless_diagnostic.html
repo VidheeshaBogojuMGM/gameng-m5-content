@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>cardlessStatus</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/cardless_diagnostic.css">
+    <style patch>
+
+    </style>
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="decoration"></div>
+    <div id="app" resize="preset-2" v-cloak>
+        <div class='page app-page'>
+            <div class="content-head">
+                <img id='logo' />
+            </div>
+
+            <div class="content-body">
+                <div id="body-page">
+                    <div id="button-div">
+                        <button id="current-status" class="button-size"
+                            @click="onCurrentButton">{{'CURRENT' | translate}}</button>
+                        <button id="history-status" class="button-size"
+                            @click="onHistoryButton">{{'HISTORY' | translate}}</button>
+                    </div>
+
+                    <div id="current-page" class="page-style" v-if="pageShow == 'current'">
+                        <div class="attr-div">
+                            <p class="attr-name">{{'Interface' | translate}}</p>
+                            <p class="attr-value">{{interfaceType | translate}}</p>
+                        </div>
+                        <div class="attr-div">
+                            <p class="attr-name">{{'Status' | translate}}</p>
+                            <p class="attr-value">{{connectStatus | translate}}</p>
+                        </div>
+                        <div class="attr-div">
+                            <p class="attr-name">{{'Version' | translate}}</p>
+                            <p class="attr-value">{{version | translate}}</p>
+                        </div>
+                        <div class="attr-div">
+                            <p class="attr-name">{{'Mobile' | translate}}</p>
+                            <p class="attr-value">{{mobileShow | translate}}</p>
+                        </div>
+                        <div class="attr-div">
+                            <p class="attr-name">{{'App Label' | translate}}</p>
+                            <p class="attr-value">{{appLabelShow | translate}}</p>
+                        </div>
+                        <div class="attr-div">
+                            <p class="attr-name">{{'Reason' | translate}}</p>
+                            <p class="attr-value">{{disconnectReason | translate}}</p>
+                        </div>
+                    </div>
+                    <div id="history-page" class="page-style" v-else>
+                        <div class="status-div">
+                            <p class="attr-name">{{'Open' | translate}}</p>
+                            <p class="attr-value">{{openDetail | translate}}</p>
+                        </div>
+                        <div class="status-div">
+                            <p class="attr-name">{{'Connected' | translate}}</p>
+                            <p class="attr-value">{{connectedDetail | translate}}</p>
+                        </div>
+                        <div class="status-div">
+                            <p class="attr-name">{{'Disconnected' | translate}}</p>
+                            <p class="attr-value">{{disconnectedDetail | translate}}</p>
+                        </div>
+                        <div class="status-div">
+                            <p class="attr-name">{{'Closed' | translate}}</p>
+                            <p class="attr-value">{{closedDetail | translate}}</p>
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="content-tail w_tail">
+                <button class="btn-back" @click='backToHome()'>{{ 'BACK' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/cardless_diagnostic.skin.js"></script>
+</body>
+
+</html>

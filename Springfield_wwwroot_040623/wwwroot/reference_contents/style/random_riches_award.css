@@ -1,0 +1,66 @@
+#logo {
+  content: url(../assets/random_riches/logo.png);
+  margin: 0px auto;
+  width: 70%;
+}
+
+.message-box {
+  display: flex;
+  flex-direction: column;
+  opacity: 0.8;
+  width: 100%;
+  word-wrap: break-word;
+  color: white;
+}
+
+.message-box div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  word-break: break-word;
+}
+
+.message-box div:nth-child(1) {
+  font-size: 1.3rem;
+  flex-grow: 1;
+}
+
+.message-box div:nth-child(2) {
+  flex-grow: 2;
+}
+
+@media screen and (orientation:portrait) {
+  #app>* {
+    /* reset it from common.css */
+    margin-bottom: unset;
+  }
+  button {
+    margin-bottom: 6px;
+  }
+  .message-box {
+    margin-top: 3.5rem;
+    height: 30rem;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  .content-head {
+    background-image: url("../assets/random_riches/bg-black.svg");
+    background-size: 100%;
+  }
+  .content-tail {
+    background-image: url("../assets/random_riches/bg-black.svg");
+    background-size: 100%;
+  }
+  button {
+    width: 95%;
+  }
+  .flex-end-tail {
+    justify-content: flex-end;
+  }
+  .message-box {
+    /* reset it from common.css */
+    max-height: unset;
+    height: 100%;
+  }
+}

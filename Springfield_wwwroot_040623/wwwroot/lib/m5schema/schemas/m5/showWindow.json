@@ -1,0 +1,22 @@
+{
+  "id": "http://igt.com/showWindow/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for showWindow",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^showWindow$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "showWindow": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "cmd",
+    "showWindow"
+  ]
+}

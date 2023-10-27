@@ -1,0 +1,38 @@
+{
+  "id": "http://igt.com/logMessage/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for logMessage",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^logMessage$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "logMessage": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "severity": {
+          "enum": ["debug", "info", "warn", "error"]
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        }
+      },
+      "required": ["message", "severity"]
+    }
+  },
+  "required": [
+    "cmd",
+    "logMessage"
+  ]
+}

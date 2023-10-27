@@ -1,0 +1,18 @@
+#loading-inner {
+  position: absolute;
+}
+
+
+#loadingContainer {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loadingContainer>div {
+  position: relative;
+  transform: translate(0, 4px);
+}
+

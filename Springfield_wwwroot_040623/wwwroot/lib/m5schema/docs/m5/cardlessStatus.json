@@ -1,0 +1,12 @@
+{	
+    "cmd": "cardlessStatus",	
+    "ver": "1.0",	
+    "cardlessStatus": {	
+        "interface": "NFC",	
+        "status": "connected",
+        "version": -1,
+        "mobile": true,
+        "app_label": "ApplePay",
+        "disconnectReason": 58
+    }	
+}

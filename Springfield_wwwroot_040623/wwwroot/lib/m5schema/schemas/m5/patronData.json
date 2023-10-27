@@ -1,0 +1,185 @@
+{
+  "id": "http://igt.com/patronData/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for patronData",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^patronData$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "patronData": {
+      "type": "object",
+      "properties": {
+        "xcAwardBalance": {
+          "type": "integer"
+        },
+        "rpPointBalance": {
+          "type": "integer"
+        },
+        "rpEarnedDay": {
+          "type": "integer"
+        },
+        "ppTotalWon": {
+          "type": "integer"
+        },
+        "ptpSPUsed": {
+          "type": "integer"
+        },
+        "ptpBalance": {
+          "type": "integer"
+        },
+        "awardEnable": {
+          "type": "object",
+          "properties": {
+            "ptpEnable": {
+              "type": "boolean"
+            },
+            "rpEnable": {
+              "type": "boolean"
+            },
+            "ppEnable": {
+              "type": "boolean"
+            },
+            "xcEnable": {
+              "type": "boolean"
+            },
+            "notUsed4": {
+              "type": "boolean"
+            },
+            "srpEnable": {
+              "type": "boolean"
+            },
+            "hidePoints": {
+              "type": "boolean"
+            },
+            "notUsed7": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "ptpEnable",
+            "rpEnable",
+            "ppEnable",
+            "xcEnable",
+            "srpEnable",
+            "hidePoints"
+          ]
+        },
+        "BE2_AwardEnable": {
+          "type": "object",
+          "properties": {
+            "ptpEnable": {
+              "type": "boolean"
+            },
+            "rpEnable": {
+              "type": "boolean"
+            },
+            "ppEnable": {
+              "type": "boolean"
+            },
+            "xcEnable": {
+              "type": "boolean"
+            },
+            "xcViaAFT": {
+              "type": "boolean"
+            },
+            "srpEnable": {
+              "type": "boolean"
+            },
+            "notUsed6": {
+              "type": "boolean"
+            },
+            "notUsed7": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "ptpEnable",
+            "rpEnable",
+            "ppEnable",
+            "xcEnable",
+            "xcViaAFT",
+            "srpEnable"
+          ]
+        },
+        "generalPTData": {
+          "type": "object",
+          "properties": {
+            "countUp": {
+              "type": "boolean"
+            },
+            "vipLightOn": {
+              "type": "boolean"
+            },
+            "zeroUnused": {
+              "type": "boolean"
+            },
+            "PINLocked": {
+              "type": "boolean"
+            },
+            "notUsed": {
+              "type": "boolean"
+            },
+            "dupCard": {
+              "type": "boolean"
+            },
+            "banned": {
+              "type": "boolean"
+            },
+            "comboChange": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "countUp",
+            "vipLightOn",
+            "zeroUnused",
+            "PINLocked",
+            "dupCard",
+            "banned",
+            "comboChange"
+          ]
+        },
+        "srpPointBalance": {
+          "type": "integer"
+        },
+        "srpLevel": {
+          "type": "integer"
+        },
+        "xpcAward": {
+          "type": "integer"
+        },
+        "ranking": {
+          "type": "integer"
+        },
+        "languageId": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "xcAwardBalance",
+        "rpPointBalance",
+        "rpEarnedDay",
+        "ppTotalWon",
+        "ptpSPUsed",
+        "ptpBalance",
+        "awardEnable",
+        "BE2_AwardEnable",
+        "generalPTData",
+        "srpPointBalance",
+        "srpLevel",
+        "xpcAward",
+        "ranking",
+        "languageId"
+      ]
+    }
+  },
+  "required": [
+    "cmd",
+    "patronData"
+  ]
+}

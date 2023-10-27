@@ -1,0 +1,151 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IntelligentOffer</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/intelOffer.css">
+	 <link rel="stylesheet" type="text/css" href="./mgm/styles/style.css">
+    <style patch>
+
+        @media screen and (orientation:landscape) and (min-aspect-ratio: 5/1){
+            .info{
+                width: 66% !important;
+                font-size: 14px;
+            }
+            .title-3 {
+                width: 26% !important;
+            }
+            #list-pane>*{
+                width:30%;
+            }
+        }
+
+        @media screen and (max-aspect-ratio: 4/1) and (orientation:landscape) {
+            .detail-title h2 {
+                font-size: 15px;
+            }
+            .list-btn{
+                font-size: 17px;
+            }
+            .title-3{
+                font-size:13px
+            }
+            .info{
+                font-size: 13px;
+            }
+            .redeem-status {
+                height: 18%;
+            }
+            .paging-button{
+                width:31%;
+                font-size:15px;
+                padding:0;
+            }
+        }
+        @media screen and (orientation:landscape) and (min-aspect-ratio: 9/1){
+            #list-pane>*{
+                width:25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="decoration"></div>
+	<div id="app" resize="preset-2" v-cloak :class="['SCREEN_INTEL_OFFER', displayName, {vertical: isVertical , horizontal: !isVertical }]">
+            <div id="offer-list" class="page app-page">
+                <div class="content-head">
+                    <img id='logo' />
+                    <!-- <h2 class="gold-color">{{ 'OFFERS' | translate }}</h2> -->
+                </div>
+                <div id='list-pane' class='content-body'>
+						 <div class="offer-stat">
+							 <span style="margin-top: 80px;">YOU HAVE</span>
+   						 <span style="margin-top: 8px; margin-bottom: 8px;">{{CurrentPageOffers.length}}</span>
+   						 <span style="margin-bottom: 80px;">OFFERS</span>
+						 </div>
+                    <button v-for='offer in CurrentPageOffers' :id='offer.sourceAwardId' class='list-btn' v-on:click='showDetail(offer)' style="position:relative">
+							  {{offer.promotionName | lengthFilter}}
+								<!-- <div :class='"redeem-status-"+offer.status' class='redeem-status'></div> -->
+								<div class="">
+										<span v-if="(offer.status == 1)" style="color: green;">✔</span>
+										<span v-if="(offer.status == 2)" style="color: red;">𐄂</span>
+								</div>
+							</button>
+                </div>
+                <div class='content-tail'>
+                    <div></div>
+                    <div id='paging-control' v-if='Paging.totalPageCount > 1'>
+                        <button class='paging-button button-small prev-button' :disabled='Paging.currentPageIndex==0'
+                            onclick='previousPage()'>{{ 'PREV' | translate }}</button>
+                        <span>{{Paging.currentPageIndex + 1}} / {{Paging.totalPageCount}}</span>
+                        <button class='paging-button button-small next-button' :disabled='Paging.currentPageIndex==(Paging.totalPageCount-1)'
+                            onclick='nextPage()'>{{ 'NEXT' | translate }}</button>
+                    </div>
+
+                    <button class='act-button' id='back'>{{ 'BACK' | translate }}</button>
+
+                </div>
+            </div>
+
+
+            <div id="offer-detail" class="page app-page">
+                <div class="content-head">
+                        <img id='logo' />
+                    <div class='detail-title'>
+                    <h2>{{CurrentOffer!=null?CurrentOffer.promotionName:""}}</h2>
+                    </div>
+                    <p class='offer-desc'>{{CurrentOffer!=null?CurrentOffer.promotionDescription:""}}</p>
+                </div>
+                <div class="content-body ">
+                        <p class="title-3">{{ 'REDEEM PERIOD' | translate }}</p>
+                    <p class="info">
+                        {{CurrentOffer!=null?dateFormatter(CurrentOffer.redeemStartDate):""}}<br />
+                        ~
+                        {{CurrentOffer!=null?dateFormatter(CurrentOffer.redeemEndDate):""}}
+                    </p>
+
+                        <p class="title-3">{{ 'INSTRUCTIONS' | translate }}</p>
+                        <p class="info">{{CurrentOffer!=null?CurrentOffer.instructions:""}}</p>
+
+                        <p class="title-3">{{ 'RESTRICTIONS' | translate }}</p>
+                        <p class="info">{{CurrentOffer!=null?CurrentOffer.restrictions:""}}</p>
+                </div>
+                <div class='content-tail'>
+                    <div v-show='CurrentOffer!=null && CurrentOffer.status==1'></div>
+                    <button class='act-button' onclick='redeemCurrent()' v-show='CurrentOffer!=null && CurrentOffer.status!=1'>{{
+                        'REDEEM' | translate }}</button>
+                    <button class='act-button' onclick='rejectCurrent()' v-show='CurrentOffer!=null && CurrentOffer.status!=1'>{{
+                        'REJECT' | translate }}</button>
+                    <button class='act-button' onclick='showPage("#offer-list")'>{{ 'BACK' | translate }}</button>
+                </div>
+            </div>
+
+
+            <div id="message-page" class='mask app-page' style="display: none">
+                <div class='content-head'>
+
+
+                  </div>
+                 <div class="content-body message-box">
+                        <h2 class='msg-size'>{{ProcessMessage | translate}}</h2>
+                 </div>
+                 <div class='content-tail' style="flex-grow:unset">
+
+                </div>
+            </div>
+
+    </div>
+
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/intelOffer.skin.js"></script>
+</body>
+
+</html>

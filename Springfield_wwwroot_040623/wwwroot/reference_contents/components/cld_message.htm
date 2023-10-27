@@ -1,0 +1,83 @@
+<template>
+    <div class="container app-page">
+        <div class="content-head">
+            <img id='logo' />
+        </div>
+        <div class="content-body message-box">
+            <div class="message-p">
+                <p>{{this.$store.state.displayMessage}}</p>
+            </div>
+        </div>
+        <div class="content-tail">
+            <img v-if="this.$store.getters.CurrentScreen == 'SEARCHINGFORWINNER'" id='search-icon'
+                src='./assets/cld-searching.gif' />
+            <div v-if="this.$store.getters.CurrentScreen == 'WINNERFOUND'" id='winnerFound-show'>
+                <img id='cup-icon' src='./assets/cld-cup-icon.png' />
+                <p>{{'Congratulations' | translate}}</p>
+                <p>{{"To the lucky" | translate}}</p>
+                <p>{{"Winner!" | translate}}</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+
+</script>
+
+<style scoped>
+    p {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    #search-icon {
+        width: 50%;
+        height: 40%;
+        align-self: center;
+        position: relative;
+        bottom: 30%;
+    }
+
+    #cup-icon {
+        width: 30%;
+        height: 50%;
+        align-self: center;
+    }
+
+    #winnerFound-show {
+        position: relative;
+        align-self: center;
+        bottom: 35%;
+    }
+
+    @media screen and (orientation:landscape) {
+
+        #search-icon {
+            bottom: -22% !important;
+        }
+
+
+        #winnerFound-show {
+            bottom: -10% !important;
+            height: 50%;
+        }
+    }
+
+    .TFT .message-p {
+        height: 55%;
+    }
+
+
+    @media screen and (height:1009px) {
+        #search-icon {
+            bottom: 20% !important;
+            height: 65% !important;
+        }
+
+        #winnerFound-show {
+            bottom: 20% !important;
+            height: 65%;
+        }
+    }
+</style>

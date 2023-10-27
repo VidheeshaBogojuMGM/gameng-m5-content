@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Responsible Gaming</title>
+    <link rel="stylesheet" type="text/css" href="./assets/main.css">
+    <style>
+        @media (orientation:landscape){
+            @media (min-aspect-ratio:5/2){
+                .footer{top:100px;}
+                .page-content .body-1, .page-content .body-2{width: 100%;}
+            }}
+    </style>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js"></script>
+</head>
+<body>
+    <div id="app" resize v-cloak v-bind:class="{'fullscreen': isFullscreenView}" >
+        <div class="page-header">
+            <div class='page-title-image'>
+                <img v-bind:src="config.massachusettsEnable?'./assets/pmw-logo.png':'./assets/RG-logo.png'">
+            </div>
+            <div class="page-header-content-text">
+                <span class="display-2">{{title}}</span>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="content-text text-center">
+                <p class="icon i-caution mb-0"></p>
+                <p class="display-1 font-weight-bold font-green mt-0">
+                    {{item.head}}
+                </p>
+                <p class="body-1">
+                    {{item.message}}
+                </p>
+            </div>
+        </div>
+        <div class="page-footer">
+            <button type="button"  class="btn ripple" v-on:click="returnToGame()">
+                <span class="icon i-exit"></span><span class="btn-text">RETURN TO GAME</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/model/rg_notification.model.js"></script>
+    <script src="./js/notification.skin.js"></script>
+</body>
+</html>

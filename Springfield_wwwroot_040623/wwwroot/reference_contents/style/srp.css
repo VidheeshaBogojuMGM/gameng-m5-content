@@ -1,0 +1,84 @@
+p {
+	font-size: 1.5rem;
+	color: #e4cba2;
+	text-transform: uppercase;
+	width: 100%;
+}
+
+#message{
+	font-size: 1rem;
+}
+
+#app {
+background-image: url("../assets/srp-bg.png");
+background-size: contain !important; 
+background-repeat: repeat;
+}
+  
+#badge {
+	display: block;
+	width: calc(var(--component-space) * .9);  
+	transform: scale(2);
+}
+
+.vertical #badge {
+	width: 100%;
+	transform: scale(1.5); 
+}
+
+@media screen and (orientation: portrait) {
+#badge {
+	margin: 50px auto;
+}
+}
+
+.infoarea {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+}
+  
+.horizontal .infoarea p{
+	font-size: 1.2rem;
+}
+
+.vertical .content-body {
+	flex-grow: 1;
+}
+  
+.horizontal .content-head:nth-child(1)  {
+	flex-basis: 25%;
+	margin-left:0;
+	margin-right:0;
+}
+
+.horizontal .content-head {
+	flex-basis: 40%; 
+	margin-left:1rem;
+	margin-right:1rem;
+}
+
+.horizontal .content-body {
+	justify-content: center;
+	align-items: center;
+    flex-basis: 40%; 
+}
+
+.horizontal .content-tail {
+	display: none;
+}
+
+.TFT p,
+.U4 p {
+	font-size: 1rem;
+}
+
+@media screen and (orientation: portrait) {
+#app>* {
+	margin-bottom: unset;
+}
+}
+
+
+

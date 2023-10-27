@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>VDM</title>
+  <link rel="stylesheet" type="text/css" href="./style/vdm_base.css">
+</head>
+
+<body>
+  <div id="loading"></div>
+  <div id="decoration" style="
+    background-image: url(./assets/vdm/horizontal/FWDC_web6.jpg);
+    background-size: cover;
+    background-position: center center;
+    position: absolute;"></div>
+  <!-- <div id="app" resize="stretch(256, 956)"> -->
+  <!-- <div id="app" resize="stretch"> -->
+  <!-- VDM.vm.stretch(256, 956, 160, 560) -->
+  <div id="app" resize="preset-1">
+    <info v-show="shouldShowInfo"></info>
+    <router-view v-show="!shouldShowInfo" id="router-view"></router-view>
+  </div>
+  <script src="./js/polyfill.js"></script>
+  <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+  <script src="./js/model/all_in_one.model.js"></script>
+  <script src="./js/vdm.skin.js"></script>
+</body>
+
+</html>

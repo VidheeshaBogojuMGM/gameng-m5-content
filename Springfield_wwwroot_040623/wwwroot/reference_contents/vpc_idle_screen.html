@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>vpc_idle_screen</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" type="text/css" href="./style/common.css">
+    <link rel="stylesheet" type="text/css" href="./style/project_main.css">
+    <link rel="stylesheet" type="text/css" href="./style/vpc_idle_screen.css">
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="decoration"></div>
+    <div id="app" resize="preset-2" v-cloak>
+        <!-- add your content code here -->
+        <div class='content-head'>
+            <img id='logo' />
+                <p v-if="appConfig.isDebug">{{displayName}}{{contentWidth}}x{{contentHeight}}</p>
+        </div>
+        <div class='content-body'>
+            <iframe id="adPlayer" :src='adPlayerSrc'></iframe>
+        </div>
+        <div class='content-tail'>
+            <a id="yourplaybtn" @click="yourPlay()">
+                <img id="yourplaybtn_img"/>
+            </a>
+        </div>
+    </div>
+
+    <script src="./js/polyfill.js"></script>
+    <script src="/lib/igt-media-elements/dist/igt-media-elements.js" optimized></script>
+    <script src="./js/model/all_in_one.model.js"></script>
+    <script src="./js/vpc_idle_screen.skin.js"></script>
+</body>
+
+</html>

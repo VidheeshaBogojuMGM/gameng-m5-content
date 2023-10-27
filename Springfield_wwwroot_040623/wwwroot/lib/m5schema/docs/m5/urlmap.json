@@ -1,0 +1,35 @@
+{
+  "baseUrl": "http://customer.content.domain/service-window/",
+  "indexUrl": "firstpage.html",
+  "bannerUrl": "./banner.html",
+  "pinContentUrl": "./pin/",
+  "screenIdMap": {
+    "WELCOME_SCREEN": "./welcome.html",
+    "SESSION_SCREEN": "./session.html",
+    "IDLE_SCREEN": "./idle.html",
+    "IN_SESSION_MESSAGE_SCREEN_1": "./ism_trigger.html",
+    "IN_SESSION_MESSAGE_SCREEN_2": "./ism_trigger.html",
+    "IN_SESSION_MESSAGE_SCREEN_3": "./ism_trigger.html",
+    "IN_SESSION_MESSAGE_SCREEN_4": "./ism_trigger.html",
+    "IN_SESSION_MESSAGE_SCREEN_5": "./ism_trigger.html",
+    "IN_SESSION_MESSAGE_SCREEN_6": "./ism_trigger.html",
+    "IN_SESSION_MESSAGE_SCREEN_7": "./ism_trigger.html",
+    "IN_SESSION_MESSAGE_SCREEN_8": "./ism_trigger.html",
+    "RESPONSIBLE_GAMING_SCREEN_1": "http://customer.responsible-gaming.domain/index.html",
+    "WELCOME_SCREEN": "./whoops_a_dupe.html"
+  },
+  "ciSim": "ws://igtM5:7001",
+  "loggerUrl": "ws://igtM5:9047",
+  "logLevel": "INFO",
+  "subscribeAllTriggers": false,
+  "legacyIdList": [
+    "0x50",
+    "0x51",
+    "0x52",
+    "0x53",
+    "0x54",
+    "0x55",
+    "0x56"
+  ],
+  "securityServiceEndpoint": "http://172.16.17.168:8010/security/v1"
+}

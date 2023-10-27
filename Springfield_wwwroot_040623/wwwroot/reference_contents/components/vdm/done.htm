@@ -1,0 +1,113 @@
+<template>
+  <app>
+    <template slot="content">
+      <div class="column-1">
+        <div class="info-area hack-width">
+          <div class="info-wrapper">
+            <span class="big-value">{{this.$root.enteredTktNum}}</span>
+            <span class="big-key">{{ 'Tickets Entered' | translate }}</span>
+            <div class="line invisible"></div>
+          </div>
+          <div class="ticket-area">
+            <span>{{ 'Tickets Numbers' | translate }}</span>
+            <div class="scroll-container scrollbar">
+              <p v-for="item in $store.state.enteringTickets.freeEntryTicketList" :key="item.index">{{item.end}} - {{item.start}}</p>
+              <p v-for="item in $store.state.enteringTickets.ticketEntryList" :key="item.index">{{item.start}} - {{item.end}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column-2 done-footer-height">
+        <div class="two-button-placeholder"></div>
+        <button class="normal" @click="done">{{ 'Done' | translate }}</button>
+      </div>
+    </template>
+  </app>
+</template>
+<script>
+module.exports = {
+  name: "done",
+  beforeMount() {
+    this.$store.commit("enteringTickets/sortTicket");
+  },
+  methods: {
+    done() {
+      this.$router.push({ name: "award" });
+    }
+  }
+};
+</script>
+
+<style scoped>
+@import "../../style/vdm_infoarea.css";
+@import "../../style/vdm_button.css";
+
+.ticket-area {
+  text-align: center;
+  color: #96918a;
+}
+
+.ticket-area > span {
+  font-size: 1.5rem;
+}
+
+.scroll-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.scrollbar::-webkit-scrollbar {
+  overflow: scroll;
+  width: 1.2rem;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: #535353;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: #ededed;
+}
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  .done-footer-height {
+    height: 100px;
+  }
+
+  .scroll-container {
+    margin-top: 1.5rem;
+    height: 90%;
+  }
+
+  .ticket-area {
+    height: 620px;
+  }
+}
+
+/* horizental */
+@media screen and (max-height: 400px) {
+  .hack-width {
+    width: 510px;
+    height: 224px;
+  }
+
+  .scroll-container {
+    margin-top: 0.4rem;
+    height: 90%;
+  }
+
+  /* .scroll-container p {
+    display: inline-block;
+  } */
+
+  .ticket-area {
+    width: 90%;
+    height: 80%;
+  }
+}
+</style>

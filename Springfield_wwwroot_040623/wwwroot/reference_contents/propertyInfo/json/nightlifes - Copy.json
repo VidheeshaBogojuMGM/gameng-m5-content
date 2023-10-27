@@ -1,0 +1,12 @@
+{
+	"data" : [
+		{	"name": "COMMONWEALTH BAR AND LOUNGE",
+			"description" : "A place to see or be seen at the center of it all. Experience a new state of mind with innovative mixology, live music and the best view of the action. The perfect location to try your next favorite cocktail, your perfect night out or hear your next favorite song.",
+			"imageDetail": "images/nightlifes/nightlifeImage"
+		},
+		{	"name": "THE KNOX BAR",
+			"description" : "The who's who of gaming. Enjoy a handcrafted cocktail while taking your luck to the highest limit. Only you can collect by testing your skills. An exclusive locale where you can choose to see or be seen.",
+			"imageDetail": "images/nightlifes/nightlifeImage"
+		}],
+	"imageSubMain" : "images/nightlifesSubMain"
+}

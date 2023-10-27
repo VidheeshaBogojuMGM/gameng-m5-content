@@ -1,0 +1,10 @@
+{
+  "cmd": "hostEventButtonPress",
+  "ver": "1.0",
+  "hostEventButtonPress": {
+    "hostEventId": 98,
+    "subEventId": 2147483647,
+    "onlineOnly": false,
+    "bonusId": 65535
+  }
+}

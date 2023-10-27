@@ -1,0 +1,28 @@
+{
+  "id": "http://igt.com/qrcode/V1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Schema for qrCode",
+  "type": "object",
+  "properties": {
+    "cmd": {
+      "type": "string",
+      "pattern": "^qrCode$"
+    },
+    "ver": {
+      "type": "string"
+    },
+    "qrCode": {
+      "type": "object",
+      "properties": {
+        "qrCode": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "integer"
+        }
+      },
+      "required": ["qrCode"]
+    }
+  },
+  "required": ["cmd", "qrCode"]
+}

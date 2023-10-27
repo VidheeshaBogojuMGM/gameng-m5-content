@@ -1,0 +1,144 @@
+<template>
+  <app>
+    <div id="content" slot="content">
+      <div class="column-1">
+        <notificationbanner :prize-name="awardPrizeName"></notificationbanner>
+        <spinner v-show="processing"></spinner>
+        <pagelist :objects="formatedData" :show-btn="false" :cur-page="curPage" :item-count="itemCount" :css-class="customCss"></pagelist>
+      </div>
+      <div class="column-2 winningTicketlist-footer-height">
+        <countdown v-if="remainingTime>1" :countdowntime="remainingTime" @countdown-end="stopCountDown"></countdown>
+        <pagecontroller :total-page="totalPage" @page-change="pageChange" :enable-timer="true"></pagecontroller>
+        <notificationbar></notificationbar>
+      </div>
+    </div>
+  </app>
+</template>
+<script>
+module.exports = {
+  name: "winningTicketList",
+  data() {
+    return {
+      remainingTime: 1,
+      tickets: [],
+      processing: true,
+      curPage: 1,
+      awardPrizeName: ""
+    };
+  },
+  created() {
+    // // just for test
+    // import("./views/sse/mock-data.js").then(
+    //   ({ awardData, cfgdata }) => {
+    //     IGTMediaElements.contentCache
+    //       .setStateElement("sse_cfg", JSON.stringify(cfgdata), 0)
+    //       .then(value => {});
+    //     IGTMediaElements.contentCache
+    //       .setStateElement(
+    //         "Verification",
+    //         JSON.stringify(awardData),
+    //         0
+    //       )
+    //       .then(value => {});
+    //   }
+    // );
+  },
+  computed: {
+    formatedData() {
+      var arr = [];
+      this.tickets.forEach(element => {
+        arr.push({
+          value: element
+        });
+      });
+      return arr;
+    },
+    itemCount() {
+      const height = document.getElementById("app").clientHeight;
+      const width = document.getElementById("app").clientWidth;
+      if (height < width)
+        //horizontal
+        return 4;
+      return 3;
+    },
+    customCss() {
+      const height = document.getElementById("app").clientHeight;
+      const width = document.getElementById("app").clientWidth;
+      return height < width ? "small-ticket-info" : "big-ticket-info";
+    },
+    totalPage() {
+      return Math.ceil(this.formatedData.length / this.itemCount) || 1;
+    }
+  },
+  mounted() {
+    TweenMax.from("#app", 1 , {scale: 0.1, alpha: 0.1});
+    
+    const self = this;
+    IGTMediaElements.contentCache.getStateElement("sse_cfg").then(data => {
+      const cfgdata = JSON.parse(data);
+
+      IGTMediaElements.contentCache
+        .getStateElement("Verification")
+        .then(data => {
+          const obj = JSON.parse(data);
+          this.awardPrizeName = obj.Name;
+
+          const playerIdToken = "0x45";
+          IGTMediaElements.getCurrentTokenValue(playerIdToken).then(e => {
+            self.remainingTime = obj.VerificationCountDown;
+            self.tickets = [];
+
+            obj.VerificationTickets.forEach(element => {
+              var item = {};
+              if (cfgdata.ShowTicketId) {
+                item["Ticket #:"] = element.TicketDescription;
+              }
+
+              if (cfgdata.ShowPlayerName) {
+                item["Name:"] = self.$root.$options.filters.formatWinnerName(
+                  element.PlayerName,
+                  cfgdata.WinnerNameFormat
+                );
+              }
+              item["ID:"] = element.PlayerId;
+              self.tickets.push(item);
+              self.processing = false;
+
+              if (
+                element.PlayerId == e.token.value &&
+                cfgdata.ClaimPrizeFromServiceWindow
+              ) {
+                setTimeout(() => {
+                  // window.location = `${
+                  //   location.origin
+                  // }/${CONTENT_FOLDER_NAME}/?launchPage=claimPrize/${element.PlayerId}`;
+                  // window.location = `${document.referrer}?launchPage=claimPrize/${element.PlayerId}`;
+                  window.location = `${location.origin}/reference_contents/vdm.html?launchPage=claimPrize/${element.PlayerId}`;
+                }, 4000);
+              }
+            });
+          });
+        });
+    });
+  },
+  methods: {
+    stopCountDown() {
+      this.claimBtnDisabled = true;
+      this.$router.push("/drawingInProgress");
+    },
+    pageChange(currentPage) {
+      this.curPage = currentPage;
+    }
+  }
+};
+</script>
+<style scoped>
+@import "../../../style/vdm_sse.css";
+
+/* vertical */
+@media screen and (min-height: 400px) {
+  .winningTicketlist-footer-height {
+    height: 240px;
+  }
+}
+</style>

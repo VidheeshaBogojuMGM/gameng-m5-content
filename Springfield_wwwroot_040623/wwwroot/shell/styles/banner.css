@@ -1,0 +1,195 @@
+body{
+  overflow:hidden;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+.bannerLogo{
+  position: absolute;
+  left: 0.5%;
+  top: 28%;
+  width: 6%;
+  height: 65%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(../images/logo.png);
+}
+
+.bannerFrameStyle{
+  position:absolute;
+  bottom:0;
+  left:0;
+  z-index: 0;
+  overflow:hidden;
+}
+
+.bannerMessage{
+  text-align: left;
+  position: absolute;
+  left: 21%;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.bannerMessage h1{
+  font-size: 46vh;
+  line-height: 40vh;
+}
+
+.bannerButtonOff{
+  position: absolute;
+  top: 6%;
+  left: 6%;
+  width: 12.5%;
+  height: 88%;
+  margin-left: 1.5%;
+  border-radius: 29vh;
+  background-color:#6f4102;
+}
+
+.bannerButtonOff h1{
+  font-size: 33vh;
+  line-height: 37vh;
+  position: absolute;
+  top: -15%;
+  color:white;
+}
+
+.bannerButtonOn{
+  position: absolute;
+  top: 6%;
+  left: 6%;
+  width: 12.5%;
+  height: 88%;
+  margin-left: 1.5%;
+  border-radius: 29vh;
+}
+
+.bannerButtonOn h1{
+  font-size: 33vh;
+  line-height: 37vh;
+  position: absolute;
+  top: -15%;
+  color:black;
+}
+
+.bannerButton:active{
+  position: absolute;
+  top: 6%;
+  left: 6%;
+  width: 12.5%;
+  height: 88%;
+  margin-left: 1.5%;
+  border-radius: 29vh;
+}
+
+
+
+.eventButtonOn{
+  position: absolute;
+  right: 15%;
+  top: 4%;
+  width: 71%;
+  height: 93%;
+}
+.eventButtonOn:active{
+  position: absolute;
+  right: 15%;
+  top: 4%;
+  width: 71%;
+  height: 93%;
+}
+
+.eventButtonOff{
+  position: absolute;
+  right: 15%;
+  top: 4%;
+  width: 71%;
+  height: 93%;
+  background-color:#6f4102;
+}
+.eventButtonOff:active{
+  position: absolute;
+  right: 15%;
+  top: 4%;
+  width: 71%;
+  height: 93%;
+}
+
+
+.bannerBackground{
+  background-image: linear-gradient(to bottom, #0055b7 0%, #009bde 100%);
+  width:100%;
+}
+
+@media screen and (min-height:31px) and (max-height:32px){/*U1, U1_H*/
+ .bannerBackground{
+   height:32px;
+ }
+}
+
+@media screen and (min-height:39px) and (max-height:40px){/*U2, U2_H*/
+  .bannerBackground{
+    height:40px;
+  }
+}
+
+@media screen and (min-height:41px) and (max-height:43px){/*U1_RH, U4, U6_RH*/
+  .bannerBackground{
+    height:42px;
+  }
+}
+
+@media screen and (min-height:50px) and (max-height:52px){/*U6_H*/
+  .bannerBackground{
+    height:51px;
+  }
+}
+
+@media screen and (min-height:53px) and (max-height:54px){/*U2_RH*/
+  .bannerBackground{
+    height:53px;
+  }
+}
+
+@media screen and (min-height:62px) and (max-height:64px){/*U5, U5_H*/
+  .bannerBackground{
+    height:63px;
+  }
+}
+
+@media screen and (min-height:67px) and (max-height:68px){ /*U3_H, U3 */
+  .bannerBackground{
+    height:68px;
+  }
+}
+
+@media screen and (min-height:71px) and (max-height:72px){ /*U6*/
+  .bannerBackground{
+    height:72px;
+  }
+  .bannerLogo{
+    top: 20%;
+  }
+}
+
+@media screen and (min-height:83px) and (max-height:84px){ /*U5_RH, U3_RH*/
+  .bannerBackground{
+    height:84px;
+  }
+}
+
+.eventButtonMask{
+  position: absolute;
+  width: 7%;
+  right: 2%;
+}
+
+.drinkLogoSizing{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -3%;
+  left: -2%;
+}

@@ -1,0 +1,90 @@
+<template>
+  <div class="paytable-container center">
+    <table>
+      <tr v-for="(item, index) in payTable" :key="index" :class="{active: isActive(item.matches)}">
+        <td>{{"X" | translate}}{{item.matches}}</td>
+        <td>{{ $store.state.currencySymbol }}{{ item.uncardedAwardAmount / 100 | money }}</td>
+      </tr>
+      <tr v-for="idx in placeholderRowCount">
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</template>
+
+<script>
+  module.exports = {
+    props: ["matchCount"],
+    computed: {
+      payTable() {
+        return this.$store.state.payTable.paytables;
+      },
+      placeholderRowCount() {
+        if (this.payTable && this.payTable.length < 5) {
+          return 5 - this.payTable.length;
+        }
+        return 0;
+      }
+    },
+    methods: {
+      isActive(index) {
+        return this.matchCount === index;
+      }
+    }
+  }
+
+</script>
+
+<style scoped>
+  .paytable-container {
+    background: url('../assets/ld-paytable-bg.png');
+    background-repeat: no-repeat;
+    background-size: contain !important;
+    background-position-x: center;
+    width: 248px;
+    padding-top: 2rem;
+    margin: auto;
+  }
+
+  table {
+    width: 85%;
+    height: 165px;
+  }
+
+  tr {
+    font-size: 1.3rem;
+    height: 20%;
+    transition: all 0.3s ease;
+  }
+
+  tr td:first-child {
+    text-align: left;
+    color: #E5DDD0;
+  }
+
+  tr td:last-child {
+    text-align: right;
+    color: #FFE178;
+  }
+
+  tr.active {
+    line-height: 30px;
+    animation: textgrowth 1s infinite alternate;
+  }
+
+  tr.active td {
+    color: yellow;
+  }
+
+  @keyframes textgrowth {
+    0% {
+      font-size: 1.3rem;
+    }
+
+    100% {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+  }
+
+</style>
